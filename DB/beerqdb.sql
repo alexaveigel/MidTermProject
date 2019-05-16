@@ -22,9 +22,9 @@ DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `user_name` VARCHAR(100) NOT NULL,
+  `username` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `user_name_UNIQUE` (`user_name` ASC))
+  UNIQUE INDEX `user_name_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
@@ -43,7 +43,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beerqdb`;
-INSERT INTO `user` (`id`, `user_name`) VALUES (1, 'admin');
+INSERT INTO `user` (`id`, `username`) VALUES (1, 'admin');
 
 COMMIT;
 
