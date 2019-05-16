@@ -16,23 +16,6 @@ CREATE SCHEMA IF NOT EXISTS `beerqdb` DEFAULT CHARACTER SET utf8 ;
 USE `beerqdb` ;
 
 -- -----------------------------------------------------
--- Table `drinker`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `drinker` ;
-
-CREATE TABLE IF NOT EXISTS `drinker` (
-  `id` INT NOT NULL,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `date_of_birth` VARCHAR(45) NOT NULL,
-  `gender` VARCHAR(45) NULL,
-  `beer_style` VARCHAR(45) NULL,
-  `zip` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `user` ;
@@ -42,15 +25,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` VARCHAR(100) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `role` VARCHAR(45) NOT NULL,
-  `drinker_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `user_name_UNIQUE` (`username` ASC),
-  INDEX `fk_user_drinker_idx` (`drinker_id` ASC),
-  CONSTRAINT `fk_user_drinker`
-    FOREIGN KEY (`drinker_id`)
-    REFERENCES `drinker` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  UNIQUE INDEX `user_name_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
 
 
@@ -64,9 +40,42 @@ CREATE TABLE IF NOT EXISTS `address` (
   `street` VARCHAR(45) NULL,
   `city` VARCHAR(45) NULL,
   `state` VARCHAR(45) NULL,
+  `zip` VARCHAR(45) NULL,
   `country` VARCHAR(45) NULL,
-  `cordiantes` VARCHAR(45) NULL,
+  `latitude` VARCHAR(45) NULL,
+  `longitude` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `drinker`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `drinker` ;
+
+CREATE TABLE IF NOT EXISTS `drinker` (
+  `id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `first_name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `date_of_birth` DATE NOT NULL,
+  `gender` VARCHAR(45) NULL,
+  `beer_style` VARCHAR(45) NULL,
+  `pic_url` VARCHAR(500) NULL,
+  `address_id` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_drinker_user1_idx` (`user_id` ASC),
+  INDEX `fk_drinker_address_idx` (`address_id` ASC),
+  CONSTRAINT `fk_drinker_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_drinker_address`
+    FOREIGN KEY (`address_id`)
+    REFERENCES `address` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -80,6 +89,8 @@ CREATE TABLE IF NOT EXISTS `bar` (
   `name` VARCHAR(45) NOT NULL,
   `message` VARCHAR(500) NULL,
   `address_id` INT NOT NULL,
+  `website_url` VARCHAR(500) NULL,
+  `logo_url` VARCHAR(500) NULL,
   PRIMARY KEY (`id`, `address_id`),
   INDEX `fk_bar_address1_idx` (`address_id` ASC),
   CONSTRAINT `fk_bar_address1`
@@ -120,8 +131,10 @@ DROP TABLE IF EXISTS `brewery` ;
 
 CREATE TABLE IF NOT EXISTS `brewery` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `logo` VARCHAR(150) NULL DEFAULT 'some default value',
+  `name` VARCHAR(45) NOT NULL,
+  `logo_url` VARCHAR(500) NULL DEFAULT 'some default value',
   `address_id` INT NOT NULL,
+  `website_url` VARCHAR(500) NULL,
   PRIMARY KEY (`id`, `address_id`),
   INDEX `fk_brewery_address1_idx` (`address_id` ASC),
   CONSTRAINT `fk_brewery_address1`
@@ -155,14 +168,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `drinker_has_beer`
+-- Table `favorite_beer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `drinker_has_beer` ;
+DROP TABLE IF EXISTS `favorite_beer` ;
 
-CREATE TABLE IF NOT EXISTS `drinker_has_beer` (
+CREATE TABLE IF NOT EXISTS `favorite_beer` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `drinker_id` INT NOT NULL,
   `beer_id` INT NOT NULL,
-  PRIMARY KEY (`drinker_id`, `beer_id`),
+  `date_added` DATE NOT NULL,
+  `comment` TEXT NULL,
+  PRIMARY KEY (`id`),
   INDEX `fk_drinker_has_beer_beer1_idx` (`beer_id` ASC),
   INDEX `fk_drinker_has_beer_drinker1_idx` (`drinker_id` ASC),
   CONSTRAINT `fk_drinker_has_beer_drinker1`
@@ -179,14 +195,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `bar_has_drinker`
+-- Table `favorite_bar`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bar_has_drinker` ;
+DROP TABLE IF EXISTS `favorite_bar` ;
 
-CREATE TABLE IF NOT EXISTS `bar_has_drinker` (
+CREATE TABLE IF NOT EXISTS `favorite_bar` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `bar_id` INT NOT NULL,
   `drinker_id` INT NOT NULL,
-  PRIMARY KEY (`bar_id`, `drinker_id`),
+  `date_added` DATE NOT NULL,
+  `comment` TEXT NULL,
+  PRIMARY KEY (`id`),
   INDEX `fk_bar_has_drinker_drinker1_idx` (`drinker_id` ASC),
   INDEX `fk_bar_has_drinker_bar1_idx` (`bar_id` ASC),
   CONSTRAINT `fk_bar_has_drinker_bar1`
@@ -203,16 +222,15 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `bar_has_beer`
+-- Table `bar_inventory`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `bar_has_beer` ;
+DROP TABLE IF EXISTS `bar_inventory` ;
 
-CREATE TABLE IF NOT EXISTS `bar_has_beer` (
+CREATE TABLE IF NOT EXISTS `bar_inventory` (
   `bar_id` INT NOT NULL,
   `beer_id` INT NOT NULL,
-  `beer_brewery_id` INT NOT NULL,
-  PRIMARY KEY (`bar_id`, `beer_id`, `beer_brewery_id`),
-  INDEX `fk_bar_has_beer_beer1_idx` (`beer_id` ASC, `beer_brewery_id` ASC),
+  PRIMARY KEY (`bar_id`, `beer_id`),
+  INDEX `fk_bar_has_beer_beer1_idx` (`beer_id` ASC),
   INDEX `fk_bar_has_beer_bar1_idx` (`bar_id` ASC),
   CONSTRAINT `fk_bar_has_beer_bar1`
     FOREIGN KEY (`bar_id`)
@@ -220,8 +238,8 @@ CREATE TABLE IF NOT EXISTS `bar_has_beer` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_bar_has_beer_beer1`
-    FOREIGN KEY (`beer_id` , `beer_brewery_id`)
-    REFERENCES `beer` (`id` , `brewery_id`)
+    FOREIGN KEY (`beer_id`)
+    REFERENCES `beer` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
