@@ -10,22 +10,15 @@
 
 		<!-- entities -->
 		<class>com.skilldistillery.jpavideostore.entities.Actor</class>
-		<class>com.skilldistillery.jpavideostore.entities.Address</class>
-		<class>com.skilldistillery.jpavideostore.entities.Category</class>
-		<class>com.skilldistillery.jpavideostore.entities.Customer</class>
-		<class>com.skilldistillery.jpavideostore.entities.Film</class>
-		<class>com.skilldistillery.jpavideostore.entities.Language</class>
-		<class>com.skilldistillery.jpavideostore.entities.Rental</class>
-		<class>com.skilldistillery.jpavideostore.entities.Staff</class>
-		<class>com.skilldistillery.jpavideostore.entities.Store</class>
+		
 
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/CHANGEME?useSSL=false" />
-			<property name="javax.persistence.jdbc.user" value="CHANGEME" />
+				value="jdbc:mysql://localhost:3306/beerqdb?useSSL=false" />
+			<property name="javax.persistence.jdbc.user" value="drinker" />
 			<property name="javax.persistence.jdbc.password"
-				value="CHANGEME" />
+				value="drinker" />
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />
 
