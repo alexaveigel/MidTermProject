@@ -52,4 +52,9 @@ class UserTest {
 	void test_user_to_drinker_mapping() {
 		assertEquals(1, user.getDrinker().getId());
 	}
+	
+	@Test
+	void test_user_to_bar_mapping() {
+		assertEquals(1, user.getBars().get(0).getId());
+	}
 }
