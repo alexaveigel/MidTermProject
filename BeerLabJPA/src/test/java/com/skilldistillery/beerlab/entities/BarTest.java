@@ -54,4 +54,14 @@ class BarTest {
 		assertEquals("123 Test street", address.getStreet());
 	}
 
+	@Test
+	void test_bar_to_user_mapping() {
+		assertEquals(1, bar.getUsers().get(0).getId());
+	}
+	
+	@Test
+	void test_bar_to_beer_mapping() {
+		assertEquals(1, bar.getBeers().get(0).getId());
+	}
+	
 }
