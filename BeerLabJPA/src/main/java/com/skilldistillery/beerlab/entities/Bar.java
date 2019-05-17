@@ -5,11 +5,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
@@ -32,6 +32,10 @@ public class Bar {
 	@Column(name = "logo_url")
 	private String logoUrl;
 	
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "bar_inventory", joinColumns = @JoinColumn(name = "beer_id"), inverseJoinColumns = @JoinColumn(name = "bar_id"))
+	private List<Beer> beers;
+	
 	// One to One unidirectional with Address
 	// Deleted regular field called addressId so this field wouldn't conflict
 	@OneToOne(cascade = CascadeType.PERSIST)
@@ -41,6 +45,14 @@ public class Bar {
 	@ManyToMany(mappedBy = "bars")
 	private List<User> users;
 	
+
+	public List<Beer> getBeers() {
+		return beers;
+	}
+
+	public void setBeers(List<Beer> beers) {
+		this.beers = beers;
+	}
 
 	public List<User> getUsers() {
 		return users;

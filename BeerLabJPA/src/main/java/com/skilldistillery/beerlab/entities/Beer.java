@@ -1,11 +1,14 @@
 package com.skilldistillery.beerlab.entities;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -13,22 +16,32 @@ public class Beer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String style;
-	
+
 	private String name;
-	
+
 	private double abv;
-	
+
 //	@Column(name = "brewery_id")
 //	private int breweryId;
-	
+
 	private String description;
-	
+
+	@ManyToMany(mappedBy = "beers", fetch = FetchType.LAZY)
+	private List<Bar> bars;
+
+	public List<Bar> getBars() {
+		return bars;
+	}
+
+	public void setBars(List<Bar> bars) {
+		this.bars = bars;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "brewery_id")
 	private Brewery brewery;
-	
 
 	public Brewery getBrewery() {
 		return brewery;
@@ -37,8 +50,6 @@ public class Beer {
 	public void setBrewery(Brewery brewery) {
 		this.brewery = brewery;
 	}
-	
-	
 
 	public int getId() {
 		return id;
@@ -71,7 +82,6 @@ public class Beer {
 	public void setAbv(double abv) {
 		this.abv = abv;
 	}
-	
 
 	public String getDescription() {
 		return description;
@@ -80,7 +90,6 @@ public class Beer {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 	public Beer(int id, String style, String name, double abv, String description, Brewery brewery) {
 		super();
@@ -146,7 +155,19 @@ public class Beer {
 	@Override
 	public String toString() {
 		return "Beer [id=" + id + ", style=" + style + ", name=" + name + ", abv=" + abv + ", description="
-				+ description + ", brewery=" + brewery + "]";
+				+ description + ", bars=" + bars + ", brewery=" + brewery + "]";
+	}
+
+
+	public Beer(int id, String style, String name, double abv, String description, List<Bar> bars, Brewery brewery) {
+		super();
+		this.id = id;
+		this.style = style;
+		this.name = name;
+		this.abv = abv;
+		this.description = description;
+		this.bars = bars;
+		this.brewery = brewery;
 	}
 
 	public Beer() {

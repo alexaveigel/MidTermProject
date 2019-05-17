@@ -52,6 +52,11 @@ class BeerTest {
 	}
 	
 	@Test
+	void test_bar_to_beer_mapping() {
+		assertEquals(1, beer.getBars().get(0).getId());
+	}
+		
+	@Test	
 	public void test_Beer_ManyToOne_With_Brewery() {
 		assertEquals("The Brewery" , beer.getBrewery().getName());
 	}
