@@ -44,11 +44,11 @@ class BeerTest {
 	@Test
 	public void test_Beer_Mapping_Correct() {
 		assertEquals(1, beer.getId());
-		assertEquals("Stout", beer.getStyle());
-		assertEquals("Corona", beer.getName());
-		assertEquals(4.5, beer.getAbv());
+		assertEquals("IPA", beer.getStyle());
+		assertEquals("The IPA", beer.getName());
+		assertEquals(7.8, beer.getAbv());
 		assertEquals(1, beer.getBreweryId());
-		assertEquals("Hello", beer.getDescription());
+		assertEquals("hoppy", beer.getDescription());
 	}
 
 }

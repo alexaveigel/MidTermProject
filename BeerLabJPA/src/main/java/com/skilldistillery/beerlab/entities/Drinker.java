@@ -17,7 +17,7 @@ public class Drinker {
 	private int id;
 	
 	@Column(name = "user_id")
-	private String userId;
+	private int userId;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -44,7 +44,7 @@ public class Drinker {
 		super();
 	}
 
-	public Drinker(int id, String userId, String firstName, String lastName, Date dob, String gender, String beerStyle,
+	public Drinker(int id, int userId, String firstName, String lastName, Date dob, String gender, String beerStyle,
 			String picUrl, int addressId) {
 		super();
 		this.id = id;
@@ -77,7 +77,7 @@ public class Drinker {
 		result = prime * result + id;
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((picUrl == null) ? 0 : picUrl.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + userId;
 		return result;
 	}
 
@@ -124,10 +124,7 @@ public class Drinker {
 				return false;
 		} else if (!picUrl.equals(other.picUrl))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
+		if (userId != other.userId)
 			return false;
 		return true;
 	}
@@ -140,11 +137,11 @@ public class Drinker {
 		this.id = id;
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
