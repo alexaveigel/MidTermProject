@@ -1,5 +1,7 @@
 package com.skilldistillery.beerlab.entities;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -31,10 +34,28 @@ public class Brewery {
 	@JoinColumn(name= "address_id")
 	private Address address;
 	
+	
+	// One to many between brewery and beer
+	@OneToMany(mappedBy = "brewery")
+	private List<Beer> beers;
 
 	public Address getAddress() {
 		return address;
 	}
+	
+	
+
+	public List<Beer> getBeers() {
+		return beers;
+	}
+
+
+
+	public void setBeers(List<Beer> beers) {
+		this.beers = beers;
+	}
+
+
 
 	public void setAddress(Address address) {
 		this.address = address;

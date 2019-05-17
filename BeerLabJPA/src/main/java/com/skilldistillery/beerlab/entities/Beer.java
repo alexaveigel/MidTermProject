@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Beer {
@@ -18,10 +20,25 @@ public class Beer {
 	
 	private double abv;
 	
-	@Column(name = "brewery_id")
-	private int breweryId;
+//	@Column(name = "brewery_id")
+//	private int breweryId;
 	
 	private String description;
+	
+	@ManyToOne
+	@JoinColumn(name = "brewery_id")
+	private Brewery brewery;
+	
+
+	public Brewery getBrewery() {
+		return brewery;
+	}
+
+	public void setBrewery(Brewery brewery) {
+		this.brewery = brewery;
+	}
+	
+	
 
 	public int getId() {
 		return id;
@@ -54,14 +71,7 @@ public class Beer {
 	public void setAbv(double abv) {
 		this.abv = abv;
 	}
-
-	public int getBreweryId() {
-		return breweryId;
-	}
-
-	public void setBreweryId(int breweryId) {
-		this.breweryId = breweryId;
-	}
+	
 
 	public String getDescription() {
 		return description;
@@ -71,6 +81,17 @@ public class Beer {
 		this.description = description;
 	}
 
+
+	public Beer(int id, String style, String name, double abv, String description, Brewery brewery) {
+		super();
+		this.id = id;
+		this.style = style;
+		this.name = name;
+		this.abv = abv;
+		this.description = description;
+		this.brewery = brewery;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -78,7 +99,7 @@ public class Beer {
 		long temp;
 		temp = Double.doubleToLongBits(abv);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + breweryId;
+		result = prime * result + ((brewery == null) ? 0 : brewery.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -97,7 +118,10 @@ public class Beer {
 		Beer other = (Beer) obj;
 		if (Double.doubleToLongBits(abv) != Double.doubleToLongBits(other.abv))
 			return false;
-		if (breweryId != other.breweryId)
+		if (brewery == null) {
+			if (other.brewery != null)
+				return false;
+		} else if (!brewery.equals(other.brewery))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -121,18 +145,8 @@ public class Beer {
 
 	@Override
 	public String toString() {
-		return "Beer [id=" + id + ", style=" + style + ", name=" + name + ", abv=" + abv + ", breweryId=" + breweryId
-				+ ", description=" + description + "]";
-	}
-
-	public Beer(int id, String style, String name, double abv, int breweryId, String description) {
-		super();
-		this.id = id;
-		this.style = style;
-		this.name = name;
-		this.abv = abv;
-		this.breweryId = breweryId;
-		this.description = description;
+		return "Beer [id=" + id + ", style=" + style + ", name=" + name + ", abv=" + abv + ", description="
+				+ description + ", brewery=" + brewery + "]";
 	}
 
 	public Beer() {

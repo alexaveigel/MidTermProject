@@ -47,8 +47,13 @@ class BeerTest {
 		assertEquals("IPA", beer.getStyle());
 		assertEquals("The IPA", beer.getName());
 		assertEquals(7.8, beer.getAbv());
-		assertEquals(1, beer.getBreweryId());
+		//assertEquals(1, beer.getBreweryId());
 		assertEquals("hoppy", beer.getDescription());
+	}
+	
+	@Test
+	public void test_Beer_ManyToOne_With_Brewery() {
+		assertEquals("The Brewery" , beer.getBrewery().getName());
 	}
 
 }
