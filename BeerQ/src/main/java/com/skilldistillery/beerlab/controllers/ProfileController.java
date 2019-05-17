@@ -1,5 +1,7 @@
 package com.skilldistillery.beerlab.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,8 +41,9 @@ public class ProfileController {
 		return mv;
 	}
 	@RequestMapping(path="login.do")
-	public ModelAndView login(User user, HttpSession) {
+	public ModelAndView login(User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		session.setAttribute("user", user);
 		
 		return mv;
 	}

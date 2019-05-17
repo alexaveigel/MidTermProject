@@ -31,7 +31,7 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("keyword", keyword);
-		mv.addObject("type", "search")
+		mv.addObject("type", "search");
 		
 		if (type.equals("beer")) {
 			List<Beer> beersByName = beerDAO.findBeerByName(keyword);
