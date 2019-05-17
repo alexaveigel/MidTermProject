@@ -1,5 +1,7 @@
 package com.skilldistillery.beerlab.daos;
 
+import java.util.List;
+
 import com.skilldistillery.beerlab.entities.User;
 
 public interface UserDAO {
@@ -7,12 +9,18 @@ public interface UserDAO {
 	public User createUser(User user);
 
 	// Read
-	public int findUser(String user);
+	public User findUserByUserNameAndPassword(String username, String password);
 
 	// Update
 	public User updateUser(int id, User user);
 
 	// Destroy
 	public boolean destroyUser(int userId);
+	
+	//Read
+	public List<User> findAllUsers();
+	
+	//Read
+	public User findUserByUsername(String username);
 
 }
