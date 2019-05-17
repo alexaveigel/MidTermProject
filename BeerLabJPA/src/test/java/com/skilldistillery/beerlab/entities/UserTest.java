@@ -48,4 +48,8 @@ class UserTest {
 		assertEquals("admin", user.getRole());
 	}
 
+	@Test
+	void test_user_to_drinker_mapping() {
+		assertEquals(1, user.getDrinker().getId());
+	}
 }
