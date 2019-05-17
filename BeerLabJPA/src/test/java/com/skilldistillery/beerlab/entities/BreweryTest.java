@@ -54,4 +54,9 @@ class BreweryTest {
 		Address address = brewery.getAddress();
 		assertEquals("123 Test street", address.getStreet());
 	}
+	
+	@Test
+	void test_Brewery_OneToMany_With_Beer() {
+		brewery = em.find(Brewery.class, 1);
+	}
 }
