@@ -1,21 +1,52 @@
 package com.skilldistillery.beerlab.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String username;
-	
+
 	private String password;
-	
+
 	private String role;
+
+	@OneToOne(mappedBy = "user")
+	private Drinker drinker;
+	
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "bar_owner", joinColumns = @JoinColumn(name = "bar_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<Bar> bars;
+
+
+	public List<Bar> getBars() {
+		return bars;
+	}
+
+	public void setBars(List<Bar> bars) {
+		this.bars = bars;
+	}
+
+	public Drinker getDrinker() {
+		return drinker;
+	}
+
+	public void setDrinker(Drinker drinker) {
+		this.drinker = drinker;
+	}
 
 	public int getId() {
 		return id;
@@ -91,7 +122,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + ", drinker="
+				+ drinker + ", bars=" + bars + "]";
 	}
 
 	public User(int id, String username, String password, String role) {

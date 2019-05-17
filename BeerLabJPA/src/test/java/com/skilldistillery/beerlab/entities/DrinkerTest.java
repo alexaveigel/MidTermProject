@@ -41,8 +41,7 @@ class DrinkerTest {
 
 	@Test
 	void test_drinker_mapping() {
-		assertEquals(1, drinker.getUserId());
-		assertEquals("The", drinker.getFirstName());
+		assertEquals("The ", drinker.getFirstName());
 		assertEquals("Drinker", drinker.getLastName());
 		assertEquals("1995-01-30", drinker.getDob().toString());
 		assertEquals("Girl", drinker.getGender());
@@ -50,5 +49,17 @@ class DrinkerTest {
 		assertEquals("pic.com", drinker.getPicUrl());
 		assertEquals(1, drinker.getAddressId());
 	}
+	
+	@Test
+	void test_drinker_to_favorite_beer_mapping() {
+		assertEquals(1, drinker.getFavBeer().get(0).getBeerId());
+	}
+	
+	@Test
+	void test_drinker_to_user_mapping() {
+		assertEquals(1, drinker.getUser().getId());
+	}
+	
+	
 
 }

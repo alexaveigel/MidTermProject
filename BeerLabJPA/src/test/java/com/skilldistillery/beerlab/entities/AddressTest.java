@@ -43,11 +43,14 @@ class AddressTest {
 	@Test
 	public void test_Address_Mapping_Correct() {
 		assertEquals(1, address.getId());
-		assertEquals("123 Main", address.getStreet());
+		assertEquals("123 Test street", address.getStreet());
 		assertEquals("Denver", address.getCity());
-		assertEquals("123456", address.getZip());
-		assertEquals("11.22.33", address.getLatitude());
-		assertEquals("22.44.33", address.getLongitude());
+		assertEquals("80216", address.getZip());
+		assertEquals("123.456", address.getLatitude());
+		assertEquals("654.321", address.getLongitude());
 	}
+	
+	
+	
 
 }

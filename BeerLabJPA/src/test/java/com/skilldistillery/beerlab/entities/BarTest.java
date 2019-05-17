@@ -40,11 +40,28 @@ class BarTest {
 	}
 	@Test
 	void test_bar_mapping() {
-		assertEquals(1, bar.getAddressId());
+	//	assertEquals(1, bar.getAddressId());
 		assertEquals("The Bar", bar.getName());
 		assertEquals("a message", bar.getMessage());
 		assertEquals("url.com", bar.getWebUrl());
 		assertEquals("logo.com", bar.getLogoUrl());
 	}
+	
+	@Test
+	void test_Bar_OneToOne_Unidirectional_With_Address() {
+		bar = em.find(Bar.class, 1);
+		Address address = bar.getAddress();
+		assertEquals("123 Test street", address.getStreet());
+	}
 
+	@Test
+	void test_bar_to_user_mapping() {
+		assertEquals(1, bar.getUsers().get(0).getId());
+	}
+	
+	@Test
+	void test_bar_to_beer_mapping() {
+		assertEquals(1, bar.getBeers().get(0).getId());
+	}
+	
 }

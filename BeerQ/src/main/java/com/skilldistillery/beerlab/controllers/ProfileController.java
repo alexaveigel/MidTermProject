@@ -29,7 +29,7 @@ public class ProfileController {
 	public ModelAndView goToSignup() {
 		ModelAndView mv = new ModelAndView();
 		
-		
+		mv.setViewName("/WEB-INF/signup.jsp");
 		return mv;
 	}
 	@RequestMapping(path="signup.do")
@@ -39,7 +39,7 @@ public class ProfileController {
 		return mv;
 	}
 	@RequestMapping(path="login.do")
-	public ModelAndView login(User user) {
+	public ModelAndView login(User user, HttpSession) {
 		ModelAndView mv = new ModelAndView();
 		
 		return mv;
@@ -57,7 +57,7 @@ public class ProfileController {
 		return mv;
 	}
 	@RequestMapping(path="goToEdit.do")
-	public ModelAndView goToEdit(User user, Drinker drinker) {
+	public ModelAndView goToEdit(Drinker drinker) {
 		ModelAndView mv = new ModelAndView();
 		
 		return mv;
@@ -69,7 +69,7 @@ public class ProfileController {
 		return mv;
 	}
 	@RequestMapping(path="addBeerRequest.do")
-	public ModelAndView addBeerRequest(User user, Drinker drinker, Beer beer) {
+	public ModelAndView addBeerRequest( Beer beer) {
 		ModelAndView mv = new ModelAndView();
 		
 		return mv;
