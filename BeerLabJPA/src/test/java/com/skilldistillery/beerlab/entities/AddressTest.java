@@ -12,10 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class AddressTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Address address;
 	
 
 	@BeforeAll
@@ -31,21 +31,23 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		address = em.find(Address.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		address = null;
 	}
 	
 	@Test
-	public void test_User_Mappings_Correct() {
-		assertEquals(1, user.getId());
-		assertEquals("M", user.getUsername());
-		assertEquals("password", user.getPassword());
-		assertEquals("user", user.getRole());
+	public void test_Address_Mapping_Correct() {
+		assertEquals(1, address.getId());
+		assertEquals("123 Main", address.getStreet());
+		assertEquals("Denver", address.getCity());
+		assertEquals("123456", address.getZip());
+		assertEquals("11.22.33", address.getLatitude());
+		assertEquals("22.44.33", address.getLongitude());
 	}
 
 }

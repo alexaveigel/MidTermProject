@@ -95,6 +95,7 @@ public class Brewery {
 		return result;
 	}
 
+	//Override
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
