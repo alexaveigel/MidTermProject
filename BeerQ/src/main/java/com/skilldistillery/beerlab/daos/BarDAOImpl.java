@@ -37,7 +37,7 @@ public class BarDAOImpl implements BarDAO {
 
 	@Override
 	public Bar updateBar(int id, Bar bar) {
-		EntityManager em = emf.createEntityManager();
+		emf.createEntityManager();
 		// open a transaction
 		em.getTransaction().begin();
 
@@ -72,7 +72,7 @@ public class BarDAOImpl implements BarDAO {
 	@Override
 	public boolean destroyBar(int barId) {
 		boolean itWorked = false;
-		EntityManager em = emf.createEntityManager();
+		emf.createEntityManager();
 		em.getTransaction().begin();
 		
 		Bar destroyedBar = em.find(Bar.class, barId);

@@ -9,11 +9,11 @@ public interface BeerDAO {
 	public Beer createBeer(Beer beer);
 
 	// Read
-	public int findBeerByName(String beerName);
+	public List<Beer>  findBeerByName(String beerName);
 	
-	public int findBeerByBrewery(String brewery);
+	public List<Beer>  findBeerByBrewery(String brewery);
 
-	public int findBeerByCity(String city);
+	public List<Beer>  findBeerByCity(String city);
 
 	public List<Beer> findAllBeers();
 	
