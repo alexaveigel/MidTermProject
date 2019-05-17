@@ -56,16 +56,7 @@ public class AddressDAOImpl implements AddressDAO {
 		return updatedAddress;
 	}
 
-	@Override
-	public int findAddressbyCity(String city) {
-		EntityManager em = emf.createEntityManager();
-		String jpql = "SELECT a FROM Actor a WHERE a.lastName = :lastN";
 
-		Address results = em.createQuery(jpql, Address.class).setParameter("city", city).getResultList().get(0);
-		int actorId = results.getId();
-		em.close();
-		return actorId;
-	}
 
 	@Override
 	public boolean destroyAddress(int addressId) {

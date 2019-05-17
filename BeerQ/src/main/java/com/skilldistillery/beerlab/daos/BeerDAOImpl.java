@@ -49,8 +49,15 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public int findBeerByCity(String city) {
-		// TODO Auto-generated method stub
+		String query = "SELECT "
 		return 0;
+	}
+
+	@Override
+	public List<Beer> findAllBeers() {
+		String query = "SELECT b FROM Beer b";
+		List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
+		return beers;
 	}
 
 	@Override
@@ -63,13 +70,13 @@ public class BeerDAOImpl implements BeerDAO {
 		Beer updatedBeer = em.find(Beer.class, id);
 
 		// update the values of the detached entity
-		updatedBeer.setStyle(beer.getStyle());;
+		updatedBeer.setStyle(beer.getStyle());
+		;
 		updatedBeer.setName(beer.getName());
 		updatedBeer.setAbv(beer.getAbv());
-		updatedBeer.setBreweryId(beer.getBreweryId());
+		updatedBeer.setBrewery(beer.getBrewery());
 		updatedBeer.setDescription(beer.getDescription());
-		
-		
+
 		em.getTransaction().commit();
 		em.close();
 		return updatedBeer;
@@ -89,10 +96,6 @@ public class BeerDAOImpl implements BeerDAO {
 		return itWorked;
 	}
 
-	@Override
-	public List<Beer> findAllBeers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }
