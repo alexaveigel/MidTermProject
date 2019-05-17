@@ -1,6 +1,6 @@
 package com.skilldistillery.beerlab.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,10 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class FavoriteBarTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private FavoriteBar favBar;
 	
 
 	@BeforeAll
@@ -31,21 +31,20 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		favBar = em.find(FavoriteBar.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		favBar = null;
 	}
 	
-	@Test
-	public void test_User_Mappings_Correct() {
-		assertEquals(1, user.getId());
-		assertEquals("M", user.getUsername());
-		assertEquals("password", user.getPassword());
-		assertEquals("user", user.getRole());
+	public void test_Favorite_Bar_Mapping_Correct() {
+		assertEquals(1, favBar.getId());
+		
 	}
 
+	
+	
 }
