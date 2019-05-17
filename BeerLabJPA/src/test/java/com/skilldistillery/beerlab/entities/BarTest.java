@@ -12,10 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class DrinkerTest {
+class BarTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Drinker drinker;
+	private Bar bar;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -30,25 +30,21 @@ class DrinkerTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		drinker = em.find(Drinker.class, 1);
+		bar = em.find(Bar.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		drinker = null;
+		bar = null;
 	}
-
 	@Test
-	void test_drinker_mapping() {
-		assertEquals(1, drinker.getUserId());
-		assertEquals("The", drinker.getFirstName());
-		assertEquals("Drinker", drinker.getLastName());
-		assertEquals("1995-01-30", drinker.getDob().toString());
-		assertEquals("Girl", drinker.getGender());
-		assertEquals("IPA", drinker.getBeerStyle());
-		assertEquals("pic.com", drinker.getPicUrl());
-		assertEquals(1, drinker.getAddressId());
+	void test_bar_mapping() {
+		assertEquals(1, bar.getAddressId());
+		assertEquals("The Bar", bar.getName());
+		assertEquals("a message", bar.getMessage());
+		assertEquals("url.com", bar.getWebUrl());
+		assertEquals("logo.com", bar.getLogoUrl());
 	}
 
 }
