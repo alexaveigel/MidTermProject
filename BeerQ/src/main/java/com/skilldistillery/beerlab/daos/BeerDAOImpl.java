@@ -1,5 +1,7 @@
 package com.skilldistillery.beerlab.daos;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -7,7 +9,7 @@ import javax.persistence.Persistence;
 import com.skilldistillery.beerlab.entities.Beer;
 
 public class BeerDAOImpl implements BeerDAO {
-	
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 
@@ -34,15 +36,43 @@ public class BeerDAOImpl implements BeerDAO {
 	}
 
 	@Override
-	public int findBeerName(String beerName) {
+	public int findBeerByName(String beerName) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int findBeerByBrewery(String brewery) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int findBeerByCity(String city) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public Beer updateBeer(int id, Beer beer) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		// open a transaction
+		em.getTransaction().begin();
+
+		// retrieve a "managed" Beer entity
+		Beer updatedBeer = em.find(Beer.class, id);
+
+		// update the values of the detached entity
+		updatedBeer.setStyle(beer.getStyle());;
+		updatedBeer.setName(beer.getName());
+		updatedBeer.setAbv(beer.getAbv());
+		updatedBeer.setBreweryId(beer.getBreweryId());
+		updatedBeer.setDescription(beer.getDescription());
+		
+		
+		em.getTransaction().commit();
+		em.close();
+		return updatedBeer;
 	}
 
 	@Override
@@ -50,14 +80,19 @@ public class BeerDAOImpl implements BeerDAO {
 		boolean itWorked = false;
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		
+
 		Beer destroyedBeer = em.find(Beer.class, beerId);
 		em.remove(destroyedBeer);
 		em.getTransaction().commit();
 		itWorked = true;
-	
+
 		return itWorked;
 	}
 
+	@Override
+	public List<Beer> findAllBeers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

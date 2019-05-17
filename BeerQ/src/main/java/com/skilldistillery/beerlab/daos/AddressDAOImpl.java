@@ -34,7 +34,7 @@ public class AddressDAOImpl implements AddressDAO {
 	}
 
 	@Override
-	public Address updateAddress(int id, Address Address) {
+	public Address updateAddress(int id, Address address) {
 		EntityManager em = emf.createEntityManager();
 		// open a transaction
 		em.getTransaction().begin();
@@ -43,18 +43,28 @@ public class AddressDAOImpl implements AddressDAO {
 		Address updatedAddress = em.find(Address.class, id);
 
 		// update the values of the detached entity
-//		updatedAddress.
-//		updatedAddress.setLastName(actor.getLastName());
-
+		updatedAddress.setStreet(address.getStreet());
+		updatedAddress.setCity(address.getCity());
+		updatedAddress.setZip(address.getZip());
+		updatedAddress.setCountry(address.getCountry());
+		updatedAddress.setLatitude(address.getLatitude());
+		updatedAddress.setLongitude(address.getLongitude());
+		
+		
 		em.getTransaction().commit();
 		em.close();
 		return updatedAddress;
 	}
 
 	@Override
-	public int findAddressbyId(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int findAddressbyCity(String city) {
+		EntityManager em = emf.createEntityManager();
+		String jpql = "SELECT a FROM Actor a WHERE a.lastName = :lastN";
+
+		Address results = em.createQuery(jpql, Address.class).setParameter("city", city).getResultList().get(0);
+		int actorId = results.getId();
+		em.close();
+		return actorId;
 	}
 
 	@Override
@@ -70,5 +80,7 @@ public class AddressDAOImpl implements AddressDAO {
 	
 		return itWorked;
 	}
+
+
 
 }

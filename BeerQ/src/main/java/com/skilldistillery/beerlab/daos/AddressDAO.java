@@ -7,7 +7,7 @@ public interface AddressDAO {
 	public Address createAddress(Address address);
 
 	// Read
-	public int findAddressbyId(int id);
+	public int findAddressbyCity(String city);
 
 	// Update
 	public Address updateAddress(int id, Address Address);

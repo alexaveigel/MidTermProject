@@ -1,5 +1,7 @@
 package com.skilldistillery.beerlab.daos;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -35,12 +37,34 @@ public class BarDAOImpl implements BarDAO {
 
 	@Override
 	public Bar updateBar(int id, Bar bar) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		// open a transaction
+		em.getTransaction().begin();
+
+		// retrieve a "managed" Bar entity
+		Bar updatedBar = em.find(Bar.class, id);
+
+		// update the values of the detached entity
+		updatedBar.setName(bar.getName());
+		updatedBar.setMessage(bar.getMessage());
+		updatedBar.setAddress(bar.getAddress());
+		updatedBar.setWebUrl(bar.getWebUrl());
+		updatedBar.setLogoUrl(bar.getLogoUrl());
+		
+		
+		em.getTransaction().commit();
+		em.close();
+		return updatedBar;
 	}
 
 	@Override
-	public int findBarName(String barName) {
+	public int findBarByName(String barName) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public int findBarByCity(String city) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -58,5 +82,13 @@ public class BarDAOImpl implements BarDAO {
 	
 		return itWorked;
 	}
+
+	@Override
+	public List<Bar> findAllBars() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

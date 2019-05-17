@@ -40,8 +40,23 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User updateUser(int id, User user) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		// open a transaction
+		em.getTransaction().begin();
+
+		// retrieve a "managed" User entity
+		User updatedUser = em.find(User.class, id);
+
+		// update the values of the detached entity
+		updatedUser.setUsername(user.getUsername());
+		updatedUser.setPassword(user.getPassword());
+		updatedUser.setRole(user.getRole());
+	
+		
+		
+		em.getTransaction().commit();
+		em.close();
+		return updatedUser;
 	}
 
 	@Override
