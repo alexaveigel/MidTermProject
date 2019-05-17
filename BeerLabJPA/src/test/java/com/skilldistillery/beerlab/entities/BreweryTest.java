@@ -12,11 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class BreweryTest {
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
-	
+	private Brewery brewery;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,25 +31,27 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		brewery = em.find(Brewery.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
-	}
-	
-	@Test
-	public void test_User_Mappings_Correct() {
-		assertEquals(1, user.getId());
-		assertEquals("user", user.getUsername());
-		assertEquals("pass", user.getPassword());
-		assertEquals("admin", user.getRole());
+		brewery = null;
 	}
 
 	@Test
-	void test_user_to_drinker_mapping() {
-		assertEquals(1, user.getDrinker().getId());
+	void test_brewery_mapping() {
+		//assertEquals(1, brewery.getAddressId());
+		assertEquals("The Brewery", brewery.getName());
+		assertEquals("web.com", brewery.getWebUrl());
+		assertEquals("logo.com", brewery.getLogoUrl());
+	}
+	
+	@Test
+	void test_Brewery_OneToOne_Unidirectional_With_Address() {
+		brewery = em.find(Brewery.class, 1);
+		Address address = brewery.getAddress();
+		assertEquals("123 Test street", address.getStreet());
 	}
 }

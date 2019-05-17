@@ -1,6 +1,6 @@
 package com.skilldistillery.beerlab.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,11 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class FavoriteBeerTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
-	
+	private FavoriteBeer favBeer;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,25 +30,20 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		favBeer = em.find(FavoriteBeer.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
-	}
-	
-	@Test
-	public void test_User_Mappings_Correct() {
-		assertEquals(1, user.getId());
-		assertEquals("user", user.getUsername());
-		assertEquals("pass", user.getPassword());
-		assertEquals("admin", user.getRole());
+		favBeer = null;
 	}
 
 	@Test
-	void test_user_to_drinker_mapping() {
-		assertEquals(1, user.getDrinker().getId());
+	void test_brewery_mapping() {
+		assertEquals(1, favBeer.getDrinker().getId());
+		assertEquals(1, favBeer.getBeerId());
+		assertEquals("2038-01-19", favBeer.getDateAdded().toString());
 	}
+
 }

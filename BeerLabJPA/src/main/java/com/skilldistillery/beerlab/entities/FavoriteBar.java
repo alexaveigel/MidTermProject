@@ -115,6 +115,8 @@ public class FavoriteBar {
 			return false;
 		return true;
 	}
+
+	
 	
 	
 }

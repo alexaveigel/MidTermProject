@@ -12,11 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class DrinkerTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
-	
+	private Drinker drinker;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,25 +30,36 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		drinker = em.find(Drinker.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
-	}
-	
-	@Test
-	public void test_User_Mappings_Correct() {
-		assertEquals(1, user.getId());
-		assertEquals("user", user.getUsername());
-		assertEquals("pass", user.getPassword());
-		assertEquals("admin", user.getRole());
+		drinker = null;
 	}
 
 	@Test
-	void test_user_to_drinker_mapping() {
-		assertEquals(1, user.getDrinker().getId());
+	void test_drinker_mapping() {
+		assertEquals("The ", drinker.getFirstName());
+		assertEquals("Drinker", drinker.getLastName());
+		assertEquals("1995-01-30", drinker.getDob().toString());
+		assertEquals("Girl", drinker.getGender());
+		assertEquals("IPA", drinker.getBeerStyle());
+		assertEquals("pic.com", drinker.getPicUrl());
+		assertEquals(1, drinker.getAddressId());
 	}
+	
+	@Test
+	void test_drinker_to_favorite_beer_mapping() {
+		assertEquals(1, drinker.getFavBeer().get(0).getBeerId());
+	}
+	
+	@Test
+	void test_drinker_to_user_mapping() {
+		assertEquals(1, drinker.getUser().getId());
+	}
+	
+	
+
 }

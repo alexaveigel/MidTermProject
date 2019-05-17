@@ -12,11 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class BarTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
-	
+	private Bar bar;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,25 +30,28 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		bar = em.find(Bar.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		bar = null;
+	}
+	@Test
+	void test_bar_mapping() {
+	//	assertEquals(1, bar.getAddressId());
+		assertEquals("The Bar", bar.getName());
+		assertEquals("a message", bar.getMessage());
+		assertEquals("url.com", bar.getWebUrl());
+		assertEquals("logo.com", bar.getLogoUrl());
 	}
 	
 	@Test
-	public void test_User_Mappings_Correct() {
-		assertEquals(1, user.getId());
-		assertEquals("user", user.getUsername());
-		assertEquals("pass", user.getPassword());
-		assertEquals("admin", user.getRole());
+	void test_Bar_OneToOne_Unidirectional_With_Address() {
+		bar = em.find(Bar.class, 1);
+		Address address = bar.getAddress();
+		assertEquals("123 Test street", address.getStreet());
 	}
 
-	@Test
-	void test_user_to_drinker_mapping() {
-		assertEquals(1, user.getDrinker().getId());
-	}
 }

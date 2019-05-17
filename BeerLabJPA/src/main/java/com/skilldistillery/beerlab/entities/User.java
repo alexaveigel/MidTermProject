@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -16,6 +17,17 @@ public class User {
 	private String password;
 	
 	private String role;
+	
+	@OneToOne(mappedBy = "user")
+	private Drinker drinker;
+
+	public Drinker getDrinker() {
+		return drinker;
+	}
+
+	public void setDrinker(Drinker drinker) {
+		this.drinker = drinker;
+	}
 
 	public int getId() {
 		return id;
