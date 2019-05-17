@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class BeerTest {
 
@@ -40,6 +41,7 @@ class BeerTest {
 		beer = null;
 	}
 	
+	@Test
 	public void test_Beer_Mapping_Correct() {
 		assertEquals(1, beer.getId());
 		assertEquals("Stout", beer.getStyle());
