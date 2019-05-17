@@ -1,15 +1,29 @@
 package com.skilldistillery.beerlab.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.beerlab.daos.AddressDAO;
+import com.skilldistillery.beerlab.daos.BarDAO;
+import com.skilldistillery.beerlab.daos.BeerDAO;
+import com.skilldistillery.beerlab.daos.UserDAO;
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Drinker;
 import com.skilldistillery.beerlab.entities.User;
 
 @Controller
 public class NavbarController {
+	
+	@Autowired
+	AddressDAO adDAO;
+	@Autowired
+	BarDAO barDAO;
+	@Autowired
+	BeerDAO beerDAO;
+	@Autowired
+	UserDAO userDAO;
 
 	@RequestMapping(path = "goToHome.do")
 	public ModelAndView goToHome(User user, Drinker drinker) {
