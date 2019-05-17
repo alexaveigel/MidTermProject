@@ -9,8 +9,16 @@
     </provider>
 
 		<!-- entities -->
-		<class>com.skilldistillery.jpavideostore.entities.Actor</class>
-		
+		<class>com.skilldistillery.beerlab.entities.Address</class>
+		<class>com.skilldistillery.beerlab.entities.Bar</class>
+		<class>com.skilldistillery.beerlab.entities.BarOwner</class>
+		<class>com.skilldistillery.beerlab.entities.Beer</class>
+		<class>com.skilldistillery.beerlab.entities.Brewery</class>
+		<class>com.skilldistillery.beerlab.entities.Drinker</class>
+		<class>com.skilldistillery.beerlab.entities.FavoriteBar</class>
+		<class>com.skilldistillery.beerlab.entities.FavoriteBeer</class>
+		<class>com.skilldistillery.beerlab.entities.User</class>
+
 
 
 		<properties>
