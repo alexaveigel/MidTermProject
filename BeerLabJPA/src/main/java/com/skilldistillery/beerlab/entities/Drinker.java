@@ -9,30 +9,41 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 @Entity
 public class Drinker {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@Column(name = "user_id")
 	private String userId;
+	
 	@Column(name = "first_name")
 	private String firstName;
+	
 	@Column(name = "last_name")
 	private String lastName;
+	
 	@Column(name = "date_of_birth")
 	@Temporal(TemporalType.DATE)
 	private Date dob;
+	
 	private String gender;
+	
 	@Column(name = "beer_style")
 	private String beerStyle;
-	@Column( name = "pic_url")
+	
+	@Column(name = "pic_url")
 	private String picUrl;
+	
 	@Column(name = "address_id")
 	private int addressId;
+
 	public Drinker() {
 		super();
 	}
+
 	public Drinker(int id, String userId, String firstName, String lastName, Date dob, String gender, String beerStyle,
 			String picUrl, int addressId) {
 		super();
@@ -46,12 +57,14 @@ public class Drinker {
 		this.picUrl = picUrl;
 		this.addressId = addressId;
 	}
+
 	@Override
 	public String toString() {
 		return "Drinker [id=" + id + ", userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", dob=" + dob + ", gender=" + gender + ", beerStyle=" + beerStyle + ", picUrl=" + picUrl
 				+ ", addressId=" + addressId + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -67,6 +80,7 @@ public class Drinker {
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -117,57 +131,75 @@ public class Drinker {
 			return false;
 		return true;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getUserId() {
 		return userId;
 	}
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public Date getDob() {
 		return dob;
 	}
+
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
+
 	public String getGender() {
 		return gender;
 	}
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	public String getBeerStyle() {
 		return beerStyle;
 	}
+
 	public void setBeerStyle(String beerStyle) {
 		this.beerStyle = beerStyle;
 	}
+
 	public String getPicUrl() {
 		return picUrl;
 	}
+
 	public void setPicUrl(String picUrl) {
 		this.picUrl = picUrl;
 	}
+
 	public int getAddressId() {
 		return addressId;
 	}
+
 	public void setAddressId(int addressId) {
 		this.addressId = addressId;
 	}
