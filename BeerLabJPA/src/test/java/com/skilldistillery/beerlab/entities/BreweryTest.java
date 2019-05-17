@@ -42,9 +42,16 @@ class BreweryTest {
 
 	@Test
 	void test_brewery_mapping() {
-		assertEquals(1, brewery.getAddressId());
+		//assertEquals(1, brewery.getAddressId());
 		assertEquals("The Brewery", brewery.getName());
 		assertEquals("web.com", brewery.getWebUrl());
 		assertEquals("logo.com", brewery.getLogoUrl());
+	}
+	
+	@Test
+	void test_Brewery_OneToOne_Unidirectional_With_Address() {
+		brewery = em.find(Brewery.class, 1);
+		Address address = brewery.getAddress();
+		assertEquals("123 Test street", address.getStreet());
 	}
 }

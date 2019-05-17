@@ -49,5 +49,8 @@ class AddressTest {
 		assertEquals("123.456", address.getLatitude());
 		assertEquals("654.321", address.getLongitude());
 	}
+	
+	
+	
 
 }

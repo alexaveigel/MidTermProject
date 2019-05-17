@@ -8,6 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Address {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -23,6 +24,7 @@ public class Address {
 	private String latitude;
 
 	private String longitude;
+
 
 	public int getId() {
 		return id;
@@ -137,6 +139,7 @@ public class Address {
 			return false;
 		return true;
 	}
+
 
 	@Override
 	public String toString() {
