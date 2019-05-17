@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Beer {
@@ -23,13 +24,27 @@ public class Beer {
 
 	private double abv;
 
-//	@Column(name = "brewery_id")
-//	private int breweryId;
-
 	private String description;
 
 	@ManyToMany(mappedBy = "beers", fetch = FetchType.LAZY)
 	private List<Bar> bars;
+	
+	@ManyToOne
+	@JoinColumn(name = "brewery_id")
+	private Brewery brewery;
+	
+	@OneToMany(mappedBy = "beer")
+	private List<FavoriteBeer> listFavBeers;
+	
+	
+	
+	public List<FavoriteBeer> getListFavBeers() {
+		return listFavBeers;
+	}
+
+	public void setListFavBeers(List<FavoriteBeer> listFavBeers) {
+		this.listFavBeers = listFavBeers;
+	}
 
 	public List<Bar> getBars() {
 		return bars;
@@ -39,9 +54,6 @@ public class Beer {
 		this.bars = bars;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "brewery_id")
-	private Brewery brewery;
 
 	public Brewery getBrewery() {
 		return brewery;
@@ -90,6 +102,8 @@ public class Beer {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	
 
 	public Beer(int id, String style, String name, double abv, String description, Brewery brewery) {
 		super();
@@ -108,9 +122,11 @@ public class Beer {
 		long temp;
 		temp = Double.doubleToLongBits(abv);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((bars == null) ? 0 : bars.hashCode());
 		result = prime * result + ((brewery == null) ? 0 : brewery.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((listFavBeers == null) ? 0 : listFavBeers.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((style == null) ? 0 : style.hashCode());
 		return result;
@@ -127,6 +143,11 @@ public class Beer {
 		Beer other = (Beer) obj;
 		if (Double.doubleToLongBits(abv) != Double.doubleToLongBits(other.abv))
 			return false;
+		if (bars == null) {
+			if (other.bars != null)
+				return false;
+		} else if (!bars.equals(other.bars))
+			return false;
 		if (brewery == null) {
 			if (other.brewery != null)
 				return false;
@@ -138,6 +159,11 @@ public class Beer {
 		} else if (!description.equals(other.description))
 			return false;
 		if (id != other.id)
+			return false;
+		if (listFavBeers == null) {
+			if (other.listFavBeers != null)
+				return false;
+		} else if (!listFavBeers.equals(other.listFavBeers))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -151,6 +177,8 @@ public class Beer {
 			return false;
 		return true;
 	}
+	
+	
 
 	@Override
 	public String toString() {
