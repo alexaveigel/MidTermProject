@@ -36,21 +36,33 @@ public class BeerDAOImpl implements BeerDAO {
 	}
 
 	@Override
-	public int findBeerByName(String beerName) {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<Beer>  findBeerByName(String beerName) {
+		String query = "SELECT b FROM Beers b WHERE b.name LIKE :beerName";
+		 List <Beer> breweries =
+			      em.createQuery(query, Beer.class)
+			      .setParameter("term", "%"+beerName+"%")
+			      .getResultList();
+		return breweries;
 	}
 
 	@Override
-	public int findBeerByBrewery(String brewery) {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<Beer>  findBeerByBrewery(String brewery) {
+		String query = "SELECT b FROM Beers b WHERE b.brewery LIKE :brewery";
+		 List <Beer> breweries =
+			      em.createQuery(query, Beer.class)
+			      .setParameter("brewery", "%"+brewery+"%")
+			      .getResultList();
+		return breweries;
 	}
 
 	@Override
-	public int findBeerByCity(String city) {
-		String query = "SELECT "
-		return 0;
+	public List<Beer> findBeerByCity(String city) {
+		String query = "FROM beer b JOIN  Bar_inventory bi ON bi.beer_id = b.id JOIN Bar on bi.bar_id =  Bar.id JOIN Address a on bar.address_id = a.id WHERE a.city = :city";
+		 List <Beer> cities =
+			      em.createQuery(query, Beer.class)
+			      .setParameter("city", city)
+			      .getResultList();
+		return cities;
 	}
 
 	@Override
@@ -62,7 +74,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public Beer updateBeer(int id, Beer beer) {
-		EntityManager em = emf.createEntityManager();
+		emf.createEntityManager();
 		// open a transaction
 		em.getTransaction().begin();
 
@@ -85,7 +97,7 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public boolean destroyBeer(int beerId) {
 		boolean itWorked = false;
-		EntityManager em = emf.createEntityManager();
+		emf.createEntityManager();
 		em.getTransaction().begin();
 
 		Beer destroyedBeer = em.find(Beer.class, beerId);
