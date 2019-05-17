@@ -50,5 +50,10 @@ class BeerTest {
 		assertEquals(1, beer.getBreweryId());
 		assertEquals("hoppy", beer.getDescription());
 	}
+	
+	@Test
+	void test_bar_to_beer_mapping() {
+		assertEquals(1, beer.getBars().get(0).getId());
+	}
 
 }

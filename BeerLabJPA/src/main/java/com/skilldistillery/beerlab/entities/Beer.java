@@ -1,10 +1,14 @@
 package com.skilldistillery.beerlab.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Beer {
@@ -22,6 +26,18 @@ public class Beer {
 	private int breweryId;
 	
 	private String description;
+	
+	@ManyToMany(mappedBy = "beers", fetch = FetchType.LAZY)
+	private List<Bar> bars;
+	
+
+	public List<Bar> getBars() {
+		return bars;
+	}
+
+	public void setBars(List<Bar> bars) {
+		this.bars = bars;
+	}
 
 	public int getId() {
 		return id;
@@ -122,7 +138,7 @@ public class Beer {
 	@Override
 	public String toString() {
 		return "Beer [id=" + id + ", style=" + style + ", name=" + name + ", abv=" + abv + ", breweryId=" + breweryId
-				+ ", description=" + description + "]";
+				+ ", description=" + description + ", bars=" + bars + "]";
 	}
 
 	public Beer(int id, String style, String name, double abv, int breweryId, String description) {
