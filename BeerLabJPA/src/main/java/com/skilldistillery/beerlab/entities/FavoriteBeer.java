@@ -21,8 +21,8 @@ public class FavoriteBeer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "beer_id")
-	private int beerId;
+//	@Column(name = "beer_id")
+//	private int beerId;
 
 	@Column(name = "date_added")
 	@Temporal(TemporalType.DATE)
@@ -34,6 +34,20 @@ public class FavoriteBeer {
 	@JoinColumn(name = "drinker_id")
 	private Drinker drinker;
 	
+	@ManyToOne
+	@JoinColumn(name = "beer_id")
+	private Beer beer;
+	
+	
+	
+	public Beer getBeer() {
+		return beer;
+	}
+
+	public void setBeer(Beer beer) {
+		this.beer = beer;
+	}
+
 	public Drinker getDrinker() {
 		return drinker;
 	}
@@ -50,13 +64,7 @@ public class FavoriteBeer {
 		this.id = id;
 	}
 
-	public int getBeerId() {
-		return beerId;
-	}
-
-	public void setBeerId(int beerId) {
-		this.beerId = beerId;
-	}
+	
 
 	public Date getDateAdded() {
 		return dateAdded;
@@ -74,11 +82,12 @@ public class FavoriteBeer {
 		this.comment = comment;
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + beerId;
+		result = prime * result + ((beer == null) ? 0 : beer.hashCode());
 		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
 		result = prime * result + ((dateAdded == null) ? 0 : dateAdded.hashCode());
 		result = prime * result + ((drinker == null) ? 0 : drinker.hashCode());
@@ -95,7 +104,10 @@ public class FavoriteBeer {
 		if (getClass() != obj.getClass())
 			return false;
 		FavoriteBeer other = (FavoriteBeer) obj;
-		if (beerId != other.beerId)
+		if (beer == null) {
+			if (other.beer != null)
+				return false;
+		} else if (!beer.equals(other.beer))
 			return false;
 		if (comment == null) {
 			if (other.comment != null)
@@ -119,18 +131,8 @@ public class FavoriteBeer {
 
 	@Override
 	public String toString() {
-		return "FavoriteBeer [id=" + id + ", beerId=" + beerId + ", dateAdded=" + dateAdded + ", comment=" + comment
-				+ ", drinker=" + drinker + "]";
-	}
-
-
-	public FavoriteBeer(int id, int beerId, Date dateAdded, String comment, Drinker drinker) {
-		super();
-		this.id = id;
-		this.beerId = beerId;
-		this.dateAdded = dateAdded;
-		this.comment = comment;
-		this.drinker = drinker;
+		return "FavoriteBeer [id=" + id + ", dateAdded=" + dateAdded + ", comment=" + comment + ", drinker=" + drinker
+				+ ", beer=" + beer + "]";
 	}
 
 	public FavoriteBeer() {

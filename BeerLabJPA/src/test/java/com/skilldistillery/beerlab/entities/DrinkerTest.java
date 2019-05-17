@@ -52,7 +52,7 @@ class DrinkerTest {
 	
 	@Test
 	void test_drinker_to_favorite_beer_mapping() {
-		assertEquals(1, drinker.getFavBeer().get(0).getBeerId());
+		assertEquals("No comment", drinker.getFavBeer().get(0).getComment());
 	}
 	
 	@Test

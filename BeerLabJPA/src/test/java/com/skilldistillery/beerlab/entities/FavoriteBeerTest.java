@@ -40,10 +40,15 @@ class FavoriteBeerTest {
 	}
 
 	@Test
-	void test_brewery_mapping() {
+	void test_Brewery_Mapping() {
 		assertEquals(1, favBeer.getDrinker().getId());
-		assertEquals(1, favBeer.getBeerId());
+		//assertEquals(1, favBeer.getBeerId());
 		assertEquals("2038-01-19", favBeer.getDateAdded().toString());
+	}
+	
+	@Test
+	void test_FavBeer_ManyToOne_With_Beer() {
+		assertEquals("The IPA", favBeer.getBeer().getName());
 	}
 
 }
