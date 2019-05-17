@@ -44,8 +44,8 @@ class FavoriteBarTest {
 	public void test_Favorite_Bar_Mapping_Correct() {
 		assertEquals(1, favBar.getId());
 		assertEquals(1, favBar.getBarId());
-		assertEquals(05/19, favBar.getDateAdded());
-		assertEquals("Comment", favBar.getComment());		
+		assertEquals("2038-01-19", favBar.getDateAdded().toString());
+		assertEquals("No comment", favBar.getComment());		
 	}
 
 	
