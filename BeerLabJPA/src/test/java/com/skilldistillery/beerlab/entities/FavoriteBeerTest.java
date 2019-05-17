@@ -41,7 +41,7 @@ class FavoriteBeerTest {
 
 	@Test
 	void test_brewery_mapping() {
-		assertEquals(1, favBeer.getDrinkerId());
+		assertEquals(1, favBeer.getDrinker().getId());
 		assertEquals(1, favBeer.getBeerId());
 		assertEquals("2038-01-19", favBeer.getDateAdded().toString());
 	}
