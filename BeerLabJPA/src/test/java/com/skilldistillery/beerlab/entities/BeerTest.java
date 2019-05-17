@@ -60,5 +60,11 @@ class BeerTest {
 	public void test_Beer_ManyToOne_With_Brewery() {
 		assertEquals("The Brewery" , beer.getBrewery().getName());
 	}
+	
+	@Test
+	public void test_Beer_ManyToOne_With_FavBeer() {
+		assertEquals("No comment", beer.getListFavBeers().get(0).getComment());
+	}
+	
 
 }
