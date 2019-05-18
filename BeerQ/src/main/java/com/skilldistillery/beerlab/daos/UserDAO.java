@@ -12,7 +12,7 @@ public interface UserDAO {
 	public User findUserByUserNameAndPassword(String username, String password);
 
 	// Update
-	public User updateUser(int id, User user);
+	public User updateUser(User user);
 
 	// Destroy
 	public boolean destroyUser(int userId);
