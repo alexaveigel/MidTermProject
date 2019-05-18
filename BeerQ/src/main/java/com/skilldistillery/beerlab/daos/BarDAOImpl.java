@@ -58,15 +58,30 @@ public class BarDAOImpl implements BarDAO {
 	}
 
 	@Override
-	public int findBarByName(String barName) {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<Bar> findBarByName(String barName) {
+		String query = "SELECT bar FROM Bar WHERE Bar.name LIKE :barName";
+		 List <Bar> bars =
+			      em.createQuery(query, Bar.class)
+			      .setParameter("term", "%"+barName+"%")
+			      .getResultList();
+		return bars;
 	}
 	
 	@Override
-	public int findBarByCity(String city) {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<Bar> findBarByCity(String city) {
+		String query = "SELECT bar FROM Bar JOIN  Address a ON Bar.address_id = a.id WHERE a.city = :city";
+		 List <Bar> cities =
+			      em.createQuery(query, Bar.class)
+			      .setParameter("city", city)
+			      .getResultList();
+		return cities;
+	}
+	
+	@Override
+	public List<Bar> findAllBars() {
+		String query = "SELECT b FROM Bar b";
+		List<Bar> bars = em.createQuery(query, Bar.class).getResultList();
+		return bars;
 	}
 
 	@Override
@@ -83,11 +98,7 @@ public class BarDAOImpl implements BarDAO {
 		return itWorked;
 	}
 
-	@Override
-	public List<Bar> findAllBars() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	
 

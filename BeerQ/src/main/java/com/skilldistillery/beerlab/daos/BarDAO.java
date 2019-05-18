@@ -9,9 +9,9 @@ public interface BarDAO {
 	public Bar createBar(Bar bar);
 
 	// Read
-	public int findBarByName(String barName);
+	public List<Bar> findBarByName(String barName);
 	
-	public int findBarByCity(String city);
+	public List<Bar> findBarByCity(String city);
 	
 	public List<Bar> findAllBars();
 
