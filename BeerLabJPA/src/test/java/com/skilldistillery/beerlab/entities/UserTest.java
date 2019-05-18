@@ -55,6 +55,6 @@ class UserTest {
 	
 	@Test
 	void test_user_to_bar_mapping() {
-		assertEquals(1, user.getBars().get(0).getId());
+		assertEquals("H", user.getBars().get(1).getName());
 	}
 }

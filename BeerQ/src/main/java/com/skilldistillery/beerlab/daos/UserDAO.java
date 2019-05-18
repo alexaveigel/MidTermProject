@@ -21,6 +21,6 @@ public interface UserDAO {
 	public List<User> findAllUsers();
 	
 	//Read
-	public User findUserByUsername(String username);
+	public List<User> findUserByUsername(String username);
 
 }
