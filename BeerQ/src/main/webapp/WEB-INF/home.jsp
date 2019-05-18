@@ -10,20 +10,13 @@
 	crossorigin="anonymous">
 <style type="text/css">
 <%@
-include
- 
-file
-="css/style
-.css
-"
- 
-%>
+include file ="css/style.css" %>
 </style>
 <meta charset="UTF-8">
 <title>BeerQ</title>
 </head>
 <body>
-
+		// Reference Beers and Bars for Cards
 	<form action="search.do" method="GET">
 		<label for="search-select">Search Select:</label> <select
 			id="search-select">
@@ -34,7 +27,6 @@ file
 			<option value="barcity">Bar By City</option>
 		</select> <input name="keyword"> <input type="submit" value="search">
 	</form>
-
 
 	<form action="beerBrowse.do">
 		<input type="submit" value="browseBars">
