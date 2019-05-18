@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,15 +10,23 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <%@include file="css/style.css" %>
 </style> 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Search Results</title>
 </head>
 <body>
 
-<!-- <form action="getBeersbyKey.do" method="GET" class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Show Beers</button>
-    </form> -->
+
+    <c:if test= "${type == 'beer' }">
     
+    <c:forEach var="beer" items="${list }">
+    <!-- create cards here with beer fields -->
+    </c:forEach>
+    </c:if>
+    <c:if test= "${type == 'bar' }">
+    
+    <c:forEach var="bar" items="${list }">
+    <!-- create cards here with bar fields -->
+    </c:forEach>
+    </c:if>
     
 	
 	<script src="js/scripts.js"></script>
