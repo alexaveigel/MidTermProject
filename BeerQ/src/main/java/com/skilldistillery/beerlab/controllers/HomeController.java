@@ -67,7 +67,7 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("type", "browse");
 
-		List<Bar> beers = barDAO.findAllBeers();
+		List<Beer> beers = beerDAO.findAllBeers();
 		mv.addObject("beers", beers);
 		mv.setViewName("/WEB-INF/search.jsp");
 
