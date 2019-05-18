@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.skilldistillery.beerlab.entities.Beer;
+import com.skilldistillery.beerlab.entities.User;
 
 public class BeerDAOImpl implements BeerDAO {
 
@@ -64,6 +65,11 @@ public class BeerDAOImpl implements BeerDAO {
 			      .getResultList();
 		return cities;
 	}
+	
+	
+	
+	
+	
 
 	@Override
 	public List<Beer> findAllBeers() {
@@ -106,6 +112,22 @@ public class BeerDAOImpl implements BeerDAO {
 		itWorked = true;
 
 		return itWorked;
+	}
+
+	@Override
+	public List<Beer> addBeerToFavList(Beer beer, User user) {
+		
+		
+		
+		return favBeers;
+	}
+
+	@Override
+	public List<Beer> getListOfFavBeer(User user) {
+		
+		
+		
+		return favBeers;
 	}
 
 

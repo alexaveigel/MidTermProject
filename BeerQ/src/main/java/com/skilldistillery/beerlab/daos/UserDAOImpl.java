@@ -25,6 +25,7 @@ public class UserDAOImpl implements UserDAO {
 		em.getTransaction().begin();
 		// write the user to the database
 		em.persist(user);
+		em.persist(user.getDrinker());
 		// update the "local" user object
 		em.flush();
 		// commit the changes (actually perform the operation)
@@ -36,18 +37,26 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User updateUser(int id, User user) {
+	public User updateUser(User user) {
 		em = emf.createEntityManager();
 		// open a transaction
 		em.getTransaction().begin();
 
 		// retrieve a "managed" User entity
-		User updatedUser = em.find(User.class, id);
+		User updatedUser = em.find(User.class, user.getId());
 
 		// update the values of the detached entity
 		updatedUser.setUsername(user.getUsername());
 		updatedUser.setPassword(user.getPassword());
 		updatedUser.setRole(user.getRole());
+		
+		updatedUser.getDrinker().setFirstName(user.getDrinker().getFirstName());
+		updatedUser.getDrinker().setLastName(user.getDrinker().getLastName());
+		updatedUser.getDrinker().setDob(user.getDrinker().getDob());
+		updatedUser.getDrinker().setGender(user.getDrinker().getGender());
+		updatedUser.getDrinker().setBeerStyle(user.getDrinker().getBeerStyle());
+		updatedUser.getDrinker().setPicUrl(user.getDrinker().getPicUrl());
+		updatedUser.getDrinker().setAddressId(user.getDrinker().getAddressId());
 
 		em.getTransaction().commit();
 		em.close();
@@ -56,9 +65,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean destroyUser(int userId) {
+		
 		boolean itWorked = false;
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
+		
+		
 
 		User destroyedUser = em.find(User.class, userId);
 		em.remove(destroyedUser);

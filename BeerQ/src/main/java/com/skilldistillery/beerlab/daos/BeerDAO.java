@@ -3,17 +3,22 @@ package com.skilldistillery.beerlab.daos;
 import java.util.List;
 
 import com.skilldistillery.beerlab.entities.Beer;
+import com.skilldistillery.beerlab.entities.User;
 
 public interface BeerDAO {
 	// Create
 	public Beer createBeer(Beer beer);
+	
+	public List<Beer> addBeerToFavList(Beer beer, User user);
+	
+	public List<Beer> getListOfFavBeer(User user);
 
 	// Read
-	public List<Beer>  findBeerByName(String beerName);
+	public List<Beer> findBeerByName(String beerName);
 	
-	public List<Beer>  findBeerByBrewery(String brewery);
+	public List<Beer> findBeerByBrewery(String brewery);
 
-	public List<Beer>  findBeerByCity(String city);
+	public List<Beer> findBeerByCity(String city);
 
 	public List<Beer> findAllBeers();
 	
