@@ -25,8 +25,15 @@ public class HomeController {
 	BeerDAO beerDAO;
 	@Autowired
 	UserDAO userDAO;
+	
+	@RequestMapping(path = "/")
+	public ModelAndView goToLanding() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/WEB-INF/landing.jsp");
+		return mv;
+	}
 
-	@RequestMapping(path = "Search.do")
+	@RequestMapping(path = "search.do")
 	public ModelAndView search(String keyword, String type) {
 		ModelAndView mv = new ModelAndView();
 		
@@ -67,7 +74,7 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("type", "browse");
 
-		List<Bar> beers = barDAO.findAllBeers();
+		List<Beer> beers = beerDAO.findAllBeers();
 		mv.addObject("beers", beers);
 		mv.setViewName("/WEB-INF/search.jsp");
 

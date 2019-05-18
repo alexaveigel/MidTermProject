@@ -107,10 +107,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `bar_owner` ;
 
 CREATE TABLE IF NOT EXISTS `bar_owner` (
+  `id` INT NOT NULL,
   `bar_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   INDEX `fk_bar_owner_bar1_idx` (`bar_id` ASC),
-  PRIMARY KEY (`user_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_bar_owner_bar1`
     FOREIGN KEY (`bar_id`)
     REFERENCES `bar` (`id`)
@@ -154,10 +155,11 @@ CREATE TABLE IF NOT EXISTS `beer` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `style` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `abv` VARCHAR(45) NOT NULL,
+  `abv` DOUBLE NOT NULL,
   `brewery_id` INT NOT NULL,
   `description` VARCHAR(300) NULL,
-  PRIMARY KEY (`id`, `brewery_id`),
+  `approved` TINYINT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
   INDEX `fk_beer_brewery1_idx` (`brewery_id` ASC),
   CONSTRAINT `fk_beer_brewery1`
     FOREIGN KEY (`brewery_id`)
