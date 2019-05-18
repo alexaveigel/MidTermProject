@@ -59,7 +59,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<Beer> findBeerByCity(String city) {
-		String query = "FROM beer b JOIN  Bar_inventory bi ON bi.beer_id = b.id JOIN Bar on bi.bar_id =  Bar.id JOIN Address a on bar.address_id = a.id WHERE a.city = :city";
+		String query = "SELECT b FROM Beer b JOIN  Bar_inventory bi ON bi.beer_id = b.id JOIN Bar on bi.bar_id =  Bar.id JOIN Address a on bar.address_id = a.id WHERE a.city = :city";
 		 List <Beer> cities =
 			      em.createQuery(query, Beer.class)
 			      .setParameter("city", city)
@@ -79,6 +79,18 @@ public class BeerDAOImpl implements BeerDAO {
 		return beers;
 	}
 
+	@Override
+	public List<Beer> approved() {
+		String query = "SELECT fb FROM Favorite_Beer b WHERE fb.approved = 1";
+		List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
+		return beers;
+	}	
+		@Override
+		public List<Beer> unapproved() {
+			String query = "SELECT fb FROM Favorite_Beer b WHERE fb.approved = 0";
+			List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
+			return beers;
+	}
 	@Override
 	public Beer updateBeer(int id, Beer beer) {
 		emf.createEntityManager();
@@ -137,6 +149,18 @@ public class BeerDAOImpl implements BeerDAO {
 		User userFavBeer = em.find(User.class, user.getId());
 		
 		return userFavBeer.getDrinker().getFavBeer();
+	}
+
+	@Override
+	public List<Beer> approveBeer(Beer beer) {
+		
+		String query = "UPDATE Beer SET approved = 1 WHERE b.id = :beerId";
+		 List <Beer> approvedBeer =
+			      em.createQuery(query, Beer.class)
+			      .setParameter("beerId", beer.getId())
+			      .getResultList();
+	 
+		return approvedBeer;
 	}
 
 
