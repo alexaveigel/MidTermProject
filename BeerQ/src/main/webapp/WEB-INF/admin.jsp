@@ -9,9 +9,27 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <%@include file="css/style.css" %>
 </style> 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin</title>
 </head>
 <body>
+
+<form action="adminSearchUser.do">
+<input name= "keyword">
+<input type="submit" value="Search Users">
+</form>
+<form action="adminSearchBar.do">
+<input name= "keyword">
+<input type="submit" value="Search Bars">
+</form>
+<form action="adminSearchBeer.do">
+<input name= "keyword">
+<input type="submit" value="Search Beers">
+</form>
+<form action="adminConfirmBeerWaitList.do">
+<input type="submit" value="Beers Waiting Approval">
+</form>
+
+
 
 
 
