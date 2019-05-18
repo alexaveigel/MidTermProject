@@ -1,4 +1,4 @@
-package com.skilldistillery.beerlab.entities;
+ package com.skilldistillery.beerlab.entities;
 
 import java.util.List;
 
@@ -25,6 +25,8 @@ public class Beer {
 	private double abv;
 
 	private String description;
+	
+	private int approved;
 
 	@ManyToMany(mappedBy = "beers", fetch = FetchType.LAZY)
 	private List<Bar> bars;
@@ -36,7 +38,14 @@ public class Beer {
 	@OneToMany(mappedBy = "beer")
 	private List<FavoriteBeer> listFavBeers;
 	
-	
+	public int getApproved() {
+		return approved;
+	}
+
+	public void setApproved(int approved) {
+		this.approved = approved;
+	}
+
 	public List<FavoriteBeer> getListFavBeers() {
 		return listFavBeers;
 	}
@@ -121,6 +130,7 @@ public class Beer {
 		long temp;
 		temp = Double.doubleToLongBits(abv);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + approved;
 		result = prime * result + ((bars == null) ? 0 : bars.hashCode());
 		result = prime * result + ((brewery == null) ? 0 : brewery.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
@@ -141,6 +151,8 @@ public class Beer {
 			return false;
 		Beer other = (Beer) obj;
 		if (Double.doubleToLongBits(abv) != Double.doubleToLongBits(other.abv))
+			return false;
+		if (approved != other.approved)
 			return false;
 		if (bars == null) {
 			if (other.bars != null)
@@ -182,7 +194,8 @@ public class Beer {
 	@Override
 	public String toString() {
 		return "Beer [id=" + id + ", style=" + style + ", name=" + name + ", abv=" + abv + ", description="
-				+ description + ", bars=" + bars + ", brewery=" + brewery + "]";
+				+ description + ", approved=" + approved + ", bars=" + bars + ", brewery=" + brewery + ", listFavBeers="
+				+ listFavBeers + "]";
 	}
 
 
