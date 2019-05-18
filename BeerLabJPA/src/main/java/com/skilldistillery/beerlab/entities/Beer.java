@@ -37,7 +37,6 @@ public class Beer {
 	private List<FavoriteBeer> listFavBeers;
 	
 	
-	
 	public List<FavoriteBeer> getListFavBeers() {
 		return listFavBeers;
 	}
