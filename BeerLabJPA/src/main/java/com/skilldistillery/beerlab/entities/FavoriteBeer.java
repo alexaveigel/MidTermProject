@@ -64,8 +64,6 @@ public class FavoriteBeer {
 		this.id = id;
 	}
 
-	
-
 	public Date getDateAdded() {
 		return dateAdded;
 	}
