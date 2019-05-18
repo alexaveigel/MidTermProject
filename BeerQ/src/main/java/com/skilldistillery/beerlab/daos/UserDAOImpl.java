@@ -6,8 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.skilldistillery.beerlab.entities.User;
+import org.springframework.stereotype.Service;
 
+import com.skilldistillery.beerlab.entities.User;
+@Service
 public class UserDAOImpl implements UserDAO {
 
 	private static EntityManagerFactory emf;
@@ -90,15 +92,14 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User findUserByUsername(String username) {
+	public List<User> findUserByUsername(String username) {
 
 		String jpql = "SELECT user FROM User user WHERE user.username LIKE :bind";
 		List<User> results = em.createQuery(jpql, User.class).setParameter("bind", "%" + username + "%")
 				.getResultList();
 		if (results.size() > 0) {
-			User user = results.get(0);
 			em.close();
-			return user;
+			return results;
 		} else {
 			em.close();
 			return null;

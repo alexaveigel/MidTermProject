@@ -6,10 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.springframework.stereotype.Service;
+
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
 import com.skilldistillery.beerlab.entities.User;
-
+@Service
 public class BeerDAOImpl implements BeerDAO {
 
 	private static EntityManagerFactory emf;

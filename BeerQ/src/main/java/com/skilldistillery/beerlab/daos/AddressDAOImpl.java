@@ -4,8 +4,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.skilldistillery.beerlab.entities.Address;
+import org.springframework.stereotype.Service;
 
+import com.skilldistillery.beerlab.entities.Address;
+@Service
 public class AddressDAOImpl implements AddressDAO {
 
 	private static EntityManagerFactory emf;

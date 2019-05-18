@@ -6,8 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.springframework.stereotype.Service;
+
 import com.skilldistillery.beerlab.entities.Bar;
 
+@Service
 public class BarDAOImpl implements BarDAO {
 	
 	private static EntityManagerFactory emf;

@@ -52,7 +52,7 @@ class BreweryTest {
 	void test_Brewery_OneToOne_Unidirectional_With_Address() {
 		brewery = em.find(Brewery.class, 1);
 		Address address = brewery.getAddress();
-		assertEquals("123 Test street", address.getStreet());
+		assertEquals("123 Test Street", address.getStreet());
 	}
 	
 	@Test
