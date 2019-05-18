@@ -35,40 +35,50 @@ public class ProfileController {
 		return mv;
 	}
 	@RequestMapping(path="signup.do")
-	public ModelAndView signup(User user, Drinker drinker) {
+	public ModelAndView signup(User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		
+		User newUser = userDAO.createUser(user);
+		session.setAttribute("user", newUser);
+		mv.setViewName("/WEB-INF/home.jsp");
 		return mv;
 	}
 	@RequestMapping(path="login.do")
 	public ModelAndView login(User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		session.setAttribute("user", user);
+		User activeUser = userDAO.findUserByUserNameAndPassword(user.getUsername(), user.getPassword());
+		if (activeUser != null) {
+		session.setAttribute("user", activeUser);
+		mv.setViewName("/WEB-INF/home.jsp");
+		}else {
+			mv.addObject("message", "Your entry doesn't match our records, please try again.");
+			mv.setViewName("/WEB-INF/landing.jsp");
+		}
 		
 		return mv;
 	}
 	@RequestMapping(path="addFavorite.do")
-	public ModelAndView addFavorite(Drinker drinker, Beer beer) {
+	public ModelAndView addFavorite(User user, Beer beer) {
 		ModelAndView mv = new ModelAndView();
 		
 		return mv;
 	}
 	@RequestMapping(path="getFavorite.do")
-	public ModelAndView getFavorite(Drinker drinker) {
+	public ModelAndView getFavorite(User user) {
 		ModelAndView mv = new ModelAndView();
-		
+		beerDAO.getListOfFavBeer(user);
 		return mv;
 	}
 	@RequestMapping(path="goToEdit.do")
-	public ModelAndView goToEdit(Drinker drinker) {
+	public ModelAndView goToEdit(User user) {
 		ModelAndView mv = new ModelAndView();
-		
+		mv.setViewName("/WEB-INF/signup.jsp");
 		return mv;
 	}
 	@RequestMapping(path="editProfile.do")
-	public ModelAndView editProfile(User user, Drinker drinker) {
+	public ModelAndView editProfile(User user) {
 		ModelAndView mv = new ModelAndView();
-		
+		userDAO.updateUser(user);
+		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
 	@RequestMapping(path="addBeerRequest.do")
