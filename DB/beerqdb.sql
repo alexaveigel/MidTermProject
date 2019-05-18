@@ -256,3 +256,99 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'drinker'@'localhost
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beerqdb`;
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (1, 'user', 'pass', 'admin');
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (2, 'a', 'user', 'user');
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (3, 'some', 'user', 'user');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `address`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beerqdb`;
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1, '123 Test Street', 'Denver', 'Colorado', '80216', 'United States', '123.456', '654.321');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (2, '123 Fake Street', 'Denver', 'Colorado', '80216', 'United States', '123.456', '123.456');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (3, '111 not a street', 'Denver', 'Colorado', '80113', 'United States', '123.456', '123.456');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `drinker`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beerqdb`;
+INSERT INTO `drinker` (`id`, `user_id`, `first_name`, `last_name`, `date_of_birth`, `gender`, `beer_style`, `pic_url`, `address_id`) VALUES (1, 1, 'The', 'Drinker', '1995-01-30', 'Girl', 'IPA', 'pic.com', 1);
+INSERT INTO `drinker` (`id`, `user_id`, `first_name`, `last_name`, `date_of_birth`, `gender`, `beer_style`, `pic_url`, `address_id`) VALUES (2, 2, 'A', 'Drinker', '1990-02-22', 'Boy', 'Pilsner', 'pic.com', 1);
+INSERT INTO `drinker` (`id`, `user_id`, `first_name`, `last_name`, `date_of_birth`, `gender`, `beer_style`, `pic_url`, `address_id`) VALUES (3, 3, 'Bar', 'Owner', '1990-09-09', 'Girl', 'Stout', 'pic.com', 2);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `bar`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beerqdb`;
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (1, 'The Bar', 'a message', 1, 'url.com', 'logo.com');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (2, 'Some Bar', 'no message', 2, 'url.com', 'logo.com');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (3, 'Yarp Bar', 'offensive message', 3, 'url.com', 'logo.com');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `brewery`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beerqdb`;
+INSERT INTO `brewery` (`id`, `name`, `logo_url`, `address_id`, `website_url`) VALUES (1, 'The Brewery', 'logo.com', 1, 'web.com');
+INSERT INTO `brewery` (`id`, `name`, `logo_url`, `address_id`, `website_url`) VALUES (2, 'A Brewery', 'logo.com', 2, 'web.com');
+INSERT INTO `brewery` (`id`, `name`, `logo_url`, `address_id`, `website_url`) VALUES (3, 'HOLE', 'logo.com', 3, 'web.com');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `beer`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beerqdb`;
+INSERT INTO `beer` (`id`, `style`, `name`, `abv`, `brewery_id`, `description`, `approved`) VALUES (1, 'IPA', 'The Ipa', 7.8, 1, 'hopppy', 1);
+INSERT INTO `beer` (`id`, `style`, `name`, `abv`, `brewery_id`, `description`, `approved`) VALUES (2, 'pilsner', 'the pilsner', 5, 2, 'not hoppy', 0);
+INSERT INTO `beer` (`id`, `style`, `name`, `abv`, `brewery_id`, `description`, `approved`) VALUES (3, 'stout', 'the stout', 12.2, 1, 'thick', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `favorite_beer`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beerqdb`;
+INSERT INTO `favorite_beer` (`id`, `drinker_id`, `beer_id`, `date_added`, `comment`) VALUES (1, 1, 1, '2038-01-19', 'No comment');
+INSERT INTO `favorite_beer` (`id`, `drinker_id`, `beer_id`, `date_added`, `comment`) VALUES (2, 1, 2, '2025-02-22', 'some comment');
+INSERT INTO `favorite_beer` (`id`, `drinker_id`, `beer_id`, `date_added`, `comment`) VALUES (3, 2, 1, '2012-03-03', 'a comment');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `favorite_bar`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beerqdb`;
+INSERT INTO `favorite_bar` (`id`, `bar_id`, `drinker_id`, `date_added`, `comment`) VALUES (1, 1, 1, '2038-01-19', 'no comment');
+INSERT INTO `favorite_bar` (`id`, `bar_id`, `drinker_id`, `date_added`, `comment`) VALUES (2, 2, 2, '2020-08-08', 'a comment');
+INSERT INTO `favorite_bar` (`id`, `bar_id`, `drinker_id`, `date_added`, `comment`) VALUES (3, 2, 1, '2012-12-12', 'lots of comments');
+
+COMMIT;
+
