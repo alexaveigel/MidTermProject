@@ -1,5 +1,7 @@
 package com.skilldistillery.beerlab.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import com.skilldistillery.beerlab.daos.BarDAO;
 import com.skilldistillery.beerlab.daos.BeerDAO;
 import com.skilldistillery.beerlab.daos.UserDAO;
 import com.skilldistillery.beerlab.entities.Beer;
-import com.skilldistillery.beerlab.entities.Drinker;
+import com.skilldistillery.beerlab.entities.FavoriteBeer;
 import com.skilldistillery.beerlab.entities.User;
 
 @Controller
@@ -59,13 +61,17 @@ public class ProfileController {
 	@RequestMapping(path="addFavorite.do")
 	public ModelAndView addFavorite(User user, Beer beer) {
 		ModelAndView mv = new ModelAndView();
-		
+		beerDAO.addBeerToFavList(beer,user);
+		mv.addObject("message", "Added to Favorites" );
+		mv.addObject("beer", beer);
+		mv.setViewName("/WEB-INF/objectProfile.jsp");
 		return mv;
 	}
 	@RequestMapping(path="getFavorite.do")
 	public ModelAndView getFavorite(User user) {
 		ModelAndView mv = new ModelAndView();
-		beerDAO.getListOfFavBeer(user);
+		List<FavoriteBeer> list = beerDAO.getListOfFavBeer(user);
+		mv.addObject("listFavBeers", list);
 		return mv;
 	}
 	@RequestMapping(path="goToEdit.do")
@@ -84,7 +90,9 @@ public class ProfileController {
 	@RequestMapping(path="addBeerRequest.do")
 	public ModelAndView addBeerRequest( Beer beer) {
 		ModelAndView mv = new ModelAndView();
-		
+		beerDAO.createBeer(beer);
+		mv.addObject("message", "Your submission has been recieved");
+		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
 
