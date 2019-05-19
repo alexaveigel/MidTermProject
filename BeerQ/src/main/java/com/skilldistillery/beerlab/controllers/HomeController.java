@@ -14,6 +14,7 @@ import com.skilldistillery.beerlab.daos.BeerDAO;
 import com.skilldistillery.beerlab.daos.UserDAO;
 import com.skilldistillery.beerlab.entities.Bar;
 import com.skilldistillery.beerlab.entities.Beer;
+import com.skilldistillery.beerlab.entities.Brewery;
 
 @Controller
 public class HomeController {
@@ -73,11 +74,13 @@ public class HomeController {
 	@RequestMapping(path = "beerBrowse.do")
 	public ModelAndView beerBrowse() {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("type", "browse");
-
-		List<Beer> beers = beerDAO.findAllBeers();
-		mv.addObject("list", beers);
-		mv.setViewName("/WEB-INF/search.jsp");
+		List<Brewery> listBrewery = beerDAO.getBreweries();
+		mv.addObject("listBrewery", listBrewery);
+		List<Beer> sixPack = beerDAO.getSixPack();
+		mv.addObject("sixPack", sixPack);
+		List<String> styles = beerDAO.getStyles();
+		mv.addObject("styles", styles);
+		mv.setViewName("/WEB-INF/beerBrowse.jsp");
 
 		return mv;
 	}
