@@ -262,9 +262,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beerqdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (1, 'user', 'pass', 'admin');
-INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (2, 'a', 'user', 'user');
-INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (3, 'some', 'user', 'user');
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (1, 'user@user', 'pass', 'admin');
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (2, 'a@user', 'pass', 'user');
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (3, 'some@user', 'user', 'user');
 
 COMMIT;
 
