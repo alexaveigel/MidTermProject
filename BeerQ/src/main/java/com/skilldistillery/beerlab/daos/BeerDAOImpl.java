@@ -1,5 +1,6 @@
 package com.skilldistillery.beerlab.daos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,6 +10,7 @@ import javax.persistence.Persistence;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.beerlab.entities.Beer;
+import com.skilldistillery.beerlab.entities.Brewery;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
 import com.skilldistillery.beerlab.entities.User;
 @Service
@@ -171,6 +173,72 @@ public class BeerDAOImpl implements BeerDAO {
 			      .getResultList();
 	 
 		return approvedBeer;
+	}
+
+	@Override
+	public List<Brewery> getBreweries() {
+		em = emf.createEntityManager();
+		String query = "SELECT brewery FROM Brewery brewery";
+		 List <Brewery> breweries =
+			      em.createQuery(query, Brewery.class)
+			      .getResultList();
+	 
+		
+		return breweries;
+	}
+
+	@Override
+	public List<Beer> getSixPack() {
+		em = emf.createEntityManager();
+		String query = "SELECT beer FROM Beer beer";
+		 List <Beer> beers =
+			      em.createQuery(query, Beer.class)
+			      .getResultList();
+		 List<Beer> sixPack = new ArrayList<>();
+		 for (int i = 0 ; i<6; i++) {
+			 sixPack.add(beers.get((int)(Math.random()+1) * (beers.size() - 1)));
+		 }
+		
+		return sixPack;
+	}
+
+	@Override
+	public List<String> getStyles() {
+		em = emf.createEntityManager();
+		String query = "SELECT distinct beer.style FROM Beer beer";
+		 List <String> styles =
+			      em.createQuery(query, String.class)
+			      .getResultList();
+	 
+		
+		return styles;
+	}
+
+	@Override
+	public List<Beer> getBeerByABV(double minAbv, double maxAbv) {
+		em = emf.createEntityManager();
+		String query = "SELECT beer FROM Beer beer where abv BETWEEN :bind1 and :bind2";
+		 List <Beer> beers =
+			      em.createQuery(query, Beer.class)
+			      .setParameter("bind1", minAbv)
+			      .setParameter("bind2", maxAbv)
+			      .getResultList();
+	 
+		
+		return beers;
+	}
+
+	@Override
+	public List<Beer> getBeerByStyle(String style) {
+		em = emf.createEntityManager();
+		String query = "SELECT beer FROM Beer beer WHERE style = :bind ";
+		 List <Beer> beers =
+			      em.createQuery(query, Beer.class)
+			      .setParameter("bind", style)
+			      .getResultList();
+	 
+		
+		return beers;
 	}
 
 
