@@ -1,13 +1,15 @@
  package com.skilldistillery.beerlab.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -28,8 +30,64 @@ public class Beer {
 	
 	private int approved;
 
-	@ManyToMany(mappedBy = "beers", fetch = FetchType.LAZY)
+	
+	// ___________________________________
+	
+//	@ManyToMany(mappedBy = "beers")    //  fetch = FetchType.LAZY
+//	private List<Bar> bars;
+	
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "bar_inventory",
+	joinColumns =@JoinColumn(name = "beer_id"),
+	inverseJoinColumns =@JoinColumn(name = "bar_id"))
 	private List<Bar> bars;
+	
+	
+//	public void addCategory(Category category) {
+//		if (categories == null) {
+//			categories = new ArrayList<>();
+//		}
+//		if (!categories.contains(category)) {
+//			categories.add(category);
+//			if (category != null) {
+//				category.getFilms().remove(this);
+//
+//				category.addFilm(this);
+//			}
+//		}
+//	}
+//
+//	public void removeCategory(Category category) {
+//		category.setFilms(null);
+//		if (categories != null) {
+//			categories.remove(category);
+//		}
+//	}
+	
+	public void addBar(Bar bar) {
+		if(bars == null) bars = new ArrayList<>();
+		
+		if (!bars.contains(bar)) {
+			bars.add(bar);
+			if(bar != null) {
+			 bar.getBeers().remove(this);
+			}
+			bar.addBeer(this);
+			
+		}
+		
+	}
+	
+	public void removeBar(Bar bar) {
+		bar.setBeers(null);
+		if(bars != null) {
+			bars.remove(bar);
+		}
+	}
+	
+
+	
+	// ______________________________________
 	
 	@ManyToOne
 	@JoinColumn(name = "brewery_id")
@@ -37,39 +95,7 @@ public class Beer {
 	
 	@OneToMany(mappedBy = "beer")
 	private List<FavoriteBeer> listFavBeers;
-	
-	public int getApproved() {
-		return approved;
-	}
 
-	public void setApproved(int approved) {
-		this.approved = approved;
-	}
-
-	public List<FavoriteBeer> getListFavBeers() {
-		return listFavBeers;
-	}
-
-	public void setListFavBeers(List<FavoriteBeer> listFavBeers) {
-		this.listFavBeers = listFavBeers;
-	}
-
-	public List<Bar> getBars() {
-		return bars;
-	}
-
-	public void setBars(List<Bar> bars) {
-		this.bars = bars;
-	}
-
-
-	public Brewery getBrewery() {
-		return brewery;
-	}
-
-	public void setBrewery(Brewery brewery) {
-		this.brewery = brewery;
-	}
 
 	public int getId() {
 		return id;
@@ -110,34 +136,50 @@ public class Beer {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 
-	public Beer(int id, String style, String name, double abv, String description, Brewery brewery) {
-		super();
-		this.id = id;
-		this.style = style;
-		this.name = name;
-		this.abv = abv;
-		this.description = description;
+	public int getApproved() {
+		return approved;
+	}
+
+	public void setApproved(int approved) {
+		this.approved = approved;
+	}
+
+	public List<Bar> getBars() {
+		return bars;
+	}
+
+	public void setBars(List<Bar> bars) {
+		this.bars = bars;
+	}
+
+	public Brewery getBrewery() {
+		return brewery;
+	}
+
+	public void setBrewery(Brewery brewery) {
 		this.brewery = brewery;
+	}
+
+	public List<FavoriteBeer> getListFavBeers() {
+		return listFavBeers;
+	}
+
+	public void setListFavBeers(List<FavoriteBeer> listFavBeers) {
+		this.listFavBeers = listFavBeers;
+	}
+
+	@Override
+	public String toString() {
+		return "Beer [id=" + id + ", style=" + style + ", name=" + name + ", abv=" + abv + ", description="
+				+ description + ", approved=" + approved + ", bars=" + bars + ", brewery=" + brewery + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(abv);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + approved;
-		result = prime * result + ((bars == null) ? 0 : bars.hashCode());
-		result = prime * result + ((brewery == null) ? 0 : brewery.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((listFavBeers == null) ? 0 : listFavBeers.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((style == null) ? 0 : style.hashCode());
 		return result;
 	}
 
@@ -150,68 +192,29 @@ public class Beer {
 		if (getClass() != obj.getClass())
 			return false;
 		Beer other = (Beer) obj;
-		if (Double.doubleToLongBits(abv) != Double.doubleToLongBits(other.abv))
-			return false;
-		if (approved != other.approved)
-			return false;
-		if (bars == null) {
-			if (other.bars != null)
-				return false;
-		} else if (!bars.equals(other.bars))
-			return false;
-		if (brewery == null) {
-			if (other.brewery != null)
-				return false;
-		} else if (!brewery.equals(other.brewery))
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
 		if (id != other.id)
-			return false;
-		if (listFavBeers == null) {
-			if (other.listFavBeers != null)
-				return false;
-		} else if (!listFavBeers.equals(other.listFavBeers))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (style == null) {
-			if (other.style != null)
-				return false;
-		} else if (!style.equals(other.style))
 			return false;
 		return true;
 	}
-	
-	
 
-	@Override
-	public String toString() {
-		return "Beer [id=" + id + ", style=" + style + ", name=" + name + ", abv=" + abv + ", description="
-				+ description + ", approved=" + approved + ", bars=" + bars + ", brewery=" + brewery + ", listFavBeers="
-				+ listFavBeers + "]";
-	}
-
-
-	public Beer(int id, String style, String name, double abv, String description, List<Bar> bars, Brewery brewery) {
+	public Beer(int id, String style, String name, double abv, String description, int approved, List<Bar> bars,
+			Brewery brewery, List<FavoriteBeer> listFavBeers) {
 		super();
 		this.id = id;
 		this.style = style;
 		this.name = name;
 		this.abv = abv;
 		this.description = description;
+		this.approved = approved;
 		this.bars = bars;
 		this.brewery = brewery;
+		this.listFavBeers = listFavBeers;
 	}
 
 	public Beer() {
 		super();
 	}
 
+	
+	
 }

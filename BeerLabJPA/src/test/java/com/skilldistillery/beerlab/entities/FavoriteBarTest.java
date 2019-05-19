@@ -45,7 +45,7 @@ class FavoriteBarTest {
 		assertEquals(1, favBar.getId());
 		assertEquals(1, favBar.getBarId());
 		assertEquals("2038-01-19", favBar.getDateAdded().toString());
-		assertEquals("No comment", favBar.getComment());		
+		assertEquals("no comment", favBar.getComment());		
 	}
 
 	
