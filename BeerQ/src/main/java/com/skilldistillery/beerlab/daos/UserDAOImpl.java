@@ -93,7 +93,8 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> findUserByUsername(String username) {
-
+		em = emf.createEntityManager();
+		
 		String jpql = "SELECT user FROM User user WHERE user.username LIKE :bind";
 		List<User> results = em.createQuery(jpql, User.class).setParameter("bind", "%" + username + "%")
 				.getResultList();
@@ -108,15 +109,23 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User findUserByUserNameAndPassword(String username, String password) {
-
+	public User findUserByUserNameAndPassword(String username, String password, User user) {
+		em = emf.createEntityManager();
+		System.out.println(em.find(User.class, 1));
+		
+		System.out.println("In dao: " + user);
+		System.out.println(username + password);
 		String jpql = "SELECT user FROM User user WHERE user.username = :bind1 AND user.password = :bind2";
-		User user = em.createQuery(jpql, User.class).setParameter("bind1", username).setParameter("bind2", password)
-				.getResultList().get(0);
-		if (user != null) {
+		List<User> listUser = em.createQuery(jpql, User.class)
+										.setParameter("bind1", user.getUsername())
+										.setParameter("bind2", user.getPassword())
+										.getResultList();
+		System.out.println("in Dao ******************* " + user);
+		if (listUser.size() > 0) {
 			em.close();
-			return user;
+			return listUser.get(0);
 		} else {
+			System.out.println(("In else statement of DAO **************************"));
 			em.close();
 			return null;
 		}
