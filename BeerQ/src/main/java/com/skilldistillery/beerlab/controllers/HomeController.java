@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.beerlab.daos.AddressDAO;
@@ -34,12 +35,12 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "search.do")
-	public ModelAndView search(String keyword, String type) {
+	public ModelAndView search(String keyword,@RequestParam("type")String type) {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("keyword", keyword);
 		mv.addObject("type", "search");
-		
+		System.out.println(type);
 		if (type.equals("beer")) {
 			List<Beer> beersByName = beerDAO.findBeerByName(keyword);
 			mv.addObject("list",beersByName );
@@ -64,7 +65,6 @@ public class HomeController {
 		mv.addObject("type", "browse");
 
 		List<Bar> bars = barDAO.findAllBars();
-		System.out.println("In controller: " + bars);
 		mv.addObject("list", bars);
 		mv.setViewName("/WEB-INF/search.jsp");
 		return mv;

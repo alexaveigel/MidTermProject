@@ -64,7 +64,8 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Beer> findBeerByCity(String city) {
 		em = emf.createEntityManager();
-		String query = "SELECT b FROM Beer b JOIN  Bar_inventory bi ON bi.beer_id = b.id JOIN Bar on bi.bar_id =  Bar.id JOIN Address a on bar.address_id = a.id WHERE a.city = :city";
+		String query = "SELECT b FROM Beer b JOIN  Bar_inventory bi ON bi.beer_id = b.id "
+				+ "JOIN Bar on bi.bar_id =  Bar.id JOIN Address a on bar.address_id = a.id WHERE a.city = :city";
 		 List <Beer> cities =
 			      em.createQuery(query, Beer.class)
 			      .setParameter("city", city)
