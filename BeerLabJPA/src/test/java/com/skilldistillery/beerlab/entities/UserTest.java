@@ -43,7 +43,7 @@ class UserTest {
 	@Test
 	public void test_User_Mappings_Correct() {
 		assertEquals(1, user.getId());
-		assertEquals("user", user.getUsername());
+		assertEquals("user@user", user.getUsername());
 		assertEquals("pass", user.getPassword());
 		assertEquals("admin", user.getRole());
 	}

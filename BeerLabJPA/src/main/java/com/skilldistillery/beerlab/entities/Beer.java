@@ -31,38 +31,11 @@ public class Beer {
 	private int approved;
 
 	
-	// ___________________________________
-	
-//	@ManyToMany(mappedBy = "beers")    //  fetch = FetchType.LAZY
-//	private List<Bar> bars;
-	
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "bar_inventory",
 	joinColumns =@JoinColumn(name = "beer_id"),
 	inverseJoinColumns =@JoinColumn(name = "bar_id"))
 	private List<Bar> bars;
-	
-	
-//	public void addCategory(Category category) {
-//		if (categories == null) {
-//			categories = new ArrayList<>();
-//		}
-//		if (!categories.contains(category)) {
-//			categories.add(category);
-//			if (category != null) {
-//				category.getFilms().remove(this);
-//
-//				category.addFilm(this);
-//			}
-//		}
-//	}
-//
-//	public void removeCategory(Category category) {
-//		category.setFilms(null);
-//		if (categories != null) {
-//			categories.remove(category);
-//		}
-//	}
 	
 	public void addBar(Bar bar) {
 		if(bars == null) bars = new ArrayList<>();
@@ -73,7 +46,6 @@ public class Beer {
 			 bar.getBeers().remove(this);
 			}
 			bar.addBeer(this);
-			
 		}
 		
 	}
@@ -84,10 +56,7 @@ public class Beer {
 			bars.remove(bar);
 		}
 	}
-	
 
-	
-	// ______________________________________
 	
 	@ManyToOne
 	@JoinColumn(name = "brewery_id")

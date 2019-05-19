@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.beerlab.daos.AddressDAO;
@@ -13,6 +14,7 @@ import com.skilldistillery.beerlab.daos.BeerDAO;
 import com.skilldistillery.beerlab.daos.UserDAO;
 import com.skilldistillery.beerlab.entities.Bar;
 import com.skilldistillery.beerlab.entities.Beer;
+import com.skilldistillery.beerlab.entities.Brewery;
 
 @Controller
 public class HomeController {
@@ -34,12 +36,12 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "search.do")
-	public ModelAndView search(String keyword, String type) {
+	public ModelAndView search(String keyword,@RequestParam("type")String type) {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("keyword", keyword);
 		mv.addObject("type", "search");
-		
+		System.out.println(type);
 		if (type.equals("beer")) {
 			List<Beer> beersByName = beerDAO.findBeerByName(keyword);
 			mv.addObject("list",beersByName );
@@ -64,7 +66,6 @@ public class HomeController {
 		mv.addObject("type", "browse");
 
 		List<Bar> bars = barDAO.findAllBars();
-		System.out.println("In controller: " + bars);
 		mv.addObject("list", bars);
 		mv.setViewName("/WEB-INF/search.jsp");
 		return mv;
@@ -73,11 +74,13 @@ public class HomeController {
 	@RequestMapping(path = "beerBrowse.do")
 	public ModelAndView beerBrowse() {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("type", "browse");
-
-		List<Beer> beers = beerDAO.findAllBeers();
-		mv.addObject("list", beers);
-		mv.setViewName("/WEB-INF/search.jsp");
+		List<Brewery> listBrewery = beerDAO.getBreweries();
+		mv.addObject("listBrewery", listBrewery);
+		List<Beer> sixPack = beerDAO.getSixPack();
+		mv.addObject("sixPack", sixPack);
+		List<String> styles = beerDAO.getStyles();
+		mv.addObject("styles", styles);
+		mv.setViewName("/WEB-INF/beerBrowse.jsp");
 
 		return mv;
 	}
