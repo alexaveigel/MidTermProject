@@ -1,6 +1,9 @@
 package com.skilldistillery.beerlab.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,7 +16,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class BeerTest {
-
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private Beer beer;
@@ -45,15 +47,25 @@ class BeerTest {
 	public void test_Beer_Mapping_Correct() {
 		assertEquals(1, beer.getId());
 		assertEquals("IPA", beer.getStyle());
-		assertEquals("The IPA", beer.getName());
+		assertEquals("The Ipa", beer.getName());
 		assertEquals(7.8, beer.getAbv());
 		//assertEquals(1, beer.getBreweryId());
-		assertEquals("hoppy", beer.getDescription());
+		assertEquals("hopppy", beer.getDescription());
 	}
 	
 	@Test
 	void test_bar_to_beer_mapping() {
-		assertEquals(1, beer.getBars().get(0).getId());
+		//assertEquals(1, beer.getBars().get(0).getId());
+		
+		//System.out.println("Bar: " + beer.ge);
+		
+		assertNotNull(beer.getBars());
+		
+		
+		List<Bar> barList = beer.getBars();
+		assertEquals(2, barList.size());
+	
+		
 	}
 		
 	@Test	
@@ -64,6 +76,7 @@ class BeerTest {
 	@Test
 	public void test_Beer_ManyToOne_With_FavBeer() {
 		assertEquals("No comment", beer.getListFavBeers().get(0).getComment());
+		
 	}
 	
 

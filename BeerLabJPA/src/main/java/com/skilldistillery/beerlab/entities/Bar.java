@@ -1,15 +1,16 @@
 package com.skilldistillery.beerlab.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
@@ -23,44 +24,46 @@ public class Bar {
 
 	private String message;
 
-//	@Column(name = "address_id")
-//	private int addressId;
-
 	@Column(name = "website_url")
 	private String webUrl;
 
 	@Column(name = "logo_url")
 	private String logoUrl;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST)
-	@JoinTable(name = "bar_inventory", joinColumns = @JoinColumn(name = "beer_id"), inverseJoinColumns = @JoinColumn(name = "bar_id"))
+	// __________________________________
+	
+	
+	@ManyToMany(mappedBy="bars", fetch = FetchType.EAGER)
 	private List<Beer> beers;
+	
+	
+	public void addBeer(Beer beer) {
+		if (beers  == null) beers = new ArrayList<>();
+	
+		
+		if(!beers.contains(beer)) {
+			beers.add(beer);
+			beer.addBar(this);
+		}
+	}
+	
+	public void removeBeer(Beer beer) {
+		beer.setBars(null);
+		if(beers != null) {
+			beers.remove(beer);
+		}
+	}
+
+	
+	// _____________________________________
+	
 	
 	// One to One unidirectional with Address
 	// Deleted regular field called addressId so this field wouldn't conflict
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name= "address_id")
 	private Address address;
-	
-	@ManyToMany(mappedBy = "bars")
-	private List<User> users;
-	
 
-	public List<Beer> getBeers() {
-		return beers;
-	}
-
-	public void setBeers(List<Beer> beers) {
-		this.beers = beers;
-	}
-
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
 
 	public int getId() {
 		return id;
@@ -86,7 +89,6 @@ public class Bar {
 		this.message = message;
 	}
 
-
 	public String getWebUrl() {
 		return webUrl;
 	}
@@ -103,6 +105,13 @@ public class Bar {
 		this.logoUrl = logoUrl;
 	}
 
+	public List<Beer> getBeers() {
+		return beers;
+	}
+
+	public void setBeers(List<Beer> beers) {
+		this.beers = beers;
+	}
 
 	public Address getAddress() {
 		return address;
@@ -112,36 +121,11 @@ public class Bar {
 		this.address = address;
 	}
 
-	public Bar() {
-		super();
-	}
-
-	public Bar(int id, String name, String message, String webUrl, String logoUrl, Address address) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.message = message;
-		this.webUrl = webUrl;
-		this.logoUrl = logoUrl;
-		this.address = address;
-	}
-
-	@Override
-	public String toString() {
-		return "Bar [id=" + id + ", name=" + name + ", message=" + message + ", webUrl=" + webUrl + ", logoUrl="
-				+ logoUrl + ", address=" + address + "]";
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((logoUrl == null) ? 0 : logoUrl.hashCode());
-		result = prime * result + ((message == null) ? 0 : message.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((webUrl == null) ? 0 : webUrl.hashCode());
 		return result;
 	}
 
@@ -154,36 +138,34 @@ public class Bar {
 		if (getClass() != obj.getClass())
 			return false;
 		Bar other = (Bar) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
 		if (id != other.id)
-			return false;
-		if (logoUrl == null) {
-			if (other.logoUrl != null)
-				return false;
-		} else if (!logoUrl.equals(other.logoUrl))
-			return false;
-		if (message == null) {
-			if (other.message != null)
-				return false;
-		} else if (!message.equals(other.message))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (webUrl == null) {
-			if (other.webUrl != null)
-				return false;
-		} else if (!webUrl.equals(other.webUrl))
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Bar [id=" + id + ", name=" + name + ", message=" + message + ", webUrl=" + webUrl + ", logoUrl="
+				+ logoUrl + ", address=" + address + "]";
+	}
+
+	public Bar(int id, String name, String message, String webUrl, String logoUrl, List<Beer> beers, Address address) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.message = message;
+		this.webUrl = webUrl;
+		this.logoUrl = logoUrl;
+		this.beers = beers;
+		this.address = address;
+	}
+
+	public Bar() {
+		super();
+	}
 	
 	
+
+
 
 }
