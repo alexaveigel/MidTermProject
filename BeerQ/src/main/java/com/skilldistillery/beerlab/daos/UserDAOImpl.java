@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.beerlab.entities.Drinker;
 import com.skilldistillery.beerlab.entities.User;
 @Service
 public class UserDAOImpl implements UserDAO {
@@ -25,9 +26,15 @@ public class UserDAOImpl implements UserDAO {
 
 		// start the transaction
 		em.getTransaction().begin();
+		
+		String jpql = "SELECT user FROM User user WHERE user.username LIKE :bind";
+		List<User> results = em.createQuery(jpql, User.class).setParameter("bind", "%" + user.getUsername() + "%")
+				.getResultList();
+		if (results.size() > 0) {
+			return null;
+		} else {
 		// write the user to the database
 		em.persist(user);
-		em.persist(user.getDrinker());
 		// update the "local" user object
 		em.flush();
 		// commit the changes (actually perform the operation)
@@ -36,7 +43,32 @@ public class UserDAOImpl implements UserDAO {
 		em.close();
 		// return the beer object
 		return user;
+		}
 	}
+	
+	@Override
+	public Drinker createDrinker(Drinker drinker) {
+		em = emf.createEntityManager();
+		
+		// start the transaction
+		em.getTransaction().begin();
+		
+
+			// write the user to the database
+			em.persist(drinker);
+			// update the "local" user object
+			em.flush();
+			// commit the changes (actually perform the operation)
+			em.getTransaction().commit();
+			
+			em.close();
+			// return the beer object
+			return drinker;
+		
+	}
+	
+	
+	
 
 	@Override
 	public User updateUser(User user) {
