@@ -17,10 +17,13 @@ include file ="css/style.css" %>
 <body>
 
 	<form action="login.do" method="GET">
-		<input type="email" name="username">
-		<input type="password" name="password">
+		<input type="email" name="username" Email>
+		<input type="password" name="password" Password>
 	<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
+	
+	<br>
+	
 	<form action="goToSignup.do" method="GET">
 		<input type="submit" value="Signup">
 	</form>
