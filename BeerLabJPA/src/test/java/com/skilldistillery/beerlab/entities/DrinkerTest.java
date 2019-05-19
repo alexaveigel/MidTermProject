@@ -43,7 +43,7 @@ class DrinkerTest {
 	void test_drinker_mapping() {
 		assertEquals("The", drinker.getFirstName());
 		assertEquals("Drinker", drinker.getLastName());
-		assertEquals("1995-01-30", drinker.getDob().toString());
+		assertEquals("1995-01-30", drinker.getDob());
 		assertEquals("Girl", drinker.getGender());
 		assertEquals("IPA", drinker.getBeerStyle());
 		assertEquals("pic.com", drinker.getPicUrl());

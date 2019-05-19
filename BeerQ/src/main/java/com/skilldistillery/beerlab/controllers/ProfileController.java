@@ -13,7 +13,9 @@ import com.skilldistillery.beerlab.daos.AddressDAO;
 import com.skilldistillery.beerlab.daos.BarDAO;
 import com.skilldistillery.beerlab.daos.BeerDAO;
 import com.skilldistillery.beerlab.daos.UserDAO;
+import com.skilldistillery.beerlab.entities.Address;
 import com.skilldistillery.beerlab.entities.Beer;
+import com.skilldistillery.beerlab.entities.Drinker;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
 import com.skilldistillery.beerlab.entities.User;
 
@@ -36,14 +38,8 @@ public class ProfileController {
 		mv.setViewName("/WEB-INF/signup.jsp");
 		return mv;
 	}
-	@RequestMapping(path="signup.do")
-	public ModelAndView signup(User user, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		User newUser = userDAO.createUser(user);
-		session.setAttribute("user", newUser);
-		mv.setViewName("/WEB-INF/home.jsp");
-		return mv;
-	}
+	
+	
 	@RequestMapping(path="login.do")
 	public ModelAndView login(User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -96,7 +92,44 @@ public class ProfileController {
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
-
+	@RequestMapping(path="signup.do")
+	public ModelAndView checkUniqueEmail(User user, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User uniqueUser = userDAO.createUser(user);
+		if (uniqueUser == null) {
+			mv.addObject("message", "Your username is taken, try again");
+			mv.setViewName("/WEB-INF/signup.jsp");
+			return mv;
+		}else {
+		mv.addObject("form", "drinker");
+		session.setAttribute("user", uniqueUser);
+		mv.setViewName("/WEB-INF/home.jsp");
+		
+		return mv;}
+		
+	}
+	
+	@RequestMapping(path="drinker.do")
+	public ModelAndView addDrinkerToTable(Drinker drinker) {
+		ModelAndView mv = new ModelAndView();
+		Drinker newDrinker = userDAO.createDrinker(drinker);
+		mv.addObject("form", "address");
+		mv.addObject("drinker", newDrinker);
+		mv.setViewName("/WEB-INF/signup.jsp");
+		return mv;
+	}
+	
+	
+	@RequestMapping(path="address.do")
+	public ModelAndView addAddressToDrinker(User user, Address address, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Address drinkerAddress = adDAO.createAddress(address);
+		Drinker updateDrinker = userDAO.updateDrinker(user.getDrinker(), drinkerAddress.getId());
+		
+		mv.addObject("drinker", updateDrinker);
+		mv.setViewName("/WEB-INF/home.jsp");
+		return mv;
+	}
 	
 
 }

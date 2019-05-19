@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +13,51 @@
 </style>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sign Up</title>
 </head>
 <body>
+	<c:if test = "${empty form }">
+	<h1>Select your username and password</h1>
+	<c:if test = "${not empty message }">
+	<h3> ${message }</h3>
+	</c:if>
+	<form action = "signup.do" method = "post">
+	<input type="hidden" value="user" name = "role">
+		Username: <input type="text" name="username"><br>
+		Password: <input type="password" name="password"><br>
+		<input type="submit" value= "Submit">
+	</form>
+	</c:if>
+	<c:if test = "${form == 'drinker' }">
+	<h1>Tell us about yourself</h1>
+	<form action = "drinker.do" method = "post">
+			<input type="hidden" value = "${sessionScope.user.id}" name = "userId">
+			First Name: <input type="text" name="firstName" ><br>
+			Last Name: <input type="text" name="lastName" ><br>
+			Date Of Birth: <input type="Date" name="dob" /><br>
+			Gender: <input type="text" name="gender" /><br>
+			Beer Style: <input type="text" name="beerStyle" /><br>
+			Link to profile pic: <input type="text" name="picUrl" /><br>
+		<input type="submit" value = "Submit">
+	</form>
+	
+	</c:if>
+		<c:if test = "${form == 'address' }">
+		<h1>Tell us where your at</h1>
+		<h2> so we can tell you whats close</h2>
+	<form action = "address.do" method = "post">
+	<input type="hidden" value = "${sessionScope.user}" name = "user">
+			Street: <input type="text" name="street" ><br>
+			City: <input type="text" name="city" ><br>
+			Zip: <input type="Date" name="zip" /><br>
+			
+		<input type="submit" value = "Submit">
+	</form>
+	
+	</c:if>
+	
 
-		<form action="signup.do" method="post">
+		<!-- <form action="signup.do" method="post">
 
 
 					First Name
@@ -55,7 +96,7 @@
 
 			<input type="submit" value="register" >
 
-		</form>
+		</form> -->
 
 	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

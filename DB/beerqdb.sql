@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(100) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `role` VARCHAR(45) NOT NULL,
+  `role` VARCHAR(45) NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `user_name_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;

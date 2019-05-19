@@ -2,6 +2,7 @@ package com.skilldistillery.beerlab.daos;
 
 import java.util.List;
 
+import com.skilldistillery.beerlab.entities.Drinker;
 import com.skilldistillery.beerlab.entities.User;
 
 public interface UserDAO {
@@ -22,5 +23,9 @@ public interface UserDAO {
 	
 	//Read
 	public List<User> findUserByUsername(String username);
+
+	public Drinker createDrinker(Drinker drinker);
+
+	Drinker updateDrinker(Drinker drinker, int addressId);
 
 }
