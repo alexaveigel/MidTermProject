@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+//import javax.persistence.Temporal;
+//import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "favorite_beer")
@@ -25,7 +25,7 @@ public class FavoriteBeer {
 //	private int beerId;
 
 	@Column(name = "date_added")
-	@Temporal(TemporalType.DATE)
+//	@Temporal(TemporalType.DATE)
 	private Date dateAdded;
 
 	private String comment;
