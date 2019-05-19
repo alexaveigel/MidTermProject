@@ -62,6 +62,7 @@ public class BarDAOImpl implements BarDAO {
 
 	@Override
 	public List<Bar> findBarByName(String barName) {
+		em = emf.createEntityManager();
 		String query = "SELECT bar FROM Bar WHERE Bar.name LIKE :barName";
 		 List <Bar> bars =
 			      em.createQuery(query, Bar.class)
@@ -72,6 +73,7 @@ public class BarDAOImpl implements BarDAO {
 	
 	@Override
 	public List<Bar> findBarByCity(String city) {
+		em = emf.createEntityManager();
 		String query = "SELECT bar FROM Bar JOIN  Address a ON Bar.address_id = a.id WHERE a.city = :city";
 		 List <Bar> cities =
 			      em.createQuery(query, Bar.class)
@@ -82,8 +84,17 @@ public class BarDAOImpl implements BarDAO {
 	
 	@Override
 	public List<Bar> findAllBars() {
+		em = emf.createEntityManager();
+		em.getTransaction().begin();
 		String query = "SELECT b FROM Bar b";
 		List<Bar> bars = em.createQuery(query, Bar.class).getResultList();
+		
+		for (Bar bar : bars) {
+			System.out.println("In bar dao: " + bar);
+		}
+		
+		em.getTransaction().commit();
+		em.close();
 		return bars;
 	}
 
