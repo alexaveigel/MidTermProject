@@ -103,14 +103,16 @@ public class ProfileController {
 		}else {
 		mv.addObject("form", "drinker");
 		session.setAttribute("user", uniqueUser);
-		mv.setViewName("/WEB-INF/home.jsp");
+		mv.setViewName("/WEB-INF/signup.jsp");
 		
+		System.out.println(user);
 		return mv;}
 		
 	}
 	
 	@RequestMapping(path="drinker.do")
 	public ModelAndView addDrinkerToTable(Drinker drinker) {
+		
 		ModelAndView mv = new ModelAndView();
 		Drinker newDrinker = userDAO.createDrinker(drinker);
 		mv.addObject("form", "address");
