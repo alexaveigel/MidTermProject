@@ -12,7 +12,7 @@
 </style>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sign Up</title>
 </head>
 <body>
 
