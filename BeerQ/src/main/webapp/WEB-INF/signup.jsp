@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +16,41 @@
 <title>Sign Up</title>
 </head>
 <body>
+	<c:if test = "${empty form }">
+	<h1>Select your username and password</h1>
+	<form action = "signup.do" method = "post">
+		Username: <input type="text" name="username"><br>
+		Password: <input type="password" name="password"><br>
+		<input type="submit" value= "Submit">
+	</form>
+	</c:if>
+	<c:if test = "${form == 'drinker' }">
+	<form action = "drinker.do" method = "post">
+			<input type="hidden" value = "${sessionScope.user.id}" name = "userId">
+			First Name: <input type="text" name="firstName" ><br>
+			Last Name: <input type="text" name="lastName" ><br>
+			Date Of Birth: <input type="Date" name="dob" /><br>
+			Gender: <input type="text" name="gender" /><br>
+			Beer Style: <input type="text" name="beerStyle" /><br>
+			Link to profile pic: <input type="text" name="picUrl" /><br>
+		<input type="submit" value = "Submit">
+	</form>
+	
+	</c:if>
+		<c:if test = "${form == 'address' }">
+	<form action = "address.do" method = "post">
+	<input type="hidden" value = "${sessionScope.user}" name = "user">
+			Street: <input type="text" name="street" ><br>
+			City: <input type="text" name="city" ><br>
+			Zip: <input type="Date" name="zip" /><br>
+			
+		<input type="submit" value = "Submit">
+	</form>
+	
+	</c:if>
+	
 
-		<form action="signup.do" method="post">
+		<!-- <form action="signup.do" method="post">
 
 
 					First Name
@@ -55,7 +89,7 @@
 
 			<input type="submit" value="register" >
 
-		</form>
+		</form> -->
 
 	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
