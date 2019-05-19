@@ -158,16 +158,12 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User findUserByUserNameAndPassword(String username, String password, User user) {
 		em = emf.createEntityManager();
-		System.out.println(em.find(User.class, 1));
 		
-		System.out.println("In dao: " + user);
-		System.out.println(username + password);
 		String jpql = "SELECT user FROM User user WHERE user.username = :bind1 AND user.password = :bind2";
 		List<User> listUser = em.createQuery(jpql, User.class)
 										.setParameter("bind1", user.getUsername())
 										.setParameter("bind2", user.getPassword())
 										.getResultList();
-		System.out.println("in Dao ******************* " + user);
 		if (listUser.size() > 0) {
 			em.close();
 			return listUser.get(0);

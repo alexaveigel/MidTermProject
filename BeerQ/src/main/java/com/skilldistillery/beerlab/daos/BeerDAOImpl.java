@@ -41,6 +41,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<Beer>  findBeerByName(String beerName) {
+		em = emf.createEntityManager();
 		String query = "SELECT b FROM Beers b WHERE b.name LIKE :beerName";
 		 List <Beer> beers =
 			      em.createQuery(query, Beer.class)
@@ -51,6 +52,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<Beer>  findBeerByBrewery(String brewery) {
+		em = emf.createEntityManager();
 		String query = "SELECT b FROM Beers b WHERE b.brewery LIKE :brewery";
 		 List <Beer> breweries =
 			      em.createQuery(query, Beer.class)
@@ -61,6 +63,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<Beer> findBeerByCity(String city) {
+		em = emf.createEntityManager();
 		String query = "SELECT b FROM Beer b JOIN  Bar_inventory bi ON bi.beer_id = b.id JOIN Bar on bi.bar_id =  Bar.id JOIN Address a on bar.address_id = a.id WHERE a.city = :city";
 		 List <Beer> cities =
 			      em.createQuery(query, Beer.class)
@@ -76,19 +79,23 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<Beer> findAllBeers() {
+		em = emf.createEntityManager();
 		String query = "SELECT b FROM Beer b";
 		List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
+		System.out.println("In beer DAO: " + beers);
 		return beers;
 	}
 
 	@Override
 	public List<Beer> approved() {
+		em = emf.createEntityManager();
 		String query = "SELECT fb FROM Favorite_Beer b WHERE fb.approved = 1";
 		List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
 		return beers;
 	}	
 		@Override
 		public List<Beer> unapproved() {
+			em = emf.createEntityManager();
 			String query = "SELECT fb FROM Favorite_Beer b WHERE fb.approved = 0";
 			List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
 			return beers;
@@ -155,7 +162,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<Beer> approveBeer(Beer beer) {
-		
+		em = emf.createEntityManager();
 		String query = "UPDATE Beer SET approved = 1 WHERE b.id = :beerId";
 		 List <Beer> approvedBeer =
 			      em.createQuery(query, Beer.class)

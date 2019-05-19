@@ -14,19 +14,25 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 </head>
 <body>
 
+		<h2>Here are your results</h2>
 
-    <c:if test= "${type == 'beer' }">
+   <c:if test= "${type == 'beer' }"> 
     
     <c:forEach var="beer" items="${list }">
     <!-- create cards here with beer fields -->
+    ${beer}
+    <br>
     </c:forEach>
-    </c:if>
-    <c:if test= "${type == 'bar' }">
+ </c:if> 
+ 	${type}
+   <%--  <c:if test= "${type == 'bar' }"> --%>
     
     <c:forEach var="bar" items="${list }">
     <!-- create cards here with bar fields -->
+    ${bar}
+    <br>
     </c:forEach>
-    </c:if>
+  <%--   </c:if> --%>
     
 	
 	<script src="js/scripts.js"></script>
