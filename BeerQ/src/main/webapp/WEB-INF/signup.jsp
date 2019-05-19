@@ -16,72 +16,46 @@
 </head>
 <body>
 
-	<div class="newUser">
 		<form action="signup.do" method="post">
 
-			<table style="width: 50%">
 
-				<tr>
-					<td>First Name</td>
-					<td input type="text" name="first_name" /></td>
-				</tr>
+					First Name
+					<input type="text" name="first_name" >
 
-				<tr>
-					<td>Last Name</td>
-					<td input type="text" name="last_name" /></td>
-				</tr>
+					Last Name
+					<input type="text" name="last_name" >
 
-				<tr>
-					<td>Password</td>
-					<td><input type="password" name="pass" /></td>
-				</tr>
+					Password
+					<input type="password" name="pass" />
 
-				<tr>
-					<td>Street Address</td>
-					<td><input type="text" name="address" /></td>
-				</tr>
+					Street Address
+					<input type="text" name="address" />
 
-				<tr>
-					<td>City</td>
-					<td><input type="text" name="city" /></td>
-				</tr>
+					City
+					<input type="text" name="city" />
 
-				<tr>
-					<td>State</td>
-					<td><input type="text" name="state" /></td>
-				</tr>
+					State
+					<input type="text" name="state" />
 
-				<tr>
-					<td>Zip Code</td>
-					<td><input type="text" name="zip" /></td>
-				</tr>
+					Zip Code
+					<input type="text" name="zip" />
 
 
-				<tr>
-					<td>Date Of Birth</td>
-					<td><input type="text" name="dob" /></td>
-				</tr>
+					Date Of Birth
+					<input type="text" name="dob" />
 				
-				<tr>
-					<td>Gender</td>
-					<td><input type="text" name="gender" /></td>
-				</tr>
+					Gender
+					<input type="text" name="gender" />
 
-				<tr>
-					<td>Beer Style</td>
-					<td><input type="text" name="beerStyle" /></td>
-				</tr>
+					Beer Style
+					<input type="text" name="beerStyle" />
 
-				<tr>
-					<td>Pic URL</td>
-					<td><input type="text" name="picURL" /></td>
-				</tr>
+					Pic URL
+					<input type="text" name="picURL" />
 
-			</table>
-			<input type="submit" value="register" />
+			<input type="submit" value="register" >
 
 		</form>
-	</div>
 
 	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

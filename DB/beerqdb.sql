@@ -352,3 +352,18 @@ INSERT INTO `favorite_bar` (`id`, `bar_id`, `drinker_id`, `date_added`, `comment
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `bar_inventory`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beerqdb`;
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (1, 1);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (1, 2);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (1, 3);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (2, 1);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (2, 2);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 3);
+
+COMMIT;
+
