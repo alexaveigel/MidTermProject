@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 //import javax.persistence.Temporal;
 //import javax.persistence.TemporalType;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="favorite_bar")
@@ -25,7 +27,7 @@ public class FavoriteBar {
 	private int drinkerId;
 	
 	@Column(name = "date_added")
-//	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)
 	private Date dateAdded;
 	
 	private String comment;
