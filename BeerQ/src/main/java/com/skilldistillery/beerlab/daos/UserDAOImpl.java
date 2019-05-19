@@ -96,6 +96,21 @@ public class UserDAOImpl implements UserDAO {
 		em.close();
 		return updatedUser;
 	}
+	
+	@Override
+	public Drinker updateDrinker(Drinker drinker, int addressId) {
+		em = emf.createEntityManager();
+		// open a transaction
+		em.getTransaction().begin();
+		// retrieve a "managed" Drinker entity
+		Drinker updateDrinker = em.find(Drinker.class, drinker.getId());
+		
+		updateDrinker.setAddressId(drinker.getAddressId());
+		
+		em.getTransaction().commit();
+		em.close();
+		return updateDrinker;
+	}
 
 	@Override
 	public boolean destroyUser(int userId) {
