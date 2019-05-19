@@ -41,9 +41,7 @@ public class ProfileController {
 	@RequestMapping(path="login.do")
 	public ModelAndView login(User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("in Controller 10: ***********************" + user);
 		User activeUser = userDAO.findUserByUserNameAndPassword(user.getUsername(), user.getPassword(), user);
-		System.out.println("in Controller: ***********************" + user.getUsername() + user.getPassword());
 		if (activeUser != null) {
 		session.setAttribute("user", activeUser);
 		mv.addObject("activeUser", activeUser);

@@ -62,6 +62,7 @@ public class AddressDAOImpl implements AddressDAO {
 
 	@Override
 	public boolean destroyAddress(int addressId) {
+		em = emf.createEntityManager();
 		boolean itWorked = false;
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();

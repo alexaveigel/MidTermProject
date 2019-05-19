@@ -28,11 +28,11 @@ include file ="css/style.css" %>
 		</select> <input name="keyword"> <input type="submit" value="search">
 	</form>
 
-	<form action="beerBrowse.do">
+	<form action="barBrowse.do">
 		<input type="submit" value="browseBars">
 	</form>
 
-	<form action="barBrowse.do">
+	<form action="beerBrowse.do">
 		<input type="submit" value="browseBeers">
 	</form>
 

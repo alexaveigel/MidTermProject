@@ -64,7 +64,8 @@ public class HomeController {
 		mv.addObject("type", "browse");
 
 		List<Bar> bars = barDAO.findAllBars();
-		mv.addObject("bars", bars);
+		System.out.println("In controller: " + bars);
+		mv.addObject("list", bars);
 		mv.setViewName("/WEB-INF/search.jsp");
 		return mv;
 	}
@@ -75,7 +76,7 @@ public class HomeController {
 		mv.addObject("type", "browse");
 
 		List<Beer> beers = beerDAO.findAllBeers();
-		mv.addObject("beers", beers);
+		mv.addObject("list", beers);
 		mv.setViewName("/WEB-INF/search.jsp");
 
 		return mv;
