@@ -41,7 +41,7 @@ class BarTest {
 	}
 	@Test
 	void test_bar_mapping() {
-	//	assertEquals(1, bar.getAddressId());
+		assertEquals("Denver", bar.getAddress().getCity());
 		assertEquals("The Bar", bar.getName());
 		assertEquals("a message", bar.getMessage());
 		assertEquals("url.com", bar.getWebUrl());
@@ -55,10 +55,10 @@ class BarTest {
 		assertEquals("123 Test Street", address.getStreet());
 	}
 
-//	@Test
-//	void test_bar_to_user_mapping() {
-//		assertEquals(1, bar.getUsers().get(0).getId());
-//	}
+	@Test
+	void test_bar_to_user_mapping() {
+		assertEquals(1, bar.getBeers().get(0).getId());
+	}
 	
 	@Test
 	void test_bar_to_beer_mapping() {

@@ -18,8 +18,8 @@ include file ="css/style.css" %>
 <body>
 		// Reference Beers and Bars for Cards
 	<form action="search.do" method="GET">
-		<label for="search-select">Search Select:</label> <select name = "type"
-			id="search-select">
+		<label for="search-select">Search Select:</label> 
+		<select name = "type" id="search-select">
 			<option value="">--Please choose an option--</option>
 			<option value="beer">Beer Name</option>
 			<option value="bar">Bar Name</option>
