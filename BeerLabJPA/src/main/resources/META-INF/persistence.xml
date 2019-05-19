@@ -11,7 +11,6 @@
 		<!-- entities -->
 		<class>com.skilldistillery.beerlab.entities.Address</class>
 		<class>com.skilldistillery.beerlab.entities.Bar</class>
-		<class>com.skilldistillery.beerlab.entities.BarOwner</class>
 		<class>com.skilldistillery.beerlab.entities.Beer</class>
 		<class>com.skilldistillery.beerlab.entities.Brewery</class>
 		<class>com.skilldistillery.beerlab.entities.Drinker</class>

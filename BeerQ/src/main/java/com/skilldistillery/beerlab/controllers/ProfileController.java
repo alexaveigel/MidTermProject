@@ -36,20 +36,17 @@ public class ProfileController {
 		mv.setViewName("/WEB-INF/signup.jsp");
 		return mv;
 	}
-	@RequestMapping(path="signup.do")
-	public ModelAndView signup(User user, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		User newUser = userDAO.createUser(user);
-		session.setAttribute("user", newUser);
-		mv.setViewName("/WEB-INF/home.jsp");
-		return mv;
-	}
+	
+	
 	@RequestMapping(path="login.do")
 	public ModelAndView login(User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		User activeUser = userDAO.findUserByUserNameAndPassword(user.getUsername(), user.getPassword());
+		System.out.println("in Controller 10: ***********************" + user);
+		User activeUser = userDAO.findUserByUserNameAndPassword(user.getUsername(), user.getPassword(), user);
+		System.out.println("in Controller: ***********************" + user.getUsername() + user.getPassword());
 		if (activeUser != null) {
 		session.setAttribute("user", activeUser);
+		mv.addObject("activeUser", activeUser);
 		mv.setViewName("/WEB-INF/home.jsp");
 		}else {
 			mv.addObject("message", "Your entry doesn't match our records, please try again.");
@@ -95,7 +92,22 @@ public class ProfileController {
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
-
+	@RequestMapping(path="signup.do")
+	public ModelAndView checkUniqueEmail(User user, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User uniqueUser = userDAO.createUser(user);
+		if (uniqueUser == null) {
+			mv.addObject("message", "Your username is taken, try again");
+			mv.setViewName("/WEB-INF/signup.jsp");
+			return mv;
+		}else {
+		mv.addObject("user", uniqueUser);
+		session.setAttribute("user", uniqueUser);
+		mv.setViewName("/WEB-INF/home.jsp");
+		
+		return mv;}
+		
+	}
 	
 
 }

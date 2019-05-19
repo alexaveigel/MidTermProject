@@ -13,7 +13,7 @@
 </style>
 
 <meta charset="UTF-8">
-<title>Signup</title>
+<title>Sign Up</title>
 </head>
 <body>
 	<c:if test = "${empty form }">
