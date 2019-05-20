@@ -71,7 +71,7 @@ public class BeerDAOImpl implements BeerDAO {
 //				+ "JOIN Bar bar on bi.bar_id =  bar.id "
 //				+ "JOIN Address address on bar.address_id = address.id WHERE address.city = :city";
 		
-		String jpql = "SELECT b from Beer b where b.bars.address.city = :city";
+		String jpql = "SELECT b from Beer b JOIN b.bars bars where bars.address.city = :city";
 		
 		
 		List <Beer> cities =
