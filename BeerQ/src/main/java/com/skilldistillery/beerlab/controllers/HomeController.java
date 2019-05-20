@@ -45,12 +45,15 @@ public class HomeController {
 		if (type.equals("beer")) {
 			List<Beer> beersByName = beerDAO.findBeerByName(keyword);
 			mv.addObject("list",beersByName );
+			
 		}else if (type.equals("bar")) {
 			List<Bar> barsByName = barDAO.findBarByName(keyword);
 			mv.addObject("list",barsByName );
+			
 		}else if (type.equals("beercity")) {
 			List<Beer> beersByCity = beerDAO.findBeerByCity(keyword);
 			mv.addObject("list",beersByCity );
+			
 		}else if (type.equals("barcity")) {
 			List<Bar> barsByCity = barDAO.findBarByCity(keyword);
 			mv.addObject("list",barsByCity );

@@ -74,7 +74,7 @@ public class BarDAOImpl implements BarDAO {
 	@Override
 	public List<Bar> findBarByCity(String city) {
 		em = emf.createEntityManager();
-		String query = "SELECT bar FROM Bar bar JOIN  Address a ON bar.address_id = a.id WHERE a.city = :city";
+		String query = "SELECT bar FROM Bar bar JOIN  Address adress ON bar.address_id = address.id WHERE address.city = :city";
 		 List <Bar> cities =
 			      em.createQuery(query, Bar.class)
 			      .setParameter("city", city)

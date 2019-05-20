@@ -44,10 +44,10 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Beer>  findBeerByName(String beerName) {
 		em = emf.createEntityManager();
-		String query = "SELECT b FROM Beers b WHERE b.name LIKE :beerName";
+		String query = "SELECT b FROM Beer b WHERE b.name LIKE :beerName";
 		 List <Beer> beers =
 			      em.createQuery(query, Beer.class)
-			      .setParameter("term", "%"+beerName+"%")
+			      .setParameter("beerName", "%"+beerName+"%")
 			      .getResultList();
 		return beers;
 	}
@@ -55,7 +55,7 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Beer>  findBeerByBrewery(String brewery) {
 		em = emf.createEntityManager();
-		String query = "SELECT b FROM Beers b WHERE b.brewery LIKE :brewery";
+		String query = "SELECT b FROM Beer b WHERE b.brewery LIKE :brewery";
 		 List <Beer> breweries =
 			      em.createQuery(query, Beer.class)
 			      .setParameter("brewery", "%"+brewery+"%")
@@ -66,19 +66,25 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Beer> findBeerByCity(String city) {
 		em = emf.createEntityManager();
-		String query = "SELECT b FROM Beer b JOIN  Bar_inventory bi ON bi.beer_id = b.id "
-				+ "JOIN Bar on bi.bar_id =  Bar.id JOIN Address a on bar.address_id = a.id WHERE a.city = :city";
-		 List <Beer> cities =
-			      em.createQuery(query, Beer.class)
+//		String query = "SELECT beer FROM Beer beer "
+//				+ "JOIN  Bar_inventory bi ON bi.beer_id = beer.id "
+//				+ "JOIN Bar bar on bi.bar_id =  bar.id "
+//				+ "JOIN Address address on bar.address_id = address.id WHERE address.city = :city";
+		
+		String jpql = "SELECT b from Beer b where b.bars.address.city = :city";
+		
+		
+		List <Beer> cities =
+			      em.createQuery(jpql, Beer.class)
 			      .setParameter("city", city)
 			      .getResultList();
+		 
+		 	for (Beer beer : cities) {
+				System.out.println(beer);
+			}
+		 
 		return cities;
 	}
-	
-	
-	
-	
-	
 
 	@Override
 	public List<Beer> findAllBeers() {

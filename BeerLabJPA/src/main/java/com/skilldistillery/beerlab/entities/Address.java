@@ -4,11 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -25,6 +25,18 @@ public class Address {
 
 	private String longitude;
 
+	// Should be optional
+	@OneToOne(mappedBy = "address")
+	private Bar bar;
+
+	
+	public Bar getBar() {
+		return bar;
+	}
+
+	public void setBar(Bar bar) {
+		this.bar = bar;
+	}
 
 	public int getId() {
 		return id;
@@ -139,7 +151,6 @@ public class Address {
 			return false;
 		return true;
 	}
-
 
 	@Override
 	public String toString() {
