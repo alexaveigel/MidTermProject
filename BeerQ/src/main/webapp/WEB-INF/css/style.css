@@ -11,7 +11,11 @@ text-align: right;
 }
 
 body{
-  background-color: #dddfd4
+
+  #grad1 {
+  height: 200px;
+  background-image: linear-gradient(#fff, #dddfd4)!important;/* Standard syntax (must be last) */
+  background-color: #dddfd4 !important;
 }
 
 img.nav-logo {

@@ -1,32 +1,30 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<style type="text/css">
-	<%@
-	include file ="css/style.css" %>
-	</style>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta charset="UTF-8">
 <title>BeerQ</title>
 </head>
 <body>
 
+	<h2>Home Page</h2>
+
+
 
 <!-- NAVBAR -->
-
 <div class="pos-f-t">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="toggleArea">
       <h5 class=>BeerQ Home</h5>
-      <span class="text-muted2"><ul id="navlist"> 
+      <span class="text-muted2"><ul id="navlist">
 			<li><a href="goToHome.do">Home</a></li>
 			<li><a href="goToProfile.do">Profile</a></li>
 			<li><a href="logOut.do">Log Out</a></li>
@@ -50,17 +48,38 @@
 
 
 
+
+
+
+
 	<form action="search.do" method="GET">
 		<label for="search-select">Search Select:</label>
 		<select name = "type" id="search-select">
+
 			<option value="">--Please choose an option--</option>
-			<option value="beer">Beer Name</option>
-			<option value="bar">Bar Name</option>
-			<option value="beercity">Beer By City</option>
+			<option value="barName">Bar Name</option>
 			<option value="barcity">Bar By City</option>
-		</select>
-		<input name="keyword"> <input type="submit" value="search">
+
+<!-- 			<option value="beerName">Beer Name</option>
+			<option value="beercity">Beer By City</option> -->
+		</select> <input name="keyword"> <input type="submit" value="search">
 	</form>
+
+
+	<form action="beerSearch.do" method="GET">
+		<label for="search-select">Search Beers:</label> <select name="type"
+			id="search-select">
+			<option value="">--Please choose an option--</option>
+			<option value="beerName">Beer Name</option>
+			<option value="beercity">Beer By City</option>
+		</select> <input name="keyword"> <input type="submit" value="search">
+
+
+	</form>
+
+
+
+
 
 	<form action="barBrowse.do">
 		<input type="submit" value="browseBars">
@@ -69,6 +88,7 @@
 	<form action="beerBrowse.do">
 		<input type="submit" value="browseBeers">
 	</form>
+
 
 
 
