@@ -16,6 +16,13 @@
 <title>Sign Up</title>
 </head>
 <body>
+
+
+
+
+
+
+
 	<c:if test = "${empty form }">
 	<h1>Select your username and password</h1>
 	<c:if test = "${not empty message }">

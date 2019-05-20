@@ -112,7 +112,12 @@ public class BarDAOImpl implements BarDAO {
 		return itWorked;
 	}
 
-	
+	@Override
+	public Bar findBarById(int barId) {
+		em = emf.createEntityManager();
+		Bar bar = em.find(Bar.class, barId);
+		return bar;
+	}
 
 	
 
