@@ -16,6 +16,10 @@ include file ="css/style.css" %>
 </head>
 <body>
 
+
+
+
+
 	<form action="login.do" method="GET">
 		<input type="email" name="username" Email>
 		<input type="password" name="password" Password>
