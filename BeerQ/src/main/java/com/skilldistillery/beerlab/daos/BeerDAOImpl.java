@@ -13,6 +13,7 @@ import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
 import com.skilldistillery.beerlab.entities.User;
+
 @Service
 public class BeerDAOImpl implements BeerDAO {
 
@@ -42,24 +43,20 @@ public class BeerDAOImpl implements BeerDAO {
 	}
 
 	@Override
-	public List<Beer>  findBeerByName(String beerName) {
+	public List<Beer> findBeerByName(String beerName) {
 		em = emf.createEntityManager();
 		String query = "SELECT b FROM Beer b WHERE b.name LIKE :beerName";
-		 List <Beer> beers =
-			      em.createQuery(query, Beer.class)
-			      .setParameter("beerName", "%"+beerName+"%")
-			      .getResultList();
+		List<Beer> beers = em.createQuery(query, Beer.class).setParameter("beerName", "%" + beerName + "%")
+				.getResultList();
 		return beers;
 	}
 
 	@Override
-	public List<Beer>  findBeerByBrewery(String brewery) {
+	public List<Beer> findBeerByBrewery(String brewery) {
 		em = emf.createEntityManager();
 		String query = "SELECT b FROM Beer b WHERE b.brewery LIKE :brewery";
-		 List <Beer> breweries =
-			      em.createQuery(query, Beer.class)
-			      .setParameter("brewery", "%"+brewery+"%")
-			      .getResultList();
+		List<Beer> breweries = em.createQuery(query, Beer.class).setParameter("brewery", "%" + brewery + "%")
+				.getResultList();
 		return breweries;
 	}
 
@@ -70,19 +67,15 @@ public class BeerDAOImpl implements BeerDAO {
 //				+ "JOIN  Bar_inventory bi ON bi.beer_id = beer.id "
 //				+ "JOIN Bar bar on bi.bar_id =  bar.id "
 //				+ "JOIN Address address on bar.address_id = address.id WHERE address.city = :city";
-		
+
 		String jpql = "SELECT b from Beer b JOIN b.bars bars where bars.address.city = :city";
-		
-		
-		List <Beer> cities =
-			      em.createQuery(jpql, Beer.class)
-			      .setParameter("city", city)
-			      .getResultList();
-		 
-		 	for (Beer beer : cities) {
-				System.out.println(beer);
-			}
-		 
+
+		List<Beer> cities = em.createQuery(jpql, Beer.class).setParameter("city", city).getResultList();
+
+		for (Beer beer : cities) {
+			System.out.println(beer);
+		}
+
 		return cities;
 	}
 
@@ -101,14 +94,16 @@ public class BeerDAOImpl implements BeerDAO {
 		String query = "SELECT fb FROM Favorite_Beer b WHERE fb.approved = 1";
 		List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
 		return beers;
-	}	
-		@Override
-		public List<Beer> unapproved() {
-			em = emf.createEntityManager();
-			String query = "SELECT fb FROM Favorite_Beer b WHERE fb.approved = 0";
-			List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
-			return beers;
 	}
+
+	@Override
+	public List<Beer> unapproved() {
+		em = emf.createEntityManager();
+		String query = "SELECT fb FROM Favorite_Beer b WHERE fb.approved = 0";
+		List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
+		return beers;
+	}
+
 	@Override
 	public Beer updateBeer(int id, Beer beer) {
 		emf.createEntityManager();
@@ -151,12 +146,12 @@ public class BeerDAOImpl implements BeerDAO {
 		em.getTransaction().begin();
 		User userFavBeer = em.find(User.class, user.getId());
 		FavoriteBeer favBeer = em.find(FavoriteBeer.class, beer.getId());
-		
+
 		userFavBeer.getDrinker().getFavBeer().add(favBeer);
-		
+
 		em.getTransaction().commit();
 		em.close();
-		
+
 		return userFavBeer.getDrinker().getFavBeer();
 	}
 
@@ -165,7 +160,7 @@ public class BeerDAOImpl implements BeerDAO {
 		emf.createEntityManager();
 		em.getTransaction().begin();
 		User userFavBeer = em.find(User.class, user.getId());
-		
+
 		return userFavBeer.getDrinker().getFavBeer();
 	}
 
@@ -173,11 +168,9 @@ public class BeerDAOImpl implements BeerDAO {
 	public List<Beer> approveBeer(Beer beer) {
 		em = emf.createEntityManager();
 		String query = "UPDATE Beer SET approved = 1 WHERE b.id = :beerId";
-		 List <Beer> approvedBeer =
-			      em.createQuery(query, Beer.class)
-			      .setParameter("beerId", beer.getId())
-			      .getResultList();
-	 
+		List<Beer> approvedBeer = em.createQuery(query, Beer.class).setParameter("beerId", beer.getId())
+				.getResultList();
+
 		return approvedBeer;
 	}
 
@@ -185,11 +178,8 @@ public class BeerDAOImpl implements BeerDAO {
 	public List<Brewery> getBreweries() {
 		em = emf.createEntityManager();
 		String query = "SELECT brewery FROM Brewery brewery";
-		 List <Brewery> breweries =
-			      em.createQuery(query, Brewery.class)
-			      .getResultList();
-	 
-		
+		List<Brewery> breweries = em.createQuery(query, Brewery.class).getResultList();
+
 		return breweries;
 	}
 
@@ -197,14 +187,12 @@ public class BeerDAOImpl implements BeerDAO {
 	public List<Beer> getSixPack() {
 		em = emf.createEntityManager();
 		String query = "SELECT beer FROM Beer beer";
-		 List <Beer> beers =
-			      em.createQuery(query, Beer.class)
-			      .getResultList();
-		 List<Beer> sixPack = new ArrayList<>();
-		 for (int i = 0 ; i<6; i++) {
-			 sixPack.add(beers.get((int)(Math.random()+1) * (beers.size() - 1)));
-		 }
-		
+		List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
+		List<Beer> sixPack = new ArrayList<>();
+		for (int i = 0; i < 6; i++) {
+			sixPack.add(beers.get((int) (Math.random() + 1) * (beers.size() - 1)));
+		}
+
 		return sixPack;
 	}
 
@@ -212,11 +200,8 @@ public class BeerDAOImpl implements BeerDAO {
 	public List<String> getStyles() {
 		em = emf.createEntityManager();
 		String query = "SELECT distinct beer.style FROM Beer beer";
-		 List <String> styles =
-			      em.createQuery(query, String.class)
-			      .getResultList();
-	 
-		
+		List<String> styles = em.createQuery(query, String.class).getResultList();
+
 		return styles;
 	}
 
@@ -224,13 +209,9 @@ public class BeerDAOImpl implements BeerDAO {
 	public List<Beer> getBeerByABV(double minAbv, double maxAbv) {
 		em = emf.createEntityManager();
 		String query = "SELECT beer FROM Beer beer where abv BETWEEN :bind1 and :bind2";
-		 List <Beer> beers =
-			      em.createQuery(query, Beer.class)
-			      .setParameter("bind1", minAbv)
-			      .setParameter("bind2", maxAbv)
-			      .getResultList();
-	 
-		
+		List<Beer> beers = em.createQuery(query, Beer.class).setParameter("bind1", minAbv).setParameter("bind2", maxAbv)
+				.getResultList();
+
 		return beers;
 	}
 
@@ -238,15 +219,9 @@ public class BeerDAOImpl implements BeerDAO {
 	public List<Beer> getBeerByStyle(String style) {
 		em = emf.createEntityManager();
 		String query = "SELECT beer FROM Beer beer WHERE style = :bind ";
-		 List <Beer> beers =
-			      em.createQuery(query, Beer.class)
-			      .setParameter("bind", style)
-			      .getResultList();
-	 
-		
+		List<Beer> beers = em.createQuery(query, Beer.class).setParameter("bind", style).getResultList();
+
 		return beers;
 	}
-
-
 
 }
