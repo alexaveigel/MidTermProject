@@ -31,8 +31,6 @@
 	<c:if test = "${form == 'drinker' }">
 	<h1>Tell us about yourself</h1>
 	<form action = "drinker.do" method = "post">
-			<input type="hidden" value = "${requestScope.user.id}" name = "userId">
-			${user.id} <br>
 			First Name: <input type="text" name="firstName" ><br>
 			Last Name: <input type="text" name="lastName" ><br>
 			Date Of Birth: <input type="text" name="dob" /><br>
@@ -48,7 +46,6 @@
 		<h1>Tell us where you're at</h1>
 		<h2> so we can tell you what's close</h2>
 	<form action = "address.do" method = "post">
-	<input type="hidden" value = "${sessionScope.user.id}" name = "user">
 			Street: <input type="text" name="street" ><br>
 			City: <input type="text" name="city" ><br>
 			Zip: <input type="text" name="zip" /><br>
