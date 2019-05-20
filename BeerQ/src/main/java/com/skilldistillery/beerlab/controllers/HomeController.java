@@ -27,7 +27,7 @@ public class HomeController {
 	BeerDAO beerDAO;
 	@Autowired
 	UserDAO userDAO;
-	
+
 	@RequestMapping(path = "/")
 	public ModelAndView goToLanding() {
 		ModelAndView mv = new ModelAndView();
@@ -35,31 +35,45 @@ public class HomeController {
 		return mv;
 	}
 
-	@RequestMapping(path = "search.do")
-	public ModelAndView search(String keyword,@RequestParam("type")String type) {
+	@RequestMapping(path = "barSearch.do")
+	public ModelAndView barSearch(String keyword, @RequestParam("type") String type) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		mv.addObject("keyword", keyword);
 		mv.addObject("type", "search");
 		System.out.println(type);
-		if (type.equals("beer")) {
-			List<Beer> beersByName = beerDAO.findBeerByName(keyword);
-			mv.addObject("list",beersByName );
-			
-		}else if (type.equals("bar")) {
+
+		if (type.equals("barName")) {
 			List<Bar> barsByName = barDAO.findBarByName(keyword);
-			mv.addObject("list",barsByName );
-			
-		}else if (type.equals("beercity")) {
-			List<Beer> beersByCity = beerDAO.findBeerByCity(keyword);
-			mv.addObject("list",beersByCity );
-			
-		}else if (type.equals("barcity")) {
+			mv.addObject("barByName", barsByName);
+
+		} else if (type.equals("barcity")) {
 			List<Bar> barsByCity = barDAO.findBarByCity(keyword);
-			mv.addObject("list",barsByCity );
+			mv.addObject("list", barsByCity);
 		}
-		
-		mv.setViewName("/WEB-INF/search.jsp");
+
+		mv.setViewName("/WEB-INF/barSearch.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "beerSearch.do")
+	public ModelAndView beerSearch(String keyword, @RequestParam("type") String type) {
+		ModelAndView mv = new ModelAndView();
+
+		mv.addObject("keyword", keyword);
+		mv.addObject("barByName", "search");
+		System.out.println(type);
+
+		if (type.equals("beerName")) {
+			List<Beer> beersByName = beerDAO.findBeerByName(keyword);
+			mv.addObject("beerByName", beersByName);
+
+		} else if (type.equals("beercity")) {
+			List<Beer> beersByCity = beerDAO.findBeerByCity(keyword);
+			mv.addObject("list", beersByCity);
+		}
+
+		mv.setViewName("/WEB-INF/beerSearch.jsp");
 		return mv;
 	}
 
@@ -107,7 +121,5 @@ public class HomeController {
 
 		return mv;
 	}
-	
-
 
 }

@@ -8,45 +8,25 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<%-- <style type="text/css"> 
-<%@
-include
- 
-file
-="css/style
-.css
-"
- 
-%>
-</style> --%>
+<style type="text/css"> <%@ include file ="css/style.css"%>
+</style>
 <meta charset="UTF-8">
 <title>Search Results</title>
 </head>
 <body>
 
-	<h2>Here are your results</h2>
+	<h2>Here are your Bars</h2>
 
-	<c:if test="${type == 'beer' }">
-
-		<c:forEach var="beer" items="${list }">
-			<!-- create cards here with beer fields -->
-    ${beer}
-    <br>
-	</c:forEach>
-	
-	</c:if>
-	${type}
-
-	<%--  <c:if test= "${type == 'bar' }"> --%>
-
-	<c:forEach var="bar" items="${list }">
-		<!-- create cards here with bar fields -->
-    ${bar}
-    <br>
-	</c:forEach>
-	<%--   </c:if> --%>
-
-
+		<c:forEach var="bar" items="${list }">
+    		${bar}
+    		<br>
+		</c:forEach>
+		
+		
+		<c:forEach var="bar" items="${barByName}">
+    		${bar}
+    		<br>
+		</c:forEach>
 
 	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
