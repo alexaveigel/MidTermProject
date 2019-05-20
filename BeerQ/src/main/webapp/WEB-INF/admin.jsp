@@ -38,8 +38,9 @@
 
 		<c:forEach var="user" items="${userByKeyword }">
 			<!-- create cards here with beer fields -->
-			${user.name }
-			<form action="">
+			${user.username }
+			<form action="goToProfile.do" method="get">
+				<input type= "submit" value="Go to profile">
 			
 			</form>
 		</c:forEach>
