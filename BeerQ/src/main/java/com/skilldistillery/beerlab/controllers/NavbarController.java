@@ -63,8 +63,9 @@ public class NavbarController {
 		
 		List<Beer> listBeersKeyword = beerDAO.findBeerByName(keyword);
 		
+		mv.addObject("type", "Search Beers");
 		mv.addObject("listOfBeers", listBeersKeyword);
-		mv.setViewName("/WEB-INF/adminSearch.jsp");
+		mv.setViewName("/WEB-INF/admin.jsp");
 		return mv;
 		
 	}
@@ -73,9 +74,9 @@ public class NavbarController {
 		ModelAndView mv = new ModelAndView();
 		List<Bar> listBarsKeyword = barDAO.findBarByName(keyword);
 		
-		mv.addObject("lifOfBeers", listBarsKeyword);
+		mv.addObject("listOfBars", listBarsKeyword);
 		
-		mv.setViewName("/WEB-INF/adminSearch.jsp");
+		mv.setViewName("/WEB-INF/admin.jsp");
 		return mv;
 	}
 	@RequestMapping(path = "adminSearchUser.do", method = RequestMethod.GET)
@@ -83,7 +84,7 @@ public class NavbarController {
 		ModelAndView mv = new ModelAndView();
 		List<User> findUserByKeyword = userDAO.findUserByUsername(keyword);
 		mv.addObject("userByKeyword", findUserByKeyword);
-		mv.setViewName("/WEB-INF/adminSearch.jsp");
+		mv.setViewName("/WEB-INF/admin.jsp");
 		return mv;
 	}
 	
@@ -93,7 +94,7 @@ public class NavbarController {
 		
 		List<Beer> unapprovedBeer = beerDAO.unapproved();
 		mv.addObject("unapprovedBeerList", unapprovedBeer);
-		mv.setViewName("/WEB-INF/adminSearch.jsp");
+		mv.setViewName("/WEB-INF/admin.jsp");
 		return mv;
 	}
 	
@@ -103,7 +104,7 @@ public class NavbarController {
 		ModelAndView mv = new ModelAndView();
 		List<Beer> approveBeer = beerDAO.approveBeer(beer);
 		mv.addObject("approvedBeer", approveBeer);
-		mv.setViewName("/WEB-INF/adminSearch.jsp");
+		mv.setViewName("/WEB-INF/admin.jsp");
 		
 		return mv;
 	}
