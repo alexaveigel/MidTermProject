@@ -84,8 +84,8 @@ public class ProfileController {
 	@RequestMapping(path = "editProfile.do")
 	public ModelAndView editProfile(User user) {
 		ModelAndView mv = new ModelAndView();
-		userDAO.updateUser(user);
 		mv.addObject("drinker", user);
+		userDAO.updateUser(user);
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
