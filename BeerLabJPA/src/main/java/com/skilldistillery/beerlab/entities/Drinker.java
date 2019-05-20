@@ -49,8 +49,9 @@ public class Drinker {
 	@Column(name = "pic_url")
 	private String picUrl;
 	
-	@Column(name = "address_id")
-	private int addressId;
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
 
 	@ManyToMany
 	@JoinTable(name = "favorite_beer", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "drinker_id"))
@@ -70,7 +71,7 @@ public class Drinker {
 	}
 
 	public Drinker(int id, User user, String firstName, String lastName, String dob, String gender, String beerStyle,
-			String picUrl, int addressId) {
+			String picUrl, Address address) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -80,21 +81,21 @@ public class Drinker {
 		this.gender = gender;
 		this.beerStyle = beerStyle;
 		this.picUrl = picUrl;
-		this.addressId = addressId;
+		this.address = address;
 	}
 
 	@Override
 	public String toString() {
 		return "Drinker [id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", dob=" + dob + ", gender=" + gender + ", beerStyle=" + beerStyle + ", picUrl=" + picUrl
-				+ ", addressId=" + addressId + "]";
+				+ ", addressId=" + address + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + addressId;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((beerStyle == null) ? 0 : beerStyle.hashCode());
 		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
 		result = prime * result + ((favBeer == null) ? 0 : favBeer.hashCode());
@@ -107,6 +108,14 @@ public class Drinker {
 		return result;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -116,7 +125,10 @@ public class Drinker {
 		if (getClass() != obj.getClass())
 			return false;
 		Drinker other = (Drinker) obj;
-		if (addressId != other.addressId)
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
 			return false;
 		if (beerStyle == null) {
 			if (other.beerStyle != null)
@@ -227,11 +239,4 @@ public class Drinker {
 		this.picUrl = picUrl;
 	}
 
-	public int getAddressId() {
-		return addressId;
-	}
-
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
-	}
 }

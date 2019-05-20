@@ -117,27 +117,28 @@ public class ProfileController {
 
 	}
 
-	@RequestMapping(path = "drinker.do")
+	@RequestMapping(path = "drinker.do", method = RequestMethod.POST)
 	public ModelAndView addDrinkerToTable(Drinker drinker, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = (User) session.getAttribute("user");
 		drinker.setUser(user);
-		System.out.println("Drinker: " + drinker + " User " + user.getId());
 		Drinker newDrinker = userDAO.createDrinker(drinker);
-
+		session.setAttribute("drinker", newDrinker);
 		mv.addObject("form", "address");
 		mv.addObject("drinker", newDrinker);
 		mv.setViewName("/WEB-INF/signup.jsp");
 		return mv;
 	}
 
-	@RequestMapping(path = "address.do")
-	public ModelAndView addAddressToDrinker(User user, Address address, HttpSession session) {
+	@RequestMapping(path = "address.do", method = RequestMethod.POST)
+	public ModelAndView addAddressToDrinker(Address address, HttpSession session) {
+		System.out.println(address);
 		ModelAndView mv = new ModelAndView();
-		Address drinkerAddress = adDAO.createAddress(address);
-		Drinker updateDrinker = userDAO.updateDrinker(user.getDrinker(), drinkerAddress.getId());
+		Drinker drinker = (Drinker) session.getAttribute("drinker");
+		System.out.println(drinker);
+		System.out.println(drinker.getAddress());
+		adDAO.updateAddress(drinker.getAddress().getId(), address);
 
-		mv.addObject("drinker", updateDrinker);
 		mv.setViewName("/WEB-INF/home.jsp");
 		return mv;
 	}
