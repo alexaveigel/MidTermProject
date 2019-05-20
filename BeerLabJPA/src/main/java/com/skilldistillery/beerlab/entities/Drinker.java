@@ -38,8 +38,8 @@ public class Drinker {
 	private String lastName;
 	
 	@Column(name = "date_of_birth")
-	@Temporal(TemporalType.DATE)
-	private Date dob;
+//	@Temporal(TemporalType.DATE)
+	private String dob;
 	
 	private String gender;
 	
@@ -69,7 +69,7 @@ public class Drinker {
 		super();
 	}
 
-	public Drinker(int id, User user, String firstName, String lastName, Date dob, String gender, String beerStyle,
+	public Drinker(int id, User user, String firstName, String lastName, String dob, String gender, String beerStyle,
 			String picUrl, int addressId) {
 		super();
 		this.id = id;
@@ -195,11 +195,11 @@ public class Drinker {
 		this.lastName = lastName;
 	}
 
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 

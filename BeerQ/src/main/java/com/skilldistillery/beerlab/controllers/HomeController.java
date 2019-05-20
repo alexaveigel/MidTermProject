@@ -41,25 +41,27 @@ public class HomeController {
 		
 		mv.addObject("keyword", keyword);
 		mv.addObject("type", "search");
-		System.out.println(type);
 		if (type.equals("beer")) {
 			List<Beer> beersByName = beerDAO.findBeerByName(keyword);
 			mv.addObject("list",beersByName );
+			mv.setViewName("/WEB-INF/beerSearch.jsp");
 			
 		}else if (type.equals("bar")) {
 			List<Bar> barsByName = barDAO.findBarByName(keyword);
+			mv.setViewName("/WEB-INF/barSearch.jsp");
 			mv.addObject("list",barsByName );
 			
 		}else if (type.equals("beercity")) {
 			List<Beer> beersByCity = beerDAO.findBeerByCity(keyword);
 			mv.addObject("list",beersByCity );
+			mv.setViewName("/WEB-INF/beerSearch.jsp");
 			
 		}else if (type.equals("barcity")) {
 			List<Bar> barsByCity = barDAO.findBarByCity(keyword);
 			mv.addObject("list",barsByCity );
+			mv.setViewName("/WEB-INF/barSearch.jsp");
 		}
 		
-		mv.setViewName("/WEB-INF/search.jsp");
 		return mv;
 	}
 
