@@ -86,10 +86,18 @@ public class ProfileController {
 	}
 
 	@RequestMapping(path = "editProfile.do")
-	public ModelAndView editProfile(User user) {
+	public ModelAndView editProfile(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		User user = (User) session.getAttribute("user");
+		Drinker drinker = (Drinker) session.getAttribute("drinker");
+//		session.setAttribute("drinker", drinker);
+		Address address = (Address) session.getAttribute("address");
+//		session.setAttribute("address", address);
+		
 		mv.addObject("user", user);
-		userDAO.updateUser(user);
+		mv.addObject("drinker", drinker);
+		mv.addObject("address", address);
+		mv.addObject("type", "edit");
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
