@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -71,8 +72,8 @@ public class HomeController {
 		mv.addObject("type", "browse");
 
 		List<Bar> bars = barDAO.findAllBars();
-		mv.addObject("list", bars);
-		mv.setViewName("/WEB-INF/search.jsp");
+		mv.addObject("bars", bars);
+		mv.setViewName("/WEB-INF/barSearch.jsp");
 		return mv;
 	}
 
@@ -109,6 +110,26 @@ public class HomeController {
 
 		return mv;
 	}
+	
+	@RequestMapping(path = "goToBarProfile.do", method = RequestMethod.GET)
+    public ModelAndView goToBarProfile(@RequestParam("barId") int barId) {
+        ModelAndView mv = new ModelAndView();
+        Bar bar = barDAO.findBarById(barId);
+        mv.addObject("bar", bar);
+        
+        
+        mv.setViewName("/WEB-INF/barProfile.jsp");
+        return mv;
+    }
+        
+    @RequestMapping(path = "goToBeerProfile.do")
+    public ModelAndView goToBeerProfile() {
+        ModelAndView mv = new ModelAndView();
+        
+        
+        mv.setViewName("/WEB-INF/beerProfile.jsp");
+        return mv;
+    }
 	
 
 

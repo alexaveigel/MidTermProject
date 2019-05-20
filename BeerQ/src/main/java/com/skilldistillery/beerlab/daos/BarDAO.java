@@ -21,4 +21,6 @@ public interface BarDAO {
 	// Destroy
 	public boolean destroyBar(int id);
 
+	Bar findBarById(int barId);
+
 }

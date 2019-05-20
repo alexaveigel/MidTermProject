@@ -55,11 +55,11 @@ file
 	<h2>Here are your Bar results</h2>
 
 
-	<c:forEach var="bar" items="${list }">
-		<!-- create cards here with bar fields -->
-    ${bar}
-    <br>
-	</c:forEach>
+    <c:forEach var="bar" items="${bars}">
+        <li>
+        <a href="goToBarProfile.do?barId=${bar.id}"> ${bar.name}</a> 
+        </li>
+        </c:forEach> 
 	
 
 
