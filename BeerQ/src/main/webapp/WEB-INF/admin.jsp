@@ -66,6 +66,16 @@
 			</form>
 		</c:forEach>
 	</c:if>
+	<c:if test="${type == 'unapproved' }">
+
+		<c:forEach var="beer" items="${unapprovedBeerList }">
+			<!-- create cards here with bar fields -->
+			${beer.name }
+			<form action="getBeer.do" method="get">
+				<input type= "submit" value="Go to profile">
+			</form>
+		</c:forEach>
+	</c:if>
 
 
 

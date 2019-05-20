@@ -99,6 +99,8 @@ public class NavbarController {
 		ModelAndView mv = new ModelAndView();
 
 		List<Beer> unapprovedBeer = beerDAO.unapproved();
+		
+		mv.addObject("type", "unapproved");
 		mv.addObject("unapprovedBeerList", unapprovedBeer);
 		mv.setViewName("/WEB-INF/admin.jsp");
 		return mv;
