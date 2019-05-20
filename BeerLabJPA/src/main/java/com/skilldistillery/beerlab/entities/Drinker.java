@@ -1,6 +1,5 @@
 package com.skilldistillery.beerlab.entities;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,53 +11,61 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 //import javax.persistence.Temporal;
 //import javax.persistence.TemporalType;
-
-
 
 @Entity
 public class Drinker {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 //	@OneToOne(cascade = CascadeType.PERSIST)
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@Column(name = "first_name")
 	private String firstName;
-	
+
 	@Column(name = "last_name")
 	private String lastName;
-	
+
 	@Column(name = "date_of_birth")
 //	@Temporal(TemporalType.DATE)
 	private String dob;
-	
+
 	private String gender;
-	
+
 	@Column(name = "beer_style")
 	private String beerStyle;
-	
+
 	@Column(name = "pic_url")
 	private String picUrl;
-	
-	@Column(name = "address_id")
-	private int addressId;
+
+//	@Column(name = "address_id")
+//	private int addressId;
 
 	@ManyToMany
 	@JoinTable(name = "favorite_beer", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "drinker_id"))
 	private List<FavoriteBeer> favBeer;
-	
-	
+
+	@ManyToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
+
 	public List<FavoriteBeer> getFavBeer() {
 		return favBeer;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public void setFavBeer(List<FavoriteBeer> favBeer) {
@@ -69,32 +76,18 @@ public class Drinker {
 		super();
 	}
 
-	public Drinker(int id, User user, String firstName, String lastName, String dob, String gender, String beerStyle,
-			String picUrl, int addressId) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dob = dob;
-		this.gender = gender;
-		this.beerStyle = beerStyle;
-		this.picUrl = picUrl;
-		this.addressId = addressId;
-	}
-
 	@Override
 	public String toString() {
-		return "Drinker [id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", dob=" + dob + ", gender=" + gender + ", beerStyle=" + beerStyle + ", picUrl=" + picUrl
-				+ ", addressId=" + addressId + "]";
+		return "Drinker [id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", dob="
+				+ dob + ", gender=" + gender + ", beerStyle=" + beerStyle + ", picUrl=" + picUrl + ", favBeer="
+				+ favBeer + ", address=" + address + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + addressId;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((beerStyle == null) ? 0 : beerStyle.hashCode());
 		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
 		result = prime * result + ((favBeer == null) ? 0 : favBeer.hashCode());
@@ -116,7 +109,10 @@ public class Drinker {
 		if (getClass() != obj.getClass())
 			return false;
 		Drinker other = (Drinker) obj;
-		if (addressId != other.addressId)
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
 			return false;
 		if (beerStyle == null) {
 			if (other.beerStyle != null)
@@ -227,11 +223,4 @@ public class Drinker {
 		this.picUrl = picUrl;
 	}
 
-	public int getAddressId() {
-		return addressId;
-	}
-
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
-	}
 }
