@@ -2,6 +2,9 @@ package com.skilldistillery.beerlab.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.coyote.http11.Http11AprProtocol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,9 +41,11 @@ public class NavbarController {
 	}
 
 	@RequestMapping(path = "goToProfile.do", method = RequestMethod.GET)
-	public ModelAndView goToProfile(User user, Drinker drinker) {
+	public ModelAndView goToProfile(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-
+		Drinker drinker = (Drinker) session.getAttribute("drinker");
+		System.out.println(drinker);
+		mv.addObject("drinker", drinker);
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}

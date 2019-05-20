@@ -47,13 +47,10 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
   <p>Beer Style: ${drinker.beerStyle}</p>
   <p>Profile Picture: ${drinker.picUrl}</p>
   <h5 class=>Address</h5>
-  <p>Street: ${drinker.address.street}</p>
-  <p>City : ${drinker.address.city}</p>
-  <p>State: ${drinker.address.state}</p>
-  <p>Zip: ${drinker.address.zip}</p>
-  <p>Country: ${drinker.address.country}</p>
-  <p>Latitude: ${drinker.address.latitude}</p>
-  <p>Longitude: ${drinker.address.longitude}</p>
+  <p>Street: ${address.street}</p>
+  <p>City : ${address.city}</p>
+  <p>State: ${address.state}</p>
+  <p>Zip: ${address.zip}</p>
 </div>
 
   	<form action="editProfile.do" method="get">
