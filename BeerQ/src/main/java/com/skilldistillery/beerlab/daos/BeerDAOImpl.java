@@ -91,7 +91,7 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Beer> approved() {
 		em = emf.createEntityManager();
-		String query = "SELECT fb FROM Favorite_Beer b WHERE fb.approved = 1";
+		String query = "SELECT b FROM Beer b WHERE b.approved = 1";
 		List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
 		return beers;
 	}
@@ -99,7 +99,7 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Beer> unapproved() {
 		em = emf.createEntityManager();
-		String query = "SELECT fb FROM Favorite_Beer fb WHERE fb.approved = 0";
+		String query = "SELECT b FROM Beer b WHERE b.approved = 0";
 		List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
 		return beers;
 	}

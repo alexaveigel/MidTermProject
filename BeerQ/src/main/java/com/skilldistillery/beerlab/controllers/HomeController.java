@@ -93,7 +93,7 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("beer", beer);
 		mv.addObject("type", "beer");
-		mv.setViewName("/WEB-INF/profile.jsp");
+		mv.setViewName("/WEB-INF/beerProfile.jsp");
 
 		return mv;
 	}
@@ -103,7 +103,7 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bar", bar);
 		mv.addObject("type", "bar");
-		mv.setViewName("/WEB-INF/profile.jsp");
+		mv.setViewName("/WEB-INF/barProfile.jsp");
 
 		return mv;
 	}
