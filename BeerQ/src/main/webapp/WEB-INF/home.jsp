@@ -17,6 +17,9 @@
 <body>
 
 	<h2>Home Page</h2>
+	
+	<br>
+	<h3>Search</h3>
 
 	<form action="barSearch.do" method="GET">
 		<label for="search-select">Search Bars:</label> <select name="type"
@@ -24,11 +27,8 @@
 			<option value="">--Please choose an option--</option>
 			<option value="barName">Bar Name</option>
 			<option value="barcity">Bar By City</option>
-<!-- 			<option value="beerName">Beer Name</option>
-			<option value="beercity">Beer By City</option> -->
 		</select> <input name="keyword"> <input type="submit" value="search">
 	</form>
-
 
 	<form action="beerSearch.do" method="GET">
 		<label for="search-select">Search Beers:</label> <select name="type"
@@ -39,9 +39,8 @@
 		</select> <input name="keyword"> <input type="submit" value="search">
 	</form>
 
-
-
-
+		<br>
+		<h3>Browse</h3>
 
 	<form action="barBrowse.do">
 		<input type="submit" value="browseBars">
@@ -50,9 +49,17 @@
 	<form action="beerBrowse.do">
 		<input type="submit" value="browseBeers">
 	</form>
-
-	<form></form>
-
+	
+	<!-- <br>
+ 	<h3>Profiles</h3>
+ 	<form action="goToBarProfile.do">
+		<input type="submit" value="Go To Bar Profile">
+	</form>
+ 	
+ 	<form action="goToBeerProfile.do">
+		<input type="submit" value="Go To Beer Profile">
+	</form> -->
+ 
 </body>
 </html>
 

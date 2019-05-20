@@ -9,10 +9,10 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <%@include file="css/style.css" %>
 </style> 
 <meta charset="UTF-8">
-<title>Bar / Beer Profile</title>
+<title>Bar Profile</title>
 </head>
 <body>
-
+<h2>Bar Profile</h2>
 
 
 

@@ -118,8 +118,22 @@ public class HomeController {
 		mv.addObject("bar", bar);
 		mv.addObject("type", "bar");
 		mv.setViewName("/WEB-INF/profile.jsp");
-
+		
 		return mv;
 	}
+	
+//	@RequestMapping(path = "goToBarProfile.do")
+//	public ModelAndView goToBarProfile() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("/WEB-INF/barProfile.jsp");
+//		return mv;
+//	}
+//	
+//	@RequestMapping(path = "goToBeerProfile.do")
+//	public ModelAndView goToBeerProfile() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("/WEB-INF/beerProfile.jsp");
+//		return mv;
+//	}
 
 }
