@@ -45,9 +45,6 @@ public class Drinker {
 	@Column(name = "pic_url")
 	private String picUrl;
 
-//	@Column(name = "address_id")
-//	private int addressId;
-
 	@ManyToMany
 	@JoinTable(name = "favorite_beer", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "drinker_id"))
 	private List<FavoriteBeer> favBeer;
@@ -56,6 +53,7 @@ public class Drinker {
 	@JoinColumn(name = "address_id")
 	private Address address;
 
+	
 	public List<FavoriteBeer> getFavBeer() {
 		return favBeer;
 	}
@@ -75,6 +73,7 @@ public class Drinker {
 	public Drinker() {
 		super();
 	}
+
 
 	@Override
 	public String toString() {
