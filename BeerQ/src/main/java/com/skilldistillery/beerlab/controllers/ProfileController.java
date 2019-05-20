@@ -46,6 +46,10 @@ public class ProfileController {
 		User activeUser = userDAO.findUserByUserNameAndPassword(user.getUsername(), user.getPassword(), user);
 		if (activeUser != null) {
 			session.setAttribute("user", activeUser);
+			Drinker drinker = activeUser.getDrinker();
+			session.setAttribute("drinker", drinker);
+			Address address = drinker.getAddress();
+			session.setAttribute("address", address);
 			mv.addObject("activeUser", activeUser);
 			mv.setViewName("/WEB-INF/home.jsp");
 		} else {
@@ -84,6 +88,7 @@ public class ProfileController {
 	@RequestMapping(path = "editProfile.do")
 	public ModelAndView editProfile(User user) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", user);
 		userDAO.updateUser(user);
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
