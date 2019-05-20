@@ -135,8 +135,6 @@ public class ProfileController {
 		System.out.println(address);
 		ModelAndView mv = new ModelAndView();
 		Drinker drinker = (Drinker) session.getAttribute("drinker");
-		System.out.println(drinker);
-		System.out.println(drinker.getAddress());
 		adDAO.updateAddress(drinker.getAddress().getId(), address);
 
 		mv.setViewName("/WEB-INF/home.jsp");

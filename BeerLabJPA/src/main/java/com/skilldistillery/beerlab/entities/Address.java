@@ -1,9 +1,12 @@
 package com.skilldistillery.beerlab.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -17,6 +20,8 @@ public class Address {
 
 	private String city;
 
+	private String state;
+	
 	private String zip;
 
 	private String country;
@@ -29,7 +34,25 @@ public class Address {
 	@OneToOne(mappedBy = "address")
 	private Bar bar;
 
+	@OneToMany(mappedBy = "address")
+	private List<Drinker> drinkers;
 	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public List<Drinker> getDrinkers() {
+		return drinkers;
+	}
+
+	public void setDrinkers(List<Drinker> drinkers) {
+		this.drinkers = drinkers;
+	}
+
 	public Bar getBar() {
 		return bar;
 	}
