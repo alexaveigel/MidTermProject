@@ -54,10 +54,7 @@ public class Bar {
 		}
 	}
 
-	
-	// _____________________________________
-	
-	
+
 	// One to One unidirectional with Address
 	// Deleted regular field called addressId so this field wouldn't conflict
 	@OneToOne(cascade = CascadeType.PERSIST)
