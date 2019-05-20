@@ -54,11 +54,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `drinker` ;
 
 CREATE TABLE IF NOT EXISTS `drinker` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
-  `date_of_birth` DATE NOT NULL,
+  `date_of_birth` VARCHAR(30) NOT NULL,
   `gender` VARCHAR(45) NULL,
   `beer_style` VARCHAR(45) NULL,
   `pic_url` VARCHAR(500) NULL,
@@ -107,7 +107,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `bar_owner` ;
 
 CREATE TABLE IF NOT EXISTS `bar_owner` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `bar_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   INDEX `fk_bar_owner_bar1_idx` (`bar_id` ASC),
@@ -264,7 +264,7 @@ START TRANSACTION;
 USE `beerqdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (1, 'user@user', 'pass', 'admin');
 INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (2, 'a@user', 'pass', 'user');
-INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (3, 'some@user', 'user', 'user');
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES (3, 'some@user', 'pass', 'user');
 
 COMMIT;
 

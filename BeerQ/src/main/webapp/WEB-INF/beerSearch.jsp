@@ -4,21 +4,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style type="text/css">
-	<%@
-	include file ="css/style.css" %>
-	</style>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-
-
+<%-- <style type="text/css"> 
+<%@
+include
+ 
+file
+="css/style
+.css
+"
+ 
+%>
+</style> --%>
 <meta charset="UTF-8">
-<title>BeerQ</title>
+<title>Search Results</title>
 </head>
 <body>
-
 
 <!-- NAVBAR -->
 
@@ -48,32 +52,31 @@
 
 <!-- NAVBAR End -->
 
+	<h2>Here are your Beer results</h2>
 
 
-	<form action="search.do" method="GET">
-		<label for="search-select">Search Select:</label>
-		<select name = "type" id="search-select">
-			<option value="">--Please choose an option--</option>
-			<option value="beer">Beer Name</option>
-			<option value="bar">Bar Name</option>
-			<option value="beercity">Beer By City</option>
-			<option value="barcity">Bar By City</option>
-		</select>
-		<input name="keyword"> <input type="submit" value="search">
-	</form>
-
-	<form action="barBrowse.do">
-		<input type="submit" value="browseBars">
-	</form>
-
-	<form action="beerBrowse.do">
-		<input type="submit" value="browseBeers">
-	</form>
+		<c:forEach var="beer" items="${list }">
+			<!-- create cards here with beer fields -->
+    ${beer}
+    <br>
+	</c:forEach>
+	
 
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+	<script src="js/scripts.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
 </body>
 </html>

@@ -52,27 +52,15 @@ file
 
 <!-- NAVBAR End -->
 
-	<h2>Here are your results</h2>
+	<h2>Here are your Bar results</h2>
 
-	<c:if test="${type == 'beer' }">
-
-		<c:forEach var="beer" items="${list }">
-			<!-- create cards here with beer fields -->
-    ${beer}
-    <br>
-	</c:forEach>
-	
-	</c:if>
-	${type}
-
-	<%--  <c:if test= "${type == 'bar' }"> --%>
 
 	<c:forEach var="bar" items="${list }">
 		<!-- create cards here with bar fields -->
     ${bar}
     <br>
 	</c:forEach>
-	<%--   </c:if> --%>
+	
 
 
 
