@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.beerlab.entities.Address;
 import com.skilldistillery.beerlab.entities.Drinker;
 import com.skilldistillery.beerlab.entities.User;
 
@@ -53,7 +54,12 @@ public class UserDAOImpl implements UserDAO {
 
 		// start the transaction
 		em.getTransaction().begin();
-
+		
+		Address temp = new Address();
+		
+		em.persist(temp);
+		drinker.setAddress(temp);
+		
 		// write the user to the database
 		em.persist(drinker);
 		// update the "local" user object
