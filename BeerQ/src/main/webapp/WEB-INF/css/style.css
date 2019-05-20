@@ -11,7 +11,7 @@ text-align: right;
 }
 
 body{
-  background-color: #dddfd4
+  background-color: #dddfd4 !important;
 }
 
 img.nav-logo {

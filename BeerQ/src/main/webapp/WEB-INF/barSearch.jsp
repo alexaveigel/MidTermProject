@@ -8,17 +8,10 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<%-- <style type="text/css"> 
-<%@
-include
- 
-file
-="css/style
-.css
-"
- 
-%>
-</style> --%>
+<style type="text/css">
+    <%@
+    include file ="css/style.css" %>
+    </style>
 <meta charset="UTF-8">
 <title>Search Results</title>
 </head>
@@ -55,12 +48,17 @@ file
 	<h2>Here are your Bar results</h2>
 
 
-	<c:forEach var="bar" items="${list }">
-		<!-- create cards here with bar fields -->
-    ${bar}
-    <br>
-	</c:forEach>
+    <c:forEach var="bar" items="${bars}">
+        <li>
+        <a href="goToBarProfile.do?barId=${bar.id}"> ${bar.name}</a> 
+        </li>
+        </c:forEach> 
 	
+	<c:forEach var="bar" items="${list}">
+        <li>
+        <a href="goToBarProfile.do?barId=${bar.id}"> ${bar.name}</a> 
+        </li>
+        </c:forEach> 
 
 
 
