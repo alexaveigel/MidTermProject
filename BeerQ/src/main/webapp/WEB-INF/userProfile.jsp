@@ -26,9 +26,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 			<li><a href="goToAdmin.do">Admin</a></li></ul> </span>
     </div>
   </div>
-
-
-  <nav class="navbar navbar-dark" style="background-color: #173e43">
+ <nav class="navbar navbar-dark" style="background-color: #173e43">
 <a href="goToHome.do" class="pull-right "><img src="/img/logo.jpg" class="nav-logo" height="42" width="42"></a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +38,33 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 
 
 <!-- NAVBAR End -->
+
+<div>
+  <h5>Name: ${drinker.firstName} ${drinker.lastName}</h5>
+  <input type="hidden" path = "id" value="${drinker.id }"/>
+  <p>D.O.B.: ${drinker.dob}</p>
+  <p>Gender: ${drinker.gender}</p>
+  <p>Beer Style: ${drinker.beerStyle}</p>
+  <p>Profile Picture: ${drinker.picUrl}</p>
+  <h5 class=>Address</h5>
+  <p>Street: ${drinker.address.street}</p>
+  <p>City : ${drinker.address.city}</p>
+  <p>State: ${drinker.address.state}</p>
+  <p>Zip: ${drinker.address.zip}</p>
+  <p>Country: ${drinker.address.country}</p>
+  <p>Latitude: ${drinker.address.latitude}</p>
+  <p>Longitude: ${drinker.address.longitude}</p>
+</div>
+
+  	<form action="editProfile.do" method="get">
+		<input type= "submit" value="Edit Profile">
+	</form>
+  	<form action=".do" method="get">
+		<input type= "submit" value="Change Password">
+	</form>
+	
+
+ 
 
 
 	<script src="js/scripts.js"></script>

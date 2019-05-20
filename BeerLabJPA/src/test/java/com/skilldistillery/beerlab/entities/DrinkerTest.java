@@ -47,7 +47,7 @@ class DrinkerTest {
 		assertEquals("Girl", drinker.getGender());
 		assertEquals("IPA", drinker.getBeerStyle());
 		assertEquals("pic.com", drinker.getPicUrl());
-		assertEquals(1, drinker.getAddressId());
+		assertEquals(1, drinker.getAddress().getId());
 	}
 	
 	@Test

@@ -85,6 +85,7 @@ public class ProfileController {
 	public ModelAndView editProfile(User user) {
 		ModelAndView mv = new ModelAndView();
 		userDAO.updateUser(user);
+		mv.addObject("drinker", user);
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
