@@ -51,7 +51,8 @@
 			<option value="bar">Bar Name</option>
 			<option value="beercity">Beer By City</option>
 			<option value="barcity">Bar By City</option>
-		</select> <input name="keyword"> <input type="submit" value="search">
+		</select> 
+		<input name="keyword"> <input type="submit" value="search">
 	</form>
 
 	<form action="barBrowse.do">
