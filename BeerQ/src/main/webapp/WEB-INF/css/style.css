@@ -1,1 +1,42 @@
+.navbar-collapse{
+  top:30px !important;
+  position:relative;
+}
 
+.toggleArea{
+background-color: #3fb0ac;
+text-align: right;
+  padding-right: 16px;
+
+}
+
+body{
+  background-color: #dddfd4
+}
+
+img.nav-logo {
+  border-radius: 50%;
+}
+
+.text-muted2, #navlist{
+  color:#dddfd4 !important;
+
+}
+
+a{
+  color:#dddfd4 !important;
+}
+
+ul {
+    display: block;
+    list-style-type: none;
+    /* margin-block-start: none;
+    margin-block-end: none; */
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+ul#navlist{
+  margin: 0px;
+}
