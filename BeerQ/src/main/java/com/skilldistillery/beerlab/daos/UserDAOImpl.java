@@ -87,8 +87,17 @@ public class UserDAOImpl implements UserDAO {
 		updatedUser.getDrinker().setGender(user.getDrinker().getGender());
 		updatedUser.getDrinker().setBeerStyle(user.getDrinker().getBeerStyle());
 		updatedUser.getDrinker().setPicUrl(user.getDrinker().getPicUrl());
-		updatedUser.getDrinker().setAddressId(user.getDrinker().getAddressId());
-
+		
+		
+		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getStreet());
+		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getCity());
+		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getState());
+		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getZip());
+		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getCountry());
+		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getLatitude());
+		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getLongitude());
+		
+		
 		em.getTransaction().commit();
 		em.close();
 		return updatedUser;
@@ -102,7 +111,7 @@ public class UserDAOImpl implements UserDAO {
 		// retrieve a "managed" Drinker entity
 		Drinker updateDrinker = em.find(Drinker.class, drinker.getId());
 
-		updateDrinker.setAddressId(drinker.getAddressId());
+		updateDrinker.setAddress(drinker.getAddress());
 
 		em.getTransaction().commit();
 		em.close();
