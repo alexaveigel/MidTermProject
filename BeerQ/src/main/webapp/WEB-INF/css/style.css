@@ -1,46 +1,42 @@
-body {
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+.navbar-collapse{
+  top:30px !important;
+  position:relative;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 700;
+.toggleArea{
+background-color: #3fb0ac;
+text-align: right;
+  padding-right: 16px;
+
 }
 
-header.masthead {
-  position: relative;
-  background-color: #343a40;
-  background: url("../img/beer.jpeg") no-repeat center center;
-  background-size: cover;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+body{
+  background-color: #dddfd4
 }
 
-header.masthead .overlay {
-  position: absolute;
-  background-color: #212529;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.3;
+img.nav-logo {
+  border-radius: 50%;
 }
 
-header.masthead h1 {
-  font-size: 2rem;
+.text-muted2, #navlist{
+  color:#dddfd4 !important;
+
 }
 
-@media (min-width: 768px) {
-  header.masthead {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
-  }
-  header.masthead h1 {
-    font-size: 3rem;
-  }
+a{
+  color:#dddfd4 !important;
+}
+
+ul {
+    display: block;
+    list-style-type: none;
+    /* margin-block-start: none;
+    margin-block-end: none; */
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+ul#navlist{
+  margin: 0px;
 }
