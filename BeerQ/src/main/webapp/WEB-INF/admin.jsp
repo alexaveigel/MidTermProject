@@ -36,17 +36,20 @@
 
 	<c:if test="${type == 'Search Users' }">
 
-		<c:forEach var="user" items="${list }">
+		<c:forEach var="user" items="${userByKeyword }">
 			<!-- create cards here with beer fields -->
-			<form action="">
+			${user.username }
+			<form action="goToProfile.do" method="get">
+				<input type= "submit" value="Go to profile">
 			
 			</form>
 		</c:forEach>
 	</c:if>
 	<c:if test="${type == 'Search Beers' }">
 
-		<c:forEach var="beer" items="${list }">
+		<c:forEach var="beer" items="${listOfBeers }">
 			<!-- create cards here with beer fields -->
+			${beer.name }
 			<form action="getBeer.do" method="get">
 				<input type= "submit" value="Go to profile">
 			</form>
@@ -55,8 +58,9 @@
 	</c:if>
 	<c:if test="${type == 'Search Bars' }">
 
-		<c:forEach var="bar" items="${list }">
+		<c:forEach var="bar" items="${listOfBars }">
 			<!-- create cards here with bar fields -->
+			${bar.name }
 			<form action="getBar.do" method="get">
 				<input type= "submit" value="Go to profile">
 			</form>

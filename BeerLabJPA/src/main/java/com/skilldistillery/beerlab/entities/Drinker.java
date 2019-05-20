@@ -28,7 +28,6 @@ public class Drinker {
 	
 //	@OneToOne(cascade = CascadeType.PERSIST)
 	@OneToOne(cascade = CascadeType.MERGE)
-//	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	

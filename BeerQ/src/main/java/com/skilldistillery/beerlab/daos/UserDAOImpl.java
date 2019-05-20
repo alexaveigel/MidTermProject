@@ -54,7 +54,6 @@ public class UserDAOImpl implements UserDAO {
 		// start the transaction
 		em.getTransaction().begin();
 
-//		em.persist(drinker.getUser());
 		// write the user to the database
 		em.persist(drinker);
 		// update the "local" user object
