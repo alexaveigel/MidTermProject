@@ -103,16 +103,21 @@ public class ProfileController {
 		}else {
 		mv.addObject("form", "drinker");
 		session.setAttribute("user", uniqueUser);
-		mv.setViewName("/WEB-INF/home.jsp");
+		mv.setViewName("/WEB-INF/signup.jsp");
 		
+		System.out.println(uniqueUser);
 		return mv;}
 		
 	}
 	
 	@RequestMapping(path="drinker.do")
-	public ModelAndView addDrinkerToTable(Drinker drinker) {
+	public ModelAndView addDrinkerToTable(Drinker drinker, User user, HttpSession session ) {
 		ModelAndView mv = new ModelAndView();
+		session.getAttribute("user");
+		
+		System.out.println("Drinker: " + drinker + " User " + user.getId());
 		Drinker newDrinker = userDAO.createDrinker(drinker);
+		
 		mv.addObject("form", "address");
 		mv.addObject("drinker", newDrinker);
 		mv.setViewName("/WEB-INF/signup.jsp");

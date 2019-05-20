@@ -83,7 +83,7 @@ public class UserDAOImpl implements UserDAO {
 		updatedUser.setUsername(user.getUsername());
 		updatedUser.setPassword(user.getPassword());
 		updatedUser.setRole(user.getRole());
-		
+	
 		updatedUser.getDrinker().setFirstName(user.getDrinker().getFirstName());
 		updatedUser.getDrinker().setLastName(user.getDrinker().getLastName());
 		updatedUser.getDrinker().setDob(user.getDrinker().getDob());
