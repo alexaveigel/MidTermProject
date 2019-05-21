@@ -13,8 +13,8 @@
     <%@
     include file ="css/style.css" %>
     </style>
-    
-    
+
+
 <meta charset="UTF-8">
 <title>Bar Profile</title>
 </head>
@@ -77,13 +77,13 @@
 							${bar.address.city} ${bar.address.state} ${bar.address.zip}<br>
 							<br>
 							<br>
-							
+
 							Message from ${bar.name}:</h2>
 							<h3>${bar.message}</h3>
-							
+
 							</div>
-							
-							
+
+
 							</li>
 						</ol>
 					</div>
@@ -115,51 +115,129 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzd
 					</div>
 				</div>
 			</div> <!-- end container -->
-			
+
 		</div>
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	<h2>Beers that we carry</h2>
-	
+
 <ol>
-<div class="flexcontainer">	
+<div class="flexcontainer">
+
+
+
+<!--Carousel Wrapper-->
+<div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+
+
+
+    <section class="cards">
+      <!-- Heart feature -->
+    <article class="card card--1">
+
+    <div class="card__info-hover">
+      Click thru our list
+    </div>
+
+
+      <div class="card__img"></div>
+      <a href="goToBeerProfile.do?beerId=${beer.id}" class="card_link">
+         <div class="card__img--hover"></div>
+       </a>
+      <div class="card__info">
+        <span class="card__category"></span>
+        <h3 class="card__title">Click through our list</h3>
+
+      </div>
+    </article>
+
+    </section>
+
+
+
+    </div>
+
 <c:forEach var="beer" items="${bar.beers}">
-
-<li class="beerDetail">
-
-<section class="cards">
-  <!-- Heart and clock feature -->
-<article class="card card--1">
-
-  <div class="card__img"></div>
-  <a href="--BEER PROFILE--" class="card_link">
-     <div class="card__img--hover"></div>
-   </a>
-  <div class="card__info">
-    <span class="card__category">${beer.brewery.name}</span>
-    <h3 class="card__title">${beer.name}</h3>
-    <span class="card__by">by <a href="${beer.brewery.webUrl }" class="card__brewery" title="brewery">${beer.brewery.name}</a></span>
-  </div>
-</article>
-
-</section>
-</li> 
+    <div class="carousel-item">
+<!--Test Carousel Add-->
 
 
-</c:forEach>
+
+        <li class="beerDetail">
+
+        <section class="cards">
+          <!-- Heart feature -->
+        <article class="card card--1">
+
+        <div class="card__info-hover">
+          <svg class="card__like"  viewBox="0 0 24 24">
+          <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+        </svg>
+        <br>
+        ABV: ${beer.abv} <br>
+        Style: ${beer.style} <br>
+        </div>
+
+
+          <div class="card__img"></div>
+          <a href="goToBeerProfile.do?beerId=${beer.id}" class="card_link">
+             <div class="card__img--hover"></div>
+           </a>
+          <div class="card__info">
+            <span class="card__category">${beer.brewery.name}</span>
+            <h3 class="card__title">${beer.name}</h3>
+
+          </div>
+        </article>
+
+        </section>
+        </li>
+
+</div>
+        </c:forEach>
+
+
+
+
+
+
+
+      </div>
+      <!--/.Slides-->
+      <!--Controls-->
+      <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+      </div>
+      <!--/.Carousel Wrapper-->
+
+
+
+
+
+
 	</div> <!-- container end -->
-</ol>  
+</ol>
 
-	
-	
+
+
 
 
 

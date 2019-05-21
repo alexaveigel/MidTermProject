@@ -60,7 +60,6 @@ public class ProfileController {
 		return mv;
 	}
 
-
 	@RequestMapping(path = "addFavorite.do", method = RequestMethod.POST)
 	public ModelAndView addFavorite(HttpSession session, @RequestParam int beerId) {
 		ModelAndView mv = new ModelAndView();
@@ -123,6 +122,20 @@ public class ProfileController {
 		beerDAO.createBeer(beer);
 		mv.addObject("message", "Your submission has been recieved");
 		mv.setViewName("/WEB-INF/userProfile.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "removeBeerFav.do", method = RequestMethod.POST)
+	public ModelAndView removeBeerFromFavs(HttpSession session, @RequestParam int favBeer) {
+		ModelAndView mv = new ModelAndView();
+		FavoriteBeer favoriteBeer = beerDAO.findFavBeerById(favBeer);
+		beerDAO.removeBeerFromFavs(favoriteBeer, session);
+//		Drinker currDrinker = (Drinker) session.getAttribute("drinker");
+//		mv.addObject("favBeer", favoriteBeer);
+		mv.addObject("type", "fav");
+		List<FavoriteBeer> list = ((Drinker) session.getAttribute("drinker")).getBeers();
+		mv.addObject("list", list);
+		mv.setViewName("/WEB-INF/beerSearch.jsp");
 		return mv;
 	}
 
