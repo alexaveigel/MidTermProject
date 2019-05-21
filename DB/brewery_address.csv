@@ -1,0 +1,630 @@
+brewery_id,address,city,state,zip,country,"SUBSTR(coordinates, 1, INSTR(coordinates,',')-1)","SUBSTR(coordinates, INSTR(coordinates,' ')+1)"
+1,"407 Radam, F200",Austin,Texas,,"United States",30.2234,-97.7697
+2,"563 Second Street","San Francisco",California,,"United States",37.7825,-122.393
+3,"Hoogstraat 2A",Beersel,"Vlaams Brabant",,Belgium,50.7668,4.3081
+4,"Ole Steensgt. 10 Postboks 1530",Drammen,,,Norway,59.7451,10.2135
+5,Dinant,Dinant,Namur,,Belgium,50.2606,4.9122
+6,"Rue de Maredsous, 11",Dene,Namur,,Belgium,50.3093,4.7646
+7,"Rue de l'Abbaye 8",Rochefort,Namur,,Belgium,50.1999,5.2277
+10,"PO Box 1510","Abita Springs",Louisiana,,"United States",30.5049,-89.944
+11,"IP18 6JW",Southwold,Suffolk,,"United Kingdom",52.3277,1.6802
+12,,Opwijk,,,Belgium,50.9699,4.1892
+13,"PO Box 42008",Winnipeg,Manitoba,,Canada,49.7652,-97.1539
+15,"Hohe Buchleuthe 3",Kaufbeuren,Bayern,,Germany,47.8781,10.6161
+17,"5429 Shaune Drive",Juneau,Alaska,,"United States",58.3573,-134.49
+19,"Tvaika iela 44",Rga,,,Latvia,,
+21,"9368 Cabot Drive","San Diego",California,,"United States",32.892,-117.144
+23,"100 Industrial Way",Portland,Maine,,"United States",43.7028,-70.3166
+25,"814 W Hamilton St",Allentown,Pennsylvania,,"United States",40.6016,-75.474
+26,"Beethovenstrae 7",Kempten,Bayern,,Germany,47.7237,10.3141
+26,"Beethovenstrae 7",Kempten,Bayern,,Germany,47.7487,10.5694
+29,"2351 Alpine Boulevard",Alpine,California,,"United States",32.8355,-116.765
+31,"Oostrozebekestraat 114",Ingelmunster,West-Vlaanderen,,Belgium,50.919,3.2632
+35,"24 North Pleasant Street",Amherst,Massachusetts,,"United States",42.3763,-72.5199
+36,"136 East Second Street",Salida,Colorado,,"United States",38.535,-105.992
+37,"Antwoordnummer 7181",Amsterdam,,,Netherlands,52.3738,4.8909
+39,"1705 Mariposa Street","San Francisco",California,,"United States",37.7635,-122.401
+40,"Bergstrae 2",Andechs,Bayern,,Germany,47.9775,11.185
+41,"17700 Boonville Rd",Boonville,California,,"United States",39.0014,-123.356
+44,"One Busch Place","Saint Louis",Missouri,,"United States",38.5983,-90.209
+45,"50 N. Cameron St.",Harrisburg,Pennsylvania,,"United States",40.2659,-76.8753
+47,"103 West Michigan Avenue","Battle Creek",Michigan,,"United States",42.322,-85.1851
+49,"St. James's Gate",Dublin,,,Ireland,53.3433,-6.2846
+51,"675 Merrimon Avenue",Asheville,"North Carolina",,"United States",35.6221,-82.5536
+54,"2323 Defoor Hills Rd NW",Atlanta,Georgia,,"United States",33.818,-84.4353
+56,"237 Joseph Campau Street",Detroit,Michigan,,"United States",42.3372,-83.0186
+57,"1860 Schell Road","New Ulm",Minnesota,,"United States",44.2896,-94.449
+61,"229-255 Old Melbourne Road","Little River",Victoria,,Australia,-37.968,144.525
+62,"5763 Arapahoe Avenue",Boulder,Colorado,,"United States",40.0166,-105.219
+63,"310 Perry Street",LaPorte,Indiana,,"United States",41.6124,-86.7268
+68,"5401 Linda Vista Road #406","San Diego",California,,"United States",32.7668,-117.195
+70,"Wunderburg 10",Bamberg,Bayern,,Germany,49.8901,10.9067
+71,,Mankato,Minnesota,,"United States",44.1636,-93.9994
+72,"8 Mt. Desert Street","Bar Harbor",Maine,,"United States",44.3875,-68.2046
+74,"Lautenberg 1",Ulm,Baden-Wrttemberg,,Germany,48.3979,9.9899
+76,"RR 1 Box 185",Tannersville,Pennsylvania,,"United States",41.0523,-75.3354
+77,"639 Conner Street",Noblesville,Indiana,,"United States",40.0453,-86.0155
+82,"1605 S 93rd Building E Unit L",Seattle,Washington,,"United States",47.5203,-122.312
+83,"544B W. Liberty St.",Cincinnati,Ohio,,"United States",39.1136,-84.526
+85,"137 High Street",Burton-upon-Trent,Staffordshire,,"United Kingdom",52.8046,-1.6281
+87,"429 W. 3rd St",Williamsport,Pennsylvania,,"United States",41.238,-77.0103
+88,"Alte Akademie 2",Freising,Bayern,,Germany,48.3952,11.7288
+93,"South Main Street",Cork,,,Ireland,51.897,-8.4769
+94,"345 Healdsburg Avenue",Healdsburg,California,,"United States",38.6112,-122.871
+95,,,,,Germany,,
+98,"Spott Road","East Lothian",Scotland,,"United Kingdom",55.997,-2.5098
+100,"8938 Krum Ave.",Galesburg,Michigan,,"United States",42.2843,-85.4538
+106,"569 Main St",Bethlehem,Pennsylvania,,"United States",40.622,-75.382
+110,"Eindhovenseweg 3",Berkel-Enschot,,,Netherlands,51.544,5.1285
+111,"Metaalweg 10",Roermond,,,Netherlands,51.1684,6.0515
+113,"1249-A Wicker Drive",Raleigh,"North Carolina",,"United States",35.8104,-78.6179
+114,"550 South Wisconsin Avenue",Gaylord,Michigan,,"United States",45.0223,-84.6826
+121,"5555 76th Avenue SE",Calgary,Alberta,,Canada,50.9847,-113.956
+122,"5417 Trumpeter Way",Missoula,Montana,,"United States",46.9223,-114.073
+123,"4133 University Way NE",Seattle,Washington,,"United States",47.6576,-122.313
+127,"Viale Venezia 9",Udine,,,Italy,46.0597,13.2269
+131,"RÃ¶mermauer 3",Bitburg,Rheinland-Pfalz,,Germany,49.974,6.5227
+133,"600 Brea Mall",Brea,California,,"United States",33.9132,-117.889
+136,"P.O. Box 315",Blacksburg,Virginia,,"United States",37.23,-80.41
+144,"161 River Avenue",Patchogue,"New York",,"United States",40.7591,-73.0215
+145,"217 North Main Street",Greenville,"South Carolina",,"United States",34.8531,-82.3983
+150,"404 South Figueroa Street #418","Los Angeles",California,,"United States",34.0532,-118.256
+154,,BÃ¶cs,,,Hungary,,
+156,"Ul. Marii Konopnickiej 1",Witnica,,,Poland,52.6739,14.9004
+157,"30 Germania Street",Boston,Massachusetts,,"United States",42.3144,-71.1034
+159,"402 West Pine Street",Pinedale,Wyoming,,"United States",42.8666,-109.866
+160,"2880 Wilderness Place",Boulder,Colorado,,"United States",40.0267,-105.248
+161,"2501 Southwest Boulevard","Kansas City",Missouri,,"United States",39.0821,-94.5965
+164,"Rue Maurice Grevisse 36",Habay-Rulles,Luxembourg,,Belgium,49.7185,5.5571
+167,"Rue du Village 32",Houffalize-Achouffe,Luxembourg,,Belgium,50.1507,5.7442
+169,"Abbaye de Notre-Dame d'Orval",Villers-devant-Orval,Luxembourg,,Belgium,,
+171,"Rue de Panneries 17",Brunehaut,Hainaut,,Belgium,50.5109,3.3883
+172,,,,,Belgium,,
+175,"Val Dieu 225",Aubel,Lige,,Belgium,50.7046,5.822
+179,"Rue Ville Basse 141",Silly,Hainaut,,Belgium,50.6493,3.9242
+180,"BP 597",Tahiti,,,"French Polynesia",-17.6797,-149.407
+191,"Rue Guinaumont 75",Ellezelles,Hainaut,,Belgium,50.7428,3.6875
+193,,Ronchin,,,France,50.6054,3.0775
+198,"5080 Rue St-Ambroise",Montreal,Quebec,,Canada,45.4682,-73.5913
+202,"Gheudestraat 56",Anderlecht,Brussel,,Belgium,50.8416,4.3355
+204,"Brenplatz 7",Tettnang,Baden-Wrttemberg,,Germany,47.6715,9.5888
+205,"Zornedinger Strae 2",Aying,Bayern,,Germany,47.9706,11.7808
+208,"Obere Knigsstrae 19-21",Bamberg,Bayern,,Germany,49.8942,10.8855
+209,"Hindenburgstrasse 9",Bayreuth,,,Germany,49.9477,11.5659
+216,"Friedhofstrae 20-36",Ravensburg,Baden-Wrttemberg,,Germany,47.7818,9.6215
+220,"Oststrae 123",Dsseldorf,Nordrhein-Westfalen,,Germany,51.2216,6.7853
+221,"Neumarkt 1",Schwelm,Nordrhein-Westfalen,,Germany,51.2847,7.2936
+226,"Am Brauhaus 8b",Dresden,Sachsen,,Germany,,
+227,"111 Main Street",Lucan,Minnesota,,"United States",44.4105,-95.4107
+230,"Konradigasse 2",Konstanz,Baden-Wrttemberg,,Germany,47.6651,9.175
+233,"Hohenzornstrasse 2",Frauenfeld,,,Switzerland,47.5585,8.9006
+235,,Omaha,Nebraska,,"United States",41.254,-95.9993
+236,"471 Kalamath Street",Denver,Colorado,,"United States",39.7236,-105.001
+241,"AB43 8UE",Fraserburgh,,,"United Kingdom",57.683,-2.003
+242,"1106 N. Charles St.",Baltimore,Maryland,,"United States",39.3028,-76.6164
+245,,,"Ceske Budejovice",,"Czech Republic",48.9739,14.475
+247,"23 Commerce Street","Mineral Point",Wisconsin,,"United States",42.8606,-90.1772
+249,"656 County Highway 33",Cooperstown,"New York",,"United States",42.6818,-74.9255
+251,,Fremont,California,,"United States",37.5483,-121.989
+252,,,,,"Czech Republic",,
+255,"1313 NW Marshall Street",Portland,Oregon,,"United States",45.5311,-122.685
+259,"79 North Eleventh Street",Brooklyn,"New York",,"United States",40.7215,-73.9575
+260,Broughton,"The Borders",Scotland,,"United Kingdom",55.6145,-3.4107
+262,"Antwerpsesteenweg 476",Westmalle,Antwerpen,,Belgium,51.2974,4.6881
+263,"Donkerstraat 12",Westvleteren,West-Vlaanderen,,Belgium,50.8961,2.7222
+265,"Vaartstraat 94",Leuven,"Vlaams Brabant",,Belgium,50.8853,4.7008
+266,"Rijksweg 33",Bavikhove,West-Vlaanderen,,Belgium,50.8628,3.2992
+268,"Fonteinstraat 65",Lembeek,"Vlaams Brabant",,Belgium,50.7123,4.2197
+269,"Kerkstraat 92",Buggenhout,Oost-Vlaanderen,,Belgium,51.0138,4.2018
+272,"Roeselarestraat 12b",Esen,West-Vlaanderen,,Belgium,51.0281,2.9038
+274,"Lierput 1",Kobbegem,"Vlaams Brabant",,Belgium,50.9098,4.2505
+280,,Achel,,,Belgium,51.2515,5.546
+281,,Breendonk,,,Belgium,51.0442,4.3257
+281,,Breendonk,,,Belgium,51.2206,4.3997
+283,"Lindenbergstraat 10",Sint-Ulriks-Kapelle,"Vlaams Brabant",,Belgium,,
+284,"Guido Gezellelaan 49",Mechelen,Antwerpen,,Belgium,51.0325,4.473
+285,"Brusselse Steenweg 282",Melle,Oost-Vlaanderen,,Belgium,,
+287,"200 Aalststraat",Oudenaarde,Oost-Vlaanderen,,Belgium,50.8439,3.617
+289,,,,,Aruba,,
+296,"Trappistenweg 23",Watou,West-Vlaanderen,,Belgium,50.8425,2.6362
+299,"Tramstraat 8",Ursel,Oost-Vlaanderen,,Belgium,51.1287,3.4785
+301,"Douvieweg 2",Watou,West-Vlaanderen,,Belgium,50.8612,2.6615
+302,"Stoopkensstraat 46",Hoegaarden,"Vlaams Brabant",,Belgium,50.7778,4.8877
+303,"Oostrozebekestraat 43",Ingelmunster,West-Vlaanderen,,Belgium,50.9201,3.2579
+304,"Lindenlaan 25",Ertvelde,Oost-Vlaanderen,,Belgium,51.1766,3.7462
+306,"ul. Bolesawa Chrobrego 26",NamysÅ‚Ã³w,,,Poland,,
+307,"ul. Browarna 14",Brzesko,,,Poland,49.9622,20.6003
+308,"ul. GoÅ›niewska 65",Warka,,,Poland,,
+309,"ul. Browarna 88",Zywiec,,,Poland,49.6622,19.1742
+312,"Hollselund Strandvej 74",Tisvildeleje,,,Denmark,56.0746,12.1161
+314,"102 North Market Street","Mount Joy",Pennsylvania,,"United States",40.1119,-76.5031
+319,"231 W. Fourth Street",Williamsport,Pennsylvania,,"United States",41.2404,-77.0057
+320,,Hereford,,,"United Kingdom",52.056,-2.7175
+321,"Am Brunnen 2",Wolnzach,Bayern,,Germany,,
+322,"Bridge Street",Burton-upon-Trent,Staffordshire,,"United Kingdom",52.8065,-1.6225
+325,"98 Horseneck Rd",Westport,Massachusetts,,"United States",41.5713,-71.0571
+328,"540 Clover Lane",Ashland,Oregon,,"United States",42.1844,-122.663
+333,"1 Kendall Square #100",Cambridge,Massachusetts,,"United States",42.3664,-71.0911
+334,"1165 Invicta Drive",Oakville,Ontario,,Canada,43.4745,-79.6775
+339,"1100 New York Ave, NW",Washington,"District of Columbia",,"United States",38.8999,-77.0272
+339,"1100 New York Ave, NW",Washington,"District of Columbia",,"United States",43.8042,-91.2526
+341,"99 Castleton Street",Pleasantville,"New York",,"United States",41.126,-73.7896
+343,"The Goods Store, Station Road",Carlow,,,Ireland,52.7196,-6.846
+344,"Vesterflledvej 100",Kbenhavn,,,Denmark,55.6667,12.5393
+345,rstadvgen,Falkenberg,,,Sweden,56.9002,12.5405
+347,"215 East State Street",Rockford,Illinois,,"United States",42.2689,-89.0907
+349,"110 Barley Park Lane",Mooresville,"North Carolina",,"United States",35.6231,-80.8011
+353,,,,,"United States",,
+357,"13450 - 102 Avenue",Surrey,"British Columbia",,Canada,49.1873,-122.85
+358,"351 Allen Street",Amherst,Wisconsin,,"United States",44.4419,-89.2797
+360,"Av.Alfonso Reyes Norte No.2202",Monterrey,"Nuevo Leon",,Mexico,25.7091,-100.314
+363,Mendoza,Mendoza,,,Argentina,-32.8902,-68.844
+364,"Va Ricardo J. Alfaro y Transistmica","El Dorado",,,Panama,37.4316,-78.6569
+366,,"San Salvador",,,"El Salvador",,
+367,"Unit 1-B, Blk. A, Edf. Ind. Fei Tong",Macao,,,Macao,19.7219,-101.225
+368,"Avenida Tocantins, 199 / Caixa Postal 621","Ponta Grossa",Paran,,Brazil,-25.1688,-50.1298
+369,"Rua Bahia, 5181",Blumenau,"Santa Catarina",,Brazil,-26.8914,-49.1223
+370,"Avenida de Murcia, 1",Granada,,,Spain,37.1875,-3.6018
+371,"4939 Pan American Freeway NE",Albuquerque,"New Mexico",,"United States",35.14,-106.6
+374,"Chelsea Piers, Pier 59","New York","New York",,"United States",40.7457,-74.0086
+376,"7803 Ralston Road",Arvada,Colorado,,"United States",39.8023,-105.084
+378,"Route de Charlemagne 8",Chimay,,,Belgium,50.0355,4.3777
+379,"3924 West Spruce Street Suite A",Tampa,Florida,,"United States",27.9587,-82.5093
+381,"925 South Third Street","La Crosse",Wisconsin,,"United States",,
+384,"112 Valley Road","Roselle Park","New Jersey",,"United States",40.6598,-74.283
+385,"4615-B Hollins Ferry Road",Baltimore,Maryland,,"United States",39.2308,-76.6751
+391,"209 Lakeside Avenue","Coeur d'Alene",Idaho,,"United States",47.6745,-116.784
+392,"219 Red River Avenue North","Cold Spring",Minnesota,,"United States",45.4582,-94.4291
+397,"461 South Road","Regency Park","South Australia",,Australia,-34.8727,138.573
+398,"River Street, P.O. Box 276",Milford,"New York",,"United States",42.5893,-74.9403
+399,"311 Tenth Street",Golden,Colorado,,"United States",39.7599,-105.219
+402,"339 Fairground Rd",Millmont,Pennsylvania,,"United States",40.8942,-77.1971
+404,"170 Orange Avenue",Coronado,California,,"United States",32.6976,-117.173
+405,"307 Oliphant Lane",Middletown,"Rhode Island",,"United States",41.537,-71.2796
+409,"237 West Butler Avenue",Chalfont,Pennsylvania,,"United States",40.2795,-75.2143
+415,"24 Kulick Road",Fairfield,"New Jersey",,"United States",40.8726,-74.2964
+420,,Mexicali,Baja,,Mexico,31.7291,-116.578
+423,"38 Evergreen Drive",Portland,Maine,,"United States",43.7076,-70.3149
+424,,Tournai,,,Belgium,50.6059,3.3884
+425,"Camwal Road",Harrogate,"North Yorkshire",,"United Kingdom",53.9999,-1.501
+426,"511 S. Kalamazoo Ave.",Marshall,Michigan,,"United States",42.2667,-84.9641
+428,"pastoor de katerstraat 24",baarle-hertog,,,Belgium,51.4421,4.9232
+430,"Walplein 26",Brugge,West-Vlaanderen,,Belgium,51.2026,3.2242
+431,"Krommekeerstraat 21",Ruiselede,West-Vlaanderen,,Belgium,51.0811,3.3699
+433,Woesten,Woesten,West-Vlaanderen,,Belgium,50.9229,2.7518
+440,"1735 19th Street #100",Denver,Colorado,,"United States",39.7553,-104.997
+441,"901 SW Simpson Avenue",Bend,Oregon,,"United States",44.0474,-121.323
+442,"214 Spanish Town",Kingston,,,Jamaica,33.9858,-96.6515
+444,"323-C Cross Street","Little Rock",Arkansas,,"United States",34.7473,-92.2839
+445,"621 Front Street",Mukilteo,Washington,,"United States",47.9485,-122.305
+447,"5945 Prather Road",Centralia,Washington,,"United States",46.7713,-123.007
+448,"Brauerei-Diebels-Strae 1",Issum,Nordrhein-Westfalen,,Germany,51.5331,6.4213
+451,"Tbinger Strae 46",Stuttgart,Baden-Wrttemberg,,Germany,,
+454,"2401 Tulane Avenue","New Orleans",Louisiana,,"United States",29.9606,-90.0871
+456,"701 S. 50th Street","West Philly",Pennsylvania,,"United States",39.9478,-75.2229
+457,"1253 Johnston Street",Vancouver,"British Columbia",,Canada,49.2698,-123.132
+459,"6 Cannery Village Center",Milton,Delaware,,"United States",38.7683,-75.3107
+460,"Steigerstrae 20",Dortmund,Nordrhein-Westfalen,,Germany,51.5298,7.4692
+462,"8 Fourth Street","Hood River",Oregon,,"United States",45.71,-121.515
+463,"14600 East Eleven Mile Road",Warren,Michigan,,"United States",42.493,-82.9753
+465,"Jszbernyi t 7-11",Budapest,,,Hungary,47.4921,19.1422
+469,"4519 W. Pine Street",Farmville,"North Carolina",,"United States",35.6003,-77.5971
+470,"901 S. Bond St.",Baltimore,Maryland,,"United States",39.2807,-76.5944
+473,"Breendonkdorp 58",Breendonk,Antwerpen,,Belgium,,
+474,"16 Church Street PO Box 684",Queenstown,,,"New Zealand",-45.0331,168.661
+476,"6923 Susquehanna St.",Pittsburgh,Pennsylvania,,"United States",40.4553,-79.9043
+480,"Aschaffenburger StraÃŸe 3-5",GroÃŸostheim,Bavaria,,Germany,49.9211,9.0715
+481,"1777 Alamar Way",Fortuna,California,,"United States",40.5793,-124.153
+483,,"De Pere",Wisconsin,,"United States",44.4489,-88.0604
+484,"Papenstrae 4-7",Einbeck,Niedersachsen,,Germany,51.8162,9.8643
+491,"9085 Elk Grove Boulevard","Elk Grove",California,,"United States",38.4093,-121.363
+494,"4720 California Avenue SW",Seattle,Washington,,"United States",47.5604,-122.387
+495,"222 West St # 46",Keene,"New Hampshire",,"United States",42.9324,-72.2867
+496,"1221 East Pike Street",Seattle,Washington,,"United States",47.614,-122.316
+497,"2106 North 55th Street",Seattle,Washington,,"United States",47.6688,-122.334
+498,"14 Wickliffe Street",Dunedin,,,"New Zealand",-45.872,170.518
+503,"D-73525 Schwbisch Gmnd","Schwbisch Gmnd",Baden-Wrttemberg,,Germany,,
+504,"611 North Pine",Tacoma,Washington,,"United States",47.256,-122.473
+506,"186 James Fletcher Drive, Otahuhu",Auckland,,,"New Zealand",-36.9489,174.821
+507,"1213 Veshecco Drive",Erie,Pennsylvania,,"United States",42.1112,-80.113
+509,"470 Prospect Village Dr.","Estes Park",Colorado,,"United States",40.3707,-105.526
+511,"Kaiser-Ludwig-Platz 1",Ettal,Bayern,,Germany,47.569,11.0942
+512,"811 Edward Street",Utica,"New York",,"United States",43.1045,-75.2452
+520,"11197 Brockway Road",Truckee,California,,"United States",39.322,-120.163
+524,"1400 Ramada Drive","Paso Robles",California,,"United States",35.5953,-120.694
+526,"515 Jefferson Street SE",Olympia,Washington,,"United States",47.0437,-122.897
+527,"600 East Superior Street",Duluth,Minnesota,,"United States",46.7926,-92.0909
+530,"115 S. Fifth St.",Columbia,Missouri,,"United States",38.95,-92.3323
+531,"2035 Benson Avenue","St. Paul",Minnesota,,"United States",44.9084,-93.1538
+534,"Munketoft 12",Flensburg,Schleswig-Holstein,,Germany,54.779,9.4355
+536,"1035 Sterling Avenue",Flossmoor,Illinois,,"United States",41.5433,-87.6789
+537,,Rochester,"New York",,"United States",43.161,-77.6109
+538,"32295 State Route 20","Oak Harbor",Washington,,"United States",48.2992,-122.652
+539,"491 Ontario Street",Buffalo,"New York",,"United States",42.9561,-78.8966
+540,"2401 Blake St.",Denver,Colorado,,"United States",39.7582,-104.99
+541,"1940 Olney Avenue","Cherry Hill","New Jersey",,"United States",39.9121,-74.9701
+543,"638 W. 4th Street",Winston-Salem,"North Carolina",,"United States",36.0973,-80.2509
+546,,,,,Australia,,
+549,"235 Grandville Avenue SW","Grand Rapids",Michigan,,"United States",42.9585,-85.6735
+550,,"Downers Grove",Illinois,,"United States",41.8089,-88.0112
+551,"1340 East Eighth Street #103",Tempe,Arizona,,"United States",33.4194,-111.916
+557,"Whimsey Road",Cinderford,Gloucestershire,,"United Kingdom",51.8325,-2.5116
+562,"506 Columbia Street","Hood River",Oregon,,"United States",45.7103,-121.515
+563,"Chiswick Lane South",London,London,,"United Kingdom",51.4877,-0.2498
+566,"15 South Orange Avenue","South Orange","New Jersey",,"United States",40.7465,-74.2594
+572,,Portsmouth,Hampshire,,"United Kingdom",50.7989,-1.0912
+575,"737 W. 5th Ave., Suite 110",Anchorage,Alaska,,"United States",61.2179,-149.896
+579,"71 King Street North",Waterloo,Ontario,,Canada,43.4676,-80.5231
+584,"980 NE Fourth Street",McMinnville,Oregon,,"United States",45.2104,-123.189
+585,"1800 North Clybourn Avenue",Chicago,Illinois,,"United States",41.9137,-87.6543
+586,"1800 West Fulton Street",Chicago,Illinois,,"United States",41.8871,-87.6721
+587,"3804 S.W 30th Ave","Fort Lauderdale",Florida,,"United States",26.0745,-80.1806
+588,"357 East Taylor Street","San Jose",California,,"United States",37.3526,-121.893
+590,"2804 13th Street",Columbus,Nebraska,,"United States",41.4295,-97.3623
+592,"915 Grand Avenue","Grand Lake",Colorado,,"United States",40.2518,-105.82
+595,"1001 North 102nd Street",Omaha,Nebraska,,"United States",41.2672,-96.0714
+597,"1125 Richter Street",Kelowna,"British Columbia",,Canada,49.8945,-119.488
+598,"1441 Cartwright Street",Vancouver,"British Columbia",,Canada,34.396,-119.521
+598,"1441 Cartwright Street",Vancouver,"British Columbia",,Canada,49.2705,-123.136
+601,"238 North Boundary Street",Wasilla,Alaska,,"United States",61.5816,-149.439
+604,"2201 Arapahoe Street",Denver,Colorado,,"United States",39.7539,-104.989
+605,"2516 Market Avenue",Cleveland,Ohio,,"United States",41.4844,-81.7042
+609,"1430 Vantage Court #104A",Vista,California,,"United States",33.136,-117.225
+611,"153 Pond Lane",Middlebury,Vermont,,"United States",44.0344,-73.1735
+612,"Westgate Street","Bury St. Edmunds",Suffolk,,"United Kingdom",52.241,0.7157
+616,"Brouwerslaan 1",Enschede,Overijssel,,Netherlands,52.2081,6.8163
+618,,"Mexico City",,,Mexico,19.427,-99.1276
+619,"Rijksweg 16",Gulpen,,,Netherlands,50.8109,5.9213
+622,"4509 SE 23rd Avenue",Portland,Oregon,,"United States",45.4901,-122.643
+624,"390 Capistrano Road","Princeton by the Sea",California,,"United States",37.4903,-122.435
+626,"Melmerby Green Road",Melmerby,"North Yorkshire",,"United Kingdom",54.1744,-1.4844
+627,"6-8 Romsey Industrial Estate",Romsey,Hampshire,,"United Kingdom",50.9889,-1.4989
+633,"1938 Pacific Avenue",Tacoma,Washington,,"United States",47.2436,-122.437
+634,"306 Northern Avenue",Boston,Massachusetts,,"United States",42.3465,-71.0338
+635,"336 Ruth Carney Drive",Windsor,Vermont,,"United States",43.513,-72.4015
+637,"6 Cliffe High Street",Lewes,"East Sussex",,"United Kingdom",50.8742,0.0167
+638,"Hillfoots Business Village",Alva,Scotland,,"United Kingdom",56.1531,-3.8006
+641,,Roseburg,Oregon,,"United States",43.2165,-123.342
+643,,"New York","New York",,"United States",40.7323,-73.9874
+646,,Sopron,,,Hungary,,
+647,,,,,Netherlands,,
+650,"Dominikanerstrae 6",Bamberg,Bayern,,Germany,49.892,10.8853
+652,"2201 Sherman Street",Wausau,Wisconsin,,"United States",44.9518,-89.6657
+656,"445 St.Paul Street",Rochester,"New York",,"United States",43.1646,-77.6155
+657,"22 Park Place",Butler,"New Jersey",,"United States",41.0016,-74.3403
+658,"12 Old Charlotte Highway",Asheville,"North Carolina",,"United States",35.5716,-82.4991
+659,"Grntenstrae 7",Sonthofen,Bayern,,Germany,47.5132,10.279
+660,,Seoul,,,"Korea, Republic of",37.5665,126.978
+662,"Haid-und-Neu-Strae 18",Karlsruhe,Baden-Wrttemberg,,Germany,49.0125,8.4264
+670,"Brewery Lane","Hook Norton",Oxford,,"United Kingdom",51.9966,-1.4922
+671,"Unit 21-24 Batten Road Industrial Estate",Salisbury,Wiltshire,,"United Kingdom",,
+673,"1680-F East Waterloo Rd.",Akron,Ohio,,"United States",41.0247,-81.4676
+674,"6300 Folsom Boulevard",Sacramento,California,,"United States",38.5551,-121.43
+678,"2944 SE Powell Blvd",Portland,Oregon,,"United States",45.4969,-122.635
+686,"856 10th Street",Arcata,California,,"United States",40.87,-124.087
+690,"Brouwerijplein 1",Leuven,,,Belgium,50.8865,4.7069
+691,"1150 Filbert Street",Philadelphia,Pennsylvania,,"United States",39.9526,-75.1594
+692,"3913 Todd Lane #607",Austin,Texas,,"United States",30.2131,-97.7358
+696,"Inveralmond Way",Perth,Scotland,,"United Kingdom",56.4174,-3.4779
+698,"3340 Liberty Ave.",Pittsburgh,Pennsylvania,,"United States",40.461,-79.9653
+700,"620 South Madison Street",Wilmington,Delaware,,"United States",39.745,-75.5561
+701,"765 Center Boulevard",Fairfax,California,,"United States",37.986,-122.584
+703,"The Pier","Isle of Skye",Scotland,,"United Kingdom",56.4907,-4.2026
+705,"600 Elmira Road",Ithaca,"New York",,"United States",42.4145,-76.5315
+707,"39176 Argonaut Way",Fremont,California,,"United States",37.5441,-121.988
+708,"1 Jefferson Avenue","Chippewa Falls",Wisconsin,,"United States",44.9449,-91.3968
+713,"Castle Brewery",Cockermouth,Cumbria,,"United Kingdom",54.6649,-3.3634
+714,,"Jever, Germany",,,Germany,53.5757,7.9003
+718,"87 Doe Run Rd",Manheim,Pennsylvania,,"United States",40.1707,-76.3838
+722,"rue du cerf",Genval,,,Belgium,50.7298,4.508
+723,"3115 Broad Street",Dexter,Michigan,,"United States",42.3375,-83.8895
+727,"Middleton Junction",Manchester,Manchester,,"United Kingdom",53.5412,-2.1734
+731,"9675 Scranton Road","San Diego",California,,"United States",32.8969,-117.201
+733,"Wunderburg 5",Bamberg,Bayern,,Germany,49.8904,10.9056
+739,,Helena,Montana,,"United States",46.5958,-112.027
+741,,,,,Japan,,
+742,"1257, Kounsosu",Ibaraki,Kanto,,Japan,,
+744,"Brauhausplatz 1",Neuzelle,Brandenburg,,Germany,52.091,14.6509
+745,"Heitzerstrae 2",Regensburg,Bayern,,Germany,49.0144,12.075
+746,"Obere Mhlbrcke 1-3",Bamberg,Bayern,,Germany,49.8891,10.887
+751,"75-5629 Kuakini Highway",Kailua-Kona,Hawaii,,"United States",19.642,-155.996
+752,"Heinrich-Schtz-Strae 16","Bad KÃ¶stritz",ThÃ¼ringen,,Germany,,
+755,,Morrisville,Vermont,,"United States",44.5617,-72.5984
+756,"5919 Chicago Road",Warren,Michigan,,"United States",42.5278,-83.0472
+757,"Lichtenfelser Strae 9",Kulmbach,Bayern,,Germany,50.106,11.4442
+762,"150 Simcoe Street",London,Ontario,,Canada,42.9778,-81.2467
+765,"1280 North McDowell Boulevard",Petaluma,California,,"United States",38.2724,-122.662
+767,"813 Mirror Lake Drive","Lake Placid","New York",,"United States",44.2829,-73.9813
+771,"302 N. Plum St.",Lancaster,Pennsylvania,,"United States",40.0438,-76.2984
+772,"Durham DH7 0NT",Durham,Durham,,"United Kingdom",54.8229,-1.7457
+774,,Latrobe,Pennsylvania,,"United States",40.3212,-79.3795
+778,"1245 Puerta del Sol","San Clemente",California,,"United States",33.4577,-117.589
+779,"1265 Boston Avenue",Longmont,Colorado,,"United States",40.1587,-105.113
+780,"545 Canal Street",Reading,Pennsylvania,,"United States",40.3256,-75.9283
+783,"939 Getchell Street",Helena,Montana,,"United States",46.5977,-112.037
+784,"1321 Celebrity Circle","Myrtle Beach","South Carolina",,"United States",33.7187,-78.8831
+787,,Stillwater,Minnesota,,"United States",45.0565,-92.8222
+791,"No-254, Colombo Road",Colombo,,,"Sri Lanka",38.7548,-9.1883
+792,"700 North Pennsylvania Blvd.","Wilkes Barre",Pennsylvania,,"United States",41.2557,-75.8583
+793,"Level 15, 20 Hunter Street",Sydney,"New South Wales",,Australia,-33.8687,151.217
+796,"40 Mews Road",Fremantle,WA,,Australia,-32.0597,115.745
+797,"3301-B East Fifth Street",Austin,Texas,,"United States",30.2541,-97.7055
+801,"Route 4 & 100A","Bridgewater Corners",Vermont,,"United States",43.5882,-72.6563
+803,"617 Fourth Street",Eureka,California,,"United States",40.8032,-124.165
+804,"Nymphenburger StraÃŸe 4",MÃ¼nchen,Bayern,,Germany,,
+810,"195 Taylor Way","Blue Lake",California,,"United States",40.879,-123.993
+812,"5 Bartlett Bay Road","South Burlington",Vermont,,"United States",44.4284,-73.2131
+813,"1398 Haight Street","San Francisco",California,,"United States",37.7702,-122.445
+819,"Moosstrae 46",Bamberg,Bayern,,Germany,49.8928,10.9131
+823,"4120 Main Street",Philadelphia,Pennsylvania,,"United States",40.0236,-75.2202
+825,"111 Marble Ave NW",Albuquerque,"New Mexico",,"United States",35.0928,-106.647
+826,,Jacksonville,Florida,,"United States",30.3617,-81.6966
+827,"1809 Larkspur Landing Circle","Larkspur Landing",California,,"United States",37.9479,-122.511
+829,"1514 NW Leary Way",Seattle,Washington,,"United States",47.6637,-122.377
+832,"Klnische Strae 94-104",Kassel,Hessen,,Germany,51.3175,9.4793
+833,"165 Patchway Road",Duncansville,Pennsylvania,,"United States",40.4234,-78.4339
+836,"4405 Honoapiilani Highway #217","Lahaina, Maui",Hawaii,,"United States",20.9721,-156.677
+841,"451 Wilmington-West Chester Pike","Glen Mills",Pennsylvania,,"United States",39.8658,-75.5442
+842,"13300 Bothell-Everett Highway #304","Mill Creek",Washington,,"United States",47.8774,-122.211
+844,"2 Penhall Road",Greenwich,London,,"United Kingdom",51.4899,0.038
+847,"13351 Highway 101",Hopland,California,,"United States",38.9734,-123.116
+848,,"Saratoga Springs","New York",,"United States",43.0831,-73.7846
+850,"23 Hayward St.",Ipswich,Massachusetts,,"United States",42.6728,-70.844
+851,"5121 N Ravenswood Ave,",Chicago,Illinois,,"United States",41.975,-87.674
+853,"1093 Highview Drive",Webberville,Michigan,,"United States",42.6616,-84.1946
+857,"120 Wilkinson Street",Syracuse,"New York",,"United States",43.0508,-76.1617
+858,"8111 Dimond Hook Drive",Anchorage,Alaska,,"United States",61.1473,-149.844
+859,"Slien 2, 2. tv",KÃ¸benhavn,,,Denmark,,
+863,"3939 W. Highland Blvd",Milwaukee,Wisconsin,,"United States",43.0445,-87.9626
+866,"500 Commercial Street",Manchester,"New Hampshire",,"United States",42.9945,-71.4674
+867,"233 North Water Street",Milwaukee,Wisconsin,,"United States",43.0334,-87.9093
+868,"1208 14th Avenue",Monroe,Wisconsin,,"United States",42.6001,-89.6422
+869,"1430 Washington Avenue South",Minneapolis,Minnesota,,"United States",44.9732,-93.2479
+873,"7160 Oliver Street",Mission,"British Columbia",,Canada,49.1323,-122.343
+876,"4366 Huntington Dr",Flagstaff,Arizona,,"United States",35.2156,-111.59
+878,"175 Bloor Street East",Toronto,Ontario,,Canada,43.6706,-79.3824
+881,"Cnr Turumaha and Herbert St",Greymouth,,,"New Zealand",-42.4505,171.207
+882,"21 W. Bay St.",Savannah,Georgia,,"United States",32.081,-81.0915
+884,"4 Moorhouse Street",Burnley,Lancashire,,"United Kingdom",53.7864,-2.2694
+885,"3300 Old Seward Highway",Anchorage,Alaska,,"United States",61.1902,-149.869
+886,"89 Main Street West","Saint John","New Brunswick",,Canada,45.2567,-66.096
+888,"110 Wisconsin Dells Parkway South","Wisconsin Dells",Wisconsin,,"United States",43.5907,-89.7939
+890,,Abingdon,Oxford,,"United Kingdom",51.6701,-1.285
+892,"15 Rowland Way",Novato,California,,"United States",38.0941,-122.557
+894,"210 Swanson Avenue","Lake Havasu City",Arizona,,"United States",34.4686,-114.341
+897,"No. 45, No. 3 Trunk Road",Yangon,,,Myanmar,16.7779,96.1679
+902,"512 Latimer Street",Nelson,"British Columbia",,Canada,49.4884,-117.29
+903,"The Street",Pentlow,Essex,,"United Kingdom",52.081,0.6559
+905,"500 Linden Street","Fort Collins",Colorado,,"United States",40.5929,-105.07
+907,"2400 State Highway 69","New Glarus",Wisconsin,,"United States",42.8171,-89.6306
+908,"66 East Eighth Street",Holland,Michigan,,"United States",42.79,-86.1041
+909,"2015 Afond Court",Atlanta,Georgia,,"United States",33.9089,-84.3056
+911,,,,,"New Zealand",,
+913,,Florence,Wisconsin,,"United States",45.9222,-88.2518
+914,,,,,Japan,,
+916,"1516 Sansom Street",Philadelphia,Pennsylvania,,"United States",39.9502,-75.1666
+919,"455 North Main Street","Fort Bragg",California,,"United States",39.4466,-123.806
+923,"Gamle Rygene Kraftstasjon",Grimstad,Lunde,,Norway,,
+929,"2050 Yavapai Dr",Sedona,Arizona,,"United States",34.8661,-111.796
+930,"50 North Airport Parkway",Greenwood,Indiana,,"United States",39.615,-86.0901
+935,"800 East Lincoln Avenue","Fort Collins",Colorado,,"United States",40.5894,-105.063
+936,"425 South Melrose Drive",Vista,California,,"United States",33.2029,-117.255
+940,"1284 McD Drive",Dover,Delaware,,"United States",39.154,-75.4884
+945,,"San Diego",California,,"United States",32.7153,-117.157
+947,,Milwaukee,Wisconsin,,"United States",43.0389,-87.9065
+951,,,,,"Korea, Republic of",,
+953,Quoyloo,Orkney,Scotland,,"United Kingdom",59.0697,-3.3135
+954,"1301 Atlanta Avenue",Orlando,Florida,,"United States",28.5265,-81.3827
+955,"5 Bartlett Bay Road","South Burlington",Vermont,,"United States",44.4284,-73.2131
+956,"303 Main Street",Lyons,Colorado,,"United States",40.2246,-105.268
+959,"793 Exchange Street",Middlebury,Vermont,,"United States",44.0197,-73.1693
+960,"2105 N. Atherton St.","State College",Pennsylvania,,"United States",40.8098,-77.9101
+961,"Sinebrychoffinaukio 1",Kerava,,,Finland,60.381,25.1102
+963,"PO Box 1661","San Antonio",Texas,,"United States",29.43,-98.49
+965,"906 Washington Street",Oakland,California,,"United States",37.8016,-122.274
+967,"Steenhuffeldorp 3",Steenhuffel,Brabant,,Belgium,50.9953,4.2835
+972,,Munich,,,Germany,48.1391,11.5802
+974,"33180 Cape Kiwanda Drive","Pacific City",Oregon,,"United States",45.2152,-123.97
+975,"800 Vinial St.",Pittsburgh,Pennsylvania,,"United States",40.4569,-79.9915
+976,"127 Elm St., Unit C",Milford,"New Hampshire",,"United States",42.8368,-71.6626
+978,"14800 San Pedro Avenue","San Antonio",Texas,,"United States",29.5761,-98.4772
+981,"2423 Amber St",Philadelphia,Pennsylvania,,"United States",39.9827,-75.1275
+985,,Aberdeen,"North Carolina",,"United States",35.1315,-79.4295
+988,,Skopje,,,"Macedonia, the Former Yugoslav Republic of",42.0038,21.4522
+993,"Palackho 250",Pardubice,,,"Czech Republic",50.0355,15.762
+998,"Nadrazni 84",Praha,,,"Czech Republic",50.0685,14.4067
+999,"Promzona Parnas-4, 6 Proyezd, 9 Kvartal",Sankt-Peterburg,Sankt-Peterburg,,Russia,59.939,30.3158
+1000,"5N404 Harvest Lane","St Charles",Illinois,,"United States",41.9455,-88.4507
+1004,"830 Main Street",Pleasanton,California,,"United States",37.6645,-121.873
+1005,"U Prazdroje 7",Plze,,,"Czech Republic",49.7466,13.3861
+1009,"155 Mata Way Suite 104","San Marcos",California,,"United States",33.1406,-117.15
+1012,"2730 NW 31st Avenue",Portland,Oregon,,"United States",45.5415,-122.713
+1013,"56 Market Street",Portsmouth,"New Hampshire",,"United States",43.0781,-70.7575
+1016,,Bromma,,,Sweden,60.4877,9.1885
+1017,,Mossautal,Hessen,,Germany,49.6747,8.925
+1018,"Rheydter-Strae 138",Korschenbroich,Nordrhein-Westfalen,,Germany,51.1833,6.4993
+1019,"Franz-Brombach-Strae 1-20",Erding,Bayern,,Germany,48.3153,11.8911
+1020,"Wielandstrae 14-16",Dsseldorf,Nordrhein-Westfalen,,Germany,51.2292,6.7925
+1023,"Emil-Ott-Strasse 1-5",Kelheim,,,Germany,48.9175,11.8735
+1027,"540 Main Street",Longmont,Colorado,,"United States",40.1688,-105.102
+1029,"901 Gilman Street",Berkeley,California,,"United States",37.8806,-122.3
+1029,"901 Gilman Street",Berkeley,California,,"United States",47.5917,-122.335
+1030,"1201 First Avenue South",Seattle,Washington,,"United States",,
+1031,"91 S Royal Brougham Way",Seattle,Washington,,"United States",47.5924,-122.334
+1035,"7424 SW Beaverton-Hillsdale Hwy",Portland,Oregon,,"United States",45.4856,-122.754
+1037,"Dresdener Strae 2",Radeberg,Sachsen,,Germany,51.1148,13.915
+1038,"701 Galveston Ave",Fortworth,Texas,,"United States",32.7366,-97.3274
+1043,"West Hewish",Weston-super-Mare,Somerset,,"United Kingdom",51.3723,-2.8773
+1044,"231 San Saba Court",Blanco,Texas,,"United States",30.113,-98.4156
+1045,,"Foothill Ranch",California,,"United States",33.6864,-117.66
+1051,,Seattle,Washington,,"United States",47.6062,-122.332
+1052,,Waukesha,Wisconsin,,"United States",43.0117,-88.2315
+1055,"1214 East Cary St",Richmond,Virginia,,"United States",37.5356,-77.4338
+1056,"6 Chapel Close","South Stoke",Oxford,,"United Kingdom",51.5462,-1.1355
+1058,"80 LAMBERT LANE",Lambertville,"New Jersey",,"United States",40.3688,-74.9477
+1061,"312 Center Rd",Monroeville,Pennsylvania,,"United States",40.4465,-79.7642
+1062,"254 Wilkins Street",Morrisville,Vermont,,"United States",44.5693,-72.6034
+1064,"1001 16th Street #A-100",Denver,Colorado,,"United States",39.7472,-104.995
+1070,"880 West Castleton Road","Castle Rock",Colorado,,"United States",39.4091,-104.87
+1072,"2320 SE OSU Drive",Newport,Oregon,,"United States",44.6202,-124.052
+1075,"1520 SE Seventh Avenue",Portland,Oregon,,"United States",45.5118,-122.659
+1081,"140 North Third Street",Chambersburg,Pennsylvania,,"United States",39.939,-77.6566
+1084,"990 Antler Court","River Falls",Wisconsin,,"United States",44.8902,-92.6378
+1086,"725 Fourth Street","Santa Rosa",California,,"United States",38.4418,-122.712
+1087,,Barcelona,,,Spain,41.3879,2.1699
+1089,"SKOL Breweries Limited",Bangalore,Karnataka,,India,12.9683,77.657
+1090,"2713 El Paseo Lane",Sacramento,California,,"United States",38.6191,-121.4
+1091,"2522 Fairway Park Drive",Houston,Texas,,"United States",29.8123,-95.4675
+1092,"2100 Locust Street","Saint Louis",Missouri,,"United States",38.633,-90.21
+1093,"1441 Savannah Ave Unit E","Tarpon Springs",Florida,,"United States",28.1646,-82.7717
+1094,"Tallinna mnt.2",Saku,,,Estonia,59.3014,24.6679
+1099,"High Street",Tadcaster,"North Yorkshire",,"United Kingdom",53.8834,-1.2625
+1100,"10450-L Friars Road","San Diego",California,,"United States",32.7922,-117.099
+1103,"320 Pierce St","Black River Falls",Wisconsin,,"United States",44.2929,-90.8511
+1108,"35 Fire Place","Santa Fe","New Mexico",,"United States",35.5966,-106.052
+1113,"180 Old Hume Hwy",Picton,NSW,,Australia,-34.1855,150.607
+1115,"Eggenberg 1",Vorchdorf,,,Austria,47.9904,13.9238
+1116,"Oberdorferstrae 9",Dornbirn,,,Austria,47.4097,9.7514
+1117,"DarmstÃ¤dter Landstrasse 185",Frankfurt/Main,Hessen,,Germany,,
+1120,"Wilhelm-Schussen-Strae 12","Bad Schussenried",Baden-Wrttemberg,,Germany,48.004,9.6584
+1122,Gallowgate,Newcastle-upon-Tyne,Northumberland,,"United Kingdom",40.8918,-76.7975
+1124,"1524 West Marine View Drive",Everett,Washington,,"United States",47.9975,-122.214
+1125,"26 Front Street",Bangor,Maine,,"United States",44.7974,-68.77
+1126,"519 Seabright Avenue #107","Santa Cruz",California,,"United States",36.9676,-122.008
+1127,"1814 Second Street","Santa Fe","New Mexico",,"United States",35.6631,-105.966
+1129,"777 East Olive Avenue",Fresno,California,,"United States",36.7582,-119.802
+1136,"86 Newbury Street",Portland,Maine,,"United States",43.6619,-70.2489
+1137,,"San Francisco",California,,"United States",37.7749,-122.419
+1142,"1075 East 20th Street",Chico,California,,"United States",39.7246,-121.816
+1148,"1300 Central Avenue",McKinleyville,California,,"United States",40.9491,-124.102
+1149,"40 Van Dyke St",Brooklyn,"New York",,"United States",40.674,-74.0118
+1150,"545 Turner Drive",Durango,Colorado,,"United States",,
+1151,"404 South Third Street","Mount Vernon",Washington,,"United States",48.4192,-122.335
+1155,"717 W. 3rd Ave",Anchorage,Alaska,,"United States",61.2196,-149.896
+1158,"312 North Lewis Road",Royersford,Pennsylvania,,"United States",40.1943,-75.534
+1160,"225 Heritage Ave",Portsmouth,"New Hampshire",,"United States",43.0325,-70.7948
+1163,,Sonora,California,,"United States",37.9841,-120.382
+1165,"1012 North California Street",Socorro,"New Mexico",,"United States",34.0701,-106.893
+1166,"10426 East Jomax Road",Scottsdale,Arizona,,"United States",33.7268,-111.853
+1168,"104 Mill St.","Fawn Grove",Pennsylvania,,"United States",39.7323,-76.4496
+1169,"808 West Main Street",Ashland,Wisconsin,,"United States",46.5872,-90.8921
+1170,"40 Bowden Square",Southampton,"New York",,"United States",40.8903,-72.3927
+1172,"1207 N. FM 3083 E.",Conroe,Texas,,"United States",30.3489,-95.4427
+1173,"2051A Stoneman Circle",Lakewood,"New York",,"United States",42.1008,-79.3357
+1176,"Marsstrae 46-48",MÃ¼nchen,Bayern,,Germany,,
+1177,"1195-A Evans Avenue","San Francisco",California,,"United States",37.7387,-122.381
+1179,"603 East Brewery Street",Shiner,Texas,,"United States",29.426,-97.1607
+1181,"701 West Glendale Avenue",Glendale,Wisconsin,,"United States",43.1,-87.9198
+1182,"2519 Main St.",Conestoga,Pennsylvania,,"United States",39.9525,-76.3295
+1184,,"St. John","Virgin Islands",,"United States",18.3368,-64.7281
+1185,"St Peter's Hall",Bungay,Suffolk,,"United Kingdom",36.7282,-76.5836
+1186,"63 Trevarthian Road","St. Austell",Cornwall,,"United Kingdom",50.3416,-4.7883
+1187,,Kilkenny,,,Ireland,52.6538,-7.248
+1191,"HofbrÃ¤uallee 1",MÃ¼nchen,Bayern,,Germany,,
+1194,"255 Bremner Road",Toronto,ON,,Canada,43.6414,-79.3869
+1195,"375 Water Street",Vancouver,"British Columbia",,Canada,49.2849,-123.11
+1197,,Longview,Texas,,"United States",32.5007,-94.7405
+1202,"KendlerstraÃŸe 1",Salzburg,,,Austria,47.8005,13.0444
+1204,"1999 Citracado Parkway",Escondido,California,,"United States",33.1157,-117.12
+1206,,Solon,Iowa,,"United States",41.8072,-91.4941
+1211,"2800 North Reading Road",Adamstown,Pennsylvania,,"United States",40.2369,-76.072
+1213,"Braidleigh Lodge 22 Shore Road",Killyleagh,"County Down",,Ireland,54.3906,-5.6548
+1217,"Bblinger Strae 104",Stuttgart,Baden-Wrttemberg,,Germany,,
+1218,"2001 Second Street",Davis,California,,"United States",38.5472,-121.726
+1219,"281 Heinlein Strasse",Frankenmuth,Michigan,,"United States",43.3152,-83.7314
+1220,"910 Montreal Circle","Saint Paul",Minnesota,,"United States",44.9139,-93.1396
+1221,"4811 Dusharme Drive","Brooklyn Center",Minnesota,,"United States",45.0429,-93.3246
+1223,"45980 Waterview Plaza",Sterling,Virginia,,"United States",39.0324,-77.4097
+1224,"195 Ottley Drive",Atlanta,Georgia,,"United States",33.8087,-84.3813
+1232,"6648 Reservoir Ln","San Diego",California,,"United States",32.7732,-117.055
+1235,,"La Crosse",Wisconsin,,"United States",43.8014,-91.2396
+1238,,"San Diego",California,,"United States",32.7153,-117.157
+1242,"803 SE School Street",Enterprise,Oregon,,"United States",45.4192,-117.272
+1243,"196 Alps Road",Athens,Georgia,,"United States",33.9459,-83.4105
+1244,"23 South Main Street",Waterbury,Vermont,,"United States",44.3372,-72.756
+1245,"420 Harrison Drive",Centerport,"New York",,"United States",40.8959,-73.3811
+1246,"715 Dunn Way",Placentia,California,,"United States",33.8614,-117.88
+1247,"357 Salmon Brook Street",Granby,Connecticut,,"United States",41.9658,-72.793
+1248,"3525 Liberty Avenue",Pittsburgh,Pennsylvania,,"United States",40.4624,-79.9645
+1250,"190 5th Street","Benton Harbor",Michigan,,"United States",42.1185,-86.4537
+1251,"155 Mata Way Suite 104","San Marcos",California,,"United States",33.1406,-117.15
+1254,"610 Third Street","Santa Rosa",California,,"United States",38.4398,-122.713
+1255,"529 Grant St. Suite B",Akron,Ohio,,"United States",41.0689,-81.5172
+1258,"16 Tobey Road",Bloomfield,Connecticut,,"United States",41.8087,-72.7108
+1260,"9750 Indiana Parkway",Munster,Indiana,,"United States",41.5354,-87.5158
+1262,"7401 North La Cholla Boulevard",Tucson,Arizona,,"United States",32.3407,-111.015
+1268,"200 Dousman Street","Green Bay",Wisconsin,,"United States",44.52,-88.0173
+1271,"1401 Miner Street","Idaho Springs",Colorado,,"United States",39.7418,-105.518
+1273,,Westerlo,Antwerp,,Belgium,51.0873,4.9178
+1274,"29 Nyrang Street",Sydney,"New South Wales",,Australia,-33.8501,151.045
+1280,"279 Springfield Avenue","Berkeley Heights","New Jersey",,"United States",40.6892,-74.4349
+1281,"Innerleithen EH44 6PW",Innerleithen,Scotland,,"United Kingdom",55.619,-3.0636
+1285,"138 Nassau Street",Princeton,"New Jersey",,"United States",40.3507,-74.6583
+1286,"800 Paxton Street",Harrisburg,Pennsylvania,,"United States",40.2559,-76.8715
+1287,"35 Soi Prommit, Sukumvit 39",Bangkok,,,Thailand,13.7234,100.476
+1290,"Schillerstrae 14",Nrnberg,Bayern,,Germany,49.4643,11.0847
+1291,"State Highway 2",Mangatainoka,,,"New Zealand",,
+1296,"104 North Lewis Street",Monroe,Washington,,"United States",47.8559,-121.971
+1298,"30 Butterfield Road",Warrenville,Illinois,,"United States",41.8206,-88.2068
+1301,"1025 Owen Street","Lake Mills",Wisconsin,,"United States",43.0862,-88.8967
+1303,"Bergerstrae 1",Dsseldorf,Nordrhein-Westfalen,,Germany,51.225,6.7722
+1304,"1722 South Fremont Drive (2375 West)","Salt Lake City",Utah,,"United States",40.7326,-111.954
+1305,"102 South State Street",Ukiah,California,,"United States",39.1498,-123.208
+1307,"80 Des Carrires",Chambly,Quebec,,Canada,45.4416,-73.2595
+1308,,,,,Portugal,,
+1312,"1/1 Vittal Mallya Road",Bangalore,,,India,12.9689,77.5946
+1313,"350 West Eleventh Street",Bloomington,Indiana,,"United States",39.1733,-86.5369
+1314,,Clinton,Iowa,,"United States",41.8445,-90.1887
+1315,"17070 Wright Plaza",Omaha,Nebraska,,"United States",41.2331,-96.1811
+1316,"514 South Eleventh Street",Omaha,Nebraska,,"United States",41.2553,-95.9306
+1318,"1763 South 300 West","Salt Lake City",Utah,,"United States",40.7322,-111.9
+1319,"Pramons gatv 12",Utena,,,Lithuania,,
+1320,"1950 W. Fremont St.",Stockton,California,,"United States",37.9551,-121.322
+1321,,Wayne,Pennsylvania,,"United States",40.0439,-75.3881
+1322,,Ingelmunster,,,Belgium,50.9205,3.2541
+1326,"420 Acorn Lane",Downingtown,Pennsylvania,,"United States",40.0061,-75.6942
+1330,"215 1/5 Arch St.",Meadville,Pennsylvania,,"United States",41.6372,-80.1549
+1331,"Kuli vart 7",Klaipda,,,Lithuania,,
+1332,"175 State Road East",Westminster,Massachusetts,,"United States",42.5586,-71.8715
+1333,"9322 State Route 414",Lodi,"New York",,"United States",42.5739,-76.8582
+1336,"105 East State Street",Hastings,Michigan,,"United States",42.6488,-85.2875
+1337,"Domring 4-10",Warstein,Nordrhein-Westfalen,,Germany,51.4416,8.3519
+1344,"Florhofstrasse 13",Wdenswil,,,Switzerland,47.2311,8.6691
+1346,,Berwyn,Illinois,,"United States",41.8506,-87.7937
+1348,,,,,"United Kingdom",,
+1349,"Bergstrae 4",Steinberg/Sachsen,Sachsen,,Germany,,
+1350,,"Steinberg-WernesgrÃ¼n, Germany",,,Germany,,
+1352,"905 Line Street",Easton,Pennsylvania,,"United States",40.6732,-75.2249
+1356,"Porter Tun House",Luton,Bedford,,"United Kingdom",52.1357,-0.468
+1357,"8149 Honeygo Blvd","White Marsh",Maryland,,"United States",39.3722,-76.4638
+1361,"929 North Russell Street",Portland,Oregon,,"United States",45.5408,-122.676
+1363,"4607 Wedgewood Blvd.",Fredrick,Maryland,,"United States",39.3628,-77.4265
+1366,,"Clear Lake",Wisconsin,,"United States",45.2519,-92.2713
+1367,"New Alloa Brewery",Alloa,Scotland,,"United Kingdom",56.1163,-3.7954
+1373,Woodbastwick,Norwich,Norfolk,,"United Kingdom",52.6842,1.449
+1375,"The Eagle Maltings",Witney,Oxford,,"United Kingdom",51.7523,-1.2558
+1376,,,,,"United Kingdom",,
+1379,"1634 18th Street",Denver,Colorado,,"United States",39.7535,-104.998
+1380,,Yakima,Washington,,"United States",46.6021,-120.506
+1383,"2439 Amber Street",Philadelphia,Pennsylvania,,"United States",39.9831,-75.1274
+1385,"26 Osiers Road",London,,,England,51.4611,-0.1966
+1388,"310 Mill Creek Avenue",Pottsville,Pennsylvania,,"United States",40.7,-76.1747
+1391,"910 Division St",Nashville,Tennessee,,"United States",36.151,-86.7821
+1392,,Malli,Sikkim,,India,,
+1394,"209 Technology Park Lane","Fuquay Varina","North Carolina",,"United States",35.6197,-78.8085
+1396,"555 North Mill Street",Aspen,Colorado,,"United States",,
+1397,"8845 Quail Lane",Manhattan,KS,,"United States",,
+1400,"619 10th St. South",Minneapolis,Minnesota,,"United States",,
+1401,"550 Roseberry Street",Winnipeg,Manitoba,,Canada,,
+1402,"114 Little York Rd",Warwick,NY,,"United States",,
+1404,"2100 Locust Street","St. Louis",MO,,"United States",,
+1405,"6 Verkhny per., d. 3","St. Petersburg",,,Russia,,
+1409,"525 Short St.",Columbus,OH,,"United States",,
+1410,"1812 Post Road",Plover,WI,,"United States",,
+1411,"30 Bridge St","Millers Falls",MA,,"United States",,
+1412,"Robert Cain Brewery",Liverpool,Merseyside,,"United Kingdom",,
+1413,"125B Roberts St",Asheville,NC,,"United States",,
+1416,"925 Cherry Street SE","Grand Rapids",MI,,"United States",,
+1417,,Eugene,Or,,"United States",,
+1419,"Niigata-ken Nishikanbara-gun",,,,Japan,,
+1421,"3178-B Bladensburg Rd. NE",Washington,DC,,"United States",,
