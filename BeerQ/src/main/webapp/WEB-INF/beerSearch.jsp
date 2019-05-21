@@ -41,23 +41,34 @@
   </nav>
 </div>
 
-
-
 <!-- NAVBAR End -->
 
 	<h2>Here are your Beer results</h2>
 
 
-		<c:forEach var="beer" items="${list }">
-			<!-- create cards here with beer fields -->
+		<%-- <c:forEach var="beer" items="${list }">
     ${beer}
     <br>
-	</c:forEach>
+	</c:forEach>  --%>
 	
+	 <c:forEach var="beer" items="${list}">
+        <li>
+        <a href="goToBeerProfile.do?beerId=${beer.id}"> ${beer.name}</a> 
+        </li>
+        </c:forEach>
+        
+        <c:if test="${type == 'fav' }">
 
-
-
-
+		<c:forEach var="listFavBeers" items="${list }">
+			<!-- create cards here with beer fields -->
+			${beer.name }
+			<form action="getFavorite.do" method="get">
+				<input type= "submit" value="Go to profile">
+			</form>
+			
+		</c:forEach>
+	</c:if>
+	
 
 	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

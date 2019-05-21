@@ -26,6 +26,6 @@ public interface UserDAO {
 
 	public Drinker createDrinker(Drinker drinker);
 
-	Drinker updateDrinker(Drinker drinker, int addressId);
+	Drinker updateDrinker(Drinker drinker, int id);
 
 }

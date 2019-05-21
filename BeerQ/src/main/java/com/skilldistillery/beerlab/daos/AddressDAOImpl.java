@@ -48,6 +48,7 @@ public class AddressDAOImpl implements AddressDAO {
 
 		// update the values of the detached entity
 		updatedAddress.setStreet(address.getStreet());
+		updatedAddress.setState(address.getState());
 		updatedAddress.setCity(address.getCity());
 		updatedAddress.setZip(address.getZip());
 		updatedAddress.setCountry(address.getCountry());

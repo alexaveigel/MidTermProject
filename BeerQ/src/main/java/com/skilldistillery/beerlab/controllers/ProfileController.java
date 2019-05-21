@@ -48,9 +48,6 @@ public class ProfileController {
 			session.setAttribute("user", activeUser);
 			Drinker drinker = activeUser.getDrinker();
 			session.setAttribute("drinker", drinker);
-			Address address = drinker.getAddress();
-			session.setAttribute("address", address);
-			mv.addObject("activeUser", activeUser);
 			mv.setViewName("/WEB-INF/home.jsp");
 		} else {
 			mv.addObject("message", "Your entry doesn't match our records, please try again.");
@@ -75,28 +72,37 @@ public class ProfileController {
 		ModelAndView mv = new ModelAndView();
 		List<FavoriteBeer> list = beerDAO.getListOfFavBeer(user);
 		mv.addObject("listFavBeers", list);
+		mv.addObject("type", "fave");
+		mv.setViewName("/WEB-INF/beerSearch.jsp");
 		return mv;
 	}
 
-	@RequestMapping(path = "goToEdit.do")
-	public ModelAndView goToEdit(User user) {
+	@RequestMapping(path = "editProfile.do", method = RequestMethod.POST)
+	public ModelAndView editProfile(Drinker drinker, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/WEB-INF/signup.jsp");
+		Drinker current = (Drinker) session.getAttribute("drinker");
+		drinker.setAddress(current.getAddress());
+		drinker = userDAO.updateDrinker(drinker, current.getId());
+		session.setAttribute("drinker", drinker);
+		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
-
-	@RequestMapping(path = "editProfile.do")
-	public ModelAndView editProfile(HttpSession session) {
+	@RequestMapping(path = "editAddress.do", method = RequestMethod.POST )
+	public ModelAndView editAddress(Address address, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		User user = (User) session.getAttribute("user");
-		Drinker drinker = (Drinker) session.getAttribute("drinker");
-//		session.setAttribute("drinker", drinker);
-		Address address = (Address) session.getAttribute("address");
-//		session.setAttribute("address", address);
-		
-		mv.addObject("user", user);
-		mv.addObject("drinker", drinker);
-		mv.addObject("address", address);
+		Drinker currDrinker = (Drinker) session.getAttribute("drinker");
+		Address current = currDrinker.getAddress();
+		address = adDAO.updateAddress(current.getId(), address);
+		currDrinker.setAddress(address);
+		session.setAttribute("drinker", currDrinker);
+		mv.setViewName("/WEB-INF/userProfile.jsp");
+		return mv;
+	}
+	
+
+	@RequestMapping(path = "goToEditProfile.do")
+	public ModelAndView goToEdit(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
 		mv.addObject("type", "edit");
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
@@ -148,8 +154,9 @@ public class ProfileController {
 		System.out.println(address);
 		ModelAndView mv = new ModelAndView();
 		Drinker drinker = (Drinker) session.getAttribute("drinker");
-		adDAO.updateAddress(drinker.getAddress().getId(), address);
-
+		address = adDAO.createAddress(address);
+		drinker.setAddress(address);
+		userDAO.updateDrinker(drinker, drinker.getId());
 		mv.setViewName("/WEB-INF/home.jsp");
 		return mv;
 	}

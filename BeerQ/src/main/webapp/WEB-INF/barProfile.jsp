@@ -129,8 +129,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzd
 	
 	<h2>Beers that we carry</h2>
 	
-
-
 <ol>
 <div class="flexcontainer">	
 <c:forEach var="beer" items="${bar.beers}">

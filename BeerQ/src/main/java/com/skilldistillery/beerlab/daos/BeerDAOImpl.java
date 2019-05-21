@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.beerlab.entities.Bar;
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
@@ -106,7 +107,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public Beer updateBeer(int id, Beer beer) {
-		emf.createEntityManager();
+		em = emf.createEntityManager();
 		// open a transaction
 		em.getTransaction().begin();
 
@@ -129,7 +130,7 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public boolean destroyBeer(int beerId) {
 		boolean itWorked = false;
-		emf.createEntityManager();
+		em = emf.createEntityManager();
 		em.getTransaction().begin();
 
 		Beer destroyedBeer = em.find(Beer.class, beerId);
@@ -142,7 +143,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<FavoriteBeer> addBeerToFavList(Beer beer, User user) {
-		emf.createEntityManager();
+		em = emf.createEntityManager();
 		em.getTransaction().begin();
 		User userFavBeer = em.find(User.class, user.getId());
 		FavoriteBeer favBeer = em.find(FavoriteBeer.class, beer.getId());
@@ -157,13 +158,45 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<FavoriteBeer> getListOfFavBeer(User user) {
-		emf.createEntityManager();
+		em = emf.createEntityManager();
 		em.getTransaction().begin();
 		User userFavBeer = em.find(User.class, user.getId());
+		
+		em.getTransaction().commit();
+		em.close();
 
 		return userFavBeer.getDrinker().getFavBeer();
 	}
-
+	
+//	public List<Beer> getEveryBeerInBar(){
+//		
+//		
+//		
+//	}
+	
+	public List<Bar> addAllBarsToAttachedBeer(Beer beer, Bar bar){
+		List<Bar> barsToAdd = null;
+		em = emf.createEntityManager();
+		em.getTransaction().begin();
+		//Beer beer = em.find(Beer.class, beer.getId());
+		
+		
+		return barsToAdd;
+		
+		
+		//return barsToAdd;
+	}
+	
+	
+	public List<Bar> getAllBarsAttachedToBeer(){
+		List<Bar> everyBar = null;
+		em = emf.createEntityManager();		
+		//everyBar = em.find(Bar.class, 1);
+		
+		
+		return everyBar;
+	}
+ 
 	@Override
 	public List<Beer> approveBeer(Beer beer) {
 		em = emf.createEntityManager();
@@ -222,6 +255,13 @@ public class BeerDAOImpl implements BeerDAO {
 		List<Beer> beers = em.createQuery(query, Beer.class).setParameter("bind", style).getResultList();
 
 		return beers;
+	}
+	
+	@Override
+	public Beer findBeerById(int beerId) {
+		em = emf.createEntityManager();
+		Beer beer = em.find(Beer.class, beerId);
+		return beer;
 	}
 
 }
