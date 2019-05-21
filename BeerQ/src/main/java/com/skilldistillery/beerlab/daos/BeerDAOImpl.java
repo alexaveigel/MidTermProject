@@ -223,5 +223,12 @@ public class BeerDAOImpl implements BeerDAO {
 
 		return beers;
 	}
+	
+	@Override
+	public Beer findBeerById(int beerId) {
+		em = emf.createEntityManager();
+		Beer beer = em.find(Beer.class, beerId);
+		return beer;
+	}
 
 }

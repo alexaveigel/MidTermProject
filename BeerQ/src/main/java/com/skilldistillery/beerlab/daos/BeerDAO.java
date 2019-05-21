@@ -44,5 +44,9 @@ public interface BeerDAO {
 	public boolean destroyBeer(int id);
 
 	List<Beer> unapproved();
+	
+	Beer findBeerById(int beerId);
+		
+	
 
 }
