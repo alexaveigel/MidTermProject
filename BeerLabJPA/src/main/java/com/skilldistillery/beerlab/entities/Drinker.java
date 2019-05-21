@@ -79,8 +79,7 @@ public class Drinker {
 	@Override
 	public String toString() {
 		return "Drinker [id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", dob="
-				+ dob + ", gender=" + gender + ", beerStyle=" + beerStyle + ", picUrl=" + picUrl + ", favBeer="
-				+ favBeer + ", address=" + address + "]";
+				+ dob + ", gender=" + gender + ", beerStyle=" + beerStyle + ", picUrl=" + picUrl + ", address=" + address + "]";
 	}
 
 	@Override
