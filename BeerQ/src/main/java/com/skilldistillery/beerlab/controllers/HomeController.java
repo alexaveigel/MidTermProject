@@ -122,15 +122,14 @@ public class HomeController {
         return mv;
     }
         
-    @RequestMapping(path = "goToBeerProfile.do")
-    public ModelAndView goToBeerProfile() {
-        ModelAndView mv = new ModelAndView();
-        
-        
-        mv.setViewName("/WEB-INF/beerProfile.jsp");
-        return mv;
-    }
-	
+	 @RequestMapping(path = "goToBeerProfile.do", method = RequestMethod.GET)
+	    public ModelAndView goToBeerProfile(@RequestParam("beerId") int beerId) {
+	        ModelAndView mv = new ModelAndView();
+	        Beer beer = beerDAO.findBeerById(beerId);
+	        mv.addObject("beer", beer);
+	        mv.setViewName("/WEB-INF/beerProfile.jsp");
+	        return mv;
+	    }
 
 
 }
