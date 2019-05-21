@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ public class Beer {
 	private int approved;
 
 	
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "bar_inventory",
 	joinColumns =@JoinColumn(name = "beer_id"),
 	inverseJoinColumns =@JoinColumn(name = "bar_id"))

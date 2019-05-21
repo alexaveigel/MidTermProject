@@ -35,12 +35,12 @@ public class FavoriteBeer {
 	@JoinColumn(name = "drinker_id")
 	private Drinker drinker;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "beer_id")
 	private Beer beer;
 	
-	
-	
+
 	public Beer getBeer() {
 		return beer;
 	}
