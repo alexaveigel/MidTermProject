@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.beerlab.entities.Bar;
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
@@ -160,10 +161,42 @@ public class BeerDAOImpl implements BeerDAO {
 		emf.createEntityManager();
 		em.getTransaction().begin();
 		User userFavBeer = em.find(User.class, user.getId());
+		
+		em.getTransaction().commit();
+		em.close();
 
 		return userFavBeer.getDrinker().getFavBeer();
 	}
-
+	
+//	public List<Beer> getEveryBeerInBar(){
+//		
+//		
+//		
+//	}
+	
+	public List<Bar> addAllBarsToAttachedBeer(Beer beer, Bar bar){
+		List<Bar> barsToAdd = null;
+		emf.createEntityManager();
+		em.getTransaction().begin();
+		//Beer beer = em.find(Beer.class, beer.getId());
+		
+		
+		return barsToAdd;
+		
+		
+		//return barsToAdd;
+	}
+	
+	
+	public List<Bar> getAllBarsAttachedToBeer(){
+		List<Bar> everyBar = null;
+		em = emf.createEntityManager();		
+		//everyBar = em.find(Bar.class, 1);
+		
+		
+		return everyBar;
+	}
+ 
 	@Override
 	public List<Beer> approveBeer(Beer beer) {
 		em = emf.createEntityManager();
