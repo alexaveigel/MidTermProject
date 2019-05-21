@@ -170,6 +170,19 @@ public class BeerDAOImpl implements BeerDAO {
 		System.out.println(drinker.getBeers());
 		return drinker.getBeers();
 	}
+	
+	@Override
+	public List<Brewery> getRandomBreweries(){
+		em = emf.createEntityManager();
+		String query = "SELECT brewery FROM Brewery brewery";
+		List<Brewery> breweries = em.createQuery(query, Brewery.class).getResultList();
+		List<Brewery> random = new ArrayList<>();
+		for (int i = 0; i < 20; i++) {
+			random.add(breweries.get((int) (Math.random() + 1) * (breweries.size() - 1)));
+		}
+
+		return random;
+	}
 
 	@Override
 	public List<Beer> approveBeer(Beer beer) {
