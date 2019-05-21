@@ -1,3 +1,5 @@
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,6 +13,8 @@
     <%@
     include file ="css/style.css" %>
     </style>
+    
+    
 <meta charset="UTF-8">
 <title>Bar Profile</title>
 </head>
@@ -23,10 +27,10 @@
 			<div class="toggleArea">
 				<h5 class=>BeerQ Home</h5>
 				<span class="text-muted2"><ul id="navlist">
-						<li><a href="goToHome.do">Home</a></li>
-						<li><a href="goToProfile.do">Profile</a></li>
-						<li><a href="logOut.do">Log Out</a></li>
-						<li><a href="goToAdmin.do">Admin</a></li>
+						<li><a class="navbar" href="goToHome.do">Home</a></li>
+						<li><a class="navbar" href="goToProfile.do">Profile</a></li>
+						<li><a class="navbar" href="logOut.do">Log Out</a></li>
+						<li><a class="navbar" href="goToAdmin.do">Admin</a></li>
 					</ul> </span>
 			</div>
 		</div>
@@ -124,15 +128,38 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzd
 	
 	
 	<h2>Beers that we carry</h2>
+	
+
+
 <ol>
+<div class="flexcontainer">	
 <c:forEach var="beer" items="${bar.beers}">
-<li>
-${beer.name}
+
+<li class="beerDetail">
+
+<section class="cards">
+  <!-- Heart and clock feature -->
+<article class="card card--1">
+
+  <div class="card__img"></div>
+  <a href="--BEER PROFILE--" class="card_link">
+     <div class="card__img--hover"></div>
+   </a>
+  <div class="card__info">
+    <span class="card__category">${beer.brewery.name}</span>
+    <h3 class="card__title">${beer.name}</h3>
+    <span class="card__by">by <a href="${beer.brewery.webUrl }" class="card__brewery" title="brewery">${beer.brewery.name}</a></span>
+  </div>
+</article>
+
+</section>
 </li> 
+
+
 </c:forEach>
+	</div> <!-- container end -->
 </ol>  
-	
-	
+
 	
 	
 
