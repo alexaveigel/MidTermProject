@@ -42,7 +42,7 @@
 </div>
 
 <!-- NAVBAR End -->
-<c:if test="${empty type }">
+<c:if test="${type == 'search' }">
 	<h2>Here are your Beer results</h2>
 	
 	 <c:forEach var="beer" items="${list}">
@@ -51,17 +51,18 @@
         </li>
         </c:forEach>
 </c:if>
-        <c:if test="${type == 'fav' }">
-	<h2>Here are your favorite beers</h2>
+       
+  <c:if test="${type == 'fav' }">
+	 <h2>Here are your favorite beers</h2>
 	${list }
-	<ul>
-	 <c:forEach var="favBeer" items="${list}">
+	   <ul>
+	     <c:forEach var="favBeer" items="${list}">
 	 
-        <li>
-        <a href="goToBeerProfile.do?beerId=${favBeer.beer.id}"> ${favBeer.beer.name}</a> 
-        </li>
+          <li>
+            <a href="goToBeerProfile.do?beerId=${favBeer.beer.id}"> ${favBeer.beer.name}</a> 
+          </li>
         </c:forEach>
-     </ul>
+      </ul>
 	</c:if>
 
 		<%-- <c:forEach var="beer" items="${list }">
