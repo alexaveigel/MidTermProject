@@ -8,7 +8,9 @@ import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.beerlab.entities.Address;
 import com.skilldistillery.beerlab.entities.Bar;
+import com.skilldistillery.beerlab.entities.Beer;
 
 @Service
 public class BarDAOImpl implements BarDAO {
@@ -40,24 +42,37 @@ public class BarDAOImpl implements BarDAO {
 
 	@Override
 	public Bar updateBar(int id, Bar bar) {
-		emf.createEntityManager();
+		em = emf.createEntityManager();
 		// open a transaction
 		em.getTransaction().begin();
 
 		// retrieve a "managed" Bar entity
 		Bar updatedBar = em.find(Bar.class, id);
-
+		Address address = bar.getAddress();
+		Address updateAddress = em.find(Address.class, address.getId());
 		// update the values of the detached entity
 		updatedBar.setName(bar.getName());
 		updatedBar.setMessage(bar.getMessage());
-		updatedBar.setAddress(bar.getAddress());
+		updatedBar.setAddress(updateAddress);
 		updatedBar.setWebUrl(bar.getWebUrl());
 		updatedBar.setLogoUrl(bar.getLogoUrl());
-		
-		
+		updatedBar.setBeers(bar.getBeers());
+		System.out.println(updatedBar.getBeers());
 		em.getTransaction().commit();
 		em.close();
 		return updatedBar;
+	}
+	
+	public void addBeerToBarInventory(Beer beer, Bar bar) {
+		em = emf.createEntityManager();
+		em.getTransaction().begin();
+		
+		String query = "INSERT into bar_inventory (bar_id, beer_id) VALUES (:barId, :beerId)";
+		
+		em.createNativeQuery(query).setParameter("barId", bar.getId()).setParameter("beerId", beer.getId()).executeUpdate();
+		
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	@Override
@@ -109,6 +124,7 @@ public class BarDAOImpl implements BarDAO {
 		Bar destroyedBar = em.find(Bar.class, barId);
 		em.remove(destroyedBar);
 		em.getTransaction().commit();
+		em.close();
 		itWorked = true;
 	
 		return itWorked;
@@ -117,10 +133,11 @@ public class BarDAOImpl implements BarDAO {
 	@Override
 	public Bar findBarById(int barId) {
 		em = emf.createEntityManager();
+		em.getTransaction().begin();
 		Bar bar = em.find(Bar.class, barId);
+		em.getTransaction().commit();
+		em.close();
 		return bar;
 	}
-
 	
-
 }

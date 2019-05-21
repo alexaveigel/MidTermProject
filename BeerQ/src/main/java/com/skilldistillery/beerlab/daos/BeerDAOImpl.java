@@ -232,7 +232,10 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public Beer findBeerById(int beerId) {
 		em = emf.createEntityManager();
+		em.getTransaction().begin();
 		Beer beer = em.find(Beer.class, beerId);
+		em.getTransaction().commit();
+		em.close();
 		return beer;
 	}
 	
