@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `drinker` (
   `gender` VARCHAR(45) NULL,
   `beer_style` VARCHAR(45) NULL,
   `pic_url` VARCHAR(500) NULL,
-  `address_id` INT NULL,
+  `address_id` INT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_drinker_user1_idx` (`user_id` ASC),
   INDEX `fk_drinker_address_idx` (`address_id` ASC),

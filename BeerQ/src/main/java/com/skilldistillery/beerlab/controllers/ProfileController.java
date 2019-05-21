@@ -72,6 +72,8 @@ public class ProfileController {
 		ModelAndView mv = new ModelAndView();
 		List<FavoriteBeer> list = beerDAO.getListOfFavBeer(user);
 		mv.addObject("listFavBeers", list);
+		mv.addObject("type", "fave");
+		mv.setViewName("/WEB-INF/beerSearch.jsp");
 		return mv;
 	}
 

@@ -107,7 +107,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public Beer updateBeer(int id, Beer beer) {
-		emf.createEntityManager();
+		em = emf.createEntityManager();
 		// open a transaction
 		em.getTransaction().begin();
 
@@ -130,7 +130,7 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public boolean destroyBeer(int beerId) {
 		boolean itWorked = false;
-		emf.createEntityManager();
+		em = emf.createEntityManager();
 		em.getTransaction().begin();
 
 		Beer destroyedBeer = em.find(Beer.class, beerId);
@@ -143,7 +143,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<FavoriteBeer> addBeerToFavList(Beer beer, User user) {
-		emf.createEntityManager();
+		em = emf.createEntityManager();
 		em.getTransaction().begin();
 		User userFavBeer = em.find(User.class, user.getId());
 		FavoriteBeer favBeer = em.find(FavoriteBeer.class, beer.getId());
@@ -158,7 +158,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<FavoriteBeer> getListOfFavBeer(User user) {
-		emf.createEntityManager();
+		em = emf.createEntityManager();
 		em.getTransaction().begin();
 		User userFavBeer = em.find(User.class, user.getId());
 		
@@ -176,7 +176,7 @@ public class BeerDAOImpl implements BeerDAO {
 	
 	public List<Bar> addAllBarsToAttachedBeer(Beer beer, Bar bar){
 		List<Bar> barsToAdd = null;
-		emf.createEntityManager();
+		em = emf.createEntityManager();
 		em.getTransaction().begin();
 		//Beer beer = em.find(Beer.class, beer.getId());
 		
