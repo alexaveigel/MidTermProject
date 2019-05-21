@@ -6,12 +6,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.beerlab.entities.Bar;
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
+import com.skilldistillery.beerlab.entities.Drinker;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
 import com.skilldistillery.beerlab.entities.User;
 
@@ -142,61 +144,57 @@ public class BeerDAOImpl implements BeerDAO {
 	}
 
 	@Override
-	public List<FavoriteBeer> addBeerToFavList(Beer beer, User user) {
+	public List<FavoriteBeer> addBeerToFavList(Beer beer, HttpSession session) {
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
-		User userFavBeer = em.find(User.class, user.getId());
+		Drinker drinker = (Drinker) session.getAttribute("user");
 		FavoriteBeer favBeer = em.find(FavoriteBeer.class, beer.getId());
 
-		userFavBeer.getDrinker().getFavBeer().add(favBeer);
+		drinker.getFavBeer().add(favBeer);
 
 		em.getTransaction().commit();
 		em.close();
 
-		return userFavBeer.getDrinker().getFavBeer();
+		return drinker.getFavBeer();
 	}
 
 	@Override
-	public List<FavoriteBeer> getListOfFavBeer(User user) {
+	public List<FavoriteBeer> getListOfFavBeer(HttpSession session) {
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
-		User userFavBeer = em.find(User.class, user.getId());
-		
+		Drinker drinker = (Drinker) session.getAttribute("drinker");
+		System.out.println(drinker);
 		em.getTransaction().commit();
 		em.close();
-
-		return userFavBeer.getDrinker().getFavBeer();
+		System.out.println(drinker.getBeers());
+		return drinker.getBeers();
 	}
-	
+
 //	public List<Beer> getEveryBeerInBar(){
 //		
 //		
 //		
 //	}
-	
-	public List<Bar> addAllBarsToAttachedBeer(Beer beer, Bar bar){
+
+	public List<Bar> addAllBarsToAttachedBeer(Beer beer, Bar bar) {
 		List<Bar> barsToAdd = null;
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
-		//Beer beer = em.find(Beer.class, beer.getId());
-		
-		
+		// Beer beer = em.find(Beer.class, beer.getId());
+
 		return barsToAdd;
-		
-		
-		//return barsToAdd;
+
+		// return barsToAdd;
 	}
-	
-	
-	public List<Bar> getAllBarsAttachedToBeer(){
+
+	public List<Bar> getAllBarsAttachedToBeer() {
 		List<Bar> everyBar = null;
-		em = emf.createEntityManager();		
-		//everyBar = em.find(Bar.class, 1);
-		
-		
+		em = emf.createEntityManager();
+		// everyBar = em.find(Bar.class, 1);
+
 		return everyBar;
 	}
- 
+
 	@Override
 	public List<Beer> approveBeer(Beer beer) {
 		em = emf.createEntityManager();
@@ -256,7 +254,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 		return beers;
 	}
-	
+
 	@Override
 	public Beer findBeerById(int beerId) {
 		em = emf.createEntityManager();

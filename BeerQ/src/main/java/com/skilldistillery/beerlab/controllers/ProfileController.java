@@ -58,9 +58,9 @@ public class ProfileController {
 	}
 
 	@RequestMapping(path = "addFavorite.do")
-	public ModelAndView addFavorite(User user, Beer beer) {
+	public ModelAndView addFavorite(HttpSession session, Beer beer) {
 		ModelAndView mv = new ModelAndView();
-		beerDAO.addBeerToFavList(beer, user);
+		beerDAO.addBeerToFavList(beer, session);
 		mv.addObject("message", "Added to Favorites");
 		mv.addObject("beer", beer);
 		mv.setViewName("/WEB-INF/objectProfile.jsp");
@@ -68,11 +68,11 @@ public class ProfileController {
 	}
 
 	@RequestMapping(path = "getFavorite.do")
-	public ModelAndView getFavorite(User user) {
+	public ModelAndView getFavorite(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		List<FavoriteBeer> list = beerDAO.getListOfFavBeer(user);
-		mv.addObject("listFavBeers", list);
-		mv.addObject("type", "fave");
+		List<FavoriteBeer> list = beerDAO.getListOfFavBeer(session);
+		mv.addObject("list", list);
+		mv.addObject("type", "fav");
 		mv.setViewName("/WEB-INF/beerSearch.jsp");
 		return mv;
 	}
@@ -87,7 +87,8 @@ public class ProfileController {
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
-	@RequestMapping(path = "editAddress.do", method = RequestMethod.POST )
+
+	@RequestMapping(path = "editAddress.do", method = RequestMethod.POST)
 	public ModelAndView editAddress(Address address, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Drinker currDrinker = (Drinker) session.getAttribute("drinker");
@@ -98,7 +99,6 @@ public class ProfileController {
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
-	
 
 	@RequestMapping(path = "goToEditProfile.do")
 	public ModelAndView goToEdit(HttpSession session) {

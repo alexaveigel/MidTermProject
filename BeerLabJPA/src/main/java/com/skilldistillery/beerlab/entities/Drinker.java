@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 //import javax.persistence.Temporal;
 //import javax.persistence.TemporalType;
@@ -46,15 +47,27 @@ public class Drinker {
 	@Column(name = "pic_url")
 	private String picUrl;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "favorite_beer", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "drinker_id"))
-	private List<FavoriteBeer> favBeer;
+//	@ManyToMany(fetch = FetchType.EAGER)
+//	@JoinTable(name = "favorite_beer", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "drinker_id"))
+//	private List<FavoriteBeer> favBeer;
 
+	@OneToMany(mappedBy = "drinker", fetch = FetchType.EAGER)
+	private List<FavoriteBeer> favBeer;
+	
 	@ManyToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	
+
+
+	public List<FavoriteBeer> getBeers() {
+		return favBeer;
+	}
+
+	public void setBeers(List<FavoriteBeer> beers) {
+		this.favBeer = beers;
+	}
+
 	public List<FavoriteBeer> getFavBeer() {
 		return favBeer;
 	}
@@ -75,11 +88,11 @@ public class Drinker {
 		super();
 	}
 
-
 	@Override
 	public String toString() {
 		return "Drinker [id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", dob="
-				+ dob + ", gender=" + gender + ", beerStyle=" + beerStyle + ", picUrl=" + picUrl + ", address=" + address + "]";
+				+ dob + ", gender=" + gender + ", beerStyle=" + beerStyle + ", picUrl=" + picUrl + ", address="
+				+ address + "]";
 	}
 
 	@Override
@@ -88,8 +101,8 @@ public class Drinker {
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((beerStyle == null) ? 0 : beerStyle.hashCode());
-		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
 		result = prime * result + ((favBeer == null) ? 0 : favBeer.hashCode());
+		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + id;
@@ -118,15 +131,15 @@ public class Drinker {
 				return false;
 		} else if (!beerStyle.equals(other.beerStyle))
 			return false;
-		if (dob == null) {
-			if (other.dob != null)
-				return false;
-		} else if (!dob.equals(other.dob))
-			return false;
 		if (favBeer == null) {
 			if (other.favBeer != null)
 				return false;
 		} else if (!favBeer.equals(other.favBeer))
+			return false;
+		if (dob == null) {
+			if (other.dob != null)
+				return false;
+		} else if (!dob.equals(other.dob))
 			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
