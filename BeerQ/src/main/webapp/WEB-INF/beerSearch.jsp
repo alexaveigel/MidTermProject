@@ -56,6 +56,18 @@
         <a href="goToBeerProfile.do?beerId=${beer.id}"> ${beer.name}</a> 
         </li>
         </c:forEach>
+        
+        <c:if test="${type == 'fav' }">
+
+		<c:forEach var="listFavBeers" items="${list }">
+			<!-- create cards here with beer fields -->
+			${beer.name }
+			<form action="getFavorite.do" method="get">
+				<input type= "submit" value="Go to profile">
+			</form>
+			
+		</c:forEach>
+	</c:if>
 	
 
 	<script src="js/scripts.js"></script>
