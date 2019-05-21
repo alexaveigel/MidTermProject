@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.beerlab.entities.Bar;
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
 import com.skilldistillery.beerlab.entities.Drinker;
@@ -148,7 +147,6 @@ public class BeerDAOImpl implements BeerDAO {
 		FavoriteBeer favBeer = new FavoriteBeer();
 		favBeer.setBeer(beer);
 		favBeer.setDrinker(drinker);
-//		favBeer.setDateAdded()
 		em.persist(favBeer);
 		em.flush();
 		drinker.getBeers().add(favBeer);
@@ -249,6 +247,31 @@ public class BeerDAOImpl implements BeerDAO {
 		em = emf.createEntityManager();
 		Beer beer = em.find(Beer.class, beerId);
 		return beer;
+	}
+	
+	@Override
+	public FavoriteBeer findFavBeerById(int beerId) {
+		em = emf.createEntityManager();
+		FavoriteBeer favBeer = em.find(FavoriteBeer.class, beerId);
+		return favBeer;
+	}
+
+	@Override
+	public boolean removeBeerFromFavs(FavoriteBeer favBeer, HttpSession session) {
+		boolean itWorked = false;
+		em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Drinker drinker = em.find(Drinker.class, ((Drinker)(session.getAttribute("drinker"))).getId());
+		FavoriteBeer removedBeer = em.find(FavoriteBeer.class, favBeer.getId());
+		em.remove(removedBeer);
+		drinker.getBeers().remove(removedBeer);
+		em.persist(drinker);
+		em.getTransaction().commit();
+		em.close();
+		session.setAttribute("drinker", drinker);
+		itWorked = true;
+
+		return itWorked;
 	}
 
 }

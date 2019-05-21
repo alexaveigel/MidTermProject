@@ -52,5 +52,11 @@ public interface BeerDAO {
 	List<Brewery> getRandomBreweries();
 		
 	
+//	public boolean removeBeerFromFavs(FavoriteBeer favBeer);
+
+	FavoriteBeer findFavBeerById(int beerId);
+
+	public boolean removeBeerFromFavs(FavoriteBeer favBeer, HttpSession session);
+	
 
 }
