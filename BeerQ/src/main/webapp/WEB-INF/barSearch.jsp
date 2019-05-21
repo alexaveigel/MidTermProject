@@ -50,13 +50,13 @@
 
     <c:forEach var="bar" items="${bars}">
         <li>
-        <a href="goToBarProfile.do?barId=${bar.id}"> ${bar.name}</a> 
+        <a class="listr" href="goToBarProfile.do?barId=${bar.id}"> ${bar.name}</a> 
         </li>
         </c:forEach> 
 	
 	<c:forEach var="bar" items="${list}">
         <li>
-        <a href="goToBarProfile.do?barId=${bar.id}"> ${bar.name}</a> 
+        <a class="listr" href="goToBarProfile.do?barId=${bar.id}"> ${bar.name}</a> 
         </li>
         </c:forEach> 
 
