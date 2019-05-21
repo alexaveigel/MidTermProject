@@ -46,20 +46,11 @@
 <!-- NAVBAR End -->
 
 	<h2>Here are your Bar results</h2>
-
-
-    <c:forEach var="bar" items="${bars}">
-        <li>
-        <a href="goToBarProfile.do?barId=${bar.id}"> ${bar.name}</a> 
-        </li>
+		<c:forEach var="bar" items="${list}">
+      	  <li>
+      	  <a href="goToBarProfile.do?barId=${bar.id}"> ${bar.name}</a> 
+       	 </li>
         </c:forEach> 
-	
-	<c:forEach var="bar" items="${list}">
-        <li>
-        <a href="goToBarProfile.do?barId=${bar.id}"> ${bar.name}</a> 
-        </li>
-        </c:forEach> 
-
 
 
 	<script src="js/scripts.js"></script>

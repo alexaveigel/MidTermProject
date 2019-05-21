@@ -28,7 +28,7 @@ public class HomeController {
 	BeerDAO beerDAO;
 	@Autowired
 	UserDAO userDAO;
-	
+
 	@RequestMapping(path = "/")
 	public ModelAndView goToLanding() {
 		ModelAndView mv = new ModelAndView();
@@ -37,32 +37,32 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "search.do")
-	public ModelAndView search(String keyword,@RequestParam("type")String type) {
+	public ModelAndView search(String keyword, @RequestParam("type") String type) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		mv.addObject("keyword", keyword);
 		mv.addObject("type", "search");
 		if (type.equals("beer")) {
 			List<Beer> beersByName = beerDAO.findBeerByName(keyword);
-			mv.addObject("list",beersByName );
+			mv.addObject("list", beersByName);
 			mv.setViewName("/WEB-INF/beerSearch.jsp");
-			
-		}else if (type.equals("bar")) {
+
+		} else if (type.equals("bar")) {
 			List<Bar> barsByName = barDAO.findBarByName(keyword);
 			mv.setViewName("/WEB-INF/barSearch.jsp");
-			mv.addObject("list",barsByName );
-			
-		}else if (type.equals("beercity")) {
+			mv.addObject("list", barsByName);
+
+		} else if (type.equals("beercity")) {
 			List<Beer> beersByCity = beerDAO.findBeerByCity(keyword);
-			mv.addObject("list",beersByCity );
+			mv.addObject("list", beersByCity);
 			mv.setViewName("/WEB-INF/beerSearch.jsp");
-			
-		}else if (type.equals("barcity")) {
+
+		} else if (type.equals("barcity")) {
 			List<Bar> barsByCity = barDAO.findBarByCity(keyword);
-			mv.addObject("list",barsByCity );
+			mv.addObject("list", barsByCity);
 			mv.setViewName("/WEB-INF/barSearch.jsp");
 		}
-		
+
 		return mv;
 	}
 
@@ -110,26 +110,24 @@ public class HomeController {
 
 		return mv;
 	}
-	
-	@RequestMapping(path = "goToBarProfile.do", method = RequestMethod.GET)
-    public ModelAndView goToBarProfile(@RequestParam("barId") int barId) {
-        ModelAndView mv = new ModelAndView();
-        Bar bar = barDAO.findBarById(barId);
-        mv.addObject("bar", bar);
-        
-        
-        mv.setViewName("/WEB-INF/barProfile.jsp");
-        return mv;
-    }
-        
-	 @RequestMapping(path = "goToBeerProfile.do", method = RequestMethod.GET)
-	    public ModelAndView goToBeerProfile(@RequestParam("beerId") int beerId) {
-	        ModelAndView mv = new ModelAndView();
-	        Beer beer = beerDAO.findBeerById(beerId);
-	        mv.addObject("beer", beer);
-	        mv.setViewName("/WEB-INF/beerProfile.jsp");
-	        return mv;
-	    }
 
+	@RequestMapping(path = "goToBarProfile.do", method = RequestMethod.GET)
+	public ModelAndView goToBarProfile(@RequestParam("barId") int barId) {
+		ModelAndView mv = new ModelAndView();
+		Bar bar = barDAO.findBarById(barId);
+		mv.addObject("bar", bar);
+
+		mv.setViewName("/WEB-INF/barProfile.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "goToBeerProfile.do", method = RequestMethod.GET)
+	public ModelAndView goToBeerProfile(@RequestParam("beerId") int beerId) {
+		ModelAndView mv = new ModelAndView();
+		Beer beer = beerDAO.findBeerById(beerId);
+		mv.addObject("beer", beer);
+		mv.setViewName("/WEB-INF/beerProfile.jsp");
+		return mv;
+	}
 
 }

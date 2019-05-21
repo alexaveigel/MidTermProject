@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,11 +46,34 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 
 
 <h2>Beer Profile</h2>
+
 <ol>
 <li>
-${beer}
-</li> 
+${beer.name}<br>
+</li>
+<li>
+${beer.style}<br>
+</li>
+<li>
+${beer.abv}<br>
+</li>
+<li>
+${beer.description}<br>
+</li>
 </ol>
+
+<h2>Bars that carry these beers</h2>
+<ol>
+<c:forEach var="bar" items="${beer.bars}">
+<li>
+${bar.name}
+</li> 
+</c:forEach>
+</ol>
+
+
+
+
     <script src="js/scripts.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
