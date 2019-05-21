@@ -55,10 +55,10 @@ public class UserDAOImpl implements UserDAO {
 		// start the transaction
 		em.getTransaction().begin();
 		
-		Address temp = new Address();
-		
-		em.persist(temp);
-		drinker.setAddress(temp);
+//		Address temp = new Address();
+//		
+//		em.persist(temp);
+//		drinker.setAddress(temp);
 		
 		// write the user to the database
 		em.persist(drinker);
@@ -110,14 +110,23 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Drinker updateDrinker(Drinker drinker, int addressId) {
+	public Drinker updateDrinker(Drinker drinker, int id) {
 		em = emf.createEntityManager();
 		// open a transaction
 		em.getTransaction().begin();
 		// retrieve a "managed" Drinker entity
-		Drinker updateDrinker = em.find(Drinker.class, drinker.getId());
-
-		updateDrinker.setAddress(drinker.getAddress());
+		Drinker updateDrinker = em.find(Drinker.class, id);
+		
+		if (drinker.getAddress() != null) {
+			updateDrinker.setAddress(drinker.getAddress());
+			
+		}
+		updateDrinker.setFirstName(drinker.getFirstName());
+		updateDrinker.setLastName(drinker.getLastName());
+		updateDrinker.setDob(drinker.getDob());
+		updateDrinker.setBeerStyle(drinker.getBeerStyle());
+		updateDrinker.setGender(drinker.getGender());
+		updateDrinker.setPicUrl(drinker.getPicUrl());
 
 		em.getTransaction().commit();
 		em.close();
