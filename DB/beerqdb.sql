@@ -923,6 +923,11 @@ INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latit
 INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1417, '', 'Eugene', 'Or', '', 'United States', '', '');
 INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1419, 'Niigata-ken Nishikanbara-gun', '', '', '', 'Japan', '', '');
 INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1421, '3178-B Bladensburg Rd. NE', 'Washington', 'DC', '', 'United States', '', '');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1422, '1950 S Holly St.', 'Denver', 'CO', '80222', 'United States', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1423, '8101 E Belleview Ave', 'Denver', 'CO', '80237', 'United States', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1424, '1555 Court Place', 'Denver', 'CO', '80202', 'United States', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1425, '1001 16th St', 'Denver', 'CO', '80265', 'United States', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1426, '2300 S. Chambers Rd', 'Aurora', 'CO', '80014', 'United States', NULL, NULL);
 
 COMMIT;
 
@@ -944,9 +949,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beerqdb`;
-INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (1, 'The Bar', 'a message', 1, 'url.com', 'logo.com');
-INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (2, 'Some Bar', 'no message', 2, 'url.com', 'logo.com');
-INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (3, 'Yarp Bar', 'offensive message', 3, 'url.com', 'logo.com');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (1, 'Esters Neighborhood Pub', 'Happy hour special on ', 1422, 'https://www.estersdenver.com/', 'logo.com');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (2, 'Winstons Pub and Grill', 'Formerly the Baker Street Pub & Grill now under new management and locally owned.', 1423, 'http://www.winstonspubandgrill.com/', 'logo.com');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (3, 'Yard House', 'Patio Seating Available, Come enjoy our outdoor deck seating.', 1424, 'https://www.yardhouse.com/home', 'logo.com');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (4, 'Rock Bottom Restaurant & Brewery', 'What\'s brewing at rock bottom? ', 1425, 'https://rockbottom.com/locations/denver/', 'logo.com');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (5, 'Sheabeen Irish Pub', 'The Pub provides live music on the weekends with various local performers that play Irish, Country, Classic Rock  and R&B.', 1426, 'https://www.sheabeenirishpub.com/index.html', 'logo.com');
 
 COMMIT;
 
