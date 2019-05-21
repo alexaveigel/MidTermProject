@@ -120,5 +120,19 @@ public class NavbarController {
 
 		return mv;
 	}
+	
+	@RequestMapping(path = "addBeerToBar.do", method = RequestMethod.POST)
+	public ModelAndView addBeerToBar(int beerId, int barId) {
+		ModelAndView mv = new ModelAndView();
+		Bar bar = barDAO.findBarById(barId);
+		Beer beer = beerDAO.findBeerById(beerId);
+		
+//		bar.addBeer(beer);
+//		barDAO.updateBar(bar.getId(), bar);
+		mv.addObject(bar);
+		barDAO.addBeerToBarInventory(beer, bar);
+		mv.setViewName("/WEB-INF/admin.jsp");
+		return mv;
+	}
 
 }
