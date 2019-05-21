@@ -62,6 +62,11 @@ ${beer.description}<br>
 </li>
 </ol>
 
+	<form action="addFavorite.do" method="post">
+			<input type="hidden" name="beerId" value="${beer.id }">
+			<input type="submit" value="Add to Favorites">
+	</form>
+
 <h2>Bars that carry these beers</h2>
 <ol>
 <c:forEach var="bar" items="${beer.bars}">

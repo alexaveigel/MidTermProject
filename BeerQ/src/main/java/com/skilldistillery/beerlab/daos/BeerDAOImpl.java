@@ -1,6 +1,8 @@
 package com.skilldistillery.beerlab.daos;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -147,11 +149,16 @@ public class BeerDAOImpl implements BeerDAO {
 	public List<FavoriteBeer> addBeerToFavList(Beer beer, HttpSession session) {
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Drinker drinker = (Drinker) session.getAttribute("user");
-		FavoriteBeer favBeer = em.find(FavoriteBeer.class, beer.getId());
-
-		drinker.getFavBeer().add(favBeer);
-
+		Drinker drinker = (Drinker) session.getAttribute("drinker");
+		drinker = em.find(Drinker.class, drinker.getId());
+		FavoriteBeer favBeer = new FavoriteBeer();
+		favBeer.setBeer(beer);
+		favBeer.setDrinker(drinker);
+//		favBeer.setDateAdded()
+		em.persist(favBeer);
+		em.flush();
+		drinker.getBeers().add(favBeer);
+		System.out.println(drinker.getBeers());
 		em.getTransaction().commit();
 		em.close();
 

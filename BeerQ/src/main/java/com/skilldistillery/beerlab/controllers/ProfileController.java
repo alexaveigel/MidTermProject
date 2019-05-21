@@ -6,8 +6,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.beerlab.daos.AddressDAO;
@@ -57,13 +60,19 @@ public class ProfileController {
 		return mv;
 	}
 
-	@RequestMapping(path = "addFavorite.do")
-	public ModelAndView addFavorite(HttpSession session, Beer beer) {
+
+	@RequestMapping(path = "addFavorite.do", method = RequestMethod.POST)
+	public ModelAndView addFavorite(HttpSession session, @RequestParam int beerId) {
 		ModelAndView mv = new ModelAndView();
-		beerDAO.addBeerToFavList(beer, session);
+		System.out.println(beerId);
+		Beer chosenBeer = beerDAO.findBeerById(beerId);
+		System.out.println(chosenBeer);
+		List<FavoriteBeer> list = beerDAO.addBeerToFavList(chosenBeer, session);
 		mv.addObject("message", "Added to Favorites");
-		mv.addObject("beer", beer);
-		mv.setViewName("/WEB-INF/objectProfile.jsp");
+		mv.addObject("beer", beerId);
+		mv.addObject("list", list);
+		mv.addObject("type", "fav");
+		mv.setViewName("/WEB-INF/beerSearch.jsp");
 		return mv;
 	}
 
