@@ -54,12 +54,12 @@ public class UserDAOImpl implements UserDAO {
 
 		// start the transaction
 		em.getTransaction().begin();
-		
+
 //		Address temp = new Address();
 //		
 //		em.persist(temp);
 //		drinker.setAddress(temp);
-		
+
 		// write the user to the database
 		em.persist(drinker);
 		// update the "local" user object
@@ -93,8 +93,7 @@ public class UserDAOImpl implements UserDAO {
 		updatedUser.getDrinker().setGender(user.getDrinker().getGender());
 		updatedUser.getDrinker().setBeerStyle(user.getDrinker().getBeerStyle());
 		updatedUser.getDrinker().setPicUrl(user.getDrinker().getPicUrl());
-		
-		
+
 		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getStreet());
 		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getCity());
 		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getState());
@@ -102,8 +101,7 @@ public class UserDAOImpl implements UserDAO {
 		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getCountry());
 		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getLatitude());
 		updatedUser.getDrinker().getAddress().setStreet(user.getDrinker().getAddress().getLongitude());
-		
-		
+
 		em.getTransaction().commit();
 		em.close();
 		return updatedUser;
@@ -116,10 +114,10 @@ public class UserDAOImpl implements UserDAO {
 		em.getTransaction().begin();
 		// retrieve a "managed" Drinker entity
 		Drinker updateDrinker = em.find(Drinker.class, id);
-		
+
 		if (drinker.getAddress() != null) {
 			updateDrinker.setAddress(drinker.getAddress());
-			
+
 		}
 		updateDrinker.setFirstName(drinker.getFirstName());
 		updateDrinker.setLastName(drinker.getLastName());
@@ -144,7 +142,7 @@ public class UserDAOImpl implements UserDAO {
 		em.remove(destroyedUser);
 		em.getTransaction().commit();
 		itWorked = true;
-
+		em.close();
 		return itWorked;
 	}
 
@@ -153,7 +151,7 @@ public class UserDAOImpl implements UserDAO {
 		em = emf.createEntityManager();
 		String jpql = "SELECT user FROM User user";
 		List<User> users = em.createQuery(jpql, User.class).getResultList();
-
+		em.close();
 		return users;
 	}
 
