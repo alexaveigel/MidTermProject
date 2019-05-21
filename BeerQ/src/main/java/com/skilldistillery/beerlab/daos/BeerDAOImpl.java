@@ -1,8 +1,6 @@
 package com.skilldistillery.beerlab.daos;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,7 +15,6 @@ import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
 import com.skilldistillery.beerlab.entities.Drinker;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
-import com.skilldistillery.beerlab.entities.User;
 
 @Service
 public class BeerDAOImpl implements BeerDAO {
@@ -68,10 +65,6 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Beer> findBeerByCity(String city) {
 		em = emf.createEntityManager();
-//		String query = "SELECT beer FROM Beer beer "
-//				+ "JOIN  Bar_inventory bi ON bi.beer_id = beer.id "
-//				+ "JOIN Bar bar on bi.bar_id =  bar.id "
-//				+ "JOIN Address address on bar.address_id = address.id WHERE address.city = :city";
 
 		String jpql = "SELECT b from Beer b JOIN b.bars bars where bars.address.city = :city";
 
@@ -140,6 +133,7 @@ public class BeerDAOImpl implements BeerDAO {
 		Beer destroyedBeer = em.find(Beer.class, beerId);
 		em.remove(destroyedBeer);
 		em.getTransaction().commit();
+		em.close();
 		itWorked = true;
 
 		return itWorked;
@@ -175,31 +169,6 @@ public class BeerDAOImpl implements BeerDAO {
 		em.close();
 		System.out.println(drinker.getBeers());
 		return drinker.getBeers();
-	}
-
-//	public List<Beer> getEveryBeerInBar(){
-//		
-//		
-//		
-//	}
-
-	public List<Bar> addAllBarsToAttachedBeer(Beer beer, Bar bar) {
-		List<Bar> barsToAdd = null;
-		em = emf.createEntityManager();
-		em.getTransaction().begin();
-		// Beer beer = em.find(Beer.class, beer.getId());
-
-		return barsToAdd;
-
-		// return barsToAdd;
-	}
-
-	public List<Bar> getAllBarsAttachedToBeer() {
-		List<Bar> everyBar = null;
-		em = emf.createEntityManager();
-		// everyBar = em.find(Bar.class, 1);
-
-		return everyBar;
 	}
 
 	@Override

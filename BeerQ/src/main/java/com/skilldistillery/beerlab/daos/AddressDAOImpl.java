@@ -73,6 +73,7 @@ public class AddressDAOImpl implements AddressDAO {
 		Address destroyedAddress = em.find(Address.class, addressId);
 		em.remove(destroyedAddress);
 		em.getTransaction().commit();
+		em.close();
 		itWorked = true;
 	
 		return itWorked;

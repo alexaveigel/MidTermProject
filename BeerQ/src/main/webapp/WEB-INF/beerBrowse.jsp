@@ -49,7 +49,7 @@
 
 
 
-<h2>Brows beers</h2><br>
+<h2>Browse beers</h2><br>
 <h3>6-Pack</h3>
 <c:forEach var = "beer" items="${sixPack }">
 <!-- beer cards and carousel -->
