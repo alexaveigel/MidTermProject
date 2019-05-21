@@ -63,11 +63,13 @@ public class BarDAOImpl implements BarDAO {
 	@Override
 	public List<Bar> findBarByName(String barName) {
 		em = emf.createEntityManager();
+		
 		String query = "SELECT bar FROM Bar bar WHERE bar.name LIKE :barName";
 		 List <Bar> bars =
 			      em.createQuery(query, Bar.class)
 			      .setParameter("barName", "%"+barName+"%")
 			      .getResultList();
+		 
 		return bars;
 	}
 	

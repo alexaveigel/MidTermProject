@@ -2,6 +2,8 @@ package com.skilldistillery.beerlab.daos;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
@@ -11,9 +13,9 @@ public interface BeerDAO {
 	// Create
 	public Beer createBeer(Beer beer);
 
-	public List<FavoriteBeer> addBeerToFavList(Beer beer, User user);
+	public List<FavoriteBeer> addBeerToFavList(Beer beer, HttpSession session);
 
-	public List<FavoriteBeer> getListOfFavBeer(User user);
+	public List<FavoriteBeer> getListOfFavBeer(HttpSession session);
 
 	// Read
 	public List<Brewery> getBreweries();

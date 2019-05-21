@@ -1,6 +1,7 @@
 package com.skilldistillery.beerlab.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -52,7 +53,8 @@ class DrinkerTest {
 	
 	@Test
 	void test_drinker_to_favorite_beer_mapping() {
-		assertEquals("No comment", drinker.getFavBeer().get(0).getComment());
+//		assertEquals("No comment", drinker.getFavBeer().get(0).getComment());
+		assertTrue(drinker.getBeers().size()>1);
 	}
 	
 	@Test

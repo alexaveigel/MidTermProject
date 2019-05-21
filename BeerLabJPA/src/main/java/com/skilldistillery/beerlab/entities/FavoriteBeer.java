@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "favorite_beer")
 public class FavoriteBeer {
@@ -24,7 +26,7 @@ public class FavoriteBeer {
 
 //	@Column(name = "beer_id")
 //	private int beerId;
-
+	@CreationTimestamp
 	@Column(name = "date_added")
 	@Temporal(TemporalType.DATE)
 	private Date dateAdded;
@@ -34,13 +36,11 @@ public class FavoriteBeer {
 	@ManyToOne
 	@JoinColumn(name = "drinker_id")
 	private Drinker drinker;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "beer_id")
 	private Beer beer;
-	
-	
-	
+
 	public Beer getBeer() {
 		return beer;
 	}
@@ -80,7 +80,6 @@ public class FavoriteBeer {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-
 
 	@Override
 	public int hashCode() {

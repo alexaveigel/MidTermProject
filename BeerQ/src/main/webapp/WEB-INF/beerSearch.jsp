@@ -43,31 +43,37 @@
 
 <!-- NAVBAR End -->
 
+<c:if test="${type == 'search' }">
 	<h2>Here are your Beer results</h2>
-
-
-		<%-- <c:forEach var="beer" items="${list }">
-    ${beer}
-    <br>
-	</c:forEach>  --%>
 	
 	 <c:forEach var="beer" items="${list}">
         <li>
         <a href="goToBeerProfile.do?beerId=${beer.id}"> ${beer.name}</a> 
         </li>
         </c:forEach>
-        
-        <c:if test="${type == 'fav' }">
-
-		<c:forEach var="listFavBeers" items="${list }">
-			<!-- create cards here with beer fields -->
-			${beer.name }
-			<form action="getFavorite.do" method="get">
-				<input type= "submit" value="Go to profile">
-			</form>
-			
-		</c:forEach>
+</c:if>
+       
+  <c:if test="${type == 'fav' }">
+	 <h2>Here are your favorite beers</h2>
+	${list }
+	   <ul>
+	     <c:forEach var="favBeer" items="${list}">
+	 
+          <li>
+            <a href="goToBeerProfile.do?beerId=${favBeer.beer.id}"> ${favBeer.beer.name}</a> 
+          </li>
+        </c:forEach>
+      </ul>
 	</c:if>
+
+		<%-- <c:forEach var="beer" items="${list }">
+    ${beer}
+    <br>
+	</c:forEach>  --%>
+        
+        
+        
+
 	
 
 	<script src="js/scripts.js"></script>

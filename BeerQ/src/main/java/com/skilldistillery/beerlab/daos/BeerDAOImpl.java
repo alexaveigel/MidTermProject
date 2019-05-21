@@ -6,14 +6,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.beerlab.entities.Bar;
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
+import com.skilldistillery.beerlab.entities.Drinker;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
-import com.skilldistillery.beerlab.entities.User;
 
 @Service
 public class BeerDAOImpl implements BeerDAO {
@@ -64,10 +65,6 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Beer> findBeerByCity(String city) {
 		em = emf.createEntityManager();
-//		String query = "SELECT beer FROM Beer beer "
-//				+ "JOIN  Bar_inventory bi ON bi.beer_id = beer.id "
-//				+ "JOIN Bar bar on bi.bar_id =  bar.id "
-//				+ "JOIN Address address on bar.address_id = address.id WHERE address.city = :city";
 
 		String jpql = "SELECT b from Beer b JOIN b.bars bars where bars.address.city = :city";
 
@@ -136,67 +133,44 @@ public class BeerDAOImpl implements BeerDAO {
 		Beer destroyedBeer = em.find(Beer.class, beerId);
 		em.remove(destroyedBeer);
 		em.getTransaction().commit();
+		em.close();
 		itWorked = true;
 
 		return itWorked;
 	}
 
 	@Override
-	public List<FavoriteBeer> addBeerToFavList(Beer beer, User user) {
+	public List<FavoriteBeer> addBeerToFavList(Beer beer, HttpSession session) {
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
-		User userFavBeer = em.find(User.class, user.getId());
-		FavoriteBeer favBeer = em.find(FavoriteBeer.class, beer.getId());
-
-		userFavBeer.getDrinker().getFavBeer().add(favBeer);
-
+		Drinker drinker = (Drinker) session.getAttribute("drinker");
+		drinker = em.find(Drinker.class, drinker.getId());
+		FavoriteBeer favBeer = new FavoriteBeer();
+		favBeer.setBeer(beer);
+		favBeer.setDrinker(drinker);
+//		favBeer.setDateAdded()
+		em.persist(favBeer);
+		em.flush();
+		drinker.getBeers().add(favBeer);
+		System.out.println(drinker.getBeers());
 		em.getTransaction().commit();
 		em.close();
 
-		return userFavBeer.getDrinker().getFavBeer();
+		return drinker.getFavBeer();
 	}
 
 	@Override
-	public List<FavoriteBeer> getListOfFavBeer(User user) {
+	public List<FavoriteBeer> getListOfFavBeer(HttpSession session) {
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
-		User userFavBeer = em.find(User.class, user.getId());
-		
+		Drinker drinker = (Drinker) session.getAttribute("drinker");
+		System.out.println(drinker);
 		em.getTransaction().commit();
 		em.close();
+		System.out.println(drinker.getBeers());
+		return drinker.getBeers();
+	}
 
-		return userFavBeer.getDrinker().getFavBeer();
-	}
-	
-//	public List<Beer> getEveryBeerInBar(){
-//		
-//		
-//		
-//	}
-	
-	public List<Bar> addAllBarsToAttachedBeer(Beer beer, Bar bar){
-		List<Bar> barsToAdd = null;
-		em = emf.createEntityManager();
-		em.getTransaction().begin();
-		//Beer beer = em.find(Beer.class, beer.getId());
-		
-		
-		return barsToAdd;
-		
-		
-		//return barsToAdd;
-	}
-	
-	
-	public List<Bar> getAllBarsAttachedToBeer(){
-		List<Bar> everyBar = null;
-		em = emf.createEntityManager();		
-		//everyBar = em.find(Bar.class, 1);
-		
-		
-		return everyBar;
-	}
- 
 	@Override
 	public List<Beer> approveBeer(Beer beer) {
 		em = emf.createEntityManager();
@@ -256,7 +230,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 		return beers;
 	}
-	
+
 	@Override
 	public Beer findBeerById(int beerId) {
 		em = emf.createEntityManager();
