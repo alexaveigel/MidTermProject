@@ -139,37 +139,12 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzd
   <!--Slides-->
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
+<div class="row">
 
 
-
-    <section class="cards">
-      <!-- Heart feature -->
-    <article class="card card--1">
-
-    <div class="card__info-hover">
-      Click thru our list
-    </div>
-
-
-      <div class="card__img"></div>
-      <a href="goToBeerProfile.do?beerId=${beer.id}" class="card_link">
-         <div class="card__img--hover"></div>
-       </a>
-      <div class="card__info">
-        <span class="card__category"></span>
-        <h3 class="card__title">Click through our list</h3>
-
-      </div>
-    </article>
-
-    </section>
-
-
-
-    </div>
 
 <c:forEach var="beer" items="${bar.beers}">
-    <div class="carousel-item">
+   <!--  <div class="carousel-item"> -->
 <!--Test Carousel Add-->
 
 
@@ -204,18 +179,13 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzd
         </section>
         </li>
 
-</div>
         </c:forEach>
-
-
-
-
-
+</div>
 
 
       </div>
-      <!--/.Slides-->
-      <!--Controls-->
+<!--     
+      Controls
       <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -224,14 +194,11 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzd
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-
+ 
+ -->
+</div>
       </div>
       <!--/.Carousel Wrapper-->
-
-
-
-
-
 
 	</div> <!-- container end -->
 </ol>
