@@ -20,38 +20,7 @@
 </head>
 <body class="barProfile">
 
-	<!-- NAVBAR -->
-
-	<div class="pos-f-t">
-		<div class="collapse" id="navbarToggleExternalContent">
-			<div class="toggleArea">
-				<h5 class=>BeerQ Home</h5>
-				<span class="text-muted2"><ul id="navlist">
-						<li><a class="navbar" href="goToHome.do">Home</a></li>
-						<li><a class="navbar" href="goToProfile.do">Profile</a></li>
-						<li><a class="navbar" href="logOut.do">Log Out</a></li>
-						<li><a class="navbar" href="goToAdmin.do">Admin</a></li>
-					</ul> </span>
-			</div>
-		</div>
-
-
-		<nav class="navbar navbar-dark" style="background-color: #173e43">
-			<a href="goToHome.do" class="pull-right "><img
-				src="/img/logo.jpg" class="nav-logo" height="42" width="42"></a>
-
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarToggleExternalContent"
-				aria-controls="navbarToggleExternalContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</nav>
-	</div>
-
-
-
-	<!-- NAVBAR End -->
+	<jsp:include page="navBar.jsp"/>
 
 
 
