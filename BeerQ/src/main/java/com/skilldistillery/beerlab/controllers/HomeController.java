@@ -80,7 +80,7 @@ public class HomeController {
 	@RequestMapping(path = "beerBrowse.do")
 	public ModelAndView beerBrowse() {
 		ModelAndView mv = new ModelAndView();
-		List<Brewery> listBrewery = beerDAO.getBreweries();
+		List<Brewery> listBrewery = beerDAO.getRandomBreweries();
 		mv.addObject("listBrewery", listBrewery);
 		List<Beer> sixPack = beerDAO.getSixPack();
 		mv.addObject("sixPack", sixPack);

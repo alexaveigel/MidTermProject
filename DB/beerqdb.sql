@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `beer` (
   `style` VARCHAR(400) NOT NULL,
   `name` VARCHAR(400) NOT NULL,
   `abv` DOUBLE NOT NULL,
-  `brewery_id` INT NOT NULL,
+  `brewery_id` INT NULL,
   `description` TEXT NULL,
   `approved` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),

@@ -48,6 +48,11 @@ public interface BeerDAO {
 	List<Beer> unapproved();
 	
 	Beer findBeerById(int beerId);
+
+
+	List<Brewery> getRandomBreweries();
+		
+
 	
 //	public boolean removeBeerFromFavs(FavoriteBeer favBeer);
 

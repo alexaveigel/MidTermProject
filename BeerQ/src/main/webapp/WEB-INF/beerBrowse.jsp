@@ -59,7 +59,7 @@ ${beer}
 <h3>by Style</h3>
 <c:forEach var = "style" items="${styles }">
 <!-- style cards and carousel -->
-${style }
+${style }<br>
 </c:forEach>
 
 <h3>by ABV</h3>
