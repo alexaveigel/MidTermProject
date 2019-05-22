@@ -30,7 +30,10 @@
             <li><a href="goToHome.do">Home</a></li>
             <li><a href="goToProfile.do">Profile</a></li>
             <li><a href="logOut.do">Log Out</a></li>
-            <li><a href="goToAdmin.do">Admin</a></li></ul> </span>
+            <c:if test= "${user.role == 'admin' }">
+            <li><a href="goToAdmin.do">Admin</a></li>
+            </c:if>
+            </ul> </span>
     </div>
   </div>
 

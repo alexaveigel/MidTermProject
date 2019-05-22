@@ -1,13 +1,16 @@
 package com.skilldistillery.beerlab.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,7 +46,7 @@ public class ProfileController {
 		return mv;
 	}
 
-	@RequestMapping(path = "login.do")
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView login(User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User activeUser = userDAO.findUserByUserNameAndPassword(user.getUsername(), user.getPassword(), user);
@@ -51,6 +54,7 @@ public class ProfileController {
 			session.setAttribute("user", activeUser);
 			Drinker drinker = activeUser.getDrinker();
 			session.setAttribute("drinker", drinker);
+			mv.addObject("user", session.getAttribute("user"));
 			mv.setViewName("/WEB-INF/home.jsp");
 		} else {
 			mv.addObject("message", "Your entry doesn't match our records, please try again.");
@@ -172,6 +176,13 @@ public class ProfileController {
 		mv.setViewName("/WEB-INF/signup.jsp");
 		return mv;
 	}
+    @InitBinder("drinker")
+    public void customizeBinding (WebDataBinder binder) {
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormatter.setLenient(false);
+        binder.registerCustomEditor(Date.class, "dob",
+                                    new CustomDateEditor(dateFormatter, true));
+    }
 
 	@RequestMapping(path = "address.do", method = RequestMethod.POST)
 	public ModelAndView addAddressToDrinker(Address address, HttpSession session) {
@@ -180,6 +191,7 @@ public class ProfileController {
 		address = adDAO.createAddress(address);
 		drinker.setAddress(address);
 		userDAO.updateDrinker(drinker, drinker.getId());
+		mv.addObject("user", session.getAttribute("user"));
 		mv.setViewName("/WEB-INF/home.jsp");
 		return mv;
 	}

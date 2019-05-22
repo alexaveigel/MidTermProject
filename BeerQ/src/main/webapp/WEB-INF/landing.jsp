@@ -45,7 +45,7 @@ var video = document.getElementById("beerVideo");
 	<div class="box">
   <h2>Welcome to BeerQ</h2>
   <h4>${message }</h4>
-  <form action="login.do" method="GET">
+  <form action="login.do" method="POST">
     <div class="inputBox">
       <input type="email" name="username" required onkeyup="this.setAttribute('value', this.value);" value="">
       <label>Email</label>

@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `drinker` (
   `user_id` INT NOT NULL,
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
-  `date_of_birth` VARCHAR(30) NOT NULL,
+  `date_of_birth` DATE NOT NULL,
   `gender` VARCHAR(45) NULL,
   `beer_style` VARCHAR(45) NULL,
   `pic_url` VARCHAR(500) NULL,

@@ -60,8 +60,13 @@ var video = document.getElementById("beerVideo2");
 		<div class="inputBox">
 			First Name: <input type="text" name="firstName" ><br>
 			Last Name: <input type="text" name="lastName" ><br>
-			Date Of Birth: <input type="text" name="dob" /><br>
-			Gender: <input type="text" name="gender" /><br>
+			Date Of Birth: <input type="date" name="dob" /><br>
+			Gender: <select name="gender">
+			<option value="Undeclared">--Select an option--</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+			<option value="Undeclared">Prefer not to say</option>
+			</select><br><br>
 		<!-- 	Beer Style: <input type="text" name="beerStyle" /><br> -->
 			
 			
@@ -102,6 +107,7 @@ Beer Style: <select size="5" name="beerStyle" >
 			Street: <input type="text" name="street" ><br>
 			City: <input type="text" name="city" ><br>
 			Zip: <input type="text" name="zip" /><br>
+			State: <input type="text" name="state" /><br>
 			
 		<input type="submit" value = "Submit">
 </div>
