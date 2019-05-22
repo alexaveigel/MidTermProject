@@ -1,5 +1,6 @@
 package com.skilldistillery.beerlab.entities;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,11 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 //import javax.persistence.Temporal;
 //import javax.persistence.TemporalType;
 
@@ -36,8 +37,8 @@ public class Drinker {
 	private String lastName;
 
 	@Column(name = "date_of_birth")
-//	@Temporal(TemporalType.DATE)
-	private String dob;
+	@Temporal(TemporalType.DATE)
+	private Date dob;
 
 	private String gender;
 
@@ -203,16 +204,30 @@ public class Drinker {
 		this.lastName = lastName;
 	}
 
-	public String getDob() {
-		return dob;
-	}
-
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
+//	public Date getDob() {
+//		return dob;
+//	}
+//
+//	public void setDob(String dob) {
+//		Date userDob = null;
+//		try {
+//		userDob = (Date) new SimpleDateFormat("MM/dd/yyyy").parse(dob);
+//		}catch(Exception e) {
+//			
+//		}
+//		this.dob = userDob;
+//	}
 
 	public String getGender() {
 		return gender;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 
 	public void setGender(String gender) {
