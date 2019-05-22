@@ -63,9 +63,7 @@ public class ProfileController {
 	@RequestMapping(path = "addFavorite.do", method = RequestMethod.POST)
 	public ModelAndView addFavorite(HttpSession session, @RequestParam int beerId) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(beerId);
 		Beer chosenBeer = beerDAO.findBeerById(beerId);
-		System.out.println(chosenBeer);
 		List<FavoriteBeer> list = beerDAO.addBeerToFavList(chosenBeer, session);
 		mv.addObject("message", "Added to Favorites");
 		mv.addObject("beer", beerId);
@@ -116,11 +114,18 @@ public class ProfileController {
 		return mv;
 	}
 
-	@RequestMapping(path = "addBeerRequest.do")
+	@RequestMapping(path = "addBeerRequest.do", method = RequestMethod.POST)
 	public ModelAndView addBeerRequest(Beer beer) {
 		ModelAndView mv = new ModelAndView();
 		beerDAO.createBeer(beer);
 		mv.addObject("message", "Your submission has been recieved");
+		mv.setViewName("/WEB-INF/userProfile.jsp");
+		return mv;
+	}
+	@RequestMapping(path = "goToBeerRequest.do")
+	public ModelAndView goToBeerRequest(Beer beer) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("type", "request");
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
@@ -130,8 +135,6 @@ public class ProfileController {
 		ModelAndView mv = new ModelAndView();
 		FavoriteBeer favoriteBeer = beerDAO.findFavBeerById(favBeer);
 		beerDAO.removeBeerFromFavs(favoriteBeer, session);
-//		Drinker currDrinker = (Drinker) session.getAttribute("drinker");
-//		mv.addObject("favBeer", favoriteBeer);
 		mv.addObject("type", "fav");
 		List<FavoriteBeer> list = ((Drinker) session.getAttribute("drinker")).getBeers();
 		mv.addObject("list", list);
@@ -149,10 +152,9 @@ public class ProfileController {
 			return mv;
 		} else {
 			mv.addObject("form", "drinker");
+			mv.addObject("styles", beerDAO.getStyles());
 			session.setAttribute("user", uniqueUser);
 			mv.setViewName("/WEB-INF/signup.jsp");
-
-			System.out.println(uniqueUser);
 			return mv;
 		}
 
@@ -173,7 +175,6 @@ public class ProfileController {
 
 	@RequestMapping(path = "address.do", method = RequestMethod.POST)
 	public ModelAndView addAddressToDrinker(Address address, HttpSession session) {
-		System.out.println(address);
 		ModelAndView mv = new ModelAndView();
 		Drinker drinker = (Drinker) session.getAttribute("drinker");
 		address = adDAO.createAddress(address);

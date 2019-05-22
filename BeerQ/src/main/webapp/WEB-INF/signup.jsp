@@ -16,93 +16,103 @@
 <title>Sign Up</title>
 </head>
 <body>
+<video autoplay muted loop id="beerVideo2">
+  <source src="/img/drinkingBeer.mp4" type="video/mp4">
+</video>
 
-
-
+<script>
+// Get the video
+var video = document.getElementById("beerVideo2");
+</script>
 
 
 
 
 	<c:if test = "${empty form }">
-	<h1>Select your username and password</h1>
+	
+	
+		<div class="box">
+  <h1>Choose your username and password</h1>
 	<c:if test = "${not empty message }">
 	<h3> ${message }</h3>
 	</c:if>
 	<form action = "signup.do" method = "post">
+	<div class="inputBox">
 	<input type="hidden" value="user" name = "role">
-		Username: <input type="text" name="username"><br>
-		Password: <input type="password" name="password"><br>
+		Select a Username: <input type="text" name="username"><br>
+		Create a Password: <input type="password" name="password"><br>
 		<input type="submit" value= "Submit">
+		</div>
 	</form>
+	</div>
 	</c:if>
+	
+	
+	
+	
+	
 	<c:if test = "${form == 'drinker' }">
+	
+	
+		<div class="box">
 	<h1>Tell us about yourself</h1>
 	<form action = "drinker.do" method = "post">
+		<div class="inputBox">
 			First Name: <input type="text" name="firstName" ><br>
 			Last Name: <input type="text" name="lastName" ><br>
 			Date Of Birth: <input type="text" name="dob" /><br>
 			Gender: <input type="text" name="gender" /><br>
-			Beer Style: <input type="text" name="beerStyle" /><br>
+		<!-- 	Beer Style: <input type="text" name="beerStyle" /><br> -->
+			
+			
+			
+			
+			<div id="container-scroll">
+Beer Style: <select size="5" name="beerStyle" >
+
+<c:forEach var="style" items="${styles}">
+  <option value="${style}">${style}</option>
+
+</c:forEach>
+</select> 
+</div>
+			
+			
 			Link to profile pic: <input type="text" name="picUrl" /><br>
 			<input type="hidden" value = "${user.id}" name = "userId">
 		<input type="submit" value = "Submit">
-	</form>
+	</div>
 	
+	</form>
+	</div>
 	</c:if>
+	
+	
+	
+	
 		<c:if test = "${form == 'address' }">
+		<div class="box">
+		
+		
+		
 		<h1>Tell us where you're at</h1>
 		<h2> so we can tell you what's close</h2>
 	<form action = "address.do" method = "post">
+		<div class="inputBox">
 			Street: <input type="text" name="street" ><br>
 			City: <input type="text" name="city" ><br>
 			Zip: <input type="text" name="zip" /><br>
 			
 		<input type="submit" value = "Submit">
+</div>
+
+
 	</form>
-	
+	</div>
 	</c:if>
 	
 
-		<!-- <form action="signup.do" method="post">
 
-
-					First Name
-					<input type="text" name="first_name" >
-
-					Last Name
-					<input type="text" name="last_name" >
-
-					Password
-					<input type="password" name="pass" />
-
-					Street Address
-					<input type="text" name="address" />
-
-					City
-					<input type="text" name="city" />
-
-					State
-					<input type="text" name="state" />
-
-					Zip Code
-					<input type="text" name="zip" />
-
-
-					Date Of Birth
-					<input type="text" name="dob" />
-				
-					Gender
-					<input type="text" name="gender" />
-
-					Beer Style
-					<input type="text" name="beerStyle" />
-
-					Pic URL
-					<input type="text" name="picURL" />
-
-			<input type="submit" value="register" >
-
-		</form> -->
 
 	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

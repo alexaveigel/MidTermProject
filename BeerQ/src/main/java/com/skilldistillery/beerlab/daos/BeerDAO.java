@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
-import com.skilldistillery.beerlab.entities.User;
 
 public interface BeerDAO {
 	// Create
@@ -38,7 +37,7 @@ public interface BeerDAO {
 
 	public List<Beer> approved();
 
-	public List<Beer> approveBeer(Beer beer);
+	public Beer approveBeer(int beerId);
 	// Update
 	public Beer updateBeer(int id, Beer beer);
 

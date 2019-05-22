@@ -2,6 +2,7 @@ package com.skilldistillery.beerlab.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.coyote.http11.Http11AprProtocol;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.beerlab.daos.AddressDAO;
@@ -112,12 +114,22 @@ public class NavbarController {
 	}
 
 	@RequestMapping(path = "adminConfirmBeerAdd.do", method = RequestMethod.POST)
-	public ModelAndView adminConfirmBeerAdd(Beer beer) {
+	public ModelAndView adminConfirmBeerAdd(@RequestParam int beer) {
 		ModelAndView mv = new ModelAndView();
-		List<Beer> approveBeer = beerDAO.approveBeer(beer);
+		Beer approveBeer = beerDAO.approveBeer(beer);
 		mv.addObject("approvedBeer", approveBeer);
 		mv.setViewName("/WEB-INF/admin.jsp");
 
+		return mv;
+	}
+	
+	@RequestMapping(path = "denyBeerRequest.do", method = RequestMethod.POST)
+	public ModelAndView denyBeerRequest(@RequestParam int beer) {
+		ModelAndView mv = new ModelAndView();
+		boolean deniedBeer = beerDAO.destroyBeer(beer);
+		mv.addObject("deniedBeer", deniedBeer);
+		mv.setViewName("/WEB-INF/admin.jsp");
+		
 		return mv;
 	}
 	
