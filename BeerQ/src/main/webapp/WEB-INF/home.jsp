@@ -38,6 +38,7 @@ background-position: center;
 <body>
 
 
+<<<<<<< HEAD
 <!-- NAVBAR -->
 
 <div class="pos-f-t">
@@ -71,6 +72,9 @@ background-position: center;
 
 <div class="box2">
 <div class="inputBox2">
+
+<jsp:include page="navBar.jsp"/>
+
 
     <form action="search.do" method="GET">
         <label for="search-select">Search Select:</label>
