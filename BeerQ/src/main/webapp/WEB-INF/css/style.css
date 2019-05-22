@@ -49,6 +49,10 @@ h1.barTitle{
   text-shadow: 2px 2px #173e43 !important;
 }
 
+h1.beerTitle{
+  text-shadow: 2px 2px #173e43 !important;
+}
+
 li.barDetail{
   color: #fae596 !important;
   list-style-type: none;
@@ -73,6 +77,11 @@ img.nav-logo {
 }
 
 a.barTitle{
+  color: #fae596 !important;
+  text-shadow: 1px 1px #173e43 !important;
+}
+
+a.beerTitle{
   color: #fae596 !important;
   text-shadow: 1px 1px #173e43 !important;
 }
@@ -336,6 +345,15 @@ a.carousel-control-previous{
   z-index: -10;
 }
 
+#beerVideo2 {
+  position: relative;
+  left: 5;
+  bottom: 0;
+  min-width: 50%;
+  min-height: 50%;
+  width: auto;
+  z-index: -10;
+}
 
 
 
@@ -358,6 +376,17 @@ a.carousel-control-previous{
   text-align: center;
 }
 
+.box h1 {
+  margin: 0 0 1.875rem;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+div.inputBox{
+  margin: 0 0 1.875rem;
+  padding: 0;
+  color: #fff;
+}
 .box .inputBox {
   position: relative;
 }
@@ -408,4 +437,9 @@ a.carousel-control-previous{
 
 .box input[type="submit"]:hover {
   background-color: #1cb1f5;
+}
+
+#container-scroll{
+    width:200px;
+    overflow-x: scroll
 }
