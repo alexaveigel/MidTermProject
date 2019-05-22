@@ -173,7 +173,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<String> getStyles() {
-		String query = "SELECT distinct beer.style FROM Beer beer";
+		String query = "SELECT distinct beer.style FROM Beer beer ORDER BY beer.style";
 		List<String> styles = em.createQuery(query, String.class).getResultList();
 
 		return styles;
