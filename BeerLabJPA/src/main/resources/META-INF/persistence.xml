@@ -22,12 +22,12 @@
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/beerqdb?useSSL=false" />
+				value="jdbc:mysql://localhost:3306/beerqdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=MST" />
 			<property name="javax.persistence.jdbc.user" value="drinker" />
 			<property name="javax.persistence.jdbc.password"
 				value="drinker" />
 			<property name="javax.persistence.jdbc.driver"
-				value="com.mysql.jdbc.Driver" />
+				value="com.mysql.cj.jdbc.Driver" />
 
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="false" />
