@@ -91,6 +91,9 @@ public class ProfileController {
 	public ModelAndView editProfile(Drinker drinker, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Drinker current = (Drinker) session.getAttribute("drinker");
+		if(drinker.getDob() == null) {
+			drinker.setDob(current.getDob());
+		}
 		drinker.setAddress(current.getAddress());
 		drinker = userDAO.updateDrinker(drinker, current.getId());
 		session.setAttribute("drinker", drinker);
@@ -114,6 +117,7 @@ public class ProfileController {
 	public ModelAndView goToEdit(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("type", "edit");
+		mv.addObject("styles", beerDAO.getStyles());
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
