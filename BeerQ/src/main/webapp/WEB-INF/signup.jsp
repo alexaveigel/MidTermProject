@@ -65,6 +65,7 @@ var video = document.getElementById("beerVideo2");
 			<option value="Undeclared">--Select an option--</option>
 			<option value="Male">Male</option>
 			<option value="Female">Female</option>
+			<option value="Other">Other</option>
 			<option value="Undeclared">Prefer not to say</option>
 			</select><br><br>
 		<!-- 	Beer Style: <input type="text" name="beerStyle" /><br> -->
