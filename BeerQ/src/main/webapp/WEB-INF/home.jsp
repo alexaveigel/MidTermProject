@@ -16,6 +16,24 @@
 
 <meta charset="UTF-8">
 <title>BeerQ</title>
+
+<style type="text/css">
+html, 
+body {
+width: 100%;
+height: 100%;
+}
+
+body {
+background-image: url(/img/HomePage.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+}
+</style>
+
+
+
 </head>
 <body>
 
@@ -51,17 +69,18 @@
 
 <!-- NAVBAR End -->
 
-
+<div class="box2">
+<div class="inputBox2">
 
     <form action="search.do" method="GET">
         <label for="search-select">Search Select:</label>
-        <select name = "type" id="search-select">
+        <select name = "type" id="search-select-home">
             <option value="">--Please choose an option--</option>
             <option value="beer">Beer Name</option>
             <option value="bar">Bar Name</option>
             <option value="beercity">Beer By City</option>
             <option value="barcity">Bar By City</option>
-        </select>
+        </select><br>
         <input name="keyword"> <input type="submit" value="search">
     </form>
 
@@ -73,6 +92,8 @@
         <input type="submit" value="browseBeers">
     </form>
 
+</div>
+</div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
