@@ -172,12 +172,8 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Brewery> getRandomBreweries(){
 		em = emf.createEntityManager();
-		String query = "SELECT brewery FROM Brewery brewery";
-		List<Brewery> breweries = em.createQuery(query, Brewery.class).getResultList();
-		List<Brewery> random = new ArrayList<>();
-		for (int i = 0; i < 20; i++) {
-			random.add(breweries.get((int) (Math.random() + 1) * (breweries.size() - 1)));
-		}
+		String query = "SELECT * FROM brewery ORDER BY RAND() LIMIT 20";
+		List<Brewery> random = em.createNativeQuery(query, Brewery.class).getResultList();
 
 		return random;
 	}
@@ -204,13 +200,9 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Beer> getSixPack() {
 		em = emf.createEntityManager();
-		String query = "SELECT beer FROM Beer beer";
-		List<Beer> beers = em.createQuery(query, Beer.class).getResultList();
-		List<Beer> sixPack = new ArrayList<>();
-		for (int i = 0; i < 6; i++) {
-			sixPack.add(beers.get((int) (Math.random() + 1) * (beers.size() - 1)));
-		}
 
+		String query = "SELECT * FROM beer ORDER BY RAND() LIMIT 6";
+		List<Beer> sixPack = em.createNativeQuery(query, Beer.class).getResultList();
 		return sixPack;
 	}
 
