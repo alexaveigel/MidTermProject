@@ -70,7 +70,7 @@ var video = document.getElementById("beerVideo2");
 			<div id="container-scroll">
 Beer Style: <select size="5" name="beerStyle" >
 
-<c:forEach var="style" items="${items.styles}">
+<c:forEach var="style" items="${styles}">
   <option value="${style}">${style}</option>
 
 </c:forEach>
@@ -91,15 +91,24 @@ Beer Style: <select size="5" name="beerStyle" >
 	
 	
 		<c:if test = "${form == 'address' }">
+		<div class="box">
+		
+		
+		
 		<h1>Tell us where you're at</h1>
 		<h2> so we can tell you what's close</h2>
 	<form action = "address.do" method = "post">
+		<div class="inputBox">
 			Street: <input type="text" name="street" ><br>
 			City: <input type="text" name="city" ><br>
 			Zip: <input type="text" name="zip" /><br>
 			
 		<input type="submit" value = "Submit">
+</div>
+
+
 	</form>
+	</div>
 	</c:if>
 	
 
