@@ -51,10 +51,30 @@
 
 <h2>Browse beers</h2><br>
 <h3>6-Pack</h3>
+<div class="container">
+  <div class="row">
+ 
+     
+   
 <c:forEach var = "beer" items="${sixPack }">
 <!-- beer cards and carousel -->
-${beer}
+
+
+<div class="col">
+
+<div class="six-pack">
+    	<img src="/img/bottle.gif" alt="6-pack" height="90%" width="90%">
+        <div class="beerLabel">
+            <h1>${beer.name }</h1>
+        </div>
+    </div>
+ </div>
 </c:forEach>
+
+</div>
+</div>
+
+
 
 <h3>by Style</h3>
 <c:forEach var = "style" items="${styles }">
