@@ -116,11 +116,18 @@ public class ProfileController {
 		return mv;
 	}
 
-	@RequestMapping(path = "addBeerRequest.do")
+	@RequestMapping(path = "addBeerRequest.do", method = RequestMethod.POST)
 	public ModelAndView addBeerRequest(Beer beer) {
 		ModelAndView mv = new ModelAndView();
 		beerDAO.createBeer(beer);
 		mv.addObject("message", "Your submission has been recieved");
+		mv.setViewName("/WEB-INF/userProfile.jsp");
+		return mv;
+	}
+	@RequestMapping(path = "goToBeerRequest.do")
+	public ModelAndView goToBeerRequest(Beer beer) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("type", "request");
 		mv.setViewName("/WEB-INF/userProfile.jsp");
 		return mv;
 	}
