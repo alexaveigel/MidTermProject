@@ -3,6 +3,7 @@ package com.skilldistillery.beerlab.daos;
 import java.util.List;
 
 import com.skilldistillery.beerlab.entities.Bar;
+import com.skilldistillery.beerlab.entities.Beer;
 
 public interface BarDAO {
 	// Create
@@ -22,5 +23,6 @@ public interface BarDAO {
 	public boolean destroyBar(int id);
 
 	Bar findBarById(int barId);
-
+	
+	public void addBeerToBarInventory(Beer beer, Bar bar);
 }

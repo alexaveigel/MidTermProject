@@ -106,6 +106,14 @@
 	</c:if>
 
 
+		
+		<form action="addBeerToBar.do" method="POST">
+		Bar ID<input type="text" name="barId">
+		Beer ID<input type="text" name="beerId">
+		<input type="submit" value="Add a beer to bar">
+		</form>
+	
+
 
 	<script src="js/scripts.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

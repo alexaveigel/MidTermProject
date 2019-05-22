@@ -55,13 +55,18 @@
        
   <c:if test="${type == 'fav' }">
 	 <h2>Here are your favorite beers</h2>
-	${list }
 	   <ul>
 	     <c:forEach var="favBeer" items="${list}">
 	 
           <li>
             <a href="goToBeerProfile.do?beerId=${favBeer.beer.id}"> ${favBeer.beer.name}</a> 
           </li>
+          
+          <form action="removeBeerFav.do" method="post">
+          	<input type="hidden" name="favBeer" value="${favBeer.id }">
+				<input type= "submit" value="Remove Favorite">
+			</form>
+          
         </c:forEach>
       </ul>
 	</c:if>
