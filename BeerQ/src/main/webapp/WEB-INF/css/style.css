@@ -182,9 +182,23 @@ background-size: auto;
   display: -webkit-flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: stretch;
-  align-content: center;
+  align-content: space-around;
+
+
+}
+
+
+.flexcontainer2 {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  align-content: space-between;
+
 
 
 }
@@ -193,6 +207,7 @@ background-size: auto;
 section.cards{
   width: 220px;
   max-height: 300px;
+  margin: 12px;
 }
 
 div.card__info{
@@ -443,3 +458,22 @@ div.inputBox{
     width:200px;
     overflow-x: scroll
 }
+
+
+.six-pack{
+     position: relative;
+     display: inline-block; /* Make the width of box same as image */
+ }
+ .six-pack .beerLabel{
+     position: absolute;
+     z-index: 999;
+     margin: 0 auto;
+     left: 0;
+     right: 0;
+     text-align: center;
+     top: 40%; /* Adjust this value to move the positioned div up and down */
+     background: rgba(0, 0, 0, 0.8);
+     font-family: Arial,sans-serif;
+     color: #fff;
+     width: 60%; /* Set the width of the positioned div */
+ }
