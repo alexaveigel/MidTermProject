@@ -106,7 +106,8 @@
 			<input type= "hidden" name= "beer" value= "${beer.id }">
 				<input type= "submit" value="Approve">
 			</form>
-			<form action="getBeer.do" method="get">
+			<form action="denyBeerRequest.do" method="post">
+			<input type= "hidden" name= "beer" value= "${beer.id }">
 				<input type= "submit" value="Deny">
 			</form>
 		</c:forEach>

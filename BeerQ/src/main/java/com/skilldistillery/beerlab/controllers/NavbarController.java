@@ -123,6 +123,16 @@ public class NavbarController {
 		return mv;
 	}
 	
+	@RequestMapping(path = "denyBeerRequest.do", method = RequestMethod.POST)
+	public ModelAndView denyBeerRequest(@RequestParam int beer) {
+		ModelAndView mv = new ModelAndView();
+		boolean deniedBeer = beerDAO.destroyBeer(beer);
+		mv.addObject("deniedBeer", deniedBeer);
+		mv.setViewName("/WEB-INF/admin.jsp");
+		
+		return mv;
+	}
+	
 	@RequestMapping(path = "addBeerToBar.do", method = RequestMethod.POST)
 	public ModelAndView addBeerToBar(int beerId, int barId) {
 		ModelAndView mv = new ModelAndView();

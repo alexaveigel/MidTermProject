@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
 import com.skilldistillery.beerlab.entities.FavoriteBeer;
-import com.skilldistillery.beerlab.entities.User;
 
 public interface BeerDAO {
 	// Create
