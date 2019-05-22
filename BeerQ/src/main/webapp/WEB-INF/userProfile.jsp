@@ -70,9 +70,12 @@
 		<form action="getFavorite.do" method="get">
 			<input type="submit" value="Favorite Beers">
 		</form>
+		<form action="goToBeerRequest.do" method="get">
+			<input type="submit" value="Request to add a new beer">
+		</form>
 	</c:if>
 
-	<c:if test="${not empty type }">
+	<c:if test="${type == 'edit'}">
 		<div>
 		<form action = "editProfile.do" method = "post">
 			<h5>Name: <input type= "text" name = "firstName" value = "${drinker.firstName}"> <input type="text" name="lastName" value = "${drinker.lastName}"> </h5>
@@ -91,6 +94,19 @@
 			<p>Zip: <input type= "text" name = "zip" value = "${drinker.address.zip}"></p>
 			<input type="submit" value="Confirm Changes">
 		</form>
+		</div>
+		
+	</c:if>
+	<c:if test="${type == 'request'}">
+		<div>
+		<form action = "addBeerRequest.do" method = "post">
+			<p>Name: <input type= "text" name = "name" value = "${beer.name}"></p>
+			<p>Style: <input type= "text" name = "style" value = "${beer.style}"></p>
+			<p>ABV: <input type= "text" name = "abv" value = "${beer.abv}"></p>
+			<p>Description: <input type= "text" name = "description" value = "${beer.description}"></p>
+			<p><input type= "hidden" name = "approved" value = "0"></p>
+			<input type="submit" value ="Confirm Changes">
+			</form>
 		</div>
 		
 	</c:if>
