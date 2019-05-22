@@ -182,9 +182,23 @@ background-size: auto;
   display: -webkit-flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: stretch;
-  align-content: center;
+  align-content: space-around;
+
+
+}
+
+
+.flexcontainer2 {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  align-content: space-between;
+
 
 
 }
@@ -193,6 +207,7 @@ background-size: auto;
 section.cards{
   width: 220px;
   max-height: 300px;
+  margin: 12px;
 }
 
 div.card__info{

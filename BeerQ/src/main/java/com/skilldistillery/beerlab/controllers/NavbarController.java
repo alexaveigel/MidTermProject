@@ -35,9 +35,9 @@ public class NavbarController {
 	UserDAO userDAO;
 
 	@RequestMapping(path = "goToHome.do", method = RequestMethod.GET)
-	public ModelAndView goToHome(User user, Drinker drinker) {
+	public ModelAndView goToHome(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-
+		mv.addObject("user", session.getAttribute("user"));
 		mv.setViewName("/WEB-INF/home.jsp");
 		return mv;
 	}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +51,7 @@
 		<div>
 			<h5>Name: ${drinker.firstName} ${drinker.lastName}</h5>
 			<input type="hidden" path="id" value="${drinker.id }" />
-			<p>D.O.B.: ${drinker.dob}</p>
+			<p>D.O.B.: <fmt:formatDate value="${drinker.dob}" pattern="MM/dd/yyyy"/> </p>
 			<p>Gender: ${drinker.gender}</p>
 			<p>Beer Style: ${drinker.beerStyle}</p>
 			<p>Profile Picture: ${drinker.picUrl}</p>
@@ -79,9 +80,23 @@
 		<div>
 		<form action = "editProfile.do" method = "post">
 			<h5>Name: <input type= "text" name = "firstName" value = "${drinker.firstName}"> <input type="text" name="lastName" value = "${drinker.lastName}"> </h5>
-			<p>D.O.B.: <input type= "text" name = "dob" value = "${drinker.dob}"></p>
-			<p>Gender: <input type= "text" name = "gender" value = "${drinker.gender}"></p>
-			<p>Beer Style: <input type= "text" name = "beerStyle" value = "${drinker.beerStyle}"></p>
+			<p>D.O.B.: <input type= "Date" name = "dob" value = "${drinker.dob}"></p>
+			<p>Gender: <select name="gender">
+			<option value="${drinker.gender }">--Select an option--</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+			<option value="Other">Other</option>
+			<option value="Undeclared">Prefer not to say</option>
+			</select></p>
+			<p>
+				Beer Style: <select  name="beerStyle" >
+							<option value= "${drinker.beerStyle }">--Select an option--</option>
+							<c:forEach var="style" items="${styles}">
+  							<option value="${style}">${style}</option>
+
+							</c:forEach>
+							</select> 
+							</p>
 			<p>Profile Picture: <input type= "text" name = "picUrl" value = "${drinker.picUrl}"></p>
 			<input type="submit" value ="Confirm Changes">
 			</form>

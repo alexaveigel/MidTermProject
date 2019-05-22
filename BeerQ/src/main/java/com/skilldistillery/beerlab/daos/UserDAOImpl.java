@@ -59,6 +59,7 @@ public class UserDAOImpl implements UserDAO {
 
 		updatedUser.getDrinker().setFirstName(user.getDrinker().getFirstName());
 		updatedUser.getDrinker().setLastName(user.getDrinker().getLastName());
+//		updatedUser.getDrinker().setDob(user.getDrinker().getDob().toString());
 		updatedUser.getDrinker().setDob(user.getDrinker().getDob());
 		updatedUser.getDrinker().setGender(user.getDrinker().getGender());
 		updatedUser.getDrinker().setBeerStyle(user.getDrinker().getBeerStyle());
@@ -86,6 +87,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 		updateDrinker.setFirstName(drinker.getFirstName());
 		updateDrinker.setLastName(drinker.getLastName());
+//		updateDrinker.setDob(drinker.getDob().toString());
 		updateDrinker.setDob(drinker.getDob());
 		updateDrinker.setBeerStyle(drinker.getBeerStyle());
 		updateDrinker.setGender(drinker.getGender());
