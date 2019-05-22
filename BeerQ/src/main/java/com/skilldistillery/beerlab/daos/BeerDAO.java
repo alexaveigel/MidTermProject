@@ -38,7 +38,7 @@ public interface BeerDAO {
 
 	public List<Beer> approved();
 
-	public List<Beer> approveBeer(Beer beer);
+	public Beer approveBeer(int beerId);
 	// Update
 	public Beer updateBeer(int id, Beer beer);
 

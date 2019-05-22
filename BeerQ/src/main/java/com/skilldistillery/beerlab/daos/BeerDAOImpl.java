@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.mysql.cj.Session;
 import com.skilldistillery.beerlab.entities.Beer;
 import com.skilldistillery.beerlab.entities.Brewery;
 import com.skilldistillery.beerlab.entities.Drinker;
@@ -145,12 +146,13 @@ public class BeerDAOImpl implements BeerDAO {
 	}
 
 	@Override
-	public List<Beer> approveBeer(Beer beer) {
-		String query = "UPDATE Beer SET approved = 1 WHERE b.id = :beerId";
-		List<Beer> approvedBeer = em.createQuery(query, Beer.class).setParameter("beerId", beer.getId())
-				.getResultList();
+	public Beer approveBeer(int beerId) {
+
+		Beer approvedBeer = em.find(Beer.class, beerId);
+		approvedBeer.setApproved(1);
 
 		return approvedBeer;
+
 	}
 
 	@Override
