@@ -44,7 +44,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<Beer> findBeerByBrewery(String brewery) {
-		String query = "SELECT b FROM Beer b WHERE b.brewery LIKE :brewery";
+		String query = "SELECT b FROM Beer b WHERE b.brewery.name LIKE :brewery";
 		List<Beer> breweries = em.createQuery(query, Beer.class).setParameter("brewery", "%" + brewery + "%")
 				.getResultList();
 		return breweries;

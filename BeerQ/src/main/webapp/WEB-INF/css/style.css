@@ -700,21 +700,36 @@ width: 60px;
   position: relative;
   text-align: center;
   color: white;
+  
 
 }
 
 a.beerLink{
-  font-weight: 600;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 20px;
+letter-spacing: 2px;
+word-spacing: 2px;
 color: white;
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
+}
+
+a.beerLink.Style{
+	color: black;
 }
 
 .card2-img-top{
   margin: 15px;
+  border-radius: 20px;
 }
 
 img.card2-img-top{
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
+  filter: blur(1px);
+  -webkit-filter: blur(1px);
+  border-radius: 20px;
 
 }
 
