@@ -12,6 +12,21 @@
    <style type="text/css">
     <%@
     include file ="css/style.css" %>
+    
+    html, 
+body {
+width: 100%;
+height: 100%;
+}
+
+body {
+background-image: url(/img/barProfile.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+} 
+    
+    
     </style>
 
 
@@ -34,7 +49,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">BAR IMAGE<br>
-					<%-- <img src="${bar.address.logoUrl}"> --%>
+					<img src="${bar.logoUrl}">
 					</div>
 					<div class="col-6">
 						<h1 class="barTitle">  <a class="barTitle" href="${bar.webUrl }">${bar.name} </a></h1>

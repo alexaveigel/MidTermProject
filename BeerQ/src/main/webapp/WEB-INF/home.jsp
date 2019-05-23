@@ -42,7 +42,7 @@ background-position: center;
 
 <div class="box2">
 <div class="inputBox2">
-
+ 
 
 
     <form action="search.do" method="GET">
@@ -54,15 +54,15 @@ background-position: center;
             <option value="beercity">Beer By City</option>
             <option value="barcity">Bar By City</option>
         </select><br>
-        <input name="keyword"> <input type="submit" value="search">
+        <input name="keyword"> <input type="submit" value="Search">
     </form>
 
     <form action="barBrowse.do">
-        <input type="submit" value="browseBars">
+        <input type="submit" value="Browse Bars">
     </form>
 
     <form action="beerBrowse.do">
-        <input type="submit" value="browseBeers">
+        <input type="submit" value="Browse Beers">
     </form>
 
 </div>

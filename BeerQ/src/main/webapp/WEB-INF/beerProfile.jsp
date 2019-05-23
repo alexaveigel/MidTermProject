@@ -9,6 +9,39 @@
 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
  <style type="text/css">
     <%@include file="css/style.css" %>
+    
+    
+     html, 
+body {
+width: 100%;
+height: 100%;
+}
+
+body {
+background-image: url(/img/beerProfile2.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+} 
+    
+.beerTitle{
+ background-color: rgba(174, 176, 187, 0.50);
+ color: #03a9f4;
+ 
+ h2.beerDescription{
+ font-color: #173e43;
+ }
+ 
+} 
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </style> 
 <meta charset="UTF-8">
 <title>Beer Profile</title>
@@ -33,7 +66,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 							<li class="barDetail">
 							<div class="shadow-lg p-3 mb-5  rounded">
 				
-							<h2>
+							<h2 class="beerDescription">
 							Style: ${beer.style}<br>
 							ABV: ${beer.abv}<br> 
 							

@@ -59,6 +59,7 @@ public class HomeController {
 
 		} else if (type.equals("barcity")) {
 			List<Bar> barsByCity = barDAO.findBarByCity(keyword);
+			System.out.println(barsByCity);
 			mv.addObject("list", barsByCity);
 			mv.setViewName("/WEB-INF/barSearch.jsp");
 		}
@@ -72,7 +73,7 @@ public class HomeController {
 		mv.addObject("type", "browse");
 
 		List<Bar> bars = barDAO.findAllBars();
-		mv.addObject("bars", bars);
+		mv.addObject("list", bars);
 		mv.setViewName("/WEB-INF/barSearch.jsp");
 		return mv;
 	}
