@@ -256,6 +256,7 @@ border-top-right-radius: 12px;
 
 }
 
+
 .card__info-hover {
     position: absolute;
     padding: 16px;
@@ -407,6 +408,103 @@ a.carousel-control-previous{
   color: #fff;
   text-align: center;
 }
+
+.box2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25rem;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0.625rem;
+}
+
+.box2 h2 {
+  margin: 0 0 1.875rem;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.box2 h1 {
+  margin: 0 0 1.875rem;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+select#search-select-home{
+  align-content: center;
+  position: absolute;
+  top: -10%;
+  left: 15%;
+}
+
+div.inputBox2{
+  margin: 0 0 1.875rem;
+  padding: 0;
+  color: #fff;
+}
+.box2 .inputBox2 {
+  position: relative;
+}
+
+.box2 .inputBox2 input {
+  width: 100%;
+  padding: 0.625rem 0;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 0.062rem;
+  margin-bottom: 1.875rem;
+  border: none;
+  border-bottom: 0.065rem solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.box2 .inputBox2 label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.625rem 0;
+  font-size: 1rem;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.box2 .inputBox2 input:focus ~ label,
+.box2 .inputBox2 input:valid ~ label,
+.box2 .inputBox2 input:not([value=""]) ~ label {
+  top: -1.125rem;
+  left: 0;
+  color: #03a9f4;
+  font-size: 0.75rem;
+}
+
+.box2 input[type="submit"] {
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #03a9f4;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+  border-radius: 0.312rem;
+  font-size: 1rem;
+}
+
+.box2 input[type="submit"]:hover {
+  background-color: #1cb1f5;
+}
+
+
+
+
+
+
+
 div.inputBox{
   margin: 0 0 1.875rem;
   padding: 0;
