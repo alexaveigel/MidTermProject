@@ -36,7 +36,7 @@ background-position: center;
 
 <jsp:include page="navBar.jsp"/>
 
-
+<div class="content">
 
 <%-- 	<!-- NAVBAR -->
 
