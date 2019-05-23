@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -171,11 +172,11 @@ background-position: center;
         </svg>
 							<c:choose>
 								<c:when test="${type == 'search' }">
-									<br> ABV: ${favBeer.abv} <br> Style:
+									<br> ABV: <fmt:formatNumber type="number" minFractionDigits="1" maxFractionDigits="1" value="${favBeer.abv}"/> % <br> Style:
 							${favBeer.style} <br>
 								</c:when>
 								<c:when test="${type == 'fav' }">
-									<br> ABV: ${favBeer.beer.abv} <br> Style:
+									<br> ABV:<fmt:formatNumber type="number" minFractionDigits="1" maxFractionDigits="1" value="${favBeer.beer.abv}"/> %<br> Style:
 							${favBeer.beer.style} <br>
 								</c:when>
 							</c:choose>

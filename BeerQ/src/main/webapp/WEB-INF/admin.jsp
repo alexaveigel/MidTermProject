@@ -52,7 +52,8 @@
 		<c:forEach var="beer" items="${listOfBeers }">
 			<!-- create cards here with beer fields -->
 			${beer.name }
-			<form action="getBeer.do" method="get">
+			<form action="goToBeerProfile.do" method="get">
+				<input type="hidden" name="beerId" value = ${beer.id }>
 				<input type= "submit" value="Go to profile">
 			</form>
 			<form action="adminDeleteBeer.do" method="post">
@@ -67,7 +68,8 @@
 		<c:forEach var="bar" items="${listOfBars }">
 			<!-- create cards here with bar fields -->
 			${bar.name }
-			<form action="getBar.do" method="get">
+			<form action="goToBarProfile.do" method="get">
+				<input type= "hidden" name= "barId" value= "${bar.id }">
 				<input type= "submit" value="Go to profile">
 			</form>
 		</c:forEach>
