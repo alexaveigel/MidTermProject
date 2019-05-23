@@ -14,7 +14,7 @@
 </style>
 
 <meta charset="UTF-8">
-<title></title>
+<title>User</title>
 <style type="text/css">
 html, 
 body {
