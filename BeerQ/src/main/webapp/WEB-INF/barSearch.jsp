@@ -145,19 +145,18 @@ img {
      --%>    
        
        
-        
+ <div class="container">  
 <div class="geoSucks">
-<c:forEach var="bar" items="${bars}">
+<c:forEach var="bar" items="${list}">
   <div class="item"><div class="barCard">
-  <img src="${bar.logoUrl}" alt="Avatar" style="width:100%">
+ <a href="goToBarProfile.do?barId=${bar.id}"> <img src="${bar.logoUrl}" alt="Avatar" style="width:100%"></a>
   <div class="container">
-    <h4><b>${bar.name}</b></h4> 
    
   </div>
 </div></div>
   </c:forEach>
 </div>
-
+</div>
 
 
 
