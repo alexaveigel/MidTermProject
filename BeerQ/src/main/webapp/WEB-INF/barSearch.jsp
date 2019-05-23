@@ -87,7 +87,6 @@ img {
         
          --%>
         
-        	<h2>All Bars</h2><br>
 <%-- <br>
 <ol>
 <div class="flexcontainer">

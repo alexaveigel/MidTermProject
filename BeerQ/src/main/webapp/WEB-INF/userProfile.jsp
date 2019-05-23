@@ -71,7 +71,7 @@ background-position: center;
 	<div class="box">
 		<div>
 		<form action = "editProfile.do" method = "post">
-			<h5 class="result">Name: <input type= "text" name = "firstName" value = "${drinker.firstName}"> <input type="text" name="lastName" value = "${drinker.lastName}"> </h5>
+			<h5 class="result">Name: <input type= "text" name = "firstName" value = "${drinker.firstName}"> <br><input type="text" name="lastName" value = "${drinker.lastName}"> </h5>
 			<p class="result">D.O.B.: <input type= "Date" name = "dob" value = "${drinker.dob}"></p>
 			<p class="result">Gender: <select name="gender">
 			<option value="${drinker.gender }">--Select an option--</option>
