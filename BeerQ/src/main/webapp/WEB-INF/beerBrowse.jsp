@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +20,21 @@
 </head>
 <body>
 
+
+<video autoplay muted loop id="beerVideo3">
+  <source src="/img/barCounter.mp4" type="video/mp4">
+</video>
+
+<script>
+// Get the video
+var video = document.getElementById("beerVideo3");
+</script>
+
+
 <jsp:include page="navBar.jsp"/>
 
 
-<h2>Browse beers</h2><br>
+
 <h3>6-Pack</h3>
 <div class="container">
   <div class="row">
@@ -37,9 +49,29 @@
 
 <div class="six-pack">
     	<img src="/img/bottle.gif" alt="6-pack" height="90%" width="90%">
-        <div class="beerLabel">
-            <h1>${beer.name }</h1>
+    	<div class="beerLabelLogo">
+    	<c:choose>
+    	<c:when test="${empty beer.brewery.logoUrl  }">
+            <img class="labelLogo" src="/img/logo.jpg" > 
+            </c:when>
+            
+            <c:otherwise>
+            <img class="labelLogo" src="${beer.brewery.logoUrl}"> 
+            </c:otherwise>
+            </c:choose>
+            
+           
         </div>
+        <div class="beerLabel">
+            <h4 class="labelText">${beer.name }</h4>
+        </div>
+        <h6 class="labelText"><fmt:formatNumber type="number" minFractionDigits="1" maxFractionDigits="1" value="${beer.abv}"/> %</h6>
+        <div class="beerLabelABV">
+        
+        </div>
+        
+        
+        
     </div>
  </div>
 </c:forEach>

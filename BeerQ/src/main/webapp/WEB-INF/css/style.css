@@ -371,6 +371,16 @@ a.carousel-control-previous{
   z-index: -10;
 }
 
+#beerVideo3 {
+  position: absolute;
+
+  top: 0;
+  min-width: 50%;
+  min-height: 50%;
+  width: 100%;
+
+  z-index: -10;
+}
 
 
 .box {
@@ -562,6 +572,21 @@ div.inputBox{
      position: relative;
      display: inline-block; /* Make the width of box same as image */
  }
+
+ .six-pack .beerLabelLogo{
+     position: absolute;
+     z-index: 999;
+     margin: 0 auto;
+     left: 0;
+     right: 0;
+     text-align: center;
+     top: 10%; /* Adjust this value to move the positioned div up and down */
+     background: rgba(0, 0, 0, 0);
+     font-family: Arial,sans-serif;
+     color: black;
+     width: 80%; /* Set the width of the positioned div */
+ }
+
  .six-pack .beerLabel{
      position: absolute;
      z-index: 999;
@@ -569,9 +594,55 @@ div.inputBox{
      left: 0;
      right: 0;
      text-align: center;
-     top: 40%; /* Adjust this value to move the positioned div up and down */
-     background: rgba(0, 0, 0, 0.8);
+     top: 57%; /* Adjust this value to move the positioned div up and down */
+     background: rgba(0, 0, 0, 0);
      font-family: Arial,sans-serif;
-     color: #fff;
-     width: 60%; /* Set the width of the positioned div */
+     color: black;
+     width: 80%; /* Set the width of the positioned div */
+ }
+
+
+ .six-pack .labelText{
+     position: absolute;
+     z-index: 999;
+     margin: 0 auto;
+     left: 0;
+     right: 0;
+     text-align: center;
+     top: 86%; /* Adjust this value to move the positioned div up and down */
+     background: rgba(0, 0, 0, 0);
+     font-family: Arial,sans-serif;
+     color: black;
+     width: 80%; /* Set the width of the positioned div */
+ }
+
+ h4.labelText{
+   font-family: Optima, sans-serif;
+   left: 20;
+   word-wrap: break-word;
+   text-align: center;
+   margin-left: 0px 0px 0px 0px !important;
+ }
+
+ h6.labelText{
+   font-family: Optima, sans-serif;
+   left: 20;
+   word-wrap: break-word;
+   text-align: center;
+   color: white !important;
+   font-weight: bold;
+   margin-left: 0px 0px 0px 0px !important;
+ }
+
+ img.labelText{
+
+ }
+
+ img.labelLogo{
+border-radius: 50%;
+height: 60px;
+width: 60px;
+ }
+ div.beerLabelLogo{
+   left:5;
  }
