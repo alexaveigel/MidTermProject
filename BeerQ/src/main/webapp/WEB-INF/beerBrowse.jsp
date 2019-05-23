@@ -35,8 +35,8 @@ var video = document.getElementById("beerVideo3");
 
 
 
-<h3>6-Pack</h3>
 <div class="container">
+<h3>6-Pack</h3>
   <div class="row">
  
      
@@ -81,26 +81,116 @@ var video = document.getElementById("beerVideo3");
 
 
 
+
+
+
+
+<div class="container-byStyle">
+
 <h3>by Style</h3>
-<c:forEach var = "style" items="${styles }">
-<!-- style cards and carousel -->
-${style }<br>
-</c:forEach>
+
+<div class="scrolling-wrapper-flexbox">
+
+
+  <c:forEach var = "style" items="${styles }">
+
+<div class="card2" style="width: 18rem;">
+  <img class="card2-img-top"border="0" src="/img/beer-style.jpg"  width="180" height="200">
+  <div class="card2-body">
+    <p class="card2-text"> ${style }<a class="beerLink" href="..."></p>
+  </div>
+</div>
+ </c:forEach>
+ 
+ 
+</div>
+</div>
+
+
+
+
+
+
+<div class="container-byABV">
 
 <h3>by ABV</h3>
-<!--carousel  with abv ranges -->
-0%
-.5% - 4%<br>
-4% - 6%<br>
-6% - 8%<br>
-8% - 10%<br>
-> 10%
+
+<div class="scrolling-wrapper-flexbox">
+
+<div class="card2" style="width: 18rem;">
+  <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
+  <div class="card2-body">
+    <p class="card3-text">0%<a class="beerLink" href="..."></p>
+  </div>
+</div>
+
+<div class="card2" style="width: 18rem;">
+  <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
+  <div class="card2-body">
+    <p class="card3-text">.5% - 4%<a class="beerLink" href="..."></p>
+  </div>
+</div>
+
+<div class="card2" style="width: 18rem;">
+  <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
+  <div class="card2-body">
+    <p class="card3-text">4% - 6%<a class="beerLink" href="..."></p>
+  </div>
+</div>
+
+<div class="card2" style="width: 18rem;">
+  <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
+  <div class="card2-body">
+    <p class="card3-text">6% - 8%<a class="beerLink" href="..."></p>
+  </div>
+</div>
+
+<div class="card2" style="width: 18rem;">
+  <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
+  <div class="card2-body">
+    <p class="card3-text">8% - 10%<a class="beerLink" href="..."></p>
+  </div>
+</div>
+
+<div class="card2" style="width: 18rem;">
+  <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
+  <div class="card2-body">
+    <p class="card3-text">> 10%<a class="beerLink" href="..."></p>
+  </div>
+</div>
+
+ 
+ 
+</div>
+</div>
+
+
+
+
+<div class="container-byBrewery">
 
 <h3>by Brewery</h3>
-<c:forEach var = "brewery" items="${listBrewery }">
-<!-- brewery cards and carousel -->
-${brewery }
-</c:forEach>
+
+<div class="scrolling-wrapper-flexbox">
+
+
+  <c:forEach var = "brewery" items="${listBrewery }">
+
+<div class="card2" style="width: 18rem;">
+  <img class="card2-img-top"border="0" src="/img/brewery.jpg"  width="180" height="200">
+  <div class="card2-body">
+    <p class="card2-text"> ${brewery.name }<a class="beerLink" href="..."></p>
+  </div>
+</div>
+ </c:forEach>
+ 
+ 
+</div>
+</div>
+
+
+
+
 
 
 

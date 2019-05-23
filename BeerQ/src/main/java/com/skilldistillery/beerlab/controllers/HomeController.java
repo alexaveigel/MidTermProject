@@ -59,8 +59,12 @@ public class HomeController {
 
 		} else if (type.equals("barcity")) {
 			List<Bar> barsByCity = barDAO.findBarByCity(keyword);
+			System.out.println(barsByCity);
 			mv.addObject("list", barsByCity);
 			mv.setViewName("/WEB-INF/barSearch.jsp");
+		}else if(type.equals("")){
+			mv.addObject("message", "Please select an option above");
+			mv.setViewName("/WEB-INF/home.jsp");
 		}
 
 		return mv;
@@ -72,7 +76,7 @@ public class HomeController {
 		mv.addObject("type", "browse");
 
 		List<Bar> bars = barDAO.findAllBars();
-		mv.addObject("bars", bars);
+		mv.addObject("list", bars);
 		mv.setViewName("/WEB-INF/barSearch.jsp");
 		return mv;
 	}
@@ -112,7 +116,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "goToBarProfile.do", method = RequestMethod.GET)
-	public ModelAndView goToBarProfile(@RequestParam("barId") int barId) {
+	public ModelAndView goToBarProfile(@RequestParam("barId") Integer barId) {
 		ModelAndView mv = new ModelAndView();
 		Bar bar = barDAO.findBarById(barId);
 		mv.addObject("bar", bar);
@@ -122,7 +126,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "goToBeerProfile.do", method = RequestMethod.GET)
-	public ModelAndView goToBeerProfile(@RequestParam("beerId") int beerId) {
+	public ModelAndView goToBeerProfile(@RequestParam("beerId") Integer beerId) {
 		ModelAndView mv = new ModelAndView();
 		Beer beer = beerDAO.findBeerById(beerId);
 		mv.addObject("beer", beer);
