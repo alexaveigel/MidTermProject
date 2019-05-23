@@ -19,7 +19,7 @@
   </div>
 
 
-  <nav class="navbar navbar-dark" style="background-color: #173e43">
+  <nav class="navbar navbar-dark sticky" style="background-color: #173e43">
 <a href="goToHome.do" class="pull-right "><img src="/img/logo.jpg" class="nav-logo" height="42" width="42"></a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
