@@ -84,7 +84,7 @@ Beer Style: <select size="5" name="beerStyle" >
 </div>
 			
 			
-			Link to profile pic: <input type="text" name="picUrl" /><br>
+			<!-- Link to profile pic: <input type="text" name="picUrl" /><br> -->
 			<input type="hidden" value = "${user.id}" name = "userId">
 		<input type="submit" value = "Submit">
 	</div>
@@ -101,7 +101,7 @@ Beer Style: <select size="5" name="beerStyle" >
 		
 		
 		
-		<h1>Tell us where you're at</h1>
+		<h1>Tell us where you're at,</h1>
 		<h2> so we can tell you what's close</h2>
 	<form action = "address.do" method = "post">
 		<div class="inputBox">
