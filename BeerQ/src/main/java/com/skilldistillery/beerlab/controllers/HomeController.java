@@ -115,7 +115,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "goToBarProfile.do", method = RequestMethod.GET)
-	public ModelAndView goToBarProfile(@RequestParam("barId") int barId) {
+	public ModelAndView goToBarProfile(@RequestParam("barId") Integer barId) {
 		ModelAndView mv = new ModelAndView();
 		Bar bar = barDAO.findBarById(barId);
 		mv.addObject("bar", bar);
@@ -125,7 +125,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "goToBeerProfile.do", method = RequestMethod.GET)
-	public ModelAndView goToBeerProfile(@RequestParam("beerId") int beerId) {
+	public ModelAndView goToBeerProfile(@RequestParam("beerId") Integer beerId) {
 		ModelAndView mv = new ModelAndView();
 		Beer beer = beerDAO.findBeerById(beerId);
 		mv.addObject("beer", beer);
