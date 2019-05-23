@@ -36,7 +36,6 @@ var video = document.getElementById("beerVideo3");
 
 
 <div class="container">
-<h3>6-Pack</h3>
   <div class="row">
  
      
@@ -50,7 +49,7 @@ var video = document.getElementById("beerVideo3");
 <div class="six-pack">
     	<img src="/img/bottle.gif" alt="6-pack" height="90%" width="90%">
     	<div class="beerLabelLogo">
-    	<c:choose>
+    	<%-- <c:choose>
     	<c:when test="${empty beer.brewery.logoUrl  }">
             <img class="labelLogo" src="/img/logo.jpg" > 
             </c:when>
@@ -58,12 +57,13 @@ var video = document.getElementById("beerVideo3");
             <c:otherwise>
             <img class="labelLogo" src="${beer.brewery.logoUrl}"> 
             </c:otherwise>
-            </c:choose>
+            </c:choose> --%>
             
            
         </div>
         <div class="beerLabel">
-            <h4 class="labelText">${beer.name }</h4>
+      
+           <a href = "goToBeerProfile.do?beerId=${beer.id}"><h4 class="labelText">${beer.name }</h4></a>
         </div>
         <h6 class="labelText"><fmt:formatNumber type="number" minFractionDigits="1" maxFractionDigits="1" value="${beer.abv}"/> %</h6>
         <div class="beerLabelABV">
@@ -97,7 +97,7 @@ var video = document.getElementById("beerVideo3");
 <div class="card2" style="width: 18rem;">
   <img class="card2-img-top"border="0" src="/img/beer-style.jpg"  width="180" height="200">
   <div class="card2-body">
-    <p class="card2-text"> ${style }<a class="beerLink" href="..."></p>
+    <p class="card2-text"> <a class="beerLink" href="getBeerByStyle.do?style=${style }">${style }</a></p>
   </div>
 </div>
  </c:forEach>
@@ -120,42 +120,42 @@ var video = document.getElementById("beerVideo3");
 <div class="card2" style="width: 18rem;">
   <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
   <div class="card2-body">
-    <p class="card3-text">0%<a class="beerLink" href="..."></p>
+    <p class="card3-text"><a class="beerLink" href="getBeerByAbv.do?minAbv=0&maxAbv=0">0%</a></p>
   </div>
 </div>
 
 <div class="card2" style="width: 18rem;">
   <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
   <div class="card2-body">
-    <p class="card3-text">.5% - 4%<a class="beerLink" href="..."></p>
+    <p class="card3-text"><a class="beerLink" href="getBeerByAbv.do?minAbv=.5&maxAbv=4">.5% - 4%</a></p>
   </div>
 </div>
 
 <div class="card2" style="width: 18rem;">
   <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
   <div class="card2-body">
-    <p class="card3-text">4% - 6%<a class="beerLink" href="..."></p>
+    <p class="card3-text"><a class="beerLink" href="getBeerByAbv.do?minAbv=4&maxAbv=6">4% - 6%</a></p>
   </div>
 </div>
 
 <div class="card2" style="width: 18rem;">
   <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
   <div class="card2-body">
-    <p class="card3-text">6% - 8%<a class="beerLink" href="..."></p>
+    <p class="card3-text"><a class="beerLink" href="getBeerByAbv.do?minAbv=6&maxAbv=8">6% - 8%</a></p>
   </div>
 </div>
 
 <div class="card2" style="width: 18rem;">
   <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
   <div class="card2-body">
-    <p class="card3-text">8% - 10%<a class="beerLink" href="..."></p>
+    <p class="card3-text"><a class="beerLink" href="getBeerByAbv.do?minAbv=8&maxAbv=10">8% - 10%</a></p>
   </div>
 </div>
 
 <div class="card2" style="width: 18rem;">
   <img class="card2-img-top"border="0" src="/img/abv.jpg"  width="220" height="200">
   <div class="card2-body">
-    <p class="card3-text">> 10%<a class="beerLink" href="..."></p>
+    <p class="card3-text"><a class="beerLink" href="getBeerByAbv.do?minAbv=10&maxAbv=100"> Over 10%</a></p>
   </div>
 </div>
 
@@ -179,7 +179,7 @@ var video = document.getElementById("beerVideo3");
 <div class="card2" style="width: 18rem;">
   <img class="card2-img-top"border="0" src="/img/brewery.jpg"  width="180" height="200">
   <div class="card2-body">
-    <p class="card2-text"> ${brewery.name }<a class="beerLink" href="..."></p>
+    <p class="card2-text"><a class="beerLink" href="..."> ${brewery.name }</a></p>
   </div>
 </div>
  </c:forEach>

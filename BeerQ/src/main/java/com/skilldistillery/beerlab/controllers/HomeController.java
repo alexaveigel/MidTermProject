@@ -59,6 +59,7 @@ public class HomeController {
 
 		} else if (type.equals("barcity")) {
 			List<Bar> barsByCity = barDAO.findBarByCity(keyword);
+			System.out.println(barsByCity);
 			mv.addObject("list", barsByCity);
 			mv.setViewName("/WEB-INF/barSearch.jsp");
 		}else if(type.equals("")){
@@ -75,7 +76,7 @@ public class HomeController {
 		mv.addObject("type", "browse");
 
 		List<Bar> bars = barDAO.findAllBars();
-		mv.addObject("bars", bars);
+		mv.addObject("list", bars);
 		mv.setViewName("/WEB-INF/barSearch.jsp");
 		return mv;
 	}
@@ -94,13 +95,35 @@ public class HomeController {
 		return mv;
 	}
 
-	@RequestMapping(path = "getBeer.do")
-	public ModelAndView getBeer(Beer beer) {
+	@RequestMapping(path = "getBeerByStyle.do")
+	public ModelAndView getBeerByStyle( @RequestParam("style") String style) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("beer", beer);
-		mv.addObject("type", "beer");
-		mv.setViewName("/WEB-INF/beerProfile.jsp");
+		List<Beer> beersByStyle = beerDAO.getBeerByStyle(style);
+		mv.addObject("type", "search");
+		mv.addObject("list", beersByStyle);
+		
 
+		mv.setViewName("/WEB-INF/beerSearch.jsp");
+		return mv;
+	}
+	@RequestMapping(path = "getBeerByAbv.do")
+	public ModelAndView getBeerByAbv( @RequestParam("minAbv") Double minAbv, @RequestParam("maxAbv") Double maxAbv) {
+		ModelAndView mv = new ModelAndView();
+	
+			List<Beer> beersByAbv = beerDAO.getBeerByABV(minAbv, maxAbv);
+			mv.addObject("list", beersByAbv);
+			mv.addObject("type", "search");
+		mv.setViewName("/WEB-INF/beerSearch.jsp");
+		return mv;
+	}
+	@RequestMapping(path = "getBeerByBrewery.do")
+	public ModelAndView getBeerByBrewery( @RequestParam("brewery") String brewery) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<Beer> beersByBrewery = beerDAO.findBeerByBrewery(brewery);
+		mv.addObject("list", beersByBrewery);
+		mv.addObject("type", "search");
+		mv.setViewName("/WEB-INF/beerSearch.jsp");
 		return mv;
 	}
 
@@ -115,7 +138,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "goToBarProfile.do", method = RequestMethod.GET)
-	public ModelAndView goToBarProfile(@RequestParam("barId") int barId) {
+	public ModelAndView goToBarProfile(@RequestParam("barId") Integer barId) {
 		ModelAndView mv = new ModelAndView();
 		Bar bar = barDAO.findBarById(barId);
 		mv.addObject("bar", bar);
@@ -125,7 +148,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "goToBeerProfile.do", method = RequestMethod.GET)
-	public ModelAndView goToBeerProfile(@RequestParam("beerId") int beerId) {
+	public ModelAndView goToBeerProfile(@RequestParam("beerId") Integer beerId) {
 		ModelAndView mv = new ModelAndView();
 		Beer beer = beerDAO.findBeerById(beerId);
 		mv.addObject("beer", beer);
