@@ -55,6 +55,10 @@
 			<form action="getBeer.do" method="get">
 				<input type= "submit" value="Go to profile">
 			</form>
+			<form action="adminDeleteBeer.do" method="post">
+			   <input type= "hidden" name= "beer" value= "${beer.id }">
+				<input type= "submit" value="Remove from site">
+			</form>
 			
 		</c:forEach>
 	</c:if>
