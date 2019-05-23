@@ -127,6 +127,7 @@
 </div>
 </c:if> --%>
 
+
 	<c:choose>
 		<c:when test="${type == 'search' }">
 			<h2>Here are your Beer results</h2>

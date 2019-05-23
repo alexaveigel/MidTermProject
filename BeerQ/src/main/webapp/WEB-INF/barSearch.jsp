@@ -28,7 +28,41 @@ background-image: url(/img/barBrowse.jpg);
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
+} 
+
+.geoSucks {
+  display: grid;
+  grid-gap: 5px; 
+  overflow: hidden;
+/*   grid-template-columns: repeat(auto-fill, 200px); */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+/*   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr) 150px); */
+  grid-auto-flow: dense;
 }
+
+.item:nth-of-type(3n) {
+  grid-column: span 2;  
+}
+
+.item:nth-of-type(5n) {
+  grid-row: span 2;  
+}
+
+.barCard {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+
+
+
+
 </style>
 
 </head>
@@ -54,7 +88,7 @@ background-position: center;
          --%>
         
         	<h2>All Bars</h2><br>
-<br>
+<%-- <br>
 <ol>
 <div class="flexcontainer">
 <br>
@@ -108,19 +142,35 @@ background-position: center;
 
 
       </div>
+     --%>    
+       
+       
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+<div class="geoSucks">
+<c:forEach var="bar" items="${bars}">
+  <div class="item"><div class="barCard">
+  <img src="${bar.logoUrl}" alt="Avatar" style="width:100%">
+  <div class="container">
+    <h4><b>${bar.name}</b></h4> 
+   
+  </div>
+</div></div>
+  </c:forEach>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
 
 
