@@ -949,10 +949,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `beerqdb`;
-INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (1, 'Esters Neighborhood Pub', 'Happy hour special on ', 1422, 'https://www.estersdenver.com/', 'logo.com');
-INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (2, 'Winstons Pub and Grill', 'Formerly the Baker Street Pub & Grill now under new management and locally owned.', 1423, 'http://www.winstonspubandgrill.com/', 'logo.com');
-INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (3, 'Yard House', 'Patio Seating Available, Come enjoy our outdoor deck seating.', 1424, 'https://www.yardhouse.com/home', 'logo.com');
-INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (4, 'Rock Bottom Restaurant & Brewery', 'What\'s brewing at rock bottom? ', 1425, 'https://rockbottom.com/locations/denver/', 'logo.com');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (1, 'Esters Neighborhood Pub', 'Happy hour special on ', 1422, 'https://www.estersdenver.com/', '/img/EstersHoodLogo.png');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (2, 'Winstons Pub and Grill', 'Formerly the Baker Street Pub & Grill now under new management and locally owned.', 1423, 'http://www.winstonspubandgrill.com/', '/img/WinstonsPubLog.png');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (3, 'Yard House', 'Patio Seating Available, Come enjoy our outdoor deck seating.', 1424, 'https://www.yardhouse.com/home', '/img/YardHouseLogo.png');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (4, 'Rock Bottom Restaurant & Brewery', 'What\'s brewing at rock bottom? ', 1425, 'https://rockbottom.com/locations/denver/', '/img/RockBottomLogo.png');
 INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (5, 'Sheabeen Irish Pub', 'The Pub provides live music on the weekends with various local performers that play Irish, Country, Classic Rock  and R&B.', 1426, 'https://www.sheabeenirishpub.com/index.html', 'logo.com');
 
 COMMIT;
