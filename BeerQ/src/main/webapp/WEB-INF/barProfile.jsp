@@ -25,6 +25,25 @@ background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
 } 
+
+#michael{
+ background-color: rgba(250, 250, 250, 0.50);
+ color:  #020202;
+ 
+ h2.barDescription{
+color: #020202;
+ }
+ 
+ a.barTitle{
+  background-color: rgba(250, 250, 250, 0.50);
+  color:  #020202;
+ }
+
+
+#barBeer {
+  background-color: rgba(250, 250, 250, 0.50);
+  color:  #020202;
+ }
     
     
     </style>
@@ -33,13 +52,9 @@ background-position: center;
 <meta charset="UTF-8">
 <title>Bar Profile</title>
 </head>
-<body class="barProfile">
+<!-- <body class="barProfile"> -->
 
 	<jsp:include page="navBar.jsp"/>
-
-
-
-
 
 
 	<div id="section">
@@ -48,14 +63,14 @@ background-position: center;
 
 			<div class="container">
 				<div class="row">
-					<div class="col">BAR IMAGE<br>
+					<div class="col"><br>
 					<img src="${bar.logoUrl}">
 					</div>
 					<div class="col-6">
-						<h1 class="barTitle">  <a class="barTitle" href="${bar.webUrl }">${bar.name} </a></h1>
-						<ol class="barTitle">
 							<li class="barDetail">
-							<div class="shadow-lg p-3 mb-5  rounded">
+							<div class="shadow-lg p-3 mb-5  rounded" id="michael">
+						<h1><a class="barTitle" href="${bar.webUrl }">${bar.name} </a></h1>
+						<ol class="barTitle">
 							<h2>
 							${bar.address.street}<br>
 							${bar.address.city} ${bar.address.state} ${bar.address.zip}<br>
@@ -72,7 +87,7 @@ background-position: center;
 						</ol>
 					</div>
 					<div class="col">
-						BAR STATS
+						
 
 						<!--The div element for the map -->
 <div id="map"></div>
@@ -106,12 +121,11 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzd
 
 
 
-
-
-
-
-
-	<h2>Beers that we carry</h2>
+	<div class="row">
+	<div class="col-3 offset-3" align="center">
+	<h2 class="bottomText" id="barBeer" style="background-color: rgba(250, 250, 250, 0.50);"> Beers that we carry</h2>
+	</div>
+	</div>
 
 <ol>
 <div class="flexcontainer2">
@@ -143,9 +157,11 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzd
           <svg class="card__like"  viewBox="0 0 24 24">
           <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
         </svg>
+		<div class="try">
         <br>
         ABV: ${beer.abv} <br>
         Style: ${beer.style} <br>
+       </div>
         </div>
 
 
@@ -159,14 +175,14 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzd
 
           </div>
         </article>
-
+			
         </section>
         </li>
-
+		
         </c:forEach>
 </div>
 
-
+	
       </div>
 <!--     
       Controls
