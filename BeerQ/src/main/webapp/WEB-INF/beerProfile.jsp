@@ -11,7 +11,8 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <%@include file="css/style.css" %>
     
     
-     html, 
+     /* html, */ 
+
 body {
 width: 100%;
 height: 100%;
@@ -25,23 +26,20 @@ background-position: center;
 } 
     
 .beerTitle{
- background-color: rgba(174, 176, 187, 0.50);
- color: #03a9f4;
+ background-color: rgba(250, 250, 250, 0.50);
+ color:  #020202;
  
  h2.beerDescription{
- font-color: #173e43;
+color: #020202;
+ }
+ 
+#barBeer {
+  background-color: rgba(250, 250, 250, 0.50);
+  color:  #020202;
  }
  
 } 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
 </style> 
 <meta charset="UTF-8">
 <title>Beer Profile</title>
@@ -83,7 +81,6 @@ background-position: center;
 
 			<div class="container">
 				<div class="row">
-					<div class="col">BEER IMAGE<br>
 					<img src="${bar.address.logoUrl}"> 
 					</div>
 					<div class="col-6">
@@ -92,7 +89,7 @@ background-position: center;
 							<li class="barDetail">
 							<div class="shadow-lg p-3 mb-5  rounded">
 				
-							<h2 class="beerDescription">
+							<h2 style="color: #020202">
 							Style: ${beer.style}<br>
 							ABV: ${beer.abv}<br>
 							
@@ -111,27 +108,21 @@ background-position: center;
 					
 					</div>               
                   
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-
+   
 	<form action="addFavorite.do" method="post">
 			<input type="hidden" name="beerId" value="${beer.id }">
-			<input type="submit" value="Add to Favorites">
-	</form>
+			<input type="submit" value="Add To Favorites" class="btn btn-light"/>
+	</form> 
+	
+	<br>
 
-	<h2>Bars that carry these beers</h2><br>
+	<div class="row">
+	<div class="col-6 offset-3">
+	<h2 class="bottomText" id="barBeer" style="background-color: rgba(250, 250, 250, 0.50);"> Bars that carry these beers</h2>
+	</div>
+	</div>
+	
+	
 <br>
 <ol>
 <div class="flexcontainer">
