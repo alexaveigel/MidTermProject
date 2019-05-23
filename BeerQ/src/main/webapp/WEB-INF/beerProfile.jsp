@@ -35,7 +35,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 				
 							<h2>
 							Style: ${beer.style}<br>
-							ABV: ${beer.abv}<br>
+							ABV: ${beer.abv}<br> 
 							
 							<br>
 							Description: ${beer.description}<br>
