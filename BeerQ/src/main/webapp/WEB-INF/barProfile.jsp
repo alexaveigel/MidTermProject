@@ -56,7 +56,6 @@ color: #020202;
 
 	<jsp:include page="navBar.jsp"/>
 
-
 	<div id="section">
 
 		<div class="barProfile">
