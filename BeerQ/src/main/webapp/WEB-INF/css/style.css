@@ -376,11 +376,20 @@ a.carousel-control-previous{
   top: 0;
   min-width: 50%;
   min-height: 50%;
-  width: 100%;
-
+  width: 100vw;
+  height: 80vh;
   z-index: -10;
+  background-color: black;
 }
 
+.container-byStyle{
+  position: static;
+}
+
+.container-byABV{
+  position: static;
+  align-content: center;
+}
 
 .box {
   position: absolute;
@@ -548,3 +557,64 @@ width: 60px;
  div.beerLabelLogo{
    left:5;
  }
+
+ .scrolling-wrapper {
+   overflow-x: scroll;
+   overflow-y: hidden;
+   white-space: nowrap;
+
+   .card-style {
+     display: inline-block;
+   }
+ }
+
+ .scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  .card-style {
+    display: inline-block;
+  }
+}
+
+.card2-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  color: white;
+}
+
+.card3-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 1000;
+  color: white;
+}
+
+
+.card2 {
+  position: relative;
+  text-align: center;
+  color: white;
+
+}
+
+a.beerLink{
+  font-weight: 600;
+color: white;
+}
+
+.card2-img-top{
+  margin: 15px;
+}
+
+img.card2-img-top{
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+
+}
