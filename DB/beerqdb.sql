@@ -4036,8 +4036,6 @@ INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 28);
 INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 457);
 INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 268);
 INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 271);
-INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 277);
-INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 290);
 INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 28);
 INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 290);
 INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 315);

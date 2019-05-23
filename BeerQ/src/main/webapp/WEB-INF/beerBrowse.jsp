@@ -179,7 +179,7 @@ var video = document.getElementById("beerVideo3");
 <div class="card2" style="width: 18rem;">
   <img class="card2-img-top"border="0" src="/img/brewery.jpg"  width="180" height="200">
   <div class="card2-body">
-    <p class="card2-text"> ${brewery.name }<a class="beerLink" href="..."></p>
+    <p class="card2-text"><a class="beerLink" href="..."> ${brewery.name }</a></p>
   </div>
 </div>
  </c:forEach>
