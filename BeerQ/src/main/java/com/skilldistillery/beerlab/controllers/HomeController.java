@@ -61,6 +61,9 @@ public class HomeController {
 			List<Bar> barsByCity = barDAO.findBarByCity(keyword);
 			mv.addObject("list", barsByCity);
 			mv.setViewName("/WEB-INF/barSearch.jsp");
+		}else if(type.equals("")){
+			mv.addObject("message", "Please select an option above");
+			mv.setViewName("/WEB-INF/home.jsp");
 		}
 
 		return mv;
