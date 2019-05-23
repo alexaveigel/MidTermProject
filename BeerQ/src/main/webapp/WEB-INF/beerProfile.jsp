@@ -47,7 +47,33 @@ color: #020202;
 <body>
 
 
-<jsp:include page="navBar.jsp"/>
+<!-- NAVBAR -->
+
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="toggleArea">
+      <h5 class=>BeerQ Home</h5>
+      <span class="text-muted2"><ul id="navlist"> 
+			<li><a href="goToHome.do">Home</a></li>
+			<li><a href="goToProfile.do">Profile</a></li>
+			<li><a href="logOut.do">Log Out</a></li>
+			<li><a href="goToAdmin.do">Admin</a></li></ul> </span>
+    </div>
+  </div>
+
+
+  <nav class="navbar navbar-dark" style="background-color: #173e43">
+<a href="goToHome.do" class="pull-right "><img src="/img/logo.jpg" class="nav-logo" height="42" width="42"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+
+
+
+<!-- NAVBAR End -->
                   
    	<div id="section">
 
@@ -65,7 +91,7 @@ color: #020202;
 				
 							<h2 style="color: #020202">
 							Style: ${beer.style}<br>
-							ABV: ${beer.abv}<br> 
+							ABV: ${beer.abv}<br>
 							
 							<br>
 							Description: ${beer.description}<br>
@@ -112,7 +138,7 @@ color: #020202;
 
 <br>
 
-<c:forEach var="beer" items="${beer.bars}">
+<c:forEach var="bar" items="${beer.bars}">
    <!--  <div class="carousel-item"> -->
 <!--Test Carousel Add-->
 
@@ -130,7 +156,7 @@ color: #020202;
         </svg>
         <br>
         Name: ${bar.name} <br>
-        Website: ${bar.website} <br>
+        Website: ${bar.webUrl} <br>
         </div>
 
 
@@ -139,8 +165,8 @@ color: #020202;
              <div class="card__img--hover"></div>
            </a>
           <div class="card__info">
-            <span class="card__category">${beer.name}</span>
-            <h3 class="card__title">${beer.name}</h3>
+            <span class="card__category">${bar.name}</span>
+            <h3 class="card__title">${bar.name}</h3>
 
           </div>
         </article>

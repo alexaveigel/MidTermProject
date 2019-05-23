@@ -58,6 +58,8 @@ public interface BeerDAO {
 	FavoriteBeer findFavBeerById(int beerId);
 
 	public boolean removeBeerFromFavs(FavoriteBeer favBeer, HttpSession session);
+
+	Beer unapproveBeer(int beerId);
 	
 
 }
