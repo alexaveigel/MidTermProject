@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `drinker` (
   `user_id` INT NOT NULL,
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
-  `date_of_birth` DATE NOT NULL,
+  `date_of_birth` VARCHAR(30) NOT NULL,
   `gender` VARCHAR(45) NULL,
   `beer_style` VARCHAR(45) NULL,
   `pic_url` VARCHAR(500) NULL,
@@ -87,7 +87,7 @@ DROP TABLE IF EXISTS `bar` ;
 CREATE TABLE IF NOT EXISTS `bar` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `message` VARCHAR(500) NULL,
+  `message` TEXT NULL,
   `address_id` INT NOT NULL,
   `website_url` VARCHAR(500) NULL,
   `logo_url` VARCHAR(500) NULL,
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `beer` (
   `style` VARCHAR(400) NOT NULL,
   `name` VARCHAR(400) NOT NULL,
   `abv` DOUBLE NOT NULL,
-  `brewery_id` INT NULL,
+  `brewery_id` INT NOT NULL,
   `description` TEXT NULL,
   `approved` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
@@ -928,6 +928,10 @@ INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latit
 INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1424, '1555 Court Place', 'Denver', 'CO', '80202', 'United States', NULL, NULL);
 INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1425, '1001 16th St', 'Denver', 'CO', '80265', 'United States', NULL, NULL);
 INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1426, '2300 S. Chambers Rd', 'Aurora', 'CO', '80014', 'United States', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1427, '2627 S Parker Rd', 'Aurora', 'CO', '80014', 'United States', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1428, '13690 E Iliff Avenue', 'Aurora', 'CO', '80014', 'United States', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1429, '5370 Greenwood Plaza Blvd. #106', 'Denver', 'CO', '80111', 'United States', NULL, NULL);
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, `longitude`) VALUES (1430, '4900 South Syracuse Street', 'Denver', 'CO', '80237', 'United States', NULL, NULL);
 
 COMMIT;
 
@@ -953,7 +957,11 @@ INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_u
 INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (2, 'Winstons Pub and Grill', 'Formerly the Baker Street Pub & Grill now under new management and locally owned.', 1423, 'http://www.winstonspubandgrill.com/', '/img/WinstonsPubLog.png');
 INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (3, 'Yard House', 'Patio Seating Available, Come enjoy our outdoor deck seating.', 1424, 'https://www.yardhouse.com/home', '/img/YardHouseLogo.png');
 INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (4, 'Rock Bottom Restaurant & Brewery', 'What\'s brewing at rock bottom? ', 1425, 'https://rockbottom.com/locations/denver/', '/img/RockBottomLogo.png');
-INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (5, 'Sheabeen Irish Pub', 'The Pub provides live music on the weekends with various local performers that play Irish, Country, Classic Rock  and R&B.', 1426, 'https://www.sheabeenirishpub.com/index.html', 'logo.com');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (5, 'Sheabeen Irish Pub', 'The Pub provides live music on the weekends with various local performers that play Irish, Country, Classic Rock  and R&B.', 1426, 'https://www.sheabeenirishpub.com/index.html', '/img/SheabeensIrishPubLogo.png');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (6, 'The Hideaway Lounge', 'ingredients in our food, to the most highly trained bartenders.', 1427, 'http://hideawayaurora.com/', '/img/HideawayLoungeLogo.png');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (7, 'Legends of Aurora Sports Grill', 'Once called “a Strip Mall Surprise” by a Denver newspaper, we’re known for delicious hand-tossed pizza, calzones, Philly cheese steaks, gluten-free items and more, in a comfortable, family friendly atmosphere.', 1428, 'https://legendsofaurora.com/', '/img/LegendsOfAuroraLogo.png');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (8, 'Upstairs Circus DTC', 'You. Your Friends. Your Family. Your Date. You’re each your own individuals, so each of you can make whichever project YOU want.\nCelebrate individuality, creativity and ingenuity- together.', 1429, 'https://upstairscircus.com/dtc/', '/img/UpstairsCircusLogo.png');
+INSERT INTO `bar` (`id`, `name`, `message`, `address_id`, `website_url`, `logo_url`) VALUES (9, 'Pint Brothers Alehouse', 'Pint Brothers Alehouse delivers hand-crafted casual style and flavor in a space that connects the social vibrancy of our indoor beer garden and bustling bar with the comfortable booths and warm dining room. Pint Brothers does just what our name suggests — it gives you your moment to become family over your pints.', 1430, 'https://pintbrothersdenver.com/', '/img/PintBrothersLogo.png');
 
 COMMIT;
 
@@ -4003,6 +4011,68 @@ USE `beerqdb`;
 INSERT INTO `favorite_bar` (`id`, `bar_id`, `drinker_id`, `date_added`, `comment`) VALUES (1, 1, 1, '2038-01-19', 'no comment');
 INSERT INTO `favorite_bar` (`id`, `bar_id`, `drinker_id`, `date_added`, `comment`) VALUES (2, 2, 2, '2020-08-08', 'a comment');
 INSERT INTO `favorite_bar` (`id`, `bar_id`, `drinker_id`, `date_added`, `comment`) VALUES (3, 2, 1, '2012-12-12', 'lots of comments');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `bar_inventory`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `beerqdb`;
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (1, 1);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (1, 6);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (1, 27);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (1, 28);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (1, 58);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (1, 61);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (2, 6);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (2, 28);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (2, 107);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (2, 114);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (2, 143);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (2, 144);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 28);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 457);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 268);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 271);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 277);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (3, 290);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 28);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 290);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 315);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 350);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 1);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 369);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 656);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (4, 407);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (5, 703);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (5, 28);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (5, 427);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (5, 457);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (5, 510);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (5, 315);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (5, 271);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (6, 656);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (6, 669);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (6, 114);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (6, 6);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (7, 1);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (7, 693);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (7, 703);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (7, 747);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (7, 6);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (8, 764);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (8, 28);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (8, 783);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (8, 813);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (8, 61);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (9, 811);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (9, 268);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (9, 856);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (9, 908);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (9, 918);
+INSERT INTO `bar_inventory` (`bar_id`, `beer_id`) VALUES (9, 28);
 
 COMMIT;
 

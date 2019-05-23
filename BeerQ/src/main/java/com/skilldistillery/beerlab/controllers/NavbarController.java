@@ -81,6 +81,31 @@ public class NavbarController {
 
 	}
 
+	@RequestMapping(path = "adminConfirmBeerWaitList.do", method = RequestMethod.GET)
+	public ModelAndView adminConfirmBeerWaitList(Beer beer) {
+		ModelAndView mv = new ModelAndView();
+
+		List<Beer> unapprovedBeer = beerDAO.unapproved();
+
+		mv.addObject("type", "unapproved");
+		mv.addObject("unapprovedBeerList", unapprovedBeer);
+		mv.setViewName("/WEB-INF/admin.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "adminDeleteBeer.do", method = RequestMethod.POST)
+	public ModelAndView adminSearchBeer(@RequestParam int beer) {
+		ModelAndView mv = new ModelAndView();
+		Beer unapproveBeer = beerDAO.unapproveBeer(beer);
+		List<Beer> unapprovedBeer = beerDAO.unapproved();
+		mv.addObject("type", "unapproved");
+		mv.addObject("unapprovedBeerList", unapprovedBeer);
+		mv.addObject("unapprovedBeer", unapproveBeer);
+		mv.setViewName("/WEB-INF/admin.jsp");
+		return mv;
+
+	}
+
 	@RequestMapping(path = "adminSearchBar.do", method = RequestMethod.GET)
 	public ModelAndView adminSearchBar(String keyword) {
 		ModelAndView mv = new ModelAndView();
@@ -101,18 +126,6 @@ public class NavbarController {
 		return mv;
 	}
 
-	@RequestMapping(path = "adminConfirmBeerWaitList.do", method = RequestMethod.GET)
-	public ModelAndView adminConfirmBeerWaitList(Beer beer) {
-		ModelAndView mv = new ModelAndView();
-
-		List<Beer> unapprovedBeer = beerDAO.unapproved();
-		
-		mv.addObject("type", "unapproved");
-		mv.addObject("unapprovedBeerList", unapprovedBeer);
-		mv.setViewName("/WEB-INF/admin.jsp");
-		return mv;
-	}
-
 	@RequestMapping(path = "adminConfirmBeerAdd.do", method = RequestMethod.POST)
 	public ModelAndView adminConfirmBeerAdd(@RequestParam int beer) {
 		ModelAndView mv = new ModelAndView();
@@ -122,23 +135,23 @@ public class NavbarController {
 
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "denyBeerRequest.do", method = RequestMethod.POST)
 	public ModelAndView denyBeerRequest(@RequestParam int beer) {
 		ModelAndView mv = new ModelAndView();
 		boolean deniedBeer = beerDAO.destroyBeer(beer);
 		mv.addObject("deniedBeer", deniedBeer);
 		mv.setViewName("/WEB-INF/admin.jsp");
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "addBeerToBar.do", method = RequestMethod.POST)
 	public ModelAndView addBeerToBar(int beerId, int barId) {
 		ModelAndView mv = new ModelAndView();
 		Bar bar = barDAO.findBarById(barId);
 		Beer beer = beerDAO.findBeerById(beerId);
-		
+
 //		bar.addBeer(beer);
 //		barDAO.updateBar(bar.getId(), bar);
 		mv.addObject(bar);

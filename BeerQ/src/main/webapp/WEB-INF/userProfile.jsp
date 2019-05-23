@@ -37,9 +37,6 @@
 		<form action="goToEditProfile.do" method="get">
 			<input type="submit" value="Edit Profile">
 		</form>
-		<form action=".do" method="get">
-			<input type="submit" value="Change Password">
-		</form>
 		<form action="getFavorite.do" method="get">
 			<input type="submit" value="Favorite Beers">
 		</form>

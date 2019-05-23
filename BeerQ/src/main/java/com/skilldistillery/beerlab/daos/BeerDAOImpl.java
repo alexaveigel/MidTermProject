@@ -36,7 +36,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 	@Override
 	public List<Beer> findBeerByName(String beerName) {
-		String query = "SELECT b FROM Beer b WHERE b.name LIKE :beerName";
+		String query = "SELECT b FROM Beer b WHERE b.approved = 1 AND b.name LIKE :beerName ";
 		List<Beer> beers = em.createQuery(query, Beer.class).setParameter("beerName", "%" + beerName + "%")
 				.getResultList();
 		return beers;
@@ -53,7 +53,7 @@ public class BeerDAOImpl implements BeerDAO {
 	@Override
 	public List<Beer> findBeerByCity(String city) {
 
-		String jpql = "SELECT b from Beer b JOIN b.bars bars where bars.address.city = :city";
+		String jpql = "SELECT b from Beer b JOIN b.bars bars where bars.address.city = :city AND b.approved = 1";
 
 		List<Beer> cities = em.createQuery(jpql, Beer.class).setParameter("city", city).getResultList();
 
@@ -153,6 +153,15 @@ public class BeerDAOImpl implements BeerDAO {
 
 		return approvedBeer;
 
+	}
+	@Override
+	public Beer unapproveBeer(int beerId) {
+		
+		Beer approvedBeer = em.find(Beer.class, beerId);
+		approvedBeer.setApproved(0);
+		
+		return approvedBeer;
+		
 	}
 
 	@Override

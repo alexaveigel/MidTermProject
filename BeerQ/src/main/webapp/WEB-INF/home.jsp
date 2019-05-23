@@ -42,13 +42,13 @@ background-position: center;
 
 <div class="box2">
 <div class="inputBox2">
- 
 
 
     <form action="search.do" method="GET">
+    <c:if test="${not empty message }">${message }</c:if>
         <label for="search-select">Search Select:</label>
         <select name = "type" id="search-select-home">
-            <option value="">--Please choose an option--</option>
+            <option value="">--Please select an option--</option>
             <option value="beer">Beer Name</option>
             <option value="bar">Bar Name</option>
             <option value="beercity">Beer By City</option>
