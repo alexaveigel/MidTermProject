@@ -16,11 +16,29 @@
 </style>
 <meta charset="UTF-8">
 <title>Search Results</title>
+<style type="text/css">
+html, 
+body {
+width: 100%;
+height: 100%;
+}
+
+body {
+background-image: url(/img/beerR.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+
+}
+</style>
 </head>
 
 <body class="beerSearch">
 
 <jsp:include page="navBar.jsp"/>
+
+
+
 <%-- 	<!-- NAVBAR -->
 
 	<div class="pos-f-t">
@@ -131,9 +149,11 @@
 	<c:choose>
 		<c:when test="${type == 'search' }">
 			<h2>Here are your Beer results</h2>
+			<h3>Your search for " ${ keyword} " returned ${list.size() } results </h3>
 		</c:when>
 		<c:when test="${type == 'fav' }">
-			<h2>Here is your list of favorite beers</h2>
+			<h2>Here is your list of favorite beers</h2><br>
+			
 		</c:when>
 	</c:choose>
 	<div class="flexcontainer">
@@ -194,7 +214,6 @@
 
 	</div>
 		
-
 
 
 
