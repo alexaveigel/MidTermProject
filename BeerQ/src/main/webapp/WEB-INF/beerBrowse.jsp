@@ -21,7 +21,7 @@
 <body>
 
 
-<video autoplay muted loop id="beerVideo3">
+<video autoplay muted loop id="beerVideo3" height = "680px">
   <source src="/img/barCounter.mp4" type="video/mp4">
 </video>
 
