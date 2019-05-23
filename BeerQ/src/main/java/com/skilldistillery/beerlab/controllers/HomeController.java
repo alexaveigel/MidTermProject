@@ -116,6 +116,16 @@ public class HomeController {
 		mv.setViewName("/WEB-INF/beerSearch.jsp");
 		return mv;
 	}
+	@RequestMapping(path = "getBeerByBrewery.do")
+	public ModelAndView getBeerByBrewery( @RequestParam("brewery") String brewery) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<Beer> beersByBrewery = beerDAO.findBeerByBrewery(brewery);
+		mv.addObject("list", beersByBrewery);
+		mv.addObject("type", "search");
+		mv.setViewName("/WEB-INF/beerSearch.jsp");
+		return mv;
+	}
 
 	@RequestMapping(path = "getBar.do")
 	public ModelAndView getBar(Bar bar) {
