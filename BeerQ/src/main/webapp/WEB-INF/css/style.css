@@ -704,6 +704,8 @@ width: 60px;
 
 }
 
+
+
 a.beerLink{
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-size: 20px;
@@ -744,4 +746,7 @@ color: #dddfd4;
 
 .text{
 color:#fae596;
+}
+body{
+background-attachment: fixed;
 }
