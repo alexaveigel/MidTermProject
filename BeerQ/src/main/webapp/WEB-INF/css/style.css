@@ -22,6 +22,10 @@ a.navbar{
 ul#navlist{
   text-align: right !important;
     padding-right: 16px;
+
+}
+a#navlist{
+  color: #173e43;
 }
 
 body{
