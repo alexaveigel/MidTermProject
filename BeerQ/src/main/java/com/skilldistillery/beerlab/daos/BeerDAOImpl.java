@@ -154,6 +154,15 @@ public class BeerDAOImpl implements BeerDAO {
 		return approvedBeer;
 
 	}
+	@Override
+	public Beer unapproveBeer(int beerId) {
+		
+		Beer approvedBeer = em.find(Beer.class, beerId);
+		approvedBeer.setApproved(0);
+		
+		return approvedBeer;
+		
+	}
 
 	@Override
 	public List<Brewery> getBreweries() {
