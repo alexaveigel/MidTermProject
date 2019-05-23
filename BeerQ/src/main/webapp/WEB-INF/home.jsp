@@ -40,10 +40,8 @@ background-position: center;
 <jsp:include page="navBar.jsp"/>
 
 
-
 <div class="box2">
 <div class="inputBox2">
-
 
 
     <form action="search.do" method="GET">
