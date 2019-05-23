@@ -125,7 +125,7 @@ public class BeerDAOImpl implements BeerDAO {
 		em.flush();
 		drinker.getBeers().add(favBeer);
 		System.out.println(drinker.getBeers());
-
+		session.setAttribute("drinker", drinker);
 		return drinker.getFavBeer();
 	}
 
