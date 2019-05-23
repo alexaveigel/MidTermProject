@@ -59,7 +59,6 @@ public class UserDAOImpl implements UserDAO {
 
 		updatedUser.getDrinker().setFirstName(user.getDrinker().getFirstName());
 		updatedUser.getDrinker().setLastName(user.getDrinker().getLastName());
-//		updatedUser.getDrinker().setDob(user.getDrinker().getDob().toString());
 		updatedUser.getDrinker().setDob(user.getDrinker().getDob());
 		updatedUser.getDrinker().setGender(user.getDrinker().getGender());
 		updatedUser.getDrinker().setBeerStyle(user.getDrinker().getBeerStyle());
